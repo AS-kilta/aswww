@@ -1,0 +1,47 @@
+/*NAVIGATION*/
+
+#nav ul {
+    list-style: none;
+    font-size: 0.9em;
+    background-color: #D2CECE;
+    background-image:  url("nav_bg.gif");
+    background-position: top;
+    background-repeat: repeat-x;
+    border-top: 1px solid #928F8F;
+    border-bottom: 1px solid #928F8F;
+    padding-top: 3px;/*match: 2*/
+    padding-bottom:  4px; /*match: 3*/
+}
+#nav li {
+    display: inline;
+    background-image: url("nav_start.gif");
+    background-position: top left;
+    background-repeat: no-repeat;
+    padding-top: 3px;/*match: 2*/
+    padding-bottom:  4px; /*match: 3*/
+}
+
+#nav li a { 
+    vertical-align: top;
+    color: #404040;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    padding: 0 8px 0 8px;
+    background-image: url("nav_end.gif");
+    background-position: top right;
+    background-repeat: no-repeat;
+    padding-top: 3px;/*match: 2*/
+    padding-bottom:  4px; /*match: 3*/
+}
+#nav li a:hover {
+    color: #000;
+}
+
+#nav li.active {
+    padding-bottom:1px;                /*match: 3a      toget-*/
+    border-bottom: 3px solid #792f9e;  /*match: 3b      her, this value comes from the design*/
+}
+#nav li a.active {
+    padding-bottom:1px; /*match: 3a*/
+}

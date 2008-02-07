@@ -1,0 +1,6 @@
+RewriteEngine on
+
+RewriteCond $1 !^(skins/|robots\.txt)
+RewriteRule ^(.*)$ index.php?q=$0 [QSA]
+
+RewriteBase /~omatunnus/aswww/

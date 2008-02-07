@@ -1,0 +1,24 @@
+#header ul {
+    bottom: 114px;
+}
+#header .photo{
+    bottom: -1px;
+}
+
+#nav ul {
+    padding-bottom: 3px; /*Same as underlining width*/		
+    /*height: 1.2em;/**/ /*Same as fontsize in nav!*/
+    overflow: hidden;
+}
+#nav li {
+    padding-top:0px;
+}
+
+#nav li.selected {
+    padding-bottom:0px;
+    margin-bottom: 0px;
+}
+#nav li.selected a{
+    padding-bottom:0px;
+    margin-bottom: 0px;
+}

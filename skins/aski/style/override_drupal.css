@@ -1,0 +1,8 @@
+ul.menu li {
+  margin: 0;
+}
+li.collapsed, li.expanded, li.leaf {
+  list-style-image: none;
+  list-style-type: none;
+  padding: 0;
+}

@@ -1,0 +1,13 @@
+<?php
+
+$db_name = 'aswww';
+$db_user = 'aswww';
+$db_passwd = 'aswww';
+
+$email_onError = false;
+$enableEmail = false;
+
+$logfilename = 'log.txt';
+$mailfilename = 'mail.txt';
+
+?>

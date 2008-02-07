@@ -1,0 +1,23 @@
+
+/*Replace pngs with gifs*/
+#header {background-image: url("alt_without_alpha/main_header.gif");}
+#middle {background-image: url("alt_without_alpha/main_bg.gif");}
+#footer {background-image: url("alt_without_alpha/main_footer.gif");}
+#header ul li {
+    background-image: url("alt_without_alpha/top_tab_start.gif");
+    background-repeat: no-repeat;
+}
+#header ul li span {
+    background-image: url("alt_without_alpha/top_tab_end.gif");
+    background-position: top right;
+    background-repeat: no-repeat;
+}
+
+/*Alpha transparency for logo*/
+.gears img {
+    visibility: hidden;
+    margin-bottom: -3px;   
+}
+.gears {
+    filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='themes/aski/logo.png', sizingMethod='crop');
+}

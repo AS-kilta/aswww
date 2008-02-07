@@ -1,0 +1,50 @@
+html, body {
+  background: none;
+  color: #000000;
+}
+
+.bg {
+  background: none;
+}
+
+#wrap {
+  width: 100%;
+  margin: 0;
+  margin: 0;
+}
+
+#middle {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: none;
+}
+
+#main {
+  margin: 0;
+  padding: 0;
+}
+#header {
+  display: none;
+}
+
+#middle #nav {
+  display: none;
+}
+#middle .contentbg {
+  background: none;
+}
+
+
+#sidebar {
+  display: none;
+}
+
+.tabs {
+  display: none;
+}
+
+#footer {
+  background: none;
+  padding-top: .5em;
+}

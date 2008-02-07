@@ -1,0 +1,86 @@
+* {padding: 0px; margin: 0px;}
+
+body, html {
+    font-family: verdana, arial, sans-serif;
+    background:#fff;
+    color: #303030;
+    background-image: url("bg_repeat.gif");
+}
+
+.bg {
+    background-image: url("bg_gradient.gif");
+    background-repeat: repeat-x;
+}
+#wrap {
+    width:781px;
+    margin:30px auto 30px auto;
+}
+
+#middle {
+    background: url("main_bg.png");
+    padding: 0 22px;
+    font-size: 0.8em;
+}
+.contentbg {
+    background: url("main_content_top_bg.gif");
+    background-repeat: no-repeat;
+}
+
+
+#clearer {clear:both;}
+
+
+/*Overrides*/
+.profile {
+	clear:none;
+}
+
+.node-form .standard {
+	clear:none;
+}
+
+#main ul {
+  list-style-position: inside;
+  margin-left: 1em;
+}
+
+table {
+  text-align: left; /*No need to justify text inside tables*/
+}
+
+tr.odd {
+ background-color: #efe5ef;
+}
+
+tr.even {
+  background-color: #f5f0f5;
+}
+
+.events {
+    border-left: 1px solid #ccc;
+    padding-left: .5em;
+    margin: 0em 0em;
+}
+
+.events p {
+    margin-bottom: 1em;
+}
+
+.events .aika {
+    font-size: 90%;
+}
+
+.events .paikka {
+    font-size: 90%;
+    color: #404040;
+}
+
+.poll {
+    border-left: 1px solid #ccc;
+    padding-left: .5em;
+    margin: 0em 0em;
+}
+
+.form-item {
+    margin: 0px;
+}

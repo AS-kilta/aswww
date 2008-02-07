@@ -1,0 +1,46 @@
+<?php
+include('include/framework.inc');
+
+/**
+ * Controller
+ */
+
+class AdminController extends Controller {
+
+    function execute() {
+        $this->page = new View('adminlogin');
+
+        // Yrittääkö käyttäjä autentikoitua?
+        if (post('salasana')) {
+            if ($this->login()) {
+                // Login onnistui
+                redirect('lista.php');
+            } else {
+                // Login epäonnistui
+                $this->page = new View('adminlogin');
+                $this->page->addData('loginFailed', true);
+            }
+        } else if (get('action') == 'logout') {
+            Auth::logoutAdmin();
+            redirect('index.php');
+        }
+
+        parent::execute();
+    }
+
+    function login() {
+        global $adminPassword;
+        if (md5(post('salasana')) == $adminPassword) {
+            Auth::loginAdmin();
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
+
+
+$controller = new AdminController();
+$controller->execute();
+
+?>

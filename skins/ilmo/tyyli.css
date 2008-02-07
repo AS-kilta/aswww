@@ -1,0 +1,149 @@
+html {
+    height: 100%;
+}
+
+body {
+    background: #bfa688;
+    height: 100%;
+    padding: 0px;
+    margin: 0px;
+    font-family: serif;
+    font-size: 90%;
+}
+
+a {
+    color: white;
+}
+
+a:visited {
+    color: white;
+}
+
+p:first-child {
+    margin-top: 0px;
+}
+
+h1 {
+    font-size: 120%;
+    font-weight: normal;
+    margin-top: 2em;
+    color: #db9501;
+}
+
+h2 {
+    font-size: 110%;
+    font-weight: normal;
+    margin-top: 2em;
+    color: #db9501;
+}
+
+h3 {
+    font-size: 100%;
+    font-weight: normal;
+    margin-top: 1em;
+    color: #db9501;
+}
+
+h1:first-child {
+    margin-top: 0px;
+}
+
+h2:first-child {
+    margin-top: 0px;
+}
+
+table {
+    color: white;
+}
+
+#otsikko {
+    text-align: center;
+    background: url('raita.png') repeat-x center;
+    width: 100%;
+}
+
+#otsikko h1 {
+    color: white;
+    font-size: 180%;
+    font-weight: normal;
+    display: inline;
+    background: #362c20;
+    padding: 0px 2em;
+}
+
+#sivu {
+    width: 650px;
+    min-height: 100%;
+    background: #362c20;
+    color: white;
+    margin: 0px auto;
+    padding: 26px 0px;
+    border-left: 14px solid white;
+    border-right: 14px solid white;
+}
+
+#content {
+    margin: 46px 24px 24px 24px;
+}
+
+#menu {
+    color: #db9501;
+    width: 100%;
+    margin: 10px 0px;
+    text-align: center;
+}
+
+#menu ul {
+    list-style-type: none;
+    display: inline;
+    margin: 0em auto;
+    padding: 0px;
+}
+
+#menu li {
+    display: inline;
+    margin: 0px;
+    padding-right: 0px 5px;
+}
+
+#menu a {
+    text-decoration: none;
+}
+
+#menu a:hover {
+    text-decoration: underline;
+}
+
+.varoitus {
+    color: #ff4040;
+}
+
+table.nimilista {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0px;
+}
+
+table.nimilista thead td {
+    border-bottom: 1px solid white;
+    font-weight: bold;
+}
+
+table.nimilista td {
+    padding-right: .8em;
+    border-bottom: 1px solid black;
+}
+
+table.nimilista td.numero {
+    text-align: right;
+    width: 4em;
+}
+
+.lisatiedot {
+    margin-top: 4em;
+    font-size: 90%;
+}
+
+.lisatiedot + .lisatiedot{
+    margin-top: 1em;
+}
