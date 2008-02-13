@@ -1,4 +1,4 @@
-DROP TABLE naviNodes;
+DROP TABLE naviNodes CASCADE;
 CREATE TABLE naviNodes (
     id INT PRIMARY KEY,
     parent INT REFERENCES naviNodes(id) ON DELETE SET NULL,
@@ -53,6 +53,6 @@ DROP TABLE groups;
 CREATE TABLE groups (
     userid INT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
     groupname VARCHAR(32),
-    UNIQUE (userid, grupname)
+    UNIQUE (userid, groupname)
 );
 
