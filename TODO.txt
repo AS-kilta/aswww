@@ -1,0 +1,16 @@
+login
+käyttöoikeudet
+
+= Admin =
+
+
+= i18n =
+toggle language
+getText
+
+= Tapahtumat =
+tapahtumakalenteri
+ilmo
+
+= Page =
+wikiparseri

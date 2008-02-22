@@ -22,10 +22,9 @@ if ($parts[0] == 'admin') {
     exit();
 }
 
-
+// Load navitree
 $navi = Navi::getInstance();
 $navi->resolve($parts);
-
 
 // Load the correct module
 $node = $navi->getSelectedNode();
@@ -34,7 +33,6 @@ if ($node == null) {
 } else {
     showModule($node);
 }
-
 
 
 function show404() {
@@ -51,43 +49,74 @@ function show404() {
 
 
 function showModule($node) {
-    // TODO: something more automatic here
-    switch ($node->getModule()) {
+    $navi = Navi::getInstance();
+
+    // Select skin according to module
+    $skin = new Skin('aski');
+    $moduleName = $node->getModule();
+
+    // TODO: this should come from the database
+    switch ($moduleName) {
         case 'page':
-            $module = new PageController();
+            $page = new PageController();
+            $content = $page->render($node);
+            $left = $navi->renderNaviTree();
             break;
 
         case 'frontpage':
-            $module = new FrontpageController();
+            $front = new FrontpageController();
+            $events = new IlmoController();
+            $content = $front->render();
+            $left = $events->renderEvents();
             break;
 
         case 'ilmo':
-            $module = new IlmoController();
+            $ilmo = new IlmoController();
+            $content = $ilmo->render($node);
             break;
 
         default:
-            echo "<h1>Module " . $node->getModule() . " not supported</h1>";
+            //$content = "<h1>Module " . $node->getModule() . " not supported</h1>";
             return;
     }
+    $topNavi = $navi->renderTopNavi();
 
     // Select the right action
+    /*
     $action = get('action');
-    $method = 'show' . $action;
+    $method = 'render' . $action;
 
     if ($action === false || !method_exists($module, $method)) {
-        $method = 'showPage';
+        $method = 'renderPage';
     }
 
-    $module->$method();
+    $content = $module->$method();
+    */
+
+    $skin->setContent('content', $content);
+    $skin->setContent('topnavi', $topNavi);
+    $skin->setContent('left', $left);
+
+    $skin->show();
 }
 
 function showAdmin() {
+    $navi = Navi::getInstance();
+    $skin = new Skin('aski');
+
     $module = new AdminController();
-    $module->showPage();
+    $content = $module->render();
+    $leftNavi = $navi->renderNaviTree();
+    $topNavi = $navi->renderTopNavi();
+
+    $skin->setContent('content', $content);
+    $skin->setContent('left', $leftNavi);
+    $skin->setContent('topnavi', $topNavi);
+    $skin->show();
 }
 
-function showFrontpage() {
-    $module = new FrontpageController();
+function showLogin() {
+    $module = Auth::getInstance();
     $module->showPage();
 }
 

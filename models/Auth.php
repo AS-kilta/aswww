@@ -1,25 +1,35 @@
 <?php
 
 class Auth {
+    private static $instance;
+
+    public static function getInstance() {
+        if (self::$instance === null) {
+            self::$instance = new self;
+        }
+        return self::$instance;
+    }
+
+    private function __construct() {
+    }
 
     /**
-     * 
+     *
      * @param $username username
      * @param $password password (plaintext)
-     * @return oid of the user or false if login failed
+     * @return id of the user or false if login failed
      */
-    static function login($etunimi, $sukunimi, $salasana) {
-        if (strlen($salasana) == 0) {
+    function login($username, $password) {
+        if (strlen($password) == 0) {
             return false;
         }
 
         $passwordCipher = md5($salasana);
 
         // Query
-        $query = 'SELECT oid FROM ilmo '
-                   . "WHERE LOWER(etunimi) = '" . strtolower($etunimi) . "' "
-                   . "AND LOWER(sukunimi) = '" . strtolower($sukunimi) . "' "
-                   . "AND salasana = '$passwordCipher'";
+        $query = 'SELECT id FROM users '
+                   . "WHERE username = '" . escape($username) . "' "
+                   . "AND password = '$passwordCipher'";
         $result = query($query);
 
         if ($result != false && pg_num_rows($result) > 0) {
@@ -34,19 +44,19 @@ class Auth {
     /**
      * Logs out the current user
      */
-    static function logout() {
+    function logout() {
         $_SESSION['userId'] = -1;
     }
 
-    static function loginAdmin() {
+    function loginAdmin() {
         $_SESSION['admin'] = true;
     }
 
-    static function logoutAdmin() {
+    function logoutAdmin() {
         $_SESSION['admin'] = false;
     }
 
-    static function isAdmin() {
+    function isAdmin() {
         if ($_SESSION['admin']) {
             return true;
         } else {
@@ -58,7 +68,7 @@ class Auth {
      * Returns current user
      * @return mixed Current user or null is no user is logged in
      */
-    static function getCurrentUser() {
+    function getCurrentUser() {
         if ($_SESSION['userId'] > 0) {
             $user = new Ilmo;
             $user->load($_SESSION['userId']);

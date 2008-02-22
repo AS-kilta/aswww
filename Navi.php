@@ -105,8 +105,6 @@ class Navi {
 
 
     public function renderTopNavi() {
-        // XXX: this should be overridable
-
         $html = "<ul>";
 
         foreach ($this->naviTree->getChildren() as $child) {

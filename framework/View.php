@@ -25,16 +25,16 @@ class View {
      */
     function render() {
         // Convert array into separate variables for easier referencing
-        foreach ($this->data as $key => $data) {
-            $$key = $data;
+        foreach ($this->data as $k => $d) {
+            $$k = $d;
         }
 
         ob_start();
         include('views/' . $this->viewName . '.php');
-        $content = ob_get_contents();
+        $c = ob_get_contents();
         ob_end_clean();
 
-        return $content;
+        return $c;
     }
 }
 

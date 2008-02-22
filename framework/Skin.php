@@ -18,8 +18,9 @@ class Skin {
     function show() {
         global $skin;
 
-        foreach ($this->content as $region => $content) {
-            $$region = $content;
+        // Load data array into variables
+        foreach ($this->content as $r => $c) {
+            $$r = $c;
         }
 
         include('skins/' . $this->skinName . '/page.php');

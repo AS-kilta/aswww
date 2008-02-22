@@ -6,18 +6,23 @@ class IlmoController {
     public function __construct() {
     }
 
-    public function showPage() {
+    public function render($node) {
         $navi = Navi::getInstance();
 
         $page = new Ilmo();
-        $page->load($navi->getSelectedNode()->getContentId(), getLanguage());
+        $page->load($node->getContentId(), getLanguage());
 
-        // Load skin
-        $skin = new Skin('ilmo');
-        $skin->setContent('heading', $page->getTitle());
-        $skin->setContent('menu', $this->renderTopMenu());
-        $skin->setContent('content', $page->getDescription());
-        $skin->show();
+        return $page->getDescription();
+    }
+
+    public function renderEvents() {
+        $html = '<h1>Events</h1>';
+        $html .= '<ul>';
+        $html .= '<li>Tapahtuma 1</li>';
+        $html .= '<li>Tapahtuma 2</li>';
+        $html .= '</ul>';
+
+        return $html;
     }
 
     private function renderTopMenu() {
