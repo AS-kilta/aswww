@@ -22,56 +22,63 @@ Antti Nieminen ()
  Yleiskuvaus työstä (8 pistettä)
 --------------------------------------------------------------------------------
 
-Harjoitustyössä on tavoitteena toteuttaa Automaatio- ja Systeemitekniikan killalle uusi nettisivusto
-Sivuston nykyinen versio on osoitteessa http://as.tky.fi/
+Harjoitustyössä on tavoitteena toteuttaa Automaatio- ja Systeemitekniikan killalle uusi nettisivusto. Sivuston nykyinen versio on osoitteessa http://as.tky.fi/
 
-Uutta sivustoa ryhdyttiin tekemään jo vuonna 2007 Drupal-sisällönhallintajärjestelmällä, mutta sen monikielisyystuki osoittautui riittämättömäksi ja projekti jätettiin kesken. Drupalia viriteltäessä kypsyi ajatus sisällönhallintajärjestelmän tekemisestä kokonaan itse, jolloin sen saisi alusta asti juuri tarpeitamme vastaavaksi. Kun www-työryhmässä oli sopivasti jäseniä, joiden opintoihin kuuluu www-palvelun suunnittelu ja kevätlukukausi oli sopivasti lähestymässä, projekti päätettiin toteuttaa puhtaalta pöydältä kurssityönä.
+Uutta sivustoa ryhdyttiin tekemään jo vuonna 2007 Drupal-sisällönhallintajärjestelmällä, mutta sen monikielisyystuki osoittautui riittämättömäksi ja projekti jätettiin kesken. Drupalia viriteltäessä kypsyi ajatus kokonaan oman sisällönhallintajärjestelmän toteuttamisesta, koska tällöin sen saisi alusta asti juuri tarpeitamme vastaavaksi. Kun www-työryhmässä oli sopivasti jäseniä, joiden opintoihin kuuluu www-palvelun suunnittelu ja kevätlukukausi oli sopivasti lähestymässä, projekti päätettiin toteuttaa puhtaalta pöydältä kurssityönä.
 
-- mitä sisältää
-tapahtumakalenteri
-gallup
-tietoa killasta ulkopuolisille
+Sivusto sisältää muun muassa aktiivikillisteille ajankohtaisia uutisia ja tapahtumakalenterin, ilmoittautumistoiminnon, gallupin ja ulkopuolisille tietoa killasta. Projektin aluperäinen lähtökohta oli, että sivujen päivittämisen täytyy helpottua nykyisestä, joten sivuston täytyy sisältää myös tehokkaat web-pohjaiset ylläpitotyökalut.
 
 
 
-= Kohderyhmäanalyysi =
+== Kohderyhmäanalyysi ==
 
 Tämän kohdan tarkoituksena on määritellä, keille sivustoa ollaan tekemässä sekä miten ja minkälaista aineistoa heille kohdennetaan. Luetelkaa sivuston tärkeimmät kohderyhmät ja kertokaa, minkälaista sisältöä he sivustosta hakevat. Miettikää myös, mikä on käyttäjien motivaatio tulla sivustolle. Kuvatkaa ryhmille tyypilliset sivuston käyttötavat ja -paikat ja erityispiirteet. Huomioikaa että käyttajäryhmallä tarkoitetaan tässä yhteydessä enemman sosiaalista ryhmaa (esim. ylä-asteikäiset tytöt) kuin jonkun sivuston osa-alueen käyttäjää yleisesti (esim. satunnainen vierailija).
 
-Kiltalaiset
-tietoa ajankohtaisista tapahtumista ja uutisista
-ilmoittautuminen tapahtumiin, joita on mainostettu sähköpostilla
-läpikulku: webcam, kuvagalleria, wiki
-tilinumerot, hallituksen yhteystiedot, pöytäkirjat
-tavat: kotona, kiltiksellä -> laadukkaat koneet. kännyköitä ei tarvitse ottaa huomioon
-webcam ehkä pitkään auki
-bookmarkkaaminen
-urlit mailissa
+Olemme kartoittaneet käyttäjäryhmiä ja käyttötapoja henkilökohtaisen käyttökokemuksen ja epämuodollisten kyselyjen perusteella, ja päätyneet seuraaviin merkittäviin ryhmiin: kiltalaiset, phuksit, abit, sponsorit, ulkopuoliset. Seuraavassa pohditaan näiden ryhmien erityispiirteitä ja käyttötapoja.
 
-Phuksit
-opiskelua tukeva tieto: otaniemen kartta, yhteystiedot
-tavat: printtaaminen
-houkuteltava kiltatoimintaan
+* Kiltalaiset *
+Sivuston suurin käyttäjäryhmä ovat aktiiviset kiltalaiset. Tyypillisiä käyttötapauksia ovat:
+- Webbikameran katsominen
+- Tapahtumiin ilmoittautuminen (suora linkki on mainospostissa)
+- Tapahtumien ajakohdan katsominen tapahtumakalenterista
+- Läpikulku valokuvagalleriaan tai wikiin, jotka ovat erillisiä sivuja
+- Hyödyllisen tiedon etsiminen, esimerkiksi tilinumerot, yhteystiedot tai pöytäkirjat
 
-Abit
-haku: mitä opiskellaan?
-tavat: printtaaminen
-yritettävä tehdä ammattimainen vaikutus
+Sivustoa katsotaan tyypillisesti laadukkaalla tietokoneella (ei kännykällä) kotoa tai työpaikalta. Käyttäjillä on tiedossa päämäärä, eivätkä he surffaile sivustolla sattumanvaraisesti. Tiedon täytyy siis olla helposti löydettävissä, eikä viihteellistä sisältöä tarvitse tyrkyttää samalla tavalla kuin sivustoilla, joiden tavoitteena on kerätä rahaa koukuttamalla käyttäjät.
 
-Sponsorit
-minkälaisesta ryhmästä on kyse
-iältään vanhempia, koko yleisilmettä mietittävä
-tavat: printtaaminen
-
-Ylläpitäjät
-tiedottaja lisää ja päivittää sivuja
-sekalaiset tyypit perustavat ilmoittautumisia
-hallituslaiset päivittävät sekalaisia sivuja
+Aktiivikiltalaisten käyttöön liittyvät seuraavat erityispiirteet:
+- Webbikamera saatetaan jättää taustalle auki. Sivusto ei siis saa kuormittaa selainta ja sitä kautta tietokonetta turhaan.
+- Linkkejä saatetaan lähettää sähköpostitse, eli niiden on näytettävä järkeviltä.
+- Sivuja saatetaan bookmarkata (esim. webcam). Urlit eivät saa vaihdella.
 
 
-motivaatio: tiedonhaku, ei viihde
-tavat: käytetään pöytäkoneella, ei tarvetta ottaa kännyköitä huomioon
-printtaaminen huomioitava
+* Phuksit *
+Phuksit käyttävät sivustoa paljolti samalla tavalla kuin aktiivikiltalaiset, mutta heillä on omia erityistarpeita:
+- Opiskelua tukevan tiedon etsiminen opiskelun alkuvaiheessa (kartat, linkit)
+- Kiltatoimintaa koskevan tiedon etsiminen (phukseille suunnatut tapahtumat, phuksipisteiden kerääminen)
+
+Käyttäjäryhmässä on myös se erityispiirre, että osa phukseista on vasta potentiaalisia aktiivikiltalaisia. Nettisivujen on annettava kiltatoiminnasta houkutteleva kuva. Esimerkiksi kuvavalinnoilla voidaan luoda positiivista mielikuvaa iloisesta yhdessätekemisestä, ja vastaavasti välttää kielteisiä stereotypioita.
+
+
+* Abit *
+Abit saattavat eksyä killan sivuille etsiessään opiskelupaikkaa. Käyttäjäryhmä on tärkeä, koska oikeantyyppisen opiskelija-aineksen haaliminen laitokselle on myös killan etu. Killan nettisivuilla on myös jonkinlainen siitä, minkälaisen kuvan abit saavat TKK:sta kokonaisuutena. Kuten phuksien tapauksessa, nettisivut voivat hälventää teekkariutta koskeavia stereotypioita ja luoda positiivista yleiskuvaa.
+
+Abit voivat hyvin todennäköisesti printata sivuja kerätessään materiaalia opiskelupaikoista.
+
+
+* Sponsorit *
+Sponsoreilla tarkoitetaan tahoja, joilta kilta anoo rahaa, jotka tulevat killan sivuille tarkistamaan, millaisesta ryhmästä on kysymys. Tämä käyttäjäryhmä on hyvin pieni, mutta erittäin tärkeä, koska kyse on rahasta. Koko sivuston on näytettävä ammattimaiselta ja uskottavalta. Tämä asettaa rajoituksia sivuston ulkoasuun, koska käyttäjäryhmä kuuluu eri ikäluokkaan kuin aiemmin mainitut ryhmät.
+
+Myös sponsorit ovat todennäköisiä printtaajia.
+
+
+* Ulkopuoliset *
+Sivustolle voi eksyä esimerkiksi kiltalaisten vanhempia tai työnantajia, joille on annettava riittävän vakava kuva kiltatoiminnasta. Erityisesti on huolehdittava, että jokainen yksittäinen tunnistettava kiltalainen esiintyy positiivisessa valossa. Tämä vaikuttaa mm. valokuvien valintaan.
+
+
+* Ylläpitäjät *
+Sivustoa ylläpitää lähtökohtaisesti killan tiedottaja. Erityisesti ajankohtaisia uutisia päivitetään usein, joten käytön on oltava riittävän vaivatonta. Lisäksi sekalaiset hallituslaiset voivat päivittää oman vastuualueensa sivuja, joten ylläpitökäyttöliittymän on oltava melko helposti omaksuttavissa.
+
 
 
 = Kaavio sivujen rakenteesta =
@@ -201,15 +208,68 @@ Työn keskeisin tavoite on sisällönhallintajärjestelmän toteuttaminen. Vaatimukse
 - järjestelmän täytyy tukea käyttöoikeustasoja
 
 
+== Terminologiaa ==
+
+- Skin ja alueet (regions)
+Sivupohjasta käytämme nimitystä skin. Se määrää kokonaisen sivun ulkoasun ja määrittää _alueita_, kuten ylänavipalkki, vasen navipalkki tai sisältöalue, mutta ei ota kantaa siihen, mitä sisältöä mihinkin alueeseen milloinkin laitetaan.
+
+- Moduulit
+Moduuli on irrallinen palikka, joka tarjoaa sisälätöä laitettavaksi _alueisiin_.
+
+Esimerkiksi navigointimoduuli tuottaa navigointipuun, mutta on jonkin ulkopuolisen tahon asia syöttää se skinin oikeaan alueeseen. 
+
+
 == Arkkitehtuuri ==
 
+Sovellus noudataa Model-View-Controller -arkkitehtuuria (MVC), jossa datan esitymuoto (View) erotetaan toimintalogiikasta Controller). Modulaarisuuden takia toteutetaan kahdessa kerroksessa.
+
+MainControllerin vastuulla selvittää, mitä sivua ollaan näyttämässä, mitä skiniä kuuluu käyttää minkäkin sisältötyypin kanssa, mitä sisältöä eri alueisiin kuuluu tässä tilanteessa syöttää.
+
+Flow:
+* Käyttäjän kysely ohjataan MainControllerille
+* MainController antaa urlin navigointimoduulille ratkaistavaksi.
+* Navigointimoduuli lukee tietokannasta sivuhierarkian ja etsii urlia vastaavaan noodin. Noodi on tallennettu tieto, mikä moduuli tuottaa kyseisen sivun pääsisällön, sekä millä id-numerolla moduulia pyydetään hakeamaan sisältöä.
+* MainController selvittää, mitä skiniä kyseisen moduulin kanssa käytetään, ja mitä muita moduuleja tarvitaan täyttämään muut alueet.
+* MainController lataa tarvittaavt moduulit, ja pyytää niitä tuottamaan html-sisällön, jonka se syöttää skinin alueisiin.
+* MainController pyytää skiniä tulostumaan ruudulle.
+
+Esimerkki:
+* Käyttäjä pyytää sivua kilta/hallitus
+* Navigointimoduuli löytää navigointihierarkiasta kyseisen noodin ja toteaa, että sisällön tuottaa page-moduuli, ja sisältö löytyy id:llä 42.
+* Main Controller toteaa, että page-moduulin kanssa käytetään oletus-skiniä, pääsisältö tulee alueeseen nimeltä 'content', alueeseen 'topnavi' on pyydettävä navigointimoduulilta sisältöä nimeltä 'topnavi', ja aluesseen 'leftnavi' on pyydettävä navigointimoduulilta sisältöä nimeltä 'navitree'
+* MainController pyytää page-moduulilta sisältöä id-numerolla 42, ja navigointimoduulilta topnavi ja navitree -sisällöt, sekä syöttää ne skiniin.
+* MainController pyytää skiniä tulostumaan ruudulle.
+
+
+Tämän lisäksi jokainen moduuli itsessään noudattaa MVC-arkkitehtuuria.
+Moduuli on ikäänkuin itsenäinen web-sovelus, joka toimii sivuun upotettuna.
+
+* MainControllerin pyynnöt menevät moduulin Controllerille.
+* Controller pyytää Model-kerroksen toimintalogiikkaa tuottamaan sisältöä, lataa sopivan näkymän (View) ja syöttää sisällön näkymälle.
+* Controller palauttaa näkymän tuottaman HTML-sisällön takaisin MainControllerille.
+
+Moduuli ei siis tiedä mitään skinistä. Tämä mahdollistaa sen, että koko sivun ulkoasu voidaan vaihtaa, mutta jokainen moduuli toimii omassa lokerossaan kuten ennenkin. Toisaalta moduulien tuottama sisältö voidaan syöttää skinin eri alueisiin ilman, että moduulin itse tarvitsisi tietää siitä mitään.
+
+
+= Monikielisyys =
+
+Navigointihierarkia on kielestä riippumaton, mutta
+sivujen otsikot luetaan eri taulusta kielestä riippuen.
+
+kieli päätellään urlista
 
 
 
 == Tietokanta ==
 
 
+
 == Tietoturva ==
+
+SQL inject
+
+käyttäjätasot
+
 
 
 == Palvelinympäristö ==
