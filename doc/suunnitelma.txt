@@ -197,70 +197,106 @@ Ulkoasu ja käyttöliittymä
  Tekniikka (14 pistettä)
 --------------------------------------------------------------------------------
 
-Työn keskeisin tavoite on sisällönhallintajärjestelmän toteuttaminen. Vaatimukset ovat tiukat, koska järjestelmä tulee tuotantokäyttöön, ja sen käyttö tunnettujen sisällöntuontojärjestelmien sijasta on pystyttävä perustelemaan.
-
-- urlien täytyy olla järkeviä
-- sivuja täytyy voida lisätä, poistaa ja päivittää web-käyttöliittymän kautta
-- sivuhierarkiaa täytyy voida muokata dynaamisesti
-- sivuston ulkoasu tulee voida valita vähintään moduulikohtaisesti, ja uusien ulkoasujen käyttöönoton täytyy olla helppoa
-- rakenteen täytyy olla modulaarinen, jotta uusien toimintojen toteuttaminen on helppoa
-- järjestelmän täytyy tukea monikielisyyttä
-- järjestelmän täytyy tukea käyttöoikeustasoja
+Työn keskeisin tavoite on sisällönhallintajärjestelmän toteuttaminen. Vaatimukset ovat tiukat, koska järjestelmä tulee tuotantokäyttöön, ja sen käyttö tunnettujen sisällöntuontojärjestelmien sijasta on pystyttävä perustelemaan. Päädyimme seuraavaan listaan:
+- Urlien täytyy olla järkeviä.
+- Sivuja täytyy voida lisätä, poistaa ja päivittää web-käyttöliittymän kautta.
+- Sivuhierarkiaa täytyy voida muokata dynaamisesti, jotta ylläpitäminen ei vaadi tulevaisuudessa koskemista koodiin.
+- Sivuston ulkoasu tulee voida valita vähintään moduulikohtaisesti, ja uusien ulkoasujen käyttöönoton täytyy olla helppoa. Ainakin ilmoittautumistoiminnossa on tarkoitus välittömästi käyttää eri ulkoasua, ja ulkoasut saattavat vaihdella tapahtumakohtaisesti.
+- Rakenteen täytyy olla modulaarinen, jotta uusien toimintojen toteuttaminen on helppoa.
+- Järjestelmän täytyy tukea monikielisyyttä.
+- Järjestelmän täytyy tukea käyttöoikeustasoja.
 
 
 == Terminologiaa ==
 
 - Skin ja alueet (regions)
-Sivupohjasta käytämme nimitystä skin. Se määrää kokonaisen sivun ulkoasun ja määrittää _alueita_, kuten ylänavipalkki, vasen navipalkki tai sisältöalue, mutta ei ota kantaa siihen, mitä sisältöä mihinkin alueeseen milloinkin laitetaan.
+Käytämme sivun kokonaisilmeestä nimitystä skin, joka korostaa ulkoasun vaihdeltavuutta. Skin on teknisesti html-pohja, jossa on dynaamisia kenttiä sisällölle. Se sisältää alueita (regions), kuten ylänavipalkki, vasen navipalkki tai sisältöalue, mutta ei ota mitään kantaa niiden sisältöön, vaan sisältö vai vaihdella sivukohatisesti.
 
 - Moduulit
-Moduuli on irrallinen palikka, joka tarjoaa sisälätöä laitettavaksi _alueisiin_.
-
-Esimerkiksi navigointimoduuli tuottaa navigointipuun, mutta on jonkin ulkopuolisen tahon asia syöttää se skinin oikeaan alueeseen. 
+Moduuli on itsenäinen palikka, joka tarjoaa sisälätöä laitettavaksi skinin alueisiin. Esimerkiksi moduuli page tuottaa normaalin staattisen sivun sisällön, mutta on ulkopuolisen tahon asia syöttää sisältö oikeaan alueeseen. Moduulit ovat ikäänkuin pieniä itsenäisiä web-sovelluksia, joiden tuottama sisältö voidaan sijoittaa skinin alueisiin.
 
 
 == Arkkitehtuuri ==
 
-Sovellus noudataa Model-View-Controller -arkkitehtuuria (MVC), jossa datan esitymuoto (View) erotetaan toimintalogiikasta Controller). Modulaarisuuden takia toteutetaan kahdessa kerroksessa.
+Sovellus noudataa Model-View-Controller -arkkitehtuuria (MVC), jossa datan esitymuoto (View) erotetaan toimintalogiikasta (Model). Model-taso toimii abstraktilla tasolla, eli voi vaikkapa tuottaa listan johonkin tapahtumaan ilmoittautuneista käyttäjistä, mutta ei ota kantaa esitysmuotoon. View-taso puolestaan voisi muuttaa käyttäjälistan html-taulukoksi, mutta ei sisällä enää monimutkaista toimintalogiikkaa. Controller koordinoi tiedonvälitystä Model- ja View- tasojen välillä, eli pyytää Model-kerrosta suorittamaan tietyt operaatiot, antaa tulokset View-kerrokselle visualisoitavaksi. Vastaavasti Controller hakee käyttäjän syötteen View-kerroksesta ja syöttää sen Model-kerrokseen.
 
-MainControllerin vastuulla selvittää, mitä sivua ollaan näyttämässä, mitä skiniä kuuluu käyttää minkäkin sisältötyypin kanssa, mitä sisältöä eri alueisiin kuuluu tässä tilanteessa syöttää.
+Modulaarisuuden takia toteutetaan kahdessa kerroksessa. Sivuston toimintaa kokonaisuudessaan koordinoi MainController, jonka kauttaa jokainen kysely ohjataan. MainController valitsee skinin, lataa tarvittavat moduulit, pyytää moduuleita tuotamaan sisältöä, ja syöttää sisällön skinin alueisiin. Jokainen moduuli itsessään noudattaa MVC-arkkitehtuuria, eli toimii kuin itsenäinen pieni web-sovellus. MainController esittää pyynnöt moduulin ModuleControllerille, joka pyytää omaa Model-kerrostaan toimimaan, syöttää tulokset haluamalleen näkymälle (View), ja palauttaa valmiin html-sisällön MainControllerille. Komponentit on kuvattu kuvassa X.
 
-Flow:
+[arkkitehtuurikuva]
+
+
+* MainControllerin toiminta *
+
+MainControllerin vastuulla selvittää, mitä sivua ollaan näyttämässä, mitä skiniä kuuluu käyttää milläkin sivulla, ja minkä moduulin sisältöä kuuluu syöttöää mihinkin alueeseen. Suoritus etenee seuraavasti:
 * Käyttäjän kysely ohjataan MainControllerille
 * MainController antaa urlin navigointimoduulille ratkaistavaksi.
-* Navigointimoduuli lukee tietokannasta sivuhierarkian ja etsii urlia vastaavaan noodin. Noodi on tallennettu tieto, mikä moduuli tuottaa kyseisen sivun pääsisällön, sekä millä id-numerolla moduulia pyydetään hakeamaan sisältöä.
+* Navigointimoduuli lukee tietokannasta sivuhierarkian ja etsii urlia vastaavaan solmun. Solmuun on tallennettu tieto siitä, mikä moduuli tuottaa kyseisen sivun pääsisällön, sekä millä id-numerolla kyseistä moduulia pyydetään hakeamaan sisältöä.
 * MainController selvittää, mitä skiniä kyseisen moduulin kanssa käytetään, ja mitä muita moduuleja tarvitaan täyttämään muut alueet.
 * MainController lataa tarvittaavt moduulit, ja pyytää niitä tuottamaan html-sisällön, jonka se syöttää skinin alueisiin.
 * MainController pyytää skiniä tulostumaan ruudulle.
 
 Esimerkki:
 * Käyttäjä pyytää sivua kilta/hallitus
-* Navigointimoduuli löytää navigointihierarkiasta kyseisen noodin ja toteaa, että sisällön tuottaa page-moduuli, ja sisältö löytyy id:llä 42.
-* Main Controller toteaa, että page-moduulin kanssa käytetään oletus-skiniä, pääsisältö tulee alueeseen nimeltä 'content', alueeseen 'topnavi' on pyydettävä navigointimoduulilta sisältöä nimeltä 'topnavi', ja aluesseen 'leftnavi' on pyydettävä navigointimoduulilta sisältöä nimeltä 'navitree'
-* MainController pyytää page-moduulilta sisältöä id-numerolla 42, ja navigointimoduulilta topnavi ja navitree -sisällöt, sekä syöttää ne skiniin.
+* Navigointimoduuli löytää navigointihierarkiasta kyseisen solmun ja toteaa, että sisällön tuottaa page-moduuli, ja sisältö löytyy id:llä 70.
+* Main Controller toteaa, että page-moduulin kanssa käytetään oletusskiniä, pääsisältö tulee alueeseen nimeltä 'content', alueeseen 'topnavi' on pyydettävä navigointimoduulilta sisältöä nimeltä 'topnavi', ja aluesseen 'leftnavi' on pyydettävä navigointimoduulilta sisältöä nimeltä 'navitree'
+* MainController pyytää page-moduulilta sisältöä id-numerolla 70, ja navigointimoduulilta topnavi ja navitree -sisällöt, sekä syöttää ne skiniin.
 * MainController pyytää skiniä tulostumaan ruudulle.
 
 
-Tämän lisäksi jokainen moduuli itsessään noudattaa MVC-arkkitehtuuria.
-Moduuli on ikäänkuin itsenäinen web-sovelus, joka toimii sivuun upotettuna.
+* Skinin valitseminen *
 
+Tarvitaan tieto siitä, minkä moduulin kanssa käytetään mitäkin skiniä, ja mihin skinin alueisiin laitetaan minkäkin moduulin sisältö. Alustavasti tämä kuvaus on tarkoitus toteuttaa ohjelmoimalla, mutta tarpeen vaatiessa se voitaisiin tallentaa tietokantaan ja toteuttaa käyttöliittymä kuvauksen muokkaamiseen.
+
+Kuvauksen ei tarvitsisi olla moduulista skiniin, vaan se voisi olla sivukohtainen. Sivostoa suunniteltaessa havaittiin kuitenkin, että skinin valinta riippuu aina pääsisällön tuottavasta moduulista. Eri moduulit voivat kuitenkin vaatia eri sisällöt alueisiin. Esimerkiksi webbikameran kanssa navigointipuu korvataan pienillä esikatselukuvilla.
+Taulukoissa X ja X on esimerkki siitä, miten skin ja alueiden sisältö päätellään, jos pääsisällön tuottava moduuli on page, webcam tai ilmo (ilmoittautuminen).
+
+
+moduuli = page | webacm  =>  skin = default
+
+  alue: |  topnavi         | leftnavi          | content
+----------------------------------------------------------------
+modduli:|                  |                   |
+page    | navi->getTopnavi | navi->getLeftnavi | page->getContent(id)
+webcam  | navi->getTopnavi | navi->getLeftnavi | cam->getContent
+
+
+moduuli = ilmo  =>  skin = ilmo->getSkin
+
+  alue: |  topnavi         | content
+-------------------------------------------------
+modduli:|                  |
+ilmo    | ilmo->getTopnavi | ilmo->getContent(id)
+
+
+* Moduulien toiminta *
+
+Moduulit ovat itsenäisiä, eli ne eivät tiedä mihin alueeseen niiden tuottama sisältö päätyy, tai mitkä muut moduulit tuottavat samaan aikaan sisältöä. Tämä mahdollistaa sen, että koko sivun ulkoasu voidaan vaihtaa, mutta jokainen moduuli toimii omassa lokerossaan kuten ennenkin. Toisaalta moduulien tuottama sisältö voidaan syöttää skinin eri alueisiin ilman, että moduulin itse tarvitsisi tietää siitä mitään.
+
+Suoritus etenee seuraavasti:
 * MainControllerin pyynnöt menevät moduulin Controllerille.
-* Controller pyytää Model-kerroksen toimintalogiikkaa tuottamaan sisältöä, lataa sopivan näkymän (View) ja syöttää sisällön näkymälle.
+* Controller pyytää moduulin Model-kerroksen toimintalogiikkaa tuottamaan sisältöä, lataa sopivan näkymän (View) ja syöttää sisällön näkymälle.
 * Controller palauttaa näkymän tuottaman HTML-sisällön takaisin MainControllerille.
 
-Moduuli ei siis tiedä mitään skinistä. Tämä mahdollistaa sen, että koko sivun ulkoasu voidaan vaihtaa, mutta jokainen moduuli toimii omassa lokerossaan kuten ennenkin. Toisaalta moduulien tuottama sisältö voidaan syöttää skinin eri alueisiin ilman, että moduulin itse tarvitsisi tietää siitä mitään.
-
-
-= Monikielisyys =
-
-Navigointihierarkia on kielestä riippumaton, mutta
-sivujen otsikot luetaan eri taulusta kielestä riippuen.
-
-kieli päätellään urlista
-
+Moduuli pitää itse kirjaa tilastaan tilmuuttujissa, joita voidaan tallentaa sessioon, välittää piilokenttinä lomakkeissa tai enkoodata linkkien urleihin. Miten moduulin tila voidaan enkoodata myös muiden moduulien sisältämiin linkkeihin, on ratkaisematta. Ongelma on varmasti ratkaistavissa esimerkiksi ajamalla sivuston renderöinti kahdessa vaiheessa, joista ensimmäisessä moduulien täytyy ilmoittaa tilamuuttujansa globaaliin tietovarastoon, ja toisessa vaiheessa linkit renderöidään käyttäen tätä tietovarastoa apuna.
 
 
 == Tietokanta ==
+
+* Navigointihierarkia *
+
+Sivustolla on yksi abstrakti, kielestä riippumaton navigointihierarkia. Sivujen otsikot ja polut ladataan toisesta taulusta, joka sisältää kieliversiot. ER-kaavio on esitetty kuvassa X.
+
+[ER-kaavio]
+
+
+* Käyttöoikeudet *
+
+
+* Moduulien tietovarastot *
+
+
+* Object-relational -kuvaus *
+
 
 
 
