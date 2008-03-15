@@ -169,7 +169,22 @@ Tuotantoprosessi liittyy hyvin läheisesti sisältösuunnitelmaan. Siinä määritellä
 Sivusto vaatii myös ylläpitoa. Suunnitelkaa erityisesti, miten usein päivittyvien sivujen päivittäminen tapahtuu (menetelmät, työkalut jne.) sekä minkälaisia ylläpitotyöntekijöitä sivusto toimiessaan vaatii.
 
 
+--------------------------------------------------------------------------------
+Ulkoasu ja käyttöliittymä
+--------------------------------------------------------------------------------
 
+== Käyttöliittymä ==
+
+- noin kolmella klikkauksella pääsisi tarvittaessa käsiksi kaikkeen sisältöön
+- kaksitasoinen navigaatio
+- piirtelen tähän kaavioita
+
+
+== Graafinen ulkoasu ==
+
+- sivuilla halutaan tuoda esille killan tunnusväriä, violettia
+- selkeä, asiallisen oloinen ulkoasu (huomioidaan mahdolliset sivuilla vierailevat sponsorit)
+- kannattaisiko tähän laittaa myös aikaisempi versio näkyville?
 
 --------------------------------------------------------------------------------
  Tekniikka (14 pistettä)
