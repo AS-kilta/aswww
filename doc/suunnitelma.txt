@@ -422,7 +422,7 @@ Korkean tason arkkitehtuurin protoilu                9            16       4    
 Navigoinnin toteuttaminen                           10             8       0      0      3             0    
 Suunnitelmadokumentin kirjoittaminen                11             6       6      6     10             6    
 Moduulien toiminta                                  12             6       6      0                    0    
-Graafinen suunnittelu			            12		   0       0      10                  10       
+Alustava graafinen suunnittelu			    12		   0       0      10                  10       
 Autentikointi ja alustavia admin-toimintoja         13             8       8                               
 Staattiset sivut toimimaan                          14             0       6                               
 Cache                                               15             0      12                               
@@ -430,7 +430,8 @@ Ilmoittautuminen                                    16             6
 Demon valmistelu                                    17             2       2      2                        
 Gallup                                              17             0       4                               
 Uutiset                                             18             4                                       
-Edistyneet admin-toiminnot                          19            16      16      0                        
+Edistyneet admin-toiminnot                          19            16      16      0
+Ulkoasun ja käyttöliittymän hiominen                20             2       2      2
 Sisällön kirjoittaminen                             20             4       4      4                        
 Toteutusdokumentin kirjoittaminen                   21             6       6      6                        
 
