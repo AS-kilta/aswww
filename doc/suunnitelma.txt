@@ -422,7 +422,7 @@ Korkean tason arkkitehtuurin protoilu                9            16       4    
 Navigoinnin toteuttaminen                           10             8       0      0      3             0    
 Suunnitelmadokumentin kirjoittaminen                11             6       6      6     10             6    
 Moduulien toiminta                                  12             6       6      0                    0    
-Graafinen suunnittelu					    12		 0       0      10                  10       
+Graafinen suunnittelu			            12		   0       0      10                  10       
 Autentikointi ja alustavia admin-toimintoja         13             8       8                               
 Staattiset sivut toimimaan                          14             0       6                               
 Cache                                               15             0      12                               
