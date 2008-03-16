@@ -131,6 +131,16 @@ Dynaamisuus: Sisältö kootaan dynaamisesti useasta moduulista. Sisältö on ajankoh
 Julkaisukielet: fi/en
 Moduuli: Tavallinen sivu.
 
+Otsikko: Kuvapalkin valokuvat
+Sisältö: Valokuvia, jotka elävöittävät sivuja (vaihtelee sivuittain) (otamme uusia kuvia)
+Kohderyhmät: Kuuluu kiinteästi ulkoasuun
+Tavoitteet: Elävöittää ulkoasua. Luoda positiivisia mielikuvia.
+Lähdemateriaali: Valokuva-arkisto ja uudet itseotetut kuvat.
+Muokkaus: Uusia kuvia voi syöttää admin-käyttöliittymän kautta.
+Dynaamisuus: Arvotaan sivulatauksella tai sivuittain.
+Julkaisukielet: fi/en
+Moduuli: Satunnaiskuva
+
 Otsikko: Tapahtumakalenteri
 Sisältö: Etusivua tarkempi kuvaus tapahtumista (dynaamista ja ajankohtaista)
 Kohderyhmät: aktiivikillistit (tärkeä)
@@ -171,11 +181,31 @@ Dynaamisuus: Ei dynaamista sisältöä.
 Julkaisukielet: fi/en
 Moduuli: Tavallinen sivu.
 
+Otsikko: Arkisto
+Sisältö: Kokousten pöytäkirjat, yhteystiedot, tilinumerot, laskupohjat, virallisuudet, säännöt, muuta sekalaista materiaalia, joka liittyy kiltaan. (käytetään vanhaa sisältöä)
+Kohderyhmät: Aktiivikiltalaiset (kriittinen), muut kiltalaiset
+Tavoitteet: Tarjota arkistoitua sekalaista tietoa tärkeistä killan asioista.
+Lähdemateriaali: Kyseisestä lähdemateriaalista tai lähdemateriaali ryhmästä vastuussa olevat.
+Muokkaus: Arkistonhallinointijärjestelmä.
+Dynaamisuus: Pelkästään dynaamista tietoa tallessa olevista tiedostoista.
+Julkaisukielet: fi/en
+Moduuli: Arkisto
+
 Otsikko: Phuksit
 Sisältö: Tietoa phukseille (kirjoitetaan uusiksi)
 Kohderyhmät: Juuri aloittaneet tai aloittamassa olevat opiskelijat (kriittinen)
 Tavoitteet: Tarjota opiskelua tukevaa sekä kiltatoimintaan liittyvää tietoa phukseille.
 Lähdemateriaali: Hallitus, isohenkilöt ja muut valtuutetut henkilöt.
+Muokkaus: Moduulin ylläpitokäyttöliittymä.
+Dynaamisuus: Ei dynaamista sisältöä.
+Julkaisukielet: fi/en
+Moduuli: Tavallinen sivu.
+
+Otsikko: Abit (ja alasivut)
+Sisältö: Tietoa abeille opiskelusta laitoksella ja TKK:lla (kirjoitetaan uusiksi)
+Kohderyhmät: Abit (kriittinen)
+Tavoitteet: Tarjota tietoa opiskelupaikan valinnan tueksi.
+Lähdemateriaali: Nykyinen materiaali, abi-infot.
 Muokkaus: Moduulin ylläpitokäyttöliittymä.
 Dynaamisuus: Ei dynaamista sisältöä.
 Julkaisukielet: fi/en
@@ -200,16 +230,6 @@ Muokkaus: Moduulin ylläpitokäyttöliittymä.
 Dynaamisuus: Ei dynaamista sisältöä.
 Julkaisukielet: fi/en
 Moduuli: Tavallinen sivu.
-
-Otsikko: Arkisto
-Sisältö: Kokousten pöytäkirjat, yhteystiedot, tilinumerot, laskupohjat, virallisuudet, säännöt, muuta sekalaista materiaalia, joka liittyy kiltaan. (käytetään vanhaa sisältöä)
-Kohderyhmät: Aktiivikiltalaiset (kriittinen), muut kiltalaiset
-Tavoitteet: Tarjota arkistoitua sekalaista tietoa tärkeistä killan asioista.
-Lähdemateriaali: Kyseisestä lähdemateriaalista tai lähdemateriaali ryhmästä vastuussa olevat.
-Muokkaus: Arkistonhallinointijärjestelmä.
-Dynaamisuus: Pelkästään dynaamista tietoa tallessa olevista tiedostoista.
-Julkaisukielet: fi/en
-Moduuli: Arkisto
 
 Otsikko: Webcam
 Sisältö: Webcamin kuvaa kiltahuoneelta (dynaaminen)
@@ -409,52 +429,53 @@ käyttöliittymä ja ulkoasu
 
 == Ajankäyttö ja aikataulu ==
 
-Esittäkää suunnitelma harjoitustyön aikataulusta. Sen voi tehdä esimerkiksi jakamalla harjoitustyön kulku riittävän tarkasti tehtäviin/työvaiheisiin, kertomalla niiden sisältö ja keskenäinen järjestys, sekä listaamalla jokaisen yksittäisen ryhmäläisen suunniteltu ajankäyttö kuhunkin vaiheeseen. Esittäkää myös henkilö- ja työvaihekohtaisesti suunnitelmavaiheen toteutunut ajankäyttö.
-
-Huomatkaa, että toteutunutta ajankäyttöä dokumentoidaan seuraavissa dokumenteissa. Aloittakaa siis kirjanpito ajankäytöstä heti kurssin alussa.
+Ajankäyttösuunnitelma on esitetty taulukossa X. Tarkoituksena on aloittaa korkean tason arkkitehtuurista ja kriittisistä toiminnoista, ja edetä hiljalleen perustoimintoihin ja viimeistelyyn.
 
                                                                     suunnitelma (h)        toteuma (h)
                                              Valmiina viikolla   Tapio  Jaakko  Antti  Tapio  Jaakko Antti
-Projektin pystytys (serveri, svn...)                 6             4       4      4      5	2	5
-Arkkitehtuurin suunnittelu                           7             5       5      3      3	3	2
-Yleinen suunnittelu                                  8             3       3      3      4	2	3
-Korkean tason arkkitehtuurin protoilu                9            16       4      0     11	0	0
-Navigoinnin toteuttaminen                           10             8       0      0      3	0	0
-Suunnitelmadokumentin kirjoittaminen                11             6       6      6     10	3	6
-Moduulien toiminta                                  12             6       6      0	 0	0	0
-Graafinen suunnittelu				    12		   0	   0	  10	 0	0	10
-Autentikointi ja alustavia admin-toimintoja         13             8       8                               
-Staattiset sivut toimimaan                          14             0       6                               
-Cache                                               15             0      12                               
-Ilmoittautuminen                                    16             6                                       
+Projektin pystytys (serveri, svn...)                 6             4       4      4      5      2      5
+Arkkitehtuurin suunnittelu                           7             5       5      3      3      3      2
+Yleinen suunnittelu                                  8             3       3      3      4      2      3
+Korkean tason arkkitehtuurin protoilu                9            16       4      0     11      0      0
+Navigoinnin toteuttaminen                           10             8       0      0      3      0      0
+Suunnitelmadokumentin kirjoittaminen                11             6       6      6     10      3      6
+Alustava graafinen suunnittelu                      12             0       0     10      0      0     10
+Moduulien toiminta                                  12             6       6      0                        
+Autentikointi ja alustavia admin-toimintoja         13             8       8      0                        
+Staattiset sivut toimimaan                          14             0       6      0                        
+Cache                                               15             0      12      0                        
+Ilmoittautuminen                                    16             6       0      0                        
 Demon valmistelu                                    17             2       2      2                        
-Gallup                                              17             0       4                               
-Uutiset                                             18             4                                       
+Gallup                                              17             0       0     10                        
+Uutiset                                             18             0       4      0                        
 Edistyneet admin-toiminnot                          19            16      16      0                        
+Ulkoasun ja käyttöliittymän hiominen                20             2       2     16                        
 Sisällön kirjoittaminen                             20             4       4      4                        
 Toteutusdokumentin kirjoittaminen                   21             6       6      6                        
 
 Taulukko X: Ajankäyttösuunnitelma työvaiheittain.
 
 
-Ajankäyttösuunnitelma on esitetty taulukossa X. Tarkoituksena on aloittaa korkean tason arkkitehtuurista ja kriittisistä toiminnoista, ja edetä hiljalleen perustoimintoihin ja viimeistelyyn. Seuraavassa on avattu työvaiheiden sisältöä monisanaisemmin:
+Seuraavassa avataan työvaiheiden sisältöä monisanaisemmin:
 
 Arkkitehtuurin suunnittelu: sisältää yhteisiä palavereja
 
-Korkean tason arkkitehtuurin protoilu: Arkkitehtuuri on tärkeää saada hyväksi heti alussa, koska sen muuttaminen on myöhemmin vaikeaa. Tässä vaiheessa täytyy saada yleiskuva MainConterollerin ja moduulien vuorovaikutuksesta, skinien toiminnasta, ja MVC-pohjasta.
+Korkean tason arkkitehtuurin protoilu: Arkkitehtuuri on tärkeää saada hyväksi heti alussa, koska sen muuttaminen on myöhemmin vaikeaa. Tässä vaiheessa täytyy saada yleiskuva MainControllerin ja moduulien vuorovaikutuksesta, skinien toiminnasta, ja MVC-pohjasta.
 
 Navigoinnin toteuttaminen: Navigointi on sisällönhallintajärjestelmän ydin, joten se täytyy saada toimimaan alussa. Sivustoa on mahdotonta testata, jos sillä ei pysty liikkumaan.
 
 Moduulien toiminta: Tässä vaiheessa täytyy lyödä lukkoon moduulien sisäinen arkkitehtuuri, jotta lopullisia käyttööntulevia moduuleja pästään toteuttamaan.
 
-Autentikointi ja alustavia admin-toimintoja: Tässä vaiheessa täytyy muodostaa selkeä kuva siitä, miten sivusto toimii adminin näkökulmasta ja miten esimerkiksi moduulien admin-toiminnot integroidaan kokonaisuuteen.
+Autentikointi ja alustavia admin-toimintoja: Tässä vaiheessa täytyy muodostaa selkeä kuva siitä, miten sivusto toimii ylläpitäjän näkökulmasta ja miten esimerkiksi moduulien ylläpitotoiminnot integroidaan kokonaisuuteen.
 
-Staattiset sivut toimimaan: Sivut kuvataan mahdollisesti wiki-tyyppisellä syntaksilla, joten paresri täytyy toteuttaa. Moduuli on itsenäinen, mutta se on niin tärkeä, että kannattaa toteuttaa aikaisessa vaiheessa.
+Staattiset sivut toimimaan: Sivut kuvataan mahdollisesti wiki-tyyppisellä syntaksilla, joten parseri täytyy toteuttaa. Moduuli on itsenäinen, mutta se on niin tärkeä, että kannattaa toteuttaa aikaisessa vaiheessa.
 
-Cache (välimuisti): Välimuisi olisi erittäin hyvä ominaisuus sivuston tehokkuuden kannalta. Se on mahdollisesti erittäin hankala toteuttaa ja vaikkuttaa arkkitehtuuriin, joten toteuttamista täytyy yrittää ennemmin alkupuolella kuin viimeistelyvaiheessa. Toiminto voidaan jättää pois, jos se osoittautuu liian hankalaksi.
+Cache (välimuisti): Välimuisi olisi erittäin hyvä ominaisuus sivuston tehokkuuden kannalta. Se on mahdollisesti erittäin hankala toteuttaa ja vaikuttaa arkkitehtuuriin, joten toteuttamista täytyy yrittää ennemmin alkupuolella kuin viimeistelyvaiheessa. Toiminto voidaan jättää pois, jos se osoittautuu liian hankalaksi.
 
 Ilmoittautuminen, Gallup, Uutiset: Varsinaisten moduulien toteuttaminen.
 
-Edistyneet admin-toiminnot: Admin-puolen toiminnallisuus on toimintalogiikaltaan monimutkaista perusmoduuleihin. Näihin toimintoihin kuuluvat muun muassa sivuhierarkian manipuloiminen ja käyttäjäoikeuksien hallinta. Tämä työvaihe jakautuu lähes koko projektin laajuudelle, ja on monimutkaisuutensa takia luultavasti viimeisenä välmis.
+Edistyneet admin-toiminnot: Admin-puolen toiminnallisuus on toimintalogiikaltaan monimutkaista perusmoduuleihin verrattuna. Näihin toimintoihin kuuluvat muun muassa sivuhierarkian manipuloiminen ja käyttäjäoikeuksien hallinta. Tämä työvaihe jakautuu lähes koko projektin ajalle, ja on monimutkaisuutensa takia luultavasti viimeisenä välmis.
 
-Sisällön kirjoittaminen: Oman sisällön tuottaminen on itsemme kannalta vähiten tärkeä osuus, ja sitä tehdään loppupuolella siinä määrin, että kurssin vaatimustaso täyttyy.
+Ulkoasun ja käyttöliittymän hiominen jakautuu koko projektin ajalle, koska se etenee sitä mukaa kun uusia toimintoja implementoidaan.
+
+Sisällön kirjoittaminen: Oman sisällön tuottaminen on itsemme kannalta vähiten mielenkiintoinen osuus, ja sitä tehdään projektin loppupuolella siinä määrin, että kurssin vaatimustaso täyttyy.
