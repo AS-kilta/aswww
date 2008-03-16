@@ -127,6 +127,10 @@ Ulkoiset linkit
         * sivun tavoitteet 
 
 
+Kaikkiin sivuihin on valmista materiaalia vanhoilla sivuilla, mitä tullaan käyttämään materiaalin pohjana.
+Kaikki listatut sivut ovat sivuina staattisia, mutta joidenkin sisältöä joudutaan muuttamaan ainakin kerran vuodessa.
+
+
 Otsikko: Etusivu
 Sisältö: Uutiset, tapahtumakalenteri, gallup
 Kohderyhmät: aktiivikillistit (tärkeä)
