@@ -262,7 +262,7 @@ Ulkoasu ja käyttöliittymä
  Tekniikka (14 pistettä)
 --------------------------------------------------------------------------------
 
-Työn keskeinen tavoite on sisällönhallintajärjestelmän toteuttaminen. Vaatimukset ovat tiukat, koska järjestelmä tulee tuotantokäyttöön, ja sen käyttö tunnettujen sisällönhallintajärjestelmien sijasta on pystyttävä perustelemaan. Päädyimme seuraavaan vaatimuslistaan:
+Työn keskeinen tavoite on sisällönhallintajärjestelmän toteuttaminen. Vaatimukset ovat tiukat, koska järjestelmä tulee tuotantokäyttöön, ja sen käyttö tunnettujen sisällöntuontojärjestelmien sijasta on pystyttävä perustelemaan. Päädyimme seuraavaan vaatimuslistaan:
 - Urlien täytyy olla järkeviä.
 - Sivuja täytyy voida lisätä, poistaa ja päivittää web-käyttöliittymän kautta.
 - Sivuhierarkiaa täytyy voida muokata dynaamisesti, jotta ylläpitäminen ei vaadi tulevaisuudessa koskemista koodiin.
@@ -275,17 +275,17 @@ Työn keskeinen tavoite on sisällönhallintajärjestelmän toteuttaminen. Vaatimukse
 == Terminologiaa ==
 
 - Skin ja alueet (regions)
-Käytämme sivun kokonaisilmeestä nimitystä &skin, joka korostaa ulkoasun vaihdeltavuutta. Skin on teknisesti html-pohja, jossa on dynaamisia kenttiä sisällölle. Skin sisältää alueita (regions), kuten ylänavipalkki, vasen navipalkki tai sisältöalue. Se ei ota kantaa alueiden sisältöön, vaan sisältö vai vaihdella sivukohatisesti.
+Käytämme sivun kokonaisilmeestä nimitystä skin, joka korostaa ulkoasun vaihdeltavuutta. Skin on teknisesti html-pohja, jossa on dynaamisia kenttiä sisällölle. Skin sisältää alueita (regions), kuten ylänavipalkki, vasen navipalkki tai sisältöalue. Se ei ota kantaa alueiden sisältöön, vaan sisältö vai vaihdella sivukohatisesti.
 
 - Moduulit
-Moduuli on itsenäinen palikka, joka tarjoaa sisältöä laitettavaksi skinin alueisiin. Esimerkiksi moduuli &Page tuottaa normaalin staattisen sivun sisällön, mutta on ulkopuolisen tahon asia syöttää sisältö oikeaan alueeseen. Moduulit ovat ikäänkuin pieniä itsenäisiä web-sovelluksia, joiden tuottama sisältö voidaan sijoittaa skinin alueisiin.
+Moduuli on itsenäinen palikka, joka tarjoaa sisältöä laitettavaksi skinin alueisiin. Esimerkiksi moduuli page tuottaa normaalin staattisen sivun sisällön, mutta on ulkopulisen tahon asia syöttää sisältö oikeaan alueeseen. Moduulit ovat ikäänkuin pieniä itsenäisiä web-sovelluksia, joiden tuottama sisältö voidaan sijoittaa skinin alueisiin.
 
 
 == Arkkitehtuuri ==
 
 Sovellus noudataa Model-View-Controller -arkkitehtuuria (MVC), jossa datan esitymuoto (View) erotetaan toimintalogiikasta (Model). Model-taso toimii abstraktilla tasolla, eli voi vaikkapa tuottaa listan johonkin tapahtumaan ilmoittautuneista käyttäjistä, mutta ei ota kantaa esitysmuotoon. View-taso puolestaan voisi muuttaa käyttäjälistan html-taulukoksi, mutta ei sisällä enää monimutkaista toimintalogiikkaa. Controller koordinoi tiedonvälitystä Model- ja View- tasojen välillä, eli pyytää Model-kerrosta suorittamaan tietyt operaatiot, antaa tulokset View-kerrokselle visualisoitavaksi. Vastaavasti Controller hakee käyttäjän syötteen View-kerroksesta ja syöttää sen Model-kerrokseen.
 
-Modulaarisuuden takia MVC-idea toteutetaan kahdessa kerroksessa. Sivuston toimintaa kokonaisuudessaan koordinoi MainController, jonka kautta jokainen kysely ohjataan. MainController valitsee skinin, lataa tarvittavat moduulit, pyytää moduuleita tuotamaan sisältöä, ja syöttää sisällön skinin alueisiin. Jokainen moduuli itsessään noudattaa MVC-arkkitehtuuria, eli toimii kuin itsenäinen pieni web-sovellus. MainController esittää pyynnöt moduulin ModuleControllerille, joka pyytää omaa Model-kerrostaan toimimaan, syöttää tulokset haluamalleen näkymälle (View), ja palauttaa valmiin html-sisällön MainControllerille. Korkean tason arkkitehtuuri on kuvattu kuvassa X.
+Modulaarisuuden MVC-idea takia toteutetaan kahdessa kerroksessa. Sivuston toimintaa kokonaisuudessaan koordinoi MainController, jonka kauttaa jokainen kysely ohjataan. MainController valitsee skinin, lataa tarvittavat moduulit, pyytää moduuleita tuotamaan sisältöä, ja syöttää sisällön skinin alueisiin. Jokainen moduuli itsessään noudattaa MVC-arkkitehtuuria, eli toimii kuin itsenäinen pieni web-sovellus. MainController esittää pyynnöt moduulin ModuleControllerille, joka pyytää omaa Model-kerrostaan toimimaan, syöttää tulokset haluamalleen näkymälle (View), ja palauttaa valmiin html-sisällön MainControllerille. Korkean tason arkkitehtuuri on kuvattu kuvassa X.
 
 [arkkitehtuurikuva]
 Kuva X: Korkean tason arkkitehtuuri.
@@ -304,8 +304,8 @@ MainControllerin vastuulla on selvittää, mitä sivua ollaan näyttämässä, mitä ski
 Esimerkki:
 * Käyttäjä pyytää sivua kilta/hallitus.
 * Navigointimoduuli löytää navigointihierarkiasta kyseisen solmun ja toteaa, että sisällön tuottaa page-moduuli, ja sisältö löytyy id:llä 70.
-* Main Controller toteaa, että page-moduulin kanssa käytetään oletusskiniä, alueeseen nimeltä &content tulee pääsisältö, alueeseen &topnavi on pyydettävä navigointimoduulilta sisältöä nimeltä &topnavi, ja aluesseen &leftnavi on pyydettävä navigointimoduulilta sisältöä nimeltä &navitree.
-* MainController pyytää page-moduulilta sisältöä id-numerolla 70, ja navigointimoduulilta &topnavi ja &navitree -sisällöt, sekä syöttää ne skiniin.
+* Main Controller toteaa, että page-moduulin kanssa käytetään oletusskiniä, pääsisältö tulee alueeseen nimeltä 'content', alueeseen 'topnavi' on pyydettävä navigointimoduulilta sisältöä nimeltä 'topnavi', ja aluesseen 'leftnavi' on pyydettävä navigointimoduulilta sisältöä nimeltä 'navitree'.
+* MainController pyytää page-moduulilta sisältöä id-numerolla 70, ja navigointimoduulilta topnavi ja navitree -sisällöt, sekä syöttää ne skiniin.
 * MainController pyytää skiniä tulostumaan ruudulle.
 
 
@@ -313,34 +313,34 @@ Esimerkki:
 
 Tarvitaan tieto siitä, minkä moduulin kanssa käytetään mitäkin skiniä, ja mihin skinin alueisiin laitetaan minkäkin moduulin sisältö. Alustavasti tämä kuvaus on tarkoitus toteuttaa ohjelmoimalla, mutta tarpeen vaatiessa se voitaisiin tallentaa tietokantaan, sekä toteuttaa käyttöliittymä kuvauksen muokkaamiseen.
 
-Kuvauksen ei tarvitsisi olla moduulista skiniin, vaan se voisi olla sivukohtainen. Sivostoa suunniteltaessa havaittiin kuitenkin, että skinin valinta riippuu aina pääsisällön tuottavasta moduulista. Eri moduulit voivat kuitenkin vaatia eri sisällöt eri alueisiin. Esimerkiksi webbikamerasivulla navigointipuu korvataan pienillä esikatselukuvilla.
-Taulukoissa X ja X on esimerkit siitä, miten skin ja alueiden sisältö päätellään, jos pääsisällön tuottava moduuli on &Page, &Webcam tai &Ilmo (ilmoittautuminen).
+Kuvauksen ei tarvitsisi olla moduulista skiniin, vaan se voisi olla sivukohtainen. Sivostoa suunniteltaessa havaittiin kuitenkin, että skinin valinta riippuu aina pääsisällön tuottavasta moduulista. Eri moduulit voivat kuitenkin vaatia eri sisällöt eri alueisiin. Esimerkiksi webbikameran kanssa navigointipuu korvataan pienillä esikatselukuvilla.
+Taulukoissa X ja X on esimerkit siitä, miten skin ja alueiden sisältö päätellään, jos pääsisällön tuottava moduuli on page, webcam tai ilmo (ilmoittautuminen).
 
 
 moduuli = page | webacm  =>  skin = default
 
-  alue: |  topnavi            | leftnavi             | content
--------------------------------------------------------------------------
-moduuli:|                     |                      |
-page    | navi->renderTopnavi | navi->renderLeftnavi | page->renderContent(id)
-webcam  | navi->renderTopnavi | navi->renderLeftnavi | cam->renderContent
+  alue: |  topnavi         | leftnavi          | content
+----------------------------------------------------------------
+modduli:|                  |                   |
+page    | navi->getTopnavi | navi->getLeftnavi | page->getContent(id)
+webcam  | navi->getTopnavi | navi->getLeftnavi | cam->getContent
 
 Taulukko X: moduuli -> skin, sisältö -kuvaus
 
 
 moduuli = ilmo  =>  skin = ilmo->getSkin
 
-  alue: |  topnavi            | content
---------------------------------------------------------
-moduuli:|                     |
-ilmo    | ilmo->renderTopnavi | ilmo->renderContent(id)
+  alue: |  topnavi         | content
+-------------------------------------------------
+modduli:|                  |
+ilmo    | ilmo->getTopnavi | ilmo->getContent(id)
 
 Taulukko X: moduuli -> skin, sisältö -kuvaus
 
 
 * Moduulien toiminta *
 
-Moduulit ovat itsenäisiä, eli ne eivät tiedä mihin alueeseen niiden tuottama sisältö päätyy, tai mitkä muut moduulit tuottavat samaan aikaan sisältöä. Tämä mahdollistaa sen, että koko sivun ulkoasu voidaan vaihtaa, mutta jokainen moduuli toimii omassa lokerossaan kuten ennenkin. Vastaavasti moduulien tuottama sisältö voidaan syöttää skinin eri alueisiin, ilman että moduulin itse tarvitsee tietää siitä mitään.
+Moduulit ovat itsenäisiä, eli ne eivät tiedä mihin alueeseen niiden tuottama sisältö päätyy, tai mitkä muut moduulit tuottavat samaan aikaan sisältöä. Tämä mahdollistaa sen, että koko sivun ulkoasu voidaan vaihtaa, mutta jokainen moduuli toimii omassa lokerossaan kuten ennenkin. Vastaavasti moduulien tuottama sisältö voidaan syöttää skinin eri alueisiin, ilman että moduulin itse tarvitsisi tietää siitä mitään.
 
 Suoritus etenee seuraavasti:
 * MainControllerin pyynnöt menevät moduulin Controllerille.
@@ -354,17 +354,19 @@ Moduuli pitää itse kirjaa tilastaan tilmuuttujissa, joita voidaan tallentaa sess
 
 * Navigointihierarkia *
 
-Sivustolla on yksi abstrakti, kielestä riippumaton navigointipuu. Sivujen otsikot ja polut ladataan toisesta taulusta, joka sisältää eri kieliversiot. Koska sivujen polut ladataan kielikohtaisesti, käyttäjän haluama kieliversio pystytään päättelemään suoraan urlista sen sijaan, että urlin alussa toi lopussa tarvitsisi erikseen mainita kielikoodia. ER-kaavio on esitetty navigoinnin osalta kuvassa X.
+Sivustolla on yksi abstrakti, kielestä riippumaton navigointipuu. Sivujen otsikot ja polut ladataan toisesta taulusta, joka sisältää eri kieliversiot. 
+
+Koska myös sivujen polut ovat kielikohtaisia, käyttäjän haluama kieliversio pystytään päättelemään suoraan urlista sen sijaan, että urlin alussa toi lopussa tarvitsisi erikseen mainita kielikoodia. ER-kaavio on esitetty navigoinnin osalta kuvassa X.
 
 [ER-kaavio]
 Kuva X: Navigointipuun ER-kaavio.
 
-Jokaisella sisältöä tuottavalla moduulilla on oma taulunsa, josta sisältöä haetaan id:n ja kielen perusteella. Kuvassa on yksinkertaisuuden vuoksi esitetty vain staattiset sivut tuottavan Page-moduulin taulu.
+Jokaisella sisältöä tuottavalla moduulilla on oma taulunsa, josta sisältöä haetaan id:n ja kielen perusteella. Kuvassa on yksinkertaisuuden vuoksi esitetty vain staattiset sivut tuottavan page-moduulin taulu.
 
 
 * Käyttöoikeudet *
 
-Jokaisella ylläpitäjällä on henkilökohtainen käyttäjätunnus, ja jokainen käyttäjä voi kuulua mielivaltaiseen määrään ryhmiä. Käyttöoikeudet ovat aina ryhmäkohtaisia, mikä yksinkertaistaa arkkitehtuuria. Tarvittaessa käyttäjälle voidaan luoda henkilökohtainen ryhmä. Käyttöoikeustaulu kytkee yksinkertaisesti moduulien toiminnot ryhmiin. Taulussa voisi esimerkiksi olla rivi, joka kertoo, että Page-moduulin createPage-toimintoon on oikeus hallitus-nimisellä ryhmällä. ER-kaavio on esitetty käyttäjähallinnan osalta kuvassa X.
+Jokaisella ylläpitäjillä on henkilökohtainen käyttäjätunnus, ja jokainen käyttäjä voi kuulua mielivaltaiseen määrään ryhmiä. Käyttöoikeudet ovat aina ryhmäkohtaisia, mikä yksinkertaistaa arkkitehtuuria. Tarvittaessa käyttäjälle voidaan luoda henkilökohtainen ryhmä. Käyttöoikeustaulu kytkee yksinkertaisesti moduulien toiminnot ryhmiin. Taulussa voi eimserkiksi olla rivi, joka kertoo, että page-moduulin createPage-toimintoon on oikeus hallitus-nimisellä ryhmällä. ER-kaavio on esitetty käyttäjähallinnan osalta kuvassa X.
 
 [ER-kaavio]
 Kuva X: Käyttäjähallinnan ER-kaavio.
@@ -372,16 +374,16 @@ Kuva X: Käyttäjähallinnan ER-kaavio.
 
 * Object-relational -kuvaus *
 
-Model-tasolla on automatiikkaa (O/R mapping), joka lataa tietokannan taulusta id:n perusteella tietyn rivin olioksi, eli moduulin ohjelmoijan ei tarvitse kirjoittaa triviaaleja tietokantakyselyjä itse. Olion kenttiä voi muuttaa vapaasti, jonka jälkeen oliota voi pyytää kirjoittamaan sisältönsä takaisin kantaan. Toiminnallisuus toteutetaan Model-yliluokkaan, jonka kaikki model-kerroksen luokat perivät. Ohjelmoija saa edelleen kirjoittaa myös omia kyselyitä esimerkiksi hakiessaan listoja monimutkaisemmilla hakuehdoilla.
+Model-tasolla on automatiikkaa (O/R mapping), joka lataa tietokannan taulusta id:n perusteella tietyn rivin olioksi, eli moduulin ohjelmoijan ei tarvitse kirjoittan triviaaleja tietokantakyselyjä itse. Olion kenttiä voi muuttaa vapaasti, jonka jälkeen oliota voi pyytää kirjoittamaan sisältönsä takaisin kantaan. Toiminnallisuus toteutetaan Model-yliluokkaan, jonka kaikki model-kerroksen luokat perivät. Ohjelmoija saa edelleen kirjoittaa myös omia kyselyitä esimerkiksi hakiessaan listoja monimutkaisemmilla hakuehdoilla.
 
 
 == Tietoturva ==
 
 Vaikka killan nettisivusto ei ole erityisen kriittinen palvelu, tietokanta sisältää arkaluonteisia tietoja, kuten sitsi-ilmoittautujien henkilötietoja. Tietoturvaan on siksi suhtauduttava vakavasti, ja se on otettava suunnittelussa huomioon kaikilla tasoilla heikoimman lenkin periaatteen mukaisesti.
 
-Sovelluksessa on toiminnallisuutta, joka ottaa syötettä autentikoitumattomalta käyttäjältä, ja tekee sen perusteella operaatioita tietokannassa. Tällainen toiminto on esimerkiksi tapahtumaan ilmoittautuminen. Ilmeinen uhka on perinteinen SQL injection-hyökkäys, jossa hyökkääjä kirjoittaa lomakkeeseen haitallisia SQL-komentoja. Tältä voidaan suojautua suodattamalla käyttäjältä saadusta syötteestä tietyt erikoismerkit pois (escaping), niin että syöte tulkitaan aina tekstinä eikä SQL-komentoina. Automaattinen O/R mapping lisää turvallisuutta, koska tällöin riittä varmistaa keskitetyn, kaikille yhteisen koodin turvallisuus. Moduulien ohjelmoijille jää edelleen vastuu suodattaa syöte omissa kyselyissään.
+Sovelluksessa on toiminnallisuutta, joka ottaa syötettä autentikoitumattomalta käyttäjältä, ja tekee sen perusetella operaatioita tietokannassa. Tällainen toiminto on esimerkiksi tapahtumaan ilmoittautuminen. Ilmeinen uhka on perinteinen SQL injection-hyökkäys, jossa hyökkääjä kirjoittaa lomakkeeseen haitallisia SQL-komentoja. Tältä voidaan suojautua suodattamalla käyttäjältä saadusta syötteestä tietyt erikoismerkit (escaping), niin että syöte tulkitaan aina tekstinä eikä SQL-komentoina. Automaattinen O/R mapping lisää turvallisuutta, koska tällöin riittä varmistaa keskitetyn, kaikille yhteisen koodin turvallisuus. Moduulien ohjelmoijille jää edelleen vastuu suodattaa syöte omissa kyselyissään.
 
-Ylläpito-oikeudet myönnetään tarveharkintaisesti hallituksen jäsenille ja toimihenkilöille, joten vandalismi ei ole vastaava uhka kuin vaikkapa Wikipediassa. Tämän takia esimerkiksi sivujen historiaa ei ole tarpeen tallentaa. Ilmoittautumislomake on altis vandalismille, mutta uhkaa pidetään sen verran epätodennäköisenä, että ratkaisuja ryhdytään etsimään vasta, jos ongelmia esiintyy. Vaikka ylläpitäjät ovat lähtökohtaisesti luotettavia henkilöitä, sovellukseen halutaan toteuttaa käyttöoikeustasot. Tällöin esimerkiksi hallituksen pöytäkirjojen muokkaaminen voidaan estää muilta kuin hallituksen jäseniltä.
+Ylläpito-oikeudet myönnetään tarveharkintaisesti hallituksen jäsenille ja toimihenkilöille, joten vandalismi ei ole vastaava uhka kuin vaikkapa Wikipediassa. Tämän takia esimerkiksi sivujen historiaa ei ole tarpeen tallentaa. Ilmoittautumislomake on altis vandalismille, mutta ongelmaa pidetään sen verran epätodennäköisenä, että ratkaisuja ryhdytään etsimään vasta, jos ongelmia esiintyy. Vaikka ylläpitäjät ovat lähtökohtaisesti luotettavia henkilöitä, sovellukseen halutaan toteuttaa käyttöoikeustasot. Tällöin esimerkiksi hallituksen pöytäkirjojen muokkaaminen voidaan estää muilta kuin hallituksen jäseniltä.
 
 
 == Palvelinympäristö ==
@@ -413,13 +415,14 @@ Huomatkaa, että toteutunutta ajankäyttöä dokumentoidaan seuraavissa dokumenteiss
 
                                                                     suunnitelma (h)        toteuma (h)
                                              Valmiina viikolla   Tapio  Jaakko  Antti  Tapio  Jaakko Antti
-Projektin pystytys (serveri, svn...)                 6             4       4      4      5                 
-Arkkitehtuurin suunnittelu                           7             5       5      3      3                 
-Yleinen suunnittelu                                  8             3       3      3      4                 
-Korkean tason arkkitehtuurin protoilu                9            16       4      0     11                 
-Navigoinnin toteuttaminen                           10             8       0      0      3                 
-Suunnitelmadokumentin kirjoittaminen                11             6       6      6     10                 
-Moduulien toiminta                                  12             6       6      0                        
+Projektin pystytys (serveri, svn...)                 6             4       4      4      5             5    
+Arkkitehtuurin suunnittelu                           7             5       5      3      3             2    
+Yleinen suunnittelu                                  8             3       3      3      4             3    
+Korkean tason arkkitehtuurin protoilu                9            16       4      0     11             0   
+Navigoinnin toteuttaminen                           10             8       0      0      3             0    
+Suunnitelmadokumentin kirjoittaminen                11             6       6      6     10             6    
+Moduulien toiminta                                  12             6       6      0                    0    
+Graafinen suunnittelu					    12		 0       0      10                  10       
 Autentikointi ja alustavia admin-toimintoja         13             8       8                               
 Staattiset sivut toimimaan                          14             0       6                               
 Cache                                               15             0      12                               
