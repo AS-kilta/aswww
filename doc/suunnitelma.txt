@@ -3,14 +3,15 @@
 T-111.4360 WWW-palvelun suunnittelu
 
 Suunnitteluvaihe
+16.3.2008
 
 Ryhmä 29
 
 Aihe: Automaatio- ja systeemitekniikan killan nettisivut
 
 Tapio Auvinen (tsauvine@cc.hut.fi)
-Jaakko Kantojärvi ()
-Antti Nieminen ()
+Jaakko Kantojärvi (jkantoja@cc.hut.fi)
+Antti Nieminen (ajniemin@cc.hut.fi)
 
 
 == Sisällysluettelo ==
@@ -21,12 +22,11 @@ Antti Nieminen ()
  Yleiskuvaus työstä (8 pistettä)
 --------------------------------------------------------------------------------
 
-Harjoitustyössä on tavoitteena toteuttaa Automaatio- ja Systeemitekniikan killalle uusi nettisivusto. Sivuston nykyinen versio on osoitteessa http://as.tky.fi/
+Harjoitustyössä on tavoitteena toteuttaa Automaatio- ja Systeemitekniikan killalle uusi nettisivusto ja sisällönhallintajärjestelmä. Sivuston nykyinen versio on osoitteessa http://as.tky.fi/. Uuden sivuston kehitysversiota pyöritetään osoitteessa http://aski.hut.fi/uusi/.
 
 Uutta sivustoa ryhdyttiin tekemään jo vuonna 2007 Drupal-sisällönhallintajärjestelmällä, mutta sen monikielisyystuki osoittautui riittämättömäksi, ja projekti jätettiin kesken. Drupalia viriteltäessä kypsyi ajatus kokonaan oman sisällönhallintajärjestelmän toteuttamisesta, koska tällöin sen saisi alusta asti juuri tarpeitamme vastaavaksi. Kun www-työryhmässä oli sopivasti jäseniä, joiden opintoihin kuuluu www-palvelun suunnittelu, ja kevätlukukausi oli sopivasti lähestymässä, projekti päätettiin toteuttaa puhtaalta pöydältä kurssityönä.
 
-Sivusto sisältää muun muassa aktiivikillisteille ajankohtaisia uutisia, tapahtumakalenterin, ilmoittautumistoiminnon ja gallupin, sekä ulkopuolisille tietoa killasta. Projektin aluperäinen lähtökohta oli, että sivujen päivittämisen täytyy helpottua nykyisestä, joten sivuston täytyy sisältää myös tehokkaat web-pohjaiset ylläpitotyökalut.
-
+Sivusto sisältää muun muassa aktiivikillisteille ajankohtaisia uutisia, tapahtumakalenterin, ilmoittautumistoiminnon ja gallupin, sekä ulkopuolisille tietoa killasta. Projektin aluperäinen lähtökohta oli, että sivujen päivittämisen täytyy helpottua nykyisestä, joten sivustoon täytyy toteuttaa myös tehokkaat web-pohjaiset ylläpitotyökalut.
 
 
 == Kohderyhmäanalyysi ==
@@ -57,14 +57,16 @@ Phuksit käyttävät sivustoa paljolti samalla tavalla kuin aktiivikiltalaiset, mut
 Käyttäjäryhmässä on myös se erityispiirre, että osa phukseista on vasta potentiaalisia aktiivikiltalaisia, ja siksi nettisivujen on annettava kiltatoiminnasta houkutteleva kuva. Esimerkiksi kuvavalinnoilla voidaan luoda positiivista mielikuvaa iloisesta yhdessätekemisestä, ja vastaavasti välttää kielteisiä stereotypioita.
 
 
-* Abit *
-Abit saattavat päätyä killan sivuille etsiessään opiskelupaikkaa. Käyttäjäryhmä on tärkeä, koska oikeantyyppisen opiskelija-aineksen haaliminen laitokselle on myös killan etu. Killan nettisivuilla on myös jonkinlainen vastuu siitä, minkälaisen kuvan abit saavat TKK:sta kokonaisuudessaan. Kuten phuksien tapauksessa, nettisivujen tulee luoda positiivista mielikuvaa ja välttää teekkariutta koskeavia stereotypioita.
+* Ulkomaalaisopiskelijat *
+Ulkomaalaisopiskelijat käyttäytyvät samoin kuin aktiivikiltalaiset tai phuksit, mutta tarvitsevat sisällön englanniksi. Lähtökohtaisesti kaikki sisältö käännetään ainakin lyhyesti.
 
-Abit voivat hyvin todennäköisesti printata sivuja kerätessään materiaalia opiskelupaikoista, joten printtien ulkoasuun on oltava kelvollinen.
+
+* Abit *
+Abit saattavat päätyä killan sivuille etsiessään opiskelupaikkaa. Käyttäjäryhmä on tärkeä, koska oikeantyyppisen opiskelija-aineksen haaliminen laitokselle on myös killan etu. Killan nettisivuilla on myös jonkinlainen vastuu siitä, minkälaisen kuvan abit saavat TKK:sta kokonaisuudessaan. Kuten phuksien tapauksessa, nettisivujen tulee luoda positiivista mielikuvaa ja hälventää teekkariutta koskeavia stereotypioita. Abit voivat hyvin todennäköisesti printata sivuja kerätessään materiaalia opiskelupaikoista, joten printtien ulkoasuun on oltava kelvollinen.
 
 
 * Sponsorit *
-Sponsoreilla tarkoitetaan tahoja, joilta kilta anoo rahaa, jotka tulevat killan sivuille tarkistamaan, millaisesta ryhmästä on kysymys. Tämä käyttäjäryhmä on hyvin pieni, mutta erittäin tärkeä, koska kyse on rahasta. Koko sivuston on näytettävä ammattimaiselta ja uskottavalta. Tämä asettaa merkittäviä rajoituksia sivuston ulkoasuun, koska käyttäjäryhmä kuuluu eri ikäluokkaan kuin aiemmin mainitut ryhmät. Ulkoasun on siis oltava riittävän konservatiivinen. Sponsorit ovat myös todennäköisiä printtaajia, ja siisteillä printeilla voidaan luoda ammattimainen vaikutelma.
+Sponsoreilla tarkoitetaan tahoja, joilta kilta anoo rahaa, jotka tulevat killan sivuille tarkistamaan, millaisesta ryhmästä on kysymys. Tämä käyttäjäryhmä on hyvin pieni, mutta erittäin tärkeä, koska kyse on rahasta. Koko sivuston on näytettävä ammattimaiselta ja uskottavalta. Tämä asettaa merkittäviä rajoituksia sivuston ulkoasuun, kun käyttäjäryhmä vieläpä kuuluu vanhempaan ikäluokkaan kuin aiemmin mainitut ryhmät. Ulkoasun on siis oltava riittävän konservatiivinen. Sponsorit ovat myös todennäköisiä printtaajia, ja siisteillä printeilla voidaan luoda ammattimainen vaikutelma.
 
 
 * Ulkopuoliset *
@@ -72,16 +74,18 @@ Sivustolle voi eksyä esimerkiksi kiltalaisten vanhempia tai työnantajia, joille 
 
 
 * Ylläpitäjät *
-Sivustoa ylläpitää lähtökohtaisesti killan tiedottaja. Erityisesti ajankohtaisia uutisia päivitetään usein, joten käytön on oltava riittävän vaivatonta. Lisäksi sekalaiset hallituslaiset voivat päivittää oman vastuualueensa sivuja, joten ylläpitökäyttöliittymän on oltava melko helposti omaksuttavissa.
+Sivustoa ylläpitää lähtökohtaisesti killan tiedottaja. Erityisesti ajankohtaisia uutisia päivitetään usein, joten käytön on oltava riittävän vaivatonta. Lisäksi sekalaiset hallituslaiset ja toimihenkilöt voivat päivittää oman vastuualueensa sivuja, joten ylläpitokäyttöliittymän on oltava melko helposti omaksuttavissa.
 
 
 
 = Kaavio sivujen rakenteesta =
 
 Etusivu: uutiset, tapahtumakalenteri, gallup
+- Tapahtumakalenteri (pääsy vain etusivulta)
 
 - Tietoa killasta: yleiskuvaus killasta ulkopuolisille
-  - hallitus ja toimarit
+  - Hallitus
+  - Toimihenkilöt
 
 - Phuksit
   - Opiskelun tuki
@@ -90,17 +94,19 @@ Etusivu: uutiset, tapahtumakalenteri, gallup
   - Pisteet
 
 - Opiskelu
-  - opintomestarin ja neuvojan yhteystiedot
-  - linkit osastoihin, labroihin, topiin, tenttiarkistoon, varjikseen
+  - Opintomestarin ja neuvojan yhteystiedot
+  - Linkit osastoihin, labroihin, topiin, tenttiarkistoon, varjikseen
 
 - Arkisto
-  - kokousten pöytäkirjat
-  - yhteystiedot, tilinumerot, laskupohjat
-  - virallisuudet, säännöt
+  - Kokousten pöytäkirjat
+  - Yhteystiedot, tilinumerot, laskupohjat
+  - Virallisuudet, säännöt
 
 - Webcam
 
-- Tapahtumailmoittautumiset
+- Tapahtumailmoittautumiset (vaihtuva sisältö)
+  - tapahtuma 1
+  - tapahtuma n
 
 Ulkoiset linkit
   - Kiltalehti
@@ -113,15 +119,15 @@ Ulkoiset linkit
 
 == Sisältösuunnitelma ==
 
-Vanhan sivuston sisältö olisi sellaisenaan melko kelvollista, mutta sitä kirjoitetaan uusiksi, niin että kurssin vaatimustaso täyttyy. Seuraavassa esitetään sivukohtainen erittely sivuston sisällöstä.
+Vanhan sivuston sisältö olisi sellaisenaan melko kelvollista, mutta sitä kirjoitetaan uusiksi siinä määrin, että kurssin vaatimustaso täyttyy. Seuraavassa esitetään sivukohtainen erittely sivuston sisällöstä. Sisällön yhteydessä mainitaan, käytetäänkö vanhaa sisältöä, vai kirjoitetaanko se uusiksi.
 
 Otsikko: Etusivu
 Sisältö: Uutiset, tapahtumakalenteri, gallup (dynaamisia ja ajankohtaisia)
 Kohderyhmät: aktiivikillistit (tärkeä)
 Tavoitteet: Sisältää aktiivikillistien useimmiten etsimän tiedon. Ohjaa vierailijat eteenpäin.
 Lähdemateriaali: Killan tiedottaja päivittää tapahtumakalenteria ja galluppia, sekä lisää uutisia.
-Muokkaus: Tapahtumakalenterille, gallupille ja uutisille on omat ylläpitokäyttöliittymänsä, josta merkintökjä voi lisätä tai poistaa.
-Dynaamisuus: Sisältö kootaan dynaamisesti useasta mduulista
+Muokkaus: Tapahtumakalenterille, gallupille ja uutisille on omat ylläpitokäyttöliittymänsä, josta merkintöjä voi lisätä tai poistaa.
+Dynaamisuus: Sisältö kootaan dynaamisesti useasta moduulista. Sisältö on ajankohtaista.
 Julkaisukielet: fi/en
 Moduuli: Tavallinen sivu.
 
@@ -138,9 +144,9 @@ Moduuli: Tapahtumakalenteri.
 Otsikko: Tietoa killasta
 Sisältö: Yleiskuvaus killasta (kirjoitetaan uusiksi)
 Kohderyhmät: Kiltaan kuulumattomat kävijät (kriittinen)
-Tavoitteet: Sisältää peruskuvaus killasta ja sen toimminnasta.
+Tavoitteet: Sisältää peruskuvauksen killasta ja sen toimminnasta.
 Lähdemateriaali: Hallituksen vahvistamaa tietoa. Valtuutettu käyttäjä, esimerkiksi killan sihteeri, päivittää tarvittaessa sisältöä.
-Muokkaus: Moduulin ylläpitokäyttöliittymä. Muokkausoikeus hallituksella.
+Muokkaus: Moduulin ylläpitokäyttöliittymä.
 Dynaamisuus: Ei dynaamista sisältöä.
 Julkaisukielet: fi/en
 Moduuli: Tavallinen sivu.
@@ -150,7 +156,7 @@ Sisältö: Tietoa hallituksesta ja sen jäsenistä (muotoillaan uusiksi)
 Kohderyhmät: Kiltaan yhteydessä olevat ulkopuoliset (kriittinen), kiltalaiset (tärkeä)
 Tavoitteet: Sisältää hallituksen jäsenet ja yhteystiedot.
 Lähdemateriaali: Hallitus, sihteeri.
-Muokkaus: Moduulin ylläpitokäyttöliittymä. Muokkausoikeus hallituksella.
+Muokkaus: Moduulin ylläpitokäyttöliittymä.
 Dynaamisuus: Ei dynaamista sisältöä.
 Julkaisukielet: fi/en
 Moduuli: Tavallinen sivu.
@@ -168,7 +174,7 @@ Moduuli: Tavallinen sivu.
 Otsikko: Phuksit
 Sisältö: Tietoa phukseille (kirjoitetaan uusiksi)
 Kohderyhmät: Juuri aloittaneet tai aloittamassa olevat opiskelijat (kriittinen)
-Tavoitteet: Tarjota opiskelua tukevaa, sekä kiltatoimintaan liittyvää tietoa phukseille.
+Tavoitteet: Tarjota opiskelua tukevaa sekä kiltatoimintaan liittyvää tietoa phukseille.
 Lähdemateriaali: Hallitus, isohenkilöt ja muut valtuutetut henkilöt.
 Muokkaus: Moduulin ylläpitokäyttöliittymä.
 Dynaamisuus: Ei dynaamista sisältöä.
@@ -188,8 +194,8 @@ Moduuli: Tavallinen sivu.
 Otsikkot: Opiskelu, alasivut
 Sisältö: Opiskeluun liittyviä linkkejä ja yhteystietoja. (käytetään vanhaa sisältöä)
 Kohderyhmät: Killan jäsenet (tärkeä)
-Tavoitteet: Tarjota tarpeelliset yhteystiedot opintomestarista ja -neuvojasta. Tarjota myös linkkejä oleellisiin paikkoihin.
-Lähdemateriaali: Hallitus, opintomestari,opintoneuvoja.
+Tavoitteet: Tarjota opintomestarin ja -neuvojan yhteystiedot, sekä linkkejä esimerkiksi labrojen sivuille.
+Lähdemateriaali: Hallitus, opintomestari, opintoneuvoja.
 Muokkaus: Moduulin ylläpitokäyttöliittymä.
 Dynaamisuus: Ei dynaamista sisältöä.
 Julkaisukielet: fi/en
@@ -211,18 +217,18 @@ Kohderyhmät: Kiltalaiset (kriittinen), muut (mielenkiintoinen)
 Tavoitteet: Näyttää reaaliajassa kuvaa kiltahuoneelta.
 Lähdemateriaali: Lähes reaaliaikaisesti kiltahuoneelta.
 Muokkaus: Tarvittaessa atk-toimihenkilöt
-Dynaamisuus: Vain dynaamista dataa.
+Dynaamisuus: Reaaliaikainen
 Julkaisukielet: fi/en
 Moduuli: Webcam
 
 Otsikko: Tapahtumailmoittautumiset
-Sisältö: Kaikkiin tarvittaviin killan tapahtumiin ilmoittautumislomakkeet.
+Sisältö: Tapahtumien ilmoittautumislomakkeet (dynaaminen ja ajankohtainen)
 Kohderyhmät: Kiltalaiset (kriittinen)
-Tavoitteet: Tarjota helppo työkalu ilmoittautumislistojen luomiseen, ja itse ilmoittautumiseen
+Tavoitteet: Tarjota helppo työkalu ilmoittautumislistojen luomiseen sekä itse ilmoittautumiseen.
 Lähdemateriaali: Tapahtuman järjestäjä.
 Muokkaus: Moduulin ylläpitokäyttöliittymä.
 Dynaamisuus: Dynaamista tapahtumakohtaista sisältöä. Vanhat ilmoittautumiset sulkeutuvat ja katoavat näkyvistä itsestään.
-Julkaisukielet: Tilanteen mukaan, mutta oletusarvoisesti fi/en
+Julkaisukielet: fi/en
 Moduuli: ilmottautumisjärjestelmä
 
 
@@ -232,7 +238,7 @@ Sivuja pystyy lisäämään, poistamaan ja päivittämään web-käyttöliittymän kautta, 
 
 Staattisia sivuja päivitetään tyypillisesti pari kertaa vuodessa tai harvemmin, mutta tapahtumakalenteria ja uutisia jopa viikoittain. Sivujen sisällön päivittäminen on pääasiassa killan tiedottajan vastuulla, mutta muutkin hallituksen jäsenet tai sekalaiset toimihenkilöt voivat päivittää omien vastuualueidensa sivuja.
 
-Sivuston tekninen ylläpito jää killan atk-toimikunnan vastuulle, johon sattumoisin kuuluukin osa projektiryhmästä (Jaakko Kantojärvi ja Tapio Auvinen). Projekti dokumentoidaan niin hyvin, että tulevat sukupolvet pystyvät perehtymään sen toimintaan kohtuullisella vaivalla. Sivusto on myös tarkoitus kurssin aikana ja lähitulevaisuudessa saattaa sellaiseen kuntoon, että se ei jatkossa vaadi juurikaan ylläpitoa koodin puolella. Ylläpidettävyys on otettu huomioon myös ohjelmointikielen valinnassa. Eksoottisempien vaihtoehtojen, kuten Ruby tai Pyhon, sijaan valitsimme PHP:n, jota moni tuntuu osaavan.
+Sivuston tekninen ylläpito jää killan atk-toimikunnan vastuulle, johon sattumoisin kuuluukin osa projektiryhmästä (Jaakko Kantojärvi ja Tapio Auvinen). Projekti dokumentoidaan niin hyvin, että tulevat sukupolvet pystyvät perehtymään järjestelmän toimintaan kohtuullisella vaivalla. Sivusto on myös tarkoitus kurssin aikana ja lähitulevaisuudessa saattaa sellaiseen kuntoon, että se ei jatkossa vaadi juurikaan ylläpitoa koodin puolella. Ylläpidettävyys on otettu huomioon myös ohjelmointikielen valinnassa. Eksoottisempien vaihtoehtojen, kuten Ruby tai Pyhon, sijaan valitsimme PHP:n, jota moni tuntuu osaavan.
 
 
 --------------------------------------------------------------------------------
