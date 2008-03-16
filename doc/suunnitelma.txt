@@ -1,4 +1,3 @@
-
 == Kansi ==
 
 T-111.4360 WWW-palvelun suunnittelu
@@ -114,136 +113,126 @@ Ulkoiset linkit
 
 == Sisältösuunnitelma ==
 
-        * sivun otsikko
-        * kuvaus sivusta ja muutamalla lauseella sivulla olevasta sisällöstä/aineistosta
-        * kohderyhmät ja sivun kriittisyys ryhmille
-        * sivun tavoitteet 
-
-
-Kaikkiin sivuihin on valmista materiaalia vanhoilla sivuilla, mitä tullaan käyttämään materiaalin pohjana.
-Kaikki listatut sivut ovat sivuina staattisia, mutta joidenkin sisältöä joudutaan muuttamaan ainakin kerran vuodessa.
-
+Vanhan sivuston sisältö olisi sellaisenaan melko kelvollista, mutta sitä kirjoitetaan uusiksi, niin että kurssin vaatimustaso täyttyy. Seuraavassa esitetään sivukohtainen erittely sivuston sisällöstä.
 
 Otsikko: Etusivu
-Sisältö: Uutiset, tapahtumakalenteri, gallup
+Sisältö: Uutiset, tapahtumakalenteri, gallup (dynaamisia ja ajankohtaisia)
 Kohderyhmät: aktiivikillistit (tärkeä)
-Tavoitteet: Antaa tärkein tieto kävijälle ja opastaa kävijä eteenpäin.
+Tavoitteet: Sisältää aktiivikillistien useimmiten etsimän tiedon. Ohjaa vierailijat eteenpäin.
 Lähdemateriaali: Killan tiedottaja päivittää tapahtumakalenteria ja galluppia, sekä lisää uutisia.
 Muokkaus: Tapahtumakalenterille, gallupille ja uutisille on omat ylläpitokäyttöliittymänsä, josta merkintökjä voi lisätä tai poistaa.
 Dynaamisuus: Sisältö kootaan dynaamisesti useasta mduulista
-Julkaisujärjestys: 
 Julkaisukielet: fi/en
 Moduuli: Tavallinen sivu.
+
+Otsikko: Tapahtumakalenteri
+Sisältö: Etusivua tarkempi kuvaus tapahtumista (dynaamista ja ajankohtaista)
+Kohderyhmät: aktiivikillistit (tärkeä)
+Tavoitteet: Tajota tapahtumien tarkat tiedot.
+Lähdemateriaali: Killan tiedottaja.
+Muokkaus: Moduulin ylläpitokäyttöliittymä.
+Dynaamisuus: Dynaaminen. Vanha sisältö poistuu automaattisesti.
+Julkaisukielet: fi/en
+Moduuli: Tapahtumakalenteri.
 
 Otsikko: Tietoa killasta
-Sisältö: Yleiskuvaus killasta
-Kohderyhmät: Kiltaan kuulumattomat kävijät (kriittinen), kiltalaiset (ei niin kriittinen)
-Tavoitteet: Sisältää peruskuvaus killasta, sen toimminnasta ja muusta sellaisesta.
-Lähdemateriaali: Hallituksen vahvistamaa tietoa. Valtuutettu käyttäjä (sihteeri tai atk-toimihenkilö) päivittää tarvittaessa sisältöä.
-Muokkaus: Muokataan kuten normaalia sivua. Oikeus Lähinnä asiaan nimetyillä (atk-toimihenkilöt).
+Sisältö: Yleiskuvaus killasta (kirjoitetaan uusiksi)
+Kohderyhmät: Kiltaan kuulumattomat kävijät (kriittinen)
+Tavoitteet: Sisältää peruskuvaus killasta ja sen toimminnasta.
+Lähdemateriaali: Hallituksen vahvistamaa tietoa. Valtuutettu käyttäjä, esimerkiksi killan sihteeri, päivittää tarvittaessa sisältöä.
+Muokkaus: Moduulin ylläpitokäyttöliittymä. Muokkausoikeus hallituksella.
 Dynaamisuus: Ei dynaamista sisältöä.
-Julkaisujärjestys: 
 Julkaisukielet: fi/en
 Moduuli: Tavallinen sivu.
 
-Otsikko: Hallitus ja toimarit
-Sisältö: Tietoa hallituksesta, sen jäsenistä ja killan toimihenkilöistä.
-Kohderyhmät: Kiltaan yhteydessä olevat (kriittinen), kiltalaiset (kriittinen)
-Tavoitteet: Kertoa tarvittavat tiedot hallituksesta, sen jäsenistä ja tarvittaessa toimista. Sisältää lähinnä tietoa, kuka on missäkin tehttävässä ja mitkä hänen yhteystietonsa ovat.
+Otsikko: Hallitus
+Sisältö: Tietoa hallituksesta ja sen jäsenistä (muotoillaan uusiksi)
+Kohderyhmät: Kiltaan yhteydessä olevat ulkopuoliset (kriittinen), kiltalaiset (tärkeä)
+Tavoitteet: Sisältää hallituksen jäsenet ja yhteystiedot.
 Lähdemateriaali: Hallitus, sihteeri.
-Muokkaus: Muokataan kuten normaalia sivua. Oikeus Lähinnä asiaan nimetyillä (atk-toimihenkilöt).
-Dynaamisuus: Ei dynaamista dataa.
-Julkaisujärjestys:
+Muokkaus: Moduulin ylläpitokäyttöliittymä. Muokkausoikeus hallituksella.
+Dynaamisuus: Ei dynaamista sisältöä.
+Julkaisukielet: fi/en
+Moduuli: Tavallinen sivu.
+
+Otsikko: Toimihenkilöt
+Sisältö: Tietoa killan toimihenkilöistä (muotoillaan uusiksi)
+Kohderyhmät: Kiltalaiset (tärkeä), muiden kiltojen toimihenkilöt
+Tavoitteet: Sisältää listan killan toimihenkilöistö, sekä heidän yhteystietonsa.
+Lähdemateriaali: Hallitus, sihteeri.
+Muokkaus: Moduulin ylläpitokäyttöliittymä.
+Dynaamisuus: Ei dynaamista sisältöä.
 Julkaisukielet: fi/en
 Moduuli: Tavallinen sivu.
 
 Otsikko: Phuksit
-Sisältö: Tietoa phukseille.
+Sisältö: Tietoa phukseille (kirjoitetaan uusiksi)
 Kohderyhmät: Juuri aloittaneet tai aloittamassa olevat opiskelijat (kriittinen)
-Tavoitteet: Tarjota tarvittavat tiedot phukseille.
+Tavoitteet: Tarjota opiskelua tukevaa, sekä kiltatoimintaan liittyvää tietoa phukseille.
 Lähdemateriaali: Hallitus, isohenkilöt ja muut valtuutetut henkilöt.
-Muokkaus: Muokataan kuten normaalia sivua. Oikeus Lähinnä asiaan nimetyillä (atk-toimihenkilöt).
-Dynaamisuus: Ei dynaamista dataa.
-Julkaisujärjestys:
+Muokkaus: Moduulin ylläpitokäyttöliittymä.
+Dynaamisuus: Ei dynaamista sisältöä.
 Julkaisukielet: fi/en
 Moduuli: Tavallinen sivu.
 
-Otsikot: Opiskelun tuki, Phuksiopas, Isot, Pisteet
-Sisältö: Informaatiota phukseille kullakin Phuksit -alasivulla nimen esittämästä aiheesta.
-Kohderyhmät: Phuksit (kriittinen)
+Otsikot: Opiskelun tuki, Phuksiopas, Isot, Pisteet (Phuksit-sivun alasivuja)
+Sisältö: Informaatiota phukseille kullakin Phuksit -alasivulla nimen esittämästä aiheesta. (käytetään vanhaa sisältöä)
+Kohderyhmät: Phuksit (tärkeä)
 Tavoitteet: Tarjota kattava tietoa kaikesta tarpeellisesta mitä phuksin olisi hyvä tietää.
 Lähdemateriaali: Hallitus, isohenkilöt ja muut valtuutetut henkilöt.
-Muokkaus: Muokataan kuten normaalia sivua. Oikeus Lähinnä asiaan nimetyillä (atk-toimihenkilöt).
-Dynaamisuus: Ei dynaamista dataa.
-Julkaisujärjestys:
+Muokkaus: Moduulin ylläpitokäyttöliittymä.
+Dynaamisuus: Ei dynaamista sisältöä.
 Julkaisukielet: fi/(en)
 Moduuli: Tavallinen sivu.
 
-Otsikkot: Opiskelu,alasivut
-Sisältö: Kaikille tärkeitä asioita liittyen opiskeluun. 
-Kohderyhmät: Killanjäsenet (kriittinen), sekä Automaatiota ja systeemitekniikkaaopiskelvat henkilöt (ei niin kriittinen).
+Otsikkot: Opiskelu, alasivut
+Sisältö: Opiskeluun liittyviä linkkejä ja yhteystietoja. (käytetään vanhaa sisältöä)
+Kohderyhmät: Killan jäsenet (tärkeä)
 Tavoitteet: Tarjota tarpeelliset yhteystiedot opintomestarista ja -neuvojasta. Tarjota myös linkkejä oleellisiin paikkoihin.
 Lähdemateriaali: Hallitus, opintomestari,opintoneuvoja.
-Muokkaus: Muokataan kuten normaalia sivua. Oikeus Lähinnä asiaan nimetyillä (opintoasioiden hoitaja).
+Muokkaus: Moduulin ylläpitokäyttöliittymä.
 Dynaamisuus: Ei dynaamista sisältöä.
-Julkaisujärjestys:
 Julkaisukielet: fi/en
 Moduuli: Tavallinen sivu.
 
 Otsikko: Arkisto
-Sisältö: Kokousten pöytäkirjat; yhteystiedot, tilinumerot, laskupohjat; virallisuudet, säännöt; muuta sekalaista materiaalia, joka liittyy kiltaan.
-Kohderyhmät: Kaikki sivuilla käyvät henkilöt (kriittinen).
-Tavoitteet: Tarjota arkistoitua tietoa tärkeistä killan asioista.
+Sisältö: Kokousten pöytäkirjat, yhteystiedot, tilinumerot, laskupohjat, virallisuudet, säännöt, muuta sekalaista materiaalia, joka liittyy kiltaan. (käytetään vanhaa sisältöä)
+Kohderyhmät: Aktiivikiltalaiset (kriittinen), muut kiltalaiset
+Tavoitteet: Tarjota arkistoitua sekalaista tietoa tärkeistä killan asioista.
 Lähdemateriaali: Kyseisestä lähdemateriaalista tai lähdemateriaali ryhmästä vastuussa olevat.
-Muokkaus: Arkiston hallinointi järjestelmä.
+Muokkaus: Arkistonhallinointijärjestelmä.
 Dynaamisuus: Pelkästään dynaamista tietoa tallessa olevista tiedostoista.
-Julkaisujärjestys:
 Julkaisukielet: fi/en
 Moduuli: Arkisto
 
 Otsikko: Webcam
-Sisältö: Webcamn kuvaa kiltahuoneelta
-Kohderyhmät: Kiltalaiset (kriittinen), muut (olematon)
-Tavoitteet: Saattaa muutamia webcamera kuvia julkisesti nähätäviksi.
+Sisältö: Webcamin kuvaa kiltahuoneelta (dynaaminen)
+Kohderyhmät: Kiltalaiset (kriittinen), muut (mielenkiintoinen)
+Tavoitteet: Näyttää reaaliajassa kuvaa kiltahuoneelta.
 Lähdemateriaali: Lähes reaaliaikaisesti kiltahuoneelta.
 Muokkaus: Tarvittaessa atk-toimihenkilöt
 Dynaamisuus: Vain dynaamista dataa.
-Julkaisujärjestys:
 Julkaisukielet: fi/en
 Moduuli: Webcam
 
 Otsikko: Tapahtumailmoittautumiset
-Sisältö: Kaikkiin tarvittaviin killan tapahtumiin ilmoittautumis lomakkeet.
+Sisältö: Kaikkiin tarvittaviin killan tapahtumiin ilmoittautumislomakkeet.
 Kohderyhmät: Kiltalaiset (kriittinen)
-Tavoitteet: Tehdä ilmoitatumis tapahtuman luomisesta ja ilmoittautumisesta siihen helppoa.
+Tavoitteet: Tarjota helppo työkalu ilmoittautumislistojen luomiseen, ja itse ilmoittautumiseen
 Lähdemateriaali: Tapahtuman järjestäjä.
-Muokkaus: Moduulin oma tapansa hoitaa asia.
-Dynaamisuus: Dynaamista muuttuvaa ja staattista infoa.
-Julkaisujärjestys:
+Muokkaus: Moduulin ylläpitokäyttöliittymä.
+Dynaamisuus: Dynaamista tapahtumakohtaista sisältöä. Vanhat ilmoittautumiset sulkeutuvat ja katoavat näkyvistä itsestään.
 Julkaisukielet: Tilanteen mukaan, mutta oletusarvoisesti fi/en
 Moduuli: ilmottautumisjärjestelmä
 
 
-Tuotantoprosessi liittyy hyvin läheisesti sisältösuunnitelmaan. Siinä määritellään sivujen tuottaminen, eli aineiston kulku lähdemateriaalista WWW-sivuksi. Sivukohtaisesti määritellään
-
-        * lähdemateriaali
-              o mahdollinen nykyinen olomuoto
-              o uuden materiaalin tekijä
-              o oikeudet materiaalin käyttöön työssä 
-        * muokkaus
-              o tarvitseeko materiaalia muokata (kuvien muokkaus, tekstin toimittaminen jne.)
-              o muokkauksessa tarvittavat työkalut
-              o muokkaaja 
-        * sisällön dynaamisuus ja aikadimensio, eli onko aineistolla jonkinlainen voimassaoloaika tai milloin se halutaan julkaistavaksi ja milloin se poistetaan.
-        * julkaisujärjestys koko sivustoon nähden
-        * julkaisukielet
-
-
 == Ylläpitojärjestelyt ==
 
-Sivusto vaatii myös ylläpitoa. Suunnitelkaa erityisesti, miten usein päivittyvien sivujen päivittäminen tapahtuu (menetelmät, työkalut jne.) sekä minkälaisia ylläpitotyöntekijöitä sivusto toimiessaan vaatii.
+Sivuja pystyy lisäämään, poistamaan ja päivittämään web-käyttöliittymän kautta, ja kaikki sisältö tallennetaan tietokantaan. Staattisten sivujen kuvaamiseen käytetään joko wiki-tyyppistä merkintäkieltä tai jotakin valmista wysiwyg-editoria. Myös navigointihierarkia on dynaaminen, eli kokonaan uusien osioiden luominen onnistuu koskematta koodiin.
 
+Staattisia sivuja päivitetään tyypillisesti pari kertaa vuodessa tai harvemmin, mutta tapahtumakalenteria ja uutisia jopa viikoittain. Sivujen sisällön päivittäminen on pääasiassa killan tiedottajan vastuulla, mutta muutkin hallituksen jäsenet tai sekalaiset toimihenkilöt voivat päivittää omien vastuualueidensa sivuja.
 
+Sivuston tekninen ylläpito jää killan atk-toimikunnan vastuulle, johon sattumoisin kuuluukin osa projektiryhmästä (Jaakko Kantojärvi ja Tapio Auvinen). Projekti dokumentoidaan niin hyvin, että tulevat sukupolvet pystyvät perehtymään sen toimintaan kohtuullisella vaivalla. Sivusto on myös tarkoitus kurssin aikana ja lähitulevaisuudessa saattaa sellaiseen kuntoon, että se ei jatkossa vaadi juurikaan ylläpitoa koodin puolella. Ylläpidettävyys on otettu huomioon myös ohjelmointikielen valinnassa. Eksoottisempien vaihtoehtojen, kuten Ruby tai Pyhon, sijaan valitsimme PHP:n, jota moni tuntuu osaavan.
 
 
 --------------------------------------------------------------------------------
@@ -330,6 +319,8 @@ modduli:|                  |                   |
 page    | navi->getTopnavi | navi->getLeftnavi | page->getContent(id)
 webcam  | navi->getTopnavi | navi->getLeftnavi | cam->getContent
 
+Taulukko X: moduuli -> skin, sisältö -kuvaus
+
 
 moduuli = ilmo  =>  skin = ilmo->getSkin
 
@@ -337,6 +328,8 @@ moduuli = ilmo  =>  skin = ilmo->getSkin
 -------------------------------------------------
 modduli:|                  |
 ilmo    | ilmo->getTopnavi | ilmo->getContent(id)
+
+Taulukko X: moduuli -> skin, sisältö -kuvaus
 
 
 * Moduulien toiminta *
