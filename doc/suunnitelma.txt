@@ -24,24 +24,22 @@ Antti Nieminen ()
 
 Harjoitustyössä on tavoitteena toteuttaa Automaatio- ja Systeemitekniikan killalle uusi nettisivusto. Sivuston nykyinen versio on osoitteessa http://as.tky.fi/
 
-Uutta sivustoa ryhdyttiin tekemään jo vuonna 2007 Drupal-sisällönhallintajärjestelmällä, mutta sen monikielisyystuki osoittautui riittämättömäksi ja projekti jätettiin kesken. Drupalia viriteltäessä kypsyi ajatus kokonaan oman sisällönhallintajärjestelmän toteuttamisesta, koska tällöin sen saisi alusta asti juuri tarpeitamme vastaavaksi. Kun www-työryhmässä oli sopivasti jäseniä, joiden opintoihin kuuluu www-palvelun suunnittelu ja kevätlukukausi oli sopivasti lähestymässä, projekti päätettiin toteuttaa puhtaalta pöydältä kurssityönä.
+Uutta sivustoa ryhdyttiin tekemään jo vuonna 2007 Drupal-sisällönhallintajärjestelmällä, mutta sen monikielisyystuki osoittautui riittämättömäksi, ja projekti jätettiin kesken. Drupalia viriteltäessä kypsyi ajatus kokonaan oman sisällönhallintajärjestelmän toteuttamisesta, koska tällöin sen saisi alusta asti juuri tarpeitamme vastaavaksi. Kun www-työryhmässä oli sopivasti jäseniä, joiden opintoihin kuuluu www-palvelun suunnittelu, ja kevätlukukausi oli sopivasti lähestymässä, projekti päätettiin toteuttaa puhtaalta pöydältä kurssityönä.
 
-Sivusto sisältää muun muassa aktiivikillisteille ajankohtaisia uutisia ja tapahtumakalenterin, ilmoittautumistoiminnon, gallupin ja ulkopuolisille tietoa killasta. Projektin aluperäinen lähtökohta oli, että sivujen päivittämisen täytyy helpottua nykyisestä, joten sivuston täytyy sisältää myös tehokkaat web-pohjaiset ylläpitotyökalut.
+Sivusto sisältää muun muassa aktiivikillisteille ajankohtaisia uutisia, tapahtumakalenterin, ilmoittautumistoiminnon ja gallupin, sekä ulkopuolisille tietoa killasta. Projektin aluperäinen lähtökohta oli, että sivujen päivittämisen täytyy helpottua nykyisestä, joten sivuston täytyy sisältää myös tehokkaat web-pohjaiset ylläpitotyökalut.
 
 
 
 == Kohderyhmäanalyysi ==
 
-Tämän kohdan tarkoituksena on määritellä, keille sivustoa ollaan tekemässä sekä miten ja minkälaista aineistoa heille kohdennetaan. Luetelkaa sivuston tärkeimmät kohderyhmät ja kertokaa, minkälaista sisältöä he sivustosta hakevat. Miettikää myös, mikä on käyttäjien motivaatio tulla sivustolle. Kuvatkaa ryhmille tyypilliset sivuston käyttötavat ja -paikat ja erityispiirteet. Huomioikaa että käyttajäryhmallä tarkoitetaan tässä yhteydessä enemman sosiaalista ryhmaa (esim. ylä-asteikäiset tytöt) kuin jonkun sivuston osa-alueen käyttäjää yleisesti (esim. satunnainen vierailija).
-
-Olemme kartoittaneet käyttäjäryhmiä ja käyttötapoja henkilökohtaisen käyttökokemuksen ja epämuodollisten kyselyjen perusteella, ja päätyneet seuraaviin merkittäviin ryhmiin: kiltalaiset, phuksit, abit, sponsorit, ulkopuoliset. Seuraavassa pohditaan näiden ryhmien erityispiirteitä ja käyttötapoja.
+Olemme kartoittaneet käyttäjäryhmiä ja käyttötapoja henkilökohtaisen käyttökokemuksen ja epämuodollisten kyselyjen perusteella, ja päätyneet seuraaviin merkittäviin käyttäjäryhmiin: kiltalaiset, phuksit, abit, sponsorit ja ulkopuoliset. Seuraavassa pohditaan näiden ryhmien erityispiirteitä ja käyttötapoja.
 
 * Kiltalaiset *
 Sivuston suurin käyttäjäryhmä ovat aktiiviset kiltalaiset. Tyypillisiä käyttötapauksia ovat:
 - Webbikameran katsominen
 - Tapahtumiin ilmoittautuminen (suora linkki on mainospostissa)
 - Tapahtumien ajakohdan katsominen tapahtumakalenterista
-- Läpikulku valokuvagalleriaan tai wikiin, jotka ovat erillisiä sivuja
+- Läpikulku valokuvagalleriaan tai wikiin, jotka ovat erillisiä sivustoja
 - Hyödyllisen tiedon etsiminen, esimerkiksi tilinumerot, yhteystiedot tai pöytäkirjat
 
 Sivustoa katsotaan tyypillisesti laadukkaalla tietokoneella (ei kännykällä) kotoa tai työpaikalta. Käyttäjillä on tiedossa päämäärä, eivätkä he surffaile sivustolla sattumanvaraisesti. Tiedon täytyy siis olla helposti löydettävissä, eikä viihteellistä sisältöä tarvitse tyrkyttää samalla tavalla kuin sivustoilla, joiden tavoitteena on kerätä rahaa koukuttamalla käyttäjät.
@@ -54,26 +52,24 @@ Aktiivikiltalaisten käyttöön liittyvät seuraavat erityispiirteet:
 
 * Phuksit *
 Phuksit käyttävät sivustoa paljolti samalla tavalla kuin aktiivikiltalaiset, mutta heillä on omia erityistarpeita:
-- Opiskelua tukevan tiedon etsiminen opiskelun alkuvaiheessa (kartat, linkit)
+- Opiskelua tukevan tiedon etsiminen opiskelun alkuvaiheessa (kartat, ohjeet, linkit)
 - Kiltatoimintaa koskevan tiedon etsiminen (phukseille suunnatut tapahtumat, phuksipisteiden kerääminen)
 
-Käyttäjäryhmässä on myös se erityispiirre, että osa phukseista on vasta potentiaalisia aktiivikiltalaisia. Nettisivujen on annettava kiltatoiminnasta houkutteleva kuva. Esimerkiksi kuvavalinnoilla voidaan luoda positiivista mielikuvaa iloisesta yhdessätekemisestä, ja vastaavasti välttää kielteisiä stereotypioita.
+Käyttäjäryhmässä on myös se erityispiirre, että osa phukseista on vasta potentiaalisia aktiivikiltalaisia, ja siksi nettisivujen on annettava kiltatoiminnasta houkutteleva kuva. Esimerkiksi kuvavalinnoilla voidaan luoda positiivista mielikuvaa iloisesta yhdessätekemisestä, ja vastaavasti välttää kielteisiä stereotypioita.
 
 
 * Abit *
-Abit saattavat eksyä killan sivuille etsiessään opiskelupaikkaa. Käyttäjäryhmä on tärkeä, koska oikeantyyppisen opiskelija-aineksen haaliminen laitokselle on myös killan etu. Killan nettisivuilla on myös jonkinlainen siitä, minkälaisen kuvan abit saavat TKK:sta kokonaisuutena. Kuten phuksien tapauksessa, nettisivut voivat hälventää teekkariutta koskeavia stereotypioita ja luoda positiivista yleiskuvaa.
+Abit saattavat päätyä killan sivuille etsiessään opiskelupaikkaa. Käyttäjäryhmä on tärkeä, koska oikeantyyppisen opiskelija-aineksen haaliminen laitokselle on myös killan etu. Killan nettisivuilla on myös jonkinlainen vastuu siitä, minkälaisen kuvan abit saavat TKK:sta kokonaisuudessaan. Kuten phuksien tapauksessa, nettisivujen tulee luoda positiivista mielikuvaa ja välttää teekkariutta koskeavia stereotypioita.
 
-Abit voivat hyvin todennäköisesti printata sivuja kerätessään materiaalia opiskelupaikoista.
+Abit voivat hyvin todennäköisesti printata sivuja kerätessään materiaalia opiskelupaikoista, joten printtien ulkoasuun on oltava kelvollinen.
 
 
 * Sponsorit *
-Sponsoreilla tarkoitetaan tahoja, joilta kilta anoo rahaa, jotka tulevat killan sivuille tarkistamaan, millaisesta ryhmästä on kysymys. Tämä käyttäjäryhmä on hyvin pieni, mutta erittäin tärkeä, koska kyse on rahasta. Koko sivuston on näytettävä ammattimaiselta ja uskottavalta. Tämä asettaa rajoituksia sivuston ulkoasuun, koska käyttäjäryhmä kuuluu eri ikäluokkaan kuin aiemmin mainitut ryhmät.
-
-Myös sponsorit ovat todennäköisiä printtaajia.
+Sponsoreilla tarkoitetaan tahoja, joilta kilta anoo rahaa, jotka tulevat killan sivuille tarkistamaan, millaisesta ryhmästä on kysymys. Tämä käyttäjäryhmä on hyvin pieni, mutta erittäin tärkeä, koska kyse on rahasta. Koko sivuston on näytettävä ammattimaiselta ja uskottavalta. Tämä asettaa merkittäviä rajoituksia sivuston ulkoasuun, koska käyttäjäryhmä kuuluu eri ikäluokkaan kuin aiemmin mainitut ryhmät. Ulkoasun on siis oltava riittävän konservatiivinen. Sponsorit ovat myös todennäköisiä printtaajia, ja siisteillä printeilla voidaan luoda ammattimainen vaikutelma.
 
 
 * Ulkopuoliset *
-Sivustolle voi eksyä esimerkiksi kiltalaisten vanhempia tai työnantajia, joille on annettava riittävän vakava kuva kiltatoiminnasta. Erityisesti on huolehdittava, että jokainen yksittäinen tunnistettava kiltalainen esiintyy positiivisessa valossa. Tämä vaikuttaa mm. valokuvien valintaan.
+Sivustolle voi eksyä esimerkiksi kiltalaisten vanhempia tai työnantajia, joille on annettava riittävän vakava kuva kiltatoiminnasta. Erityisesti on huolehdittava, että jokainen yksittäinen tunnistettava kiltalainen esiintyy positiivisessa valossa. Tämä vaikuttaa esimerkiksi valokuvien valintaan.
 
 
 * Ylläpitäjät *
@@ -82,9 +78,6 @@ Sivustoa ylläpitää lähtökohtaisesti killan tiedottaja. Erityisesti ajankohtaisia
 
 
 = Kaavio sivujen rakenteesta =
-
-Piirtäkää dokumenttiin (hierarkinen) kaavio sivuston rakenteesta. Kaavion tarkoituksena on esittää sivuston kokonaisrakenne ja auttaa hahmottamaan yleiskuva palvelusta ja sen osista. Miettikää erityisesti käytettävyyttä: asettukaa edellisessä kohdassa määriteltyjen käyttäjien asemaan ja miettikää, löytyykö heitä kiinnostava sisältö sivustosta helposti ja loogisesti.
-
 
 Etusivu: uutiset, tapahtumakalenteri, gallup
 
@@ -251,6 +244,8 @@ Tuotantoprosessi liittyy hyvin läheisesti sisältösuunnitelmaan. Siinä määritellä
 Sivusto vaatii myös ylläpitoa. Suunnitelkaa erityisesti, miten usein päivittyvien sivujen päivittäminen tapahtuu (menetelmät, työkalut jne.) sekä minkälaisia ylläpitotyöntekijöitä sivusto toimiessaan vaatii.
 
 
+
+
 --------------------------------------------------------------------------------
 Ulkoasu ja käyttöliittymä
 --------------------------------------------------------------------------------
@@ -272,7 +267,7 @@ Ulkoasu ja käyttöliittymä
  Tekniikka (14 pistettä)
 --------------------------------------------------------------------------------
 
-Työn keskeisin tavoite on sisällönhallintajärjestelmän toteuttaminen. Vaatimukset ovat tiukat, koska järjestelmä tulee tuotantokäyttöön, ja sen käyttö tunnettujen sisällöntuontojärjestelmien sijasta on pystyttävä perustelemaan. Päädyimme seuraavaan listaan:
+Työn keskeinen tavoite on sisällönhallintajärjestelmän toteuttaminen. Vaatimukset ovat tiukat, koska järjestelmä tulee tuotantokäyttöön, ja sen käyttö tunnettujen sisällöntuontojärjestelmien sijasta on pystyttävä perustelemaan. Päädyimme seuraavaan vaatimuslistaan:
 - Urlien täytyy olla järkeviä.
 - Sivuja täytyy voida lisätä, poistaa ja päivittää web-käyttöliittymän kautta.
 - Sivuhierarkiaa täytyy voida muokata dynaamisesti, jotta ylläpitäminen ei vaadi tulevaisuudessa koskemista koodiin.
@@ -285,25 +280,26 @@ Työn keskeisin tavoite on sisällönhallintajärjestelmän toteuttaminen. Vaatimukse
 == Terminologiaa ==
 
 - Skin ja alueet (regions)
-Käytämme sivun kokonaisilmeestä nimitystä skin, joka korostaa ulkoasun vaihdeltavuutta. Skin on teknisesti html-pohja, jossa on dynaamisia kenttiä sisällölle. Se sisältää alueita (regions), kuten ylänavipalkki, vasen navipalkki tai sisältöalue, mutta ei ota mitään kantaa niiden sisältöön, vaan sisältö vai vaihdella sivukohatisesti.
+Käytämme sivun kokonaisilmeestä nimitystä skin, joka korostaa ulkoasun vaihdeltavuutta. Skin on teknisesti html-pohja, jossa on dynaamisia kenttiä sisällölle. Skin sisältää alueita (regions), kuten ylänavipalkki, vasen navipalkki tai sisältöalue. Se ei ota kantaa alueiden sisältöön, vaan sisältö vai vaihdella sivukohatisesti.
 
 - Moduulit
-Moduuli on itsenäinen palikka, joka tarjoaa sisälätöä laitettavaksi skinin alueisiin. Esimerkiksi moduuli page tuottaa normaalin staattisen sivun sisällön, mutta on ulkopuolisen tahon asia syöttää sisältö oikeaan alueeseen. Moduulit ovat ikäänkuin pieniä itsenäisiä web-sovelluksia, joiden tuottama sisältö voidaan sijoittaa skinin alueisiin.
+Moduuli on itsenäinen palikka, joka tarjoaa sisältöä laitettavaksi skinin alueisiin. Esimerkiksi moduuli page tuottaa normaalin staattisen sivun sisällön, mutta on ulkopulisen tahon asia syöttää sisältö oikeaan alueeseen. Moduulit ovat ikäänkuin pieniä itsenäisiä web-sovelluksia, joiden tuottama sisältö voidaan sijoittaa skinin alueisiin.
 
 
 == Arkkitehtuuri ==
 
 Sovellus noudataa Model-View-Controller -arkkitehtuuria (MVC), jossa datan esitymuoto (View) erotetaan toimintalogiikasta (Model). Model-taso toimii abstraktilla tasolla, eli voi vaikkapa tuottaa listan johonkin tapahtumaan ilmoittautuneista käyttäjistä, mutta ei ota kantaa esitysmuotoon. View-taso puolestaan voisi muuttaa käyttäjälistan html-taulukoksi, mutta ei sisällä enää monimutkaista toimintalogiikkaa. Controller koordinoi tiedonvälitystä Model- ja View- tasojen välillä, eli pyytää Model-kerrosta suorittamaan tietyt operaatiot, antaa tulokset View-kerrokselle visualisoitavaksi. Vastaavasti Controller hakee käyttäjän syötteen View-kerroksesta ja syöttää sen Model-kerrokseen.
 
-Modulaarisuuden takia toteutetaan kahdessa kerroksessa. Sivuston toimintaa kokonaisuudessaan koordinoi MainController, jonka kauttaa jokainen kysely ohjataan. MainController valitsee skinin, lataa tarvittavat moduulit, pyytää moduuleita tuotamaan sisältöä, ja syöttää sisällön skinin alueisiin. Jokainen moduuli itsessään noudattaa MVC-arkkitehtuuria, eli toimii kuin itsenäinen pieni web-sovellus. MainController esittää pyynnöt moduulin ModuleControllerille, joka pyytää omaa Model-kerrostaan toimimaan, syöttää tulokset haluamalleen näkymälle (View), ja palauttaa valmiin html-sisällön MainControllerille. Komponentit on kuvattu kuvassa X.
+Modulaarisuuden MVC-idea takia toteutetaan kahdessa kerroksessa. Sivuston toimintaa kokonaisuudessaan koordinoi MainController, jonka kauttaa jokainen kysely ohjataan. MainController valitsee skinin, lataa tarvittavat moduulit, pyytää moduuleita tuotamaan sisältöä, ja syöttää sisällön skinin alueisiin. Jokainen moduuli itsessään noudattaa MVC-arkkitehtuuria, eli toimii kuin itsenäinen pieni web-sovellus. MainController esittää pyynnöt moduulin ModuleControllerille, joka pyytää omaa Model-kerrostaan toimimaan, syöttää tulokset haluamalleen näkymälle (View), ja palauttaa valmiin html-sisällön MainControllerille. Korkean tason arkkitehtuuri on kuvattu kuvassa X.
 
 [arkkitehtuurikuva]
+Kuva X: Korkean tason arkkitehtuuri.
 
 
 * MainControllerin toiminta *
 
-MainControllerin vastuulla selvittää, mitä sivua ollaan näyttämässä, mitä skiniä kuuluu käyttää milläkin sivulla, ja minkä moduulin sisältöä kuuluu syöttöää mihinkin alueeseen. Suoritus etenee seuraavasti:
-* Käyttäjän kysely ohjataan MainControllerille
+MainControllerin vastuulla on selvittää, mitä sivua ollaan näyttämässä, mitä skiniä kuuluu käyttää milläkin sivulla, ja minkä moduulin sisältöä kuuluu syöttää mihinkin alueeseen. Suoritus etenee seuraavasti:
+* Käyttäjän kysely ohjataan MainControllerille.
 * MainController antaa urlin navigointimoduulille ratkaistavaksi.
 * Navigointimoduuli lukee tietokannasta sivuhierarkian ja etsii urlia vastaavaan solmun. Solmuun on tallennettu tieto siitä, mikä moduuli tuottaa kyseisen sivun pääsisällön, sekä millä id-numerolla kyseistä moduulia pyydetään hakeamaan sisältöä.
 * MainController selvittää, mitä skiniä kyseisen moduulin kanssa käytetään, ja mitä muita moduuleja tarvitaan täyttämään muut alueet.
@@ -311,19 +307,19 @@ MainControllerin vastuulla selvittää, mitä sivua ollaan näyttämässä, mitä skiniä
 * MainController pyytää skiniä tulostumaan ruudulle.
 
 Esimerkki:
-* Käyttäjä pyytää sivua kilta/hallitus
+* Käyttäjä pyytää sivua kilta/hallitus.
 * Navigointimoduuli löytää navigointihierarkiasta kyseisen solmun ja toteaa, että sisällön tuottaa page-moduuli, ja sisältö löytyy id:llä 70.
-* Main Controller toteaa, että page-moduulin kanssa käytetään oletusskiniä, pääsisältö tulee alueeseen nimeltä 'content', alueeseen 'topnavi' on pyydettävä navigointimoduulilta sisältöä nimeltä 'topnavi', ja aluesseen 'leftnavi' on pyydettävä navigointimoduulilta sisältöä nimeltä 'navitree'
+* Main Controller toteaa, että page-moduulin kanssa käytetään oletusskiniä, pääsisältö tulee alueeseen nimeltä 'content', alueeseen 'topnavi' on pyydettävä navigointimoduulilta sisältöä nimeltä 'topnavi', ja aluesseen 'leftnavi' on pyydettävä navigointimoduulilta sisältöä nimeltä 'navitree'.
 * MainController pyytää page-moduulilta sisältöä id-numerolla 70, ja navigointimoduulilta topnavi ja navitree -sisällöt, sekä syöttää ne skiniin.
 * MainController pyytää skiniä tulostumaan ruudulle.
 
 
 * Skinin valitseminen *
 
-Tarvitaan tieto siitä, minkä moduulin kanssa käytetään mitäkin skiniä, ja mihin skinin alueisiin laitetaan minkäkin moduulin sisältö. Alustavasti tämä kuvaus on tarkoitus toteuttaa ohjelmoimalla, mutta tarpeen vaatiessa se voitaisiin tallentaa tietokantaan ja toteuttaa käyttöliittymä kuvauksen muokkaamiseen.
+Tarvitaan tieto siitä, minkä moduulin kanssa käytetään mitäkin skiniä, ja mihin skinin alueisiin laitetaan minkäkin moduulin sisältö. Alustavasti tämä kuvaus on tarkoitus toteuttaa ohjelmoimalla, mutta tarpeen vaatiessa se voitaisiin tallentaa tietokantaan, sekä toteuttaa käyttöliittymä kuvauksen muokkaamiseen.
 
-Kuvauksen ei tarvitsisi olla moduulista skiniin, vaan se voisi olla sivukohtainen. Sivostoa suunniteltaessa havaittiin kuitenkin, että skinin valinta riippuu aina pääsisällön tuottavasta moduulista. Eri moduulit voivat kuitenkin vaatia eri sisällöt alueisiin. Esimerkiksi webbikameran kanssa navigointipuu korvataan pienillä esikatselukuvilla.
-Taulukoissa X ja X on esimerkki siitä, miten skin ja alueiden sisältö päätellään, jos pääsisällön tuottava moduuli on page, webcam tai ilmo (ilmoittautuminen).
+Kuvauksen ei tarvitsisi olla moduulista skiniin, vaan se voisi olla sivukohtainen. Sivostoa suunniteltaessa havaittiin kuitenkin, että skinin valinta riippuu aina pääsisällön tuottavasta moduulista. Eri moduulit voivat kuitenkin vaatia eri sisällöt eri alueisiin. Esimerkiksi webbikameran kanssa navigointipuu korvataan pienillä esikatselukuvilla.
+Taulukoissa X ja X on esimerkit siitä, miten skin ja alueiden sisältö päätellään, jos pääsisällön tuottava moduuli on page, webcam tai ilmo (ilmoittautuminen).
 
 
 moduuli = page | webacm  =>  skin = default
@@ -345,47 +341,55 @@ ilmo    | ilmo->getTopnavi | ilmo->getContent(id)
 
 * Moduulien toiminta *
 
-Moduulit ovat itsenäisiä, eli ne eivät tiedä mihin alueeseen niiden tuottama sisältö päätyy, tai mitkä muut moduulit tuottavat samaan aikaan sisältöä. Tämä mahdollistaa sen, että koko sivun ulkoasu voidaan vaihtaa, mutta jokainen moduuli toimii omassa lokerossaan kuten ennenkin. Toisaalta moduulien tuottama sisältö voidaan syöttää skinin eri alueisiin ilman, että moduulin itse tarvitsisi tietää siitä mitään.
+Moduulit ovat itsenäisiä, eli ne eivät tiedä mihin alueeseen niiden tuottama sisältö päätyy, tai mitkä muut moduulit tuottavat samaan aikaan sisältöä. Tämä mahdollistaa sen, että koko sivun ulkoasu voidaan vaihtaa, mutta jokainen moduuli toimii omassa lokerossaan kuten ennenkin. Vastaavasti moduulien tuottama sisältö voidaan syöttää skinin eri alueisiin, ilman että moduulin itse tarvitsisi tietää siitä mitään.
 
 Suoritus etenee seuraavasti:
 * MainControllerin pyynnöt menevät moduulin Controllerille.
 * Controller pyytää moduulin Model-kerroksen toimintalogiikkaa tuottamaan sisältöä, lataa sopivan näkymän (View) ja syöttää sisällön näkymälle.
 * Controller palauttaa näkymän tuottaman HTML-sisällön takaisin MainControllerille.
 
-Moduuli pitää itse kirjaa tilastaan tilmuuttujissa, joita voidaan tallentaa sessioon, välittää piilokenttinä lomakkeissa tai enkoodata linkkien urleihin. Miten moduulin tila voidaan enkoodata myös muiden moduulien sisältämiin linkkeihin, on ratkaisematta. Ongelma on varmasti ratkaistavissa esimerkiksi ajamalla sivuston renderöinti kahdessa vaiheessa, joista ensimmäisessä moduulien täytyy ilmoittaa tilamuuttujansa globaaliin tietovarastoon, ja toisessa vaiheessa linkit renderöidään käyttäen tätä tietovarastoa apuna.
+Moduuli pitää itse kirjaa tilastaan tilmuuttujissa, joita voidaan tallentaa sessioon, välittää piilokenttinä lomakkeissa tai enkoodata linkkien urleihin.
 
 
 == Tietokanta ==
 
 * Navigointihierarkia *
 
-Sivustolla on yksi abstrakti, kielestä riippumaton navigointihierarkia. Sivujen otsikot ja polut ladataan toisesta taulusta, joka sisältää kieliversiot. ER-kaavio on esitetty kuvassa X.
+Sivustolla on yksi abstrakti, kielestä riippumaton navigointipuu. Sivujen otsikot ja polut ladataan toisesta taulusta, joka sisältää eri kieliversiot. 
+
+Koska myös sivujen polut ovat kielikohtaisia, käyttäjän haluama kieliversio pystytään päättelemään suoraan urlista sen sijaan, että urlin alussa toi lopussa tarvitsisi erikseen mainita kielikoodia. ER-kaavio on esitetty navigoinnin osalta kuvassa X.
 
 [ER-kaavio]
+Kuva X: Navigointipuun ER-kaavio.
+
+Jokaisella sisältöä tuottavalla moduulilla on oma taulunsa, josta sisältöä haetaan id:n ja kielen perusteella. Kuvassa on yksinkertaisuuden vuoksi esitetty vain staattiset sivut tuottavan page-moduulin taulu.
 
 
 * Käyttöoikeudet *
 
+Jokaisella ylläpitäjillä on henkilökohtainen käyttäjätunnus, ja jokainen käyttäjä voi kuulua mielivaltaiseen määrään ryhmiä. Käyttöoikeudet ovat aina ryhmäkohtaisia, mikä yksinkertaistaa arkkitehtuuria. Tarvittaessa käyttäjälle voidaan luoda henkilökohtainen ryhmä. Käyttöoikeustaulu kytkee yksinkertaisesti moduulien toiminnot ryhmiin. Taulussa voi eimserkiksi olla rivi, joka kertoo, että page-moduulin createPage-toimintoon on oikeus hallitus-nimisellä ryhmällä. ER-kaavio on esitetty käyttäjähallinnan osalta kuvassa X.
 
-* Moduulien tietovarastot *
+[ER-kaavio]
+Kuva X: Käyttäjähallinnan ER-kaavio.
 
 
 * Object-relational -kuvaus *
 
-
+Model-tasolla on automatiikkaa (O/R mapping), joka lataa tietokannan taulusta id:n perusteella tietyn rivin olioksi, eli moduulin ohjelmoijan ei tarvitse kirjoittan triviaaleja tietokantakyselyjä itse. Olion kenttiä voi muuttaa vapaasti, jonka jälkeen oliota voi pyytää kirjoittamaan sisältönsä takaisin kantaan. Toiminnallisuus toteutetaan Model-yliluokkaan, jonka kaikki model-kerroksen luokat perivät. Ohjelmoija saa edelleen kirjoittaa myös omia kyselyitä esimerkiksi hakiessaan listoja monimutkaisemmilla hakuehdoilla.
 
 
 == Tietoturva ==
 
-SQL inject
+Vaikka killan nettisivusto ei ole erityisen kriittinen palvelu, tietokanta sisältää arkaluonteisia tietoja, kuten sitsi-ilmoittautujien henkilötietoja. Tietoturvaan on siksi suhtauduttava vakavasti, ja se on otettava suunnittelussa huomioon kaikilla tasoilla heikoimman lenkin periaatteen mukaisesti.
 
-käyttäjätasot
+Sovelluksessa on toiminnallisuutta, joka ottaa syötettä autentikoitumattomalta käyttäjältä, ja tekee sen perusetella operaatioita tietokannassa. Tällainen toiminto on esimerkiksi tapahtumaan ilmoittautuminen. Ilmeinen uhka on perinteinen SQL injection-hyökkäys, jossa hyökkääjä kirjoittaa lomakkeeseen haitallisia SQL-komentoja. Tältä voidaan suojautua suodattamalla käyttäjältä saadusta syötteestä tietyt erikoismerkit (escaping), niin että syöte tulkitaan aina tekstinä eikä SQL-komentoina. Automaattinen O/R mapping lisää turvallisuutta, koska tällöin riittä varmistaa keskitetyn, kaikille yhteisen koodin turvallisuus. Moduulien ohjelmoijille jää edelleen vastuu suodattaa syöte omissa kyselyissään.
 
+Ylläpito-oikeudet myönnetään tarveharkintaisesti hallituksen jäsenille ja toimihenkilöille, joten vandalismi ei ole vastaava uhka kuin vaikkapa Wikipediassa. Tämän takia esimerkiksi sivujen historiaa ei ole tarpeen tallentaa. Ilmoittautumislomake on altis vandalismille, mutta ongelmaa pidetään sen verran epätodennäköisenä, että ratkaisuja ryhdytään etsimään vasta, jos ongelmia esiintyy. Vaikka ylläpitäjät ovat lähtökohtaisesti luotettavia henkilöitä, sovellukseen halutaan toteuttaa käyttöoikeustasot. Tällöin esimerkiksi hallituksen pöytäkirjojen muokkaaminen voidaan estää muilta kuin hallituksen jäseniltä.
 
 
 == Palvelinympäristö ==
 
-Järjestelmän toteutuskieleksi on valittu PHP. Kieli ei saa olla liian eksoottinen, koska järjestelmä jää tuotantokäyttöön pitkäksi aikaa. PHP:n versio 5 vaaditaan, koska 4:n olio-ominaisuudet ovat oleellisesti huonommat. Järjestelmä on suunniteltu ajettavaksi Apache 2-palvelimen päällä. Mod_rewrite-laajennus vaaditaan urlien siistimiseen. Tietokannaksi valittiin Postgres avoimuuden takia.
+Järjestelmän toteutuskieleksi on valittu PHP. Kieli ei saa olla liian eksoottinen, koska järjestelmä jää tuotantokäyttöön pitkäksi aikaa. PHP:n versio 5 vaaditaan, koska 4:n olio-ominaisuudet ovat oleellisesti huonommat. Järjestelmä on suunniteltu ajettavaksi Apache 2-palvelimen päällä, ja mod_rewrite-laajennus vaaditaan urlien siistimiseen. Tietokannaksi valittiin PostgreSQL avoimuuden takia.
 
 
 --------------------------------------------------------------------------------
@@ -401,11 +405,56 @@ Jaakko Kantojärvi
 arkkitehtuuri, ohjelmointi
 
 Antti Nieminen
-ulkoasu
+käyttöliittymä ja ulkoasu
 
 
 == Ajankäyttö ja aikataulu ==
 
-    Esittäkää suunnitelma harjoitustyön aikataulusta. Sen voi tehdä esimerkiksi jakamalla harjoitustyön kulku riittävän tarkasti tehtäviin/työvaiheisiin, kertomalla niiden sisältö ja keskenäinen järjestys, sekä listaamalla jokaisen yksittäisen ryhmäläisen suunniteltu ajankäyttö kuhunkin vaiheeseen. Esittäkää myös henkilö- ja työvaihekohtaisesti suunnitelmavaiheen toteutunut ajankäyttö.
+Esittäkää suunnitelma harjoitustyön aikataulusta. Sen voi tehdä esimerkiksi jakamalla harjoitustyön kulku riittävän tarkasti tehtäviin/työvaiheisiin, kertomalla niiden sisältö ja keskenäinen järjestys, sekä listaamalla jokaisen yksittäisen ryhmäläisen suunniteltu ajankäyttö kuhunkin vaiheeseen. Esittäkää myös henkilö- ja työvaihekohtaisesti suunnitelmavaiheen toteutunut ajankäyttö.
 
-    Huomatkaa, että toteutunutta ajankäyttöä dokumentoidaan seuraavissa dokumenteissa. Aloittakaa siis kirjanpito ajankäytöstä heti kurssin alussa. 
+Huomatkaa, että toteutunutta ajankäyttöä dokumentoidaan seuraavissa dokumenteissa. Aloittakaa siis kirjanpito ajankäytöstä heti kurssin alussa.
+
+                                                                    suunnitelma (h)        toteuma (h)
+                                             Valmiina viikolla   Tapio  Jaakko  Antti  Tapio  Jaakko Antti
+Projektin pystytys (serveri, svn...)                 6             4       4      4      5                 
+Arkkitehtuurin suunnittelu                           7             5       5      3      3                 
+Yleinen suunnittelu                                  8             3       3      3      4                 
+Korkean tason arkkitehtuurin protoilu                9            16       4      0     11                 
+Navigoinnin toteuttaminen                           10             8       0      0      3                 
+Suunnitelmadokumentin kirjoittaminen                11             6       6      6     10                 
+Moduulien toiminta                                  12             6       6      0                        
+Autentikointi ja alustavia admin-toimintoja         13             8       8                               
+Staattiset sivut toimimaan                          14             0       6                               
+Cache                                               15             0      12                               
+Ilmoittautuminen                                    16             6                                       
+Demon valmistelu                                    17             2       2      2                        
+Gallup                                              17             0       4                               
+Uutiset                                             18             4                                       
+Edistyneet admin-toiminnot                          19            16      16      0                        
+Sisällön kirjoittaminen                             20             4       4      4                        
+Toteutusdokumentin kirjoittaminen                   21             6       6      6                        
+
+Taulukko X: Ajankäyttösuunnitelma työvaiheittain.
+
+
+Ajankäyttösuunnitelma on esitetty taulukossa X. Tarkoituksena on aloittaa korkean tason arkkitehtuurista ja kriittisistä toiminnoista, ja edetä hiljalleen perustoimintoihin ja viimeistelyyn. Seuraavassa on avattu työvaiheiden sisältöä monisanaisemmin:
+
+Arkkitehtuurin suunnittelu: sisältää yhteisiä palavereja
+
+Korkean tason arkkitehtuurin protoilu: Arkkitehtuuri on tärkeää saada hyväksi heti alussa, koska sen muuttaminen on myöhemmin vaikeaa. Tässä vaiheessa täytyy saada yleiskuva MainConterollerin ja moduulien vuorovaikutuksesta, skinien toiminnasta, ja MVC-pohjasta.
+
+Navigoinnin toteuttaminen: Navigointi on sisällönhallintajärjestelmän ydin, joten se täytyy saada toimimaan alussa. Sivustoa on mahdotonta testata, jos sillä ei pysty liikkumaan.
+
+Moduulien toiminta: Tässä vaiheessa täytyy lyödä lukkoon moduulien sisäinen arkkitehtuuri, jotta lopullisia käyttööntulevia moduuleja pästään toteuttamaan.
+
+Autentikointi ja alustavia admin-toimintoja: Tässä vaiheessa täytyy muodostaa selkeä kuva siitä, miten sivusto toimii adminin näkökulmasta ja miten esimerkiksi moduulien admin-toiminnot integroidaan kokonaisuuteen.
+
+Staattiset sivut toimimaan: Sivut kuvataan mahdollisesti wiki-tyyppisellä syntaksilla, joten paresri täytyy toteuttaa. Moduuli on itsenäinen, mutta se on niin tärkeä, että kannattaa toteuttaa aikaisessa vaiheessa.
+
+Cache (välimuisti): Välimuisi olisi erittäin hyvä ominaisuus sivuston tehokkuuden kannalta. Se on mahdollisesti erittäin hankala toteuttaa ja vaikkuttaa arkkitehtuuriin, joten toteuttamista täytyy yrittää ennemmin alkupuolella kuin viimeistelyvaiheessa. Toiminto voidaan jättää pois, jos se osoittautuu liian hankalaksi.
+
+Ilmoittautuminen, Gallup, Uutiset: Varsinaisten moduulien toteuttaminen.
+
+Edistyneet admin-toiminnot: Admin-puolen toiminnallisuus on toimintalogiikaltaan monimutkaista perusmoduuleihin. Näihin toimintoihin kuuluvat muun muassa sivuhierarkian manipuloiminen ja käyttäjäoikeuksien hallinta. Tämä työvaihe jakautuu lähes koko projektin laajuudelle, ja on monimutkaisuutensa takia luultavasti viimeisenä välmis.
+
+Sisällön kirjoittaminen: Oman sisällön tuottaminen on itsemme kannalta vähiten tärkeä osuus, ja sitä tehdään loppupuolella siinä määrin, että kurssin vaatimustaso täyttyy.
