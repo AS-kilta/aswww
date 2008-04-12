@@ -1,0 +1,53 @@
+<html>
+<head>
+    <title>View architecture</title>
+</head>
+<body>
+
+<h2></h2>
+
+<p>The template is rendered inside a View object, so $this refers to a View.</p>
+
+
+<h2>Forms</h2>
+
+<p>formStart($action)</p>
+
+<p>Start a form with <b>$this->formStart()</b> so the &lt;form action='...'&gt; is filled automatically. formStart() takes the desired method as parameter. For example, formStart('updatePage') would cause renderUpdatePage to be called, when the form is submitted. If nothing is specified, the renderDefault is called.
+</p>
+
+<h3>Example:</h3>
+<pre>
+&lt;?= $this->formStart('login') ?&gt;
+&lt;?= $this->formEnd() ?&gt;
+</pre>
+
+
+
+<h2>Submit button</h2>
+
+<p>submitButton($action, $text) OR &lt;input type="submit" value="myText" name="myVariable" /&gt;></p>
+
+<p>The action specified in submitButton() overrides the one specified in formStart()</p>
+
+<h3>Example:</h3>
+<pre>
+...
+</pre>
+
+
+
+<h2>Action links</h2>
+
+<p>actionLink($action, $text)</p>
+
+<p>Action is prefixed with <i>render</i>.</p>
+
+<h3>Example:</h3>
+<pre>
+&lt;?= actionLink('deletePage', 'Delete') ?&gt;
+</pre>
+
+
+</body>
+</html>
