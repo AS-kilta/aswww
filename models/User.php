@@ -1,18 +1,17 @@
 <?php
-class Page extends Model {
+class User extends Model {
 
     /**
      * Constructor
      */
     public function __construct() {
+        $this->tableName = 'users';
+        $this->key = array('id');
+
         // Columns that are automatically saved
-        $this->columns = array('lang','content');
-        $this->key = array('id','lang');
-        $this->tableName = 'pages';
+        $this->columns = array(username,password,realname);
 
         parent::__construct();
     }
-
 }
-
 ?>

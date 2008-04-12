@@ -1,1 +1,23 @@
  
+ERROR 2008-04-08 22:54:27: UPDATE pages SET lang='fi', content='<h1>Kilta</h1>
+asd' WHERE oid = 
+ERROR:  syntax error at end of input
+LINE 2: asd' WHERE oid = 
+                         ^
+ERROR 2008-04-09 00:42:36: UPDATE pages SET lang='fi', content='<h1>Kilta</h1>' WHERE id = 10
+ERROR:  duplicate key value violates unique constraint "pages_pkey"
+ERROR 2008-04-09 01:19:16: UPDATE pages SET lang='fi', content='<h1>Kilta</h1>
+asd' WHERE id=10lang=fi
+ERROR:  syntax error at or near "lang"
+LINE 2: asd' WHERE id=10lang=fi
+                        ^
+ERROR 2008-04-09 01:23:29: UPDATE pages SET lang='fi', content='<h1>Kilta</h1>
+asdasd' WHERE id=10 lang='fi' 
+ERROR:  syntax error at or near "lang"
+LINE 2: asdasd' WHERE id=10 lang='fi' 
+                            ^
+ERROR 2008-04-09 01:24:52: UPDATE pages SET lang='fi', content='<h1>Kilta</h1>
+asddfg' WHERE  AND id=10 AND lang='fi'
+ERROR:  syntax error at or near "AND"
+LINE 2: asddfg' WHERE  AND id=10 AND lang='fi'
+                       ^

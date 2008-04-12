@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * Authentication service (singleton)
+ */
 class Auth {
     private static $instance;
 
@@ -24,18 +26,18 @@ class Auth {
             return false;
         }
 
-        $passwordCipher = md5($salasana);
+        $passwordCipher = md5($password);
 
         // Query
         $query = 'SELECT id FROM users '
-                   . "WHERE username = '" . escape($username) . "' "
+                   . "WHERE username = '" . escapeSql($username) . "' "
                    . "AND password = '$passwordCipher'";
         $result = query($query);
 
         if ($result != false && pg_num_rows($result) > 0) {
             $row = pg_fetch_assoc($result);
-            $_SESSION['userId'] = $row['oid'];
-            return $row['oid'];
+            $_SESSION['userId'] = $row['id'];
+            return $row['id'];
         } else {
             return false;
         }
@@ -52,10 +54,6 @@ class Auth {
         $_SESSION['admin'] = true;
     }
 
-    function logoutAdmin() {
-        $_SESSION['admin'] = false;
-    }
-
     function isAdmin() {
         if ($_SESSION['admin']) {
             return true;
@@ -66,7 +64,7 @@ class Auth {
 
     /**
      * Returns current user
-     * @return mixed Current user or null is no user is logged in
+     * @return Current user or null is no user is logged in
      */
     function getCurrentUser() {
         if ($_SESSION['userId'] > 0) {

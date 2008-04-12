@@ -22,6 +22,12 @@ if ($parts[0] == 'admin') {
     exit();
 }
 
+if ($parts[0] == 'login') {
+    showLogin();
+    exit();
+}
+
+
 // Load navitree
 $navi = Navi::getInstance();
 $navi->resolve($parts);
@@ -81,18 +87,6 @@ function showModule($node) {
     }
     $topNavi = $navi->renderTopNavi();
 
-    // Select the right action
-    /*
-    $action = get('action');
-    $method = 'render' . $action;
-
-    if ($action === false || !method_exists($module, $method)) {
-        $method = 'renderPage';
-    }
-
-    $content = $module->$method();
-    */
-
     $skin->setContent('content', $content);
     $skin->setContent('topnavi', $topNavi);
     $skin->setContent('left', $left);
@@ -106,8 +100,8 @@ function showAdmin() {
 
     $module = new AdminController();
     $content = $module->render();
+    $topNavi = $module->renderTopNavi();
     $leftNavi = $navi->renderNaviTree();
-    $topNavi = $navi->renderTopNavi();
 
     $skin->setContent('content', $content);
     $skin->setContent('left', $leftNavi);
@@ -115,9 +109,6 @@ function showAdmin() {
     $skin->show();
 }
 
-function showLogin() {
-    $module = Auth::getInstance();
-    $module->showPage();
-}
+
 
 ?>

@@ -119,7 +119,7 @@ Ulkoiset linkit
 
 == Sisältösuunnitelma ==
 
-Vanhan sivuston sisältö olisi sellaisenaan melko kelvollista, mutta sitä kirjoitetaan uusiksi siinä määrin, että kurssin vaatimustaso täyttyy. Seuraavassa esitetään sivukohtainen erittely sivuston sisällöstä. Sisällön yhteydessä mainitaan, käytetäänkö vanhaa sisältöä, vai kirjoitetaanko se uusiksi.
+Vanhan sivuston sisältö olisi sellaisenaan melko kelvollista, mutta sitä kirjoitetaan uusiksi siinä määrin, että kurssin vaatimustaso täyttyy. Seuraavassa esitetään sivukohtainen erittely sivuston sisällöstä. Sisällön yhteydessä mainitaan, käytetäänkö vanhaa sisältöä, vai kirjoitetaanko se uusiksi. Kuvassa X on esitetty sivuston rakennekaavio.
 
 Otsikko: Etusivu
 Sisältö: Uutiset, tapahtumakalenteri, gallup (dynaamisia ja ajankohtaisia)

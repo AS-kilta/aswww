@@ -2,7 +2,7 @@
 
 include_once 'config.php';
 include_once 'framework/Model.php';
-include_once 'framework/Controller.php';
+include_once 'framework/ModuleController.php';
 include_once 'framework/View.php';
 include_once 'framework/Skin.php';
 
@@ -53,9 +53,21 @@ function queryTable($query) {
     }
 }
 
-function escape($string) {
+/**
+ * Remove special characters to prevent sql injection.
+ */
+function escapeSql($string) {
     return pg_escape_string($string);
 }
+
+/**
+ * Remove special characters to prevent XSS.
+ */
+function escapeHtml($string) {
+    addLogEntry('ERROR', "htmlEscape is not implemented");
+    return $string;
+}
+
 
 function begin_transaction() {
     query('BEGIN');
@@ -93,7 +105,7 @@ function redirect($location) {
  * Gets postdata
  * @return false if variable is not set
  */
-function post($variableName) {
+function getPost($variableName) {
     if (isset($_POST[$variableName])) {
         return $_POST[$variableName];
     } else {
@@ -105,7 +117,7 @@ function post($variableName) {
  * Gets getdata
  * @return false if variable is not set
  */
-function get($variableName) {
+function getGet($variableName) {
     if (isset($_GET[$variableName])) {
         return $_GET[$variableName];
     } else {
@@ -141,7 +153,6 @@ function addLogEntry($level, $message) {
         fwrite($logfile, "$level $timestamp: $message\n");
         flock($logfile, LOCK_UN);
     }
-
 }
 
 function sendEmail($address, $subject, $message, $from) {
@@ -191,7 +202,20 @@ function getLanguage() {
 }
 
 function baseUrl() {
+    // Remove index.php
+    // strlen('index.php') + 1 = 10
     return substr($_SERVER['PHP_SELF'], 0, -10);
+}
+
+function getCurrentUrl() {
+    // Remove everything after '?'
+    $length = strpos($_SERVER['REQUEST_URI'], '?');
+
+    if ($length === false) {
+        return $_SERVER['REQUEST_URI'];
+    } else {
+        return substr($_SERVER['REQUEST_URI'], 0, $length);
+    }
 }
 
 ?>

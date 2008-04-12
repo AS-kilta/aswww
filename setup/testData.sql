@@ -22,6 +22,10 @@ INSERT INTO pages(id,lang,content) VALUES (11,'en','<h1>Board</h1>');
 INSERT INTO pages(id,lang,content) VALUES (12,'fi','<h1>Toimarit</h1>');
 
 
+-- Users
+INSERT INTO users(id,username,password,realname) VALUES (1,'tapio',md5('tapio'),'Tapio');
+
+
 -- SIGNUP
 INSERT INTO naviNodes(id,parent,module,nodeId) VALUES (5,null,'ilmo',0);
 INSERT INTO naviTitles(id,lang,url,title) VALUES (5,'fi','ilmo','Ilmot');
@@ -31,3 +35,8 @@ INSERT INTO naviTitles(id,lang,url,title) VALUES (6,'fi','taskumatti','Taskumatt
 
 INSERT INTO signup(id,lang,title,description) VALUES (1,'fi','Taskumatti','Tilaa taskumatti');
 
+
+-- SET UP SEQUENCES
+SELECT setval('naviNodesSeq', 100);
+SELECT setval('pagesSeq', 100);
+SELECT setval('usersSeq', 100);

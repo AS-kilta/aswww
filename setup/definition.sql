@@ -1,11 +1,11 @@
 DROP TABLE naviNodes CASCADE;
+CREATE SEQUENCE naviNodesSeq;
 CREATE TABLE naviNodes (
     id INT PRIMARY KEY,
     parent INT REFERENCES naviNodes(id) ON DELETE SET NULL,
     module VARCHAR(64),
     nodeId INT
 );
-
 
 DROP TABLE naviTitles;
 CREATE TABLE naviTitles (
@@ -18,6 +18,7 @@ CREATE TABLE naviTitles (
 
 
 DROP TABLE pages;
+CREATE SEQUENCE pagesSeq;
 CREATE TABLE pages (
     id INT,
     lang VARCHAR(2),
@@ -40,6 +41,7 @@ CREATE TABLE signup (
 
 
 DROP TABLE users;
+CREATE SEQUENCE usersSeq;
 CREATE TABLE users (
     id INT,
     username VARCHAR(32),
