@@ -56,7 +56,6 @@ class Navi {
             $parent->addChild($node);
 
             // Is this node on the path requested by the user?
-            //if (count($urlParts) > 0 && $row['url'] == $urlParts[0]) {
             if (count($urlParts) > 0 && $row['url'] == $urlParts[0]) {
                 $node->setOnPath(true);
 
@@ -123,13 +122,15 @@ class Navi {
 }
 
 class NaviNode {
-    var $id;            // database id
+    var $id;            // id in database
     var $lang;          // language
     var $url;           // url name of the node (folder)
     var $cumulativeUrl;
     var $title;         // human-readable title
+
     var $module;        // module that must be used for rendering
     var $contentId;     // id of the content node
+
     var $children;      // array of child nodes
     var $onPath;        // true if node is on the path requested by the user
 

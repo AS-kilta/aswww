@@ -67,9 +67,12 @@ class Auth {
      * @return Current user or null is no user is logged in
      */
     function getCurrentUser() {
-        if ($_SESSION['userId'] > 0) {
-            $user = new Ilmo;
+        $userId = $_SESSION['userId'];
+
+        if ($userId > 0) {
+            $user = new User();
             $user->load($_SESSION['userId']);
+
             return $user;
         } else {
             return null;

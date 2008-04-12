@@ -9,7 +9,7 @@ class User extends Model {
         $this->key = array('id');
 
         // Columns that are automatically saved
-        $this->columns = array(username,password,realname);
+        $this->columns = array('username','password','realname');
 
         parent::__construct();
     }

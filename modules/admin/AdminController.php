@@ -44,7 +44,16 @@ class AdminController extends ModuleController {
                 return $view->render();
             }
         }
+    }
 
+    public function renderUser() {
+        $user = Auth::getCurrentUser();
+
+        if ($user == null) {
+            return "<h1>Not logged in</h1>";
+        } else {
+            return "<h1>" . $user->getRealname() . "</h1>";
+        }
     }
 }
 
