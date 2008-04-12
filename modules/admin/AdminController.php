@@ -18,9 +18,14 @@ class AdminController extends ModuleController {
     }
 
     public function renderTopNavi() {
-        $view = $this->loadView('topNavi');
+        $html = '<ul>';
+        $html .= '<li><a href="' . baseUrl() . '">Front page</a></li>';
+        $html .= '<li><a href="' . baseUrl() . '/admin/users">Users</a></li>';
+        $html .= '<li><a href="' . baseUrl() . '/admin/users">Pages</a></li>';
+        $html .= '<li><a href="' . baseUrl() . '/logout">Logout</a></li>';
+        $html .= '</ul>';
 
-        return $view->render();
+        return $html;
     }
 
     public function renderLogin() {

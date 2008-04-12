@@ -4,6 +4,7 @@
  */
 class Auth {
     private static $instance;
+    private $currentUser;
 
     public static function getInstance() {
         if (self::$instance === null) {
@@ -50,18 +51,6 @@ class Auth {
         $_SESSION['userId'] = -1;
     }
 
-    function loginAdmin() {
-        $_SESSION['admin'] = true;
-    }
-
-    function isAdmin() {
-        if ($_SESSION['admin']) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
     /**
      * Returns current user
      * @return Current user or null is no user is logged in
@@ -70,10 +59,13 @@ class Auth {
         $userId = $_SESSION['userId'];
 
         if ($userId > 0) {
-            $user = new User();
-            $user->load($_SESSION['userId']);
+            if ($this->currentUser == null) {
+                $user = new User();
+                $user->load($_SESSION['userId']);
+                $this->currentUser = $user;
+            }
 
-            return $user;
+            return $this->currentUser;
         } else {
             return null;
         }

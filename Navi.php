@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Singleton
+ * Navigation services (singleton)
  */
 class Navi {
     var $naviTree;
@@ -28,7 +28,8 @@ class Navi {
     }
 
     /**
-     * Resolves the given url and populates navitree.
+     * Resolves the given url and populates navitree. This should be
+     * called once at the beginning.
      */
     public function resolve($urlParts) {
         $this->queryLevel($urlParts, $this->naviTree);
@@ -50,6 +51,13 @@ class Navi {
 
         $result = queryTable($query);
 
+        // If we have reacheced a leaf node but the user request has
+        // subfolders left, store the remaining path
+        if (count($result) < 1) {
+            $this->remainingPath = $urlParts;
+        }
+
+        // Add children to the navi tree
         foreach ($result as $row) {
             // Add the node to the tree
             $node = new NaviNode($row);
@@ -69,6 +77,7 @@ class Navi {
                     $this->selectedBranch = $node;
                 }
 
+                // Set language
                 // XXX: this may not be the best place for this
                 setLanguage($row['lang']);
                 $this->naviTree->setLang($row['lang']);
@@ -99,6 +108,15 @@ class Navi {
         $html .= $this->naviTree->renderTree($startDepth);
         $html .= "</ul>\n";
 
+        // Admin
+        // TODO: check privileges properly
+        $auth = Auth::getInstance();
+        $user = $auth->getCurrentUser();
+
+        if ($user != null) {
+            $html .= "<p><a href='" . baseUrl() . "/admin/newpage'>New page</a></p>";
+        }
+
         return $html;
     }
 
@@ -110,6 +128,16 @@ class Navi {
             if ($child->getLang() == getLanguage()) {
                 $html .= "<li><a href='" . baseUrl() . $child->cumulativeUrl . "'>{$child->title}</a></li>";
             }
+        }
+
+        // Admin
+        // TODO: check privileges properly
+        $auth = Auth::getInstance();
+        $user = $auth->getCurrentUser();
+
+        if ($user != null) {
+            $html .= "<li><a href='" . baseUrl() . "/admin'>Admin</a></li>";
+            $html .= "<li><a href='" . baseUrl() . "/logout'>Logout</a></li>";
         }
 
         $html .= "</ul>";

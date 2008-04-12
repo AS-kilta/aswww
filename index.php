@@ -22,9 +22,12 @@ if ($parts[0] == 'admin') {
     exit();
 }
 
-if ($parts[0] == 'login') {
-    showLogin();
-    exit();
+if ($parts[0] == 'logout') {
+    $auth = Auth::getInstance();
+    $auth->logout();
+    // FIXME: this causes 'page not found'
+    $path = '';
+    $parts = Array();
 }
 
 
@@ -65,20 +68,22 @@ function showModule($node) {
     switch ($moduleName) {
         case 'page':
             $page = new PageController();
-            $content = $page->render($node);
+            $page->setContentNode($node);
+            $content = $page->render();
             $left = $navi->renderNaviTree();
             break;
 
         case 'frontpage':
             $front = new FrontpageController();
+            //$front->setContentNode($node);  // This wouldn't really do anything
             $events = new IlmoController();
             $content = $front->render();
             $left = $events->renderEvents();
             break;
 
         case 'ilmo':
-            $ilmo = new IlmoController();
-            $content = $ilmo->render($node);
+            $ilmo = new IlmoController($node);
+            $content = $ilmo->render();
             break;
 
         default:
@@ -99,6 +104,7 @@ function showAdmin() {
     $skin = new Skin('aski');
 
     $module = new AdminController();
+    $module->setPath($navi->get);
     $content = $module->render();
     $topNavi = $module->renderTopNavi();
     $leftNavi = $navi->renderNaviTree();

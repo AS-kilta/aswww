@@ -5,35 +5,26 @@ class PageController extends ModuleController {
     function __construct() {
         $this->moduleName = 'page';
     }
-    
-    function render($node) {
-        // XXX: Old fashion stuff. This should be automtic.
-        $action = getGet('pageAction');
 
-        switch ($action) {
-            case 'edit':
-                return $this->renderEdit($node);
-                break;
-
-            default:
-                return $this->renderDefault($node);
-        }
-    }
-
-    function renderDefault($node) {
+    function renderDefault() {
+        $auth = Auth::getInstance();
         $page = new Page();
-        $page->load($node->getContentId(), getLanguage());
+        $page->load($this->getContentId(), getLanguage());
 
-        return $page->getContent();
+        $view = $this->loadView('show');
+        $view->setData('editable', true);
+        $view->setData('htmlContent', $page->getContent());
+
+        return $view->render();
     }
 
-    function renderEdit($node) {
+    function renderEdit() {
         // TODO: check privileges
 
-        
+
         // Load the page to be edited
         $page = new Page();
-        $page->load($node->getContentId(), getLanguage());
+        $page->load($this->getContentId(), getLanguage());
 
         if (getPost('save')) {
             // Save edited content
@@ -46,7 +37,7 @@ class PageController extends ModuleController {
         }
 
         // Load view
-        $view = new View('modules/page/views/edit.php');
+        $view = $this->loadView('edit');
         $view->setData('htmlContent', $page->getContent());
         $view->setData('editableContent', $page->getContent());
 

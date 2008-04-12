@@ -82,7 +82,7 @@ class View {
 
     function actionLink($action, $text) {
         return "<a href='" . getCurrentUrl()
-                    . '?' . $this->controller->getModuleName() . 'Action=' . "'>$text</a>";
+                    . '?' . $this->controller->getModuleName() . 'Action=' . $action . "'>$text</a>";
     }
 }
 
