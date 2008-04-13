@@ -15,25 +15,33 @@ class ModuleController {
     }
 
     function render() {
-        // Check if action is specified in GET
+        $method = 'render';
+
+        // Path specifies the method to be called
+        if (count($this->path) > 0) {
+            $method .= ucfirst($this->path[0]);
+        }
+
+        // Check if action is specified in GET or POST
+        $action = '';
         $getAction = getGet($this->moduleName . 'Action');
         $postAction = getPost($this->moduleName . 'Action');
-
-
 
         if ($postAction != false) {
             $action = $postAction;
         } else if ($getAction != false) {
             $action = $getAction;
-        } else {
-            // No action requested. Render default.
-            return $this->renderDefault();
         }
 
         $this->currentAction = $action;
+        $method .= ucfirst($action);
+
+        // If no action or path is specified
+        if ($method == 'render') {
+            $method = 'renderDefault';
+        }
 
         // Call the requested method
-        $method = 'render' . ucfirst($action);
         if (method_exists($this, $method)) {
             return $this->$method();
         } else {

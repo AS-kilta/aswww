@@ -73,16 +73,34 @@ class View {
      * Renders a submit button. The action specified here overrides the one
      * specified in startForm().
      */
-    function submitButton($action, $text) {
-        return '<button name="'
+    function submitButton($action, $text, $parameters = false) {
+        $html = '<button name="'
                 . $this->controller->getModuleName() . 'Action" value="'
-                . $action . '" type="submit" />'
-                . "$text</button>\n";
+                . $action;
+
+        if ($parameters) {
+            $html .= '&' . $parameters;
+        }
+
+        $html .= '" type="submit" />' . $text . "</button>\n";
+
+        return $html;
     }
 
-    function actionLink($action, $text) {
-        return "<a href='" . getCurrentUrl()
-                    . '?' . $this->controller->getModuleName() . 'Action=' . $action . "'>$text</a>";
+    /**
+     * @param parameters Get parameters as a string. Example 'param1=qwerty&param2=15'
+     */
+    function actionLink($action, $text, $parameters = false) {
+        $html = "<a href='" . getCurrentUrl()
+                    . '?' . $this->controller->getModuleName() . 'Action=' . $action;
+
+        if ($parameters) {
+            $html .= '&' . $parameters;
+        }
+
+        $html .= "'>$text</a>";
+
+        return $html;
     }
 }
 

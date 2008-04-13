@@ -27,7 +27,10 @@
 <div class="bg">&nbsp;
 <div id="wrap">
     <div id="header">
-    <div class="gears"><img alt="Automaatio- ja systeemitekniikan kilta" src="<?= baseUrl() . '/skins/aski/logo.png' ?>"></div>
+    <div class="gears">
+        <a href="<?= baseUrl() . '/admin' ?>">
+            <img alt="Automaatio- ja systeemitekniikan kilta" src="<?= baseUrl() . '/skins/aski/logo.png' ?>"></div>
+        </a>
     <div class="photo"><img alt="Kiltahenke&auml;" src=<?= baseUrl() . "/skins/aski/valokuva.jpg" ?>></div>
 
     <!-- External links -->

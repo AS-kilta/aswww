@@ -21,7 +21,8 @@ class AdminController extends ModuleController {
         $html = '<ul>';
         $html .= '<li><a href="' . baseUrl() . '">Front page</a></li>';
         $html .= '<li><a href="' . baseUrl() . '/admin/users">Users</a></li>';
-        $html .= '<li><a href="' . baseUrl() . '/admin/users">Pages</a></li>';
+        $html .= '<li><a href="' . baseUrl() . '/admin/pages">Pages</a></li>';
+        $html .= '<li><a href="' . baseUrl() . '/admin/navi">Navi</a></li>';
         $html .= '<li><a href="' . baseUrl() . '/logout">Logout</a></li>';
         $html .= '</ul>';
 
@@ -59,6 +60,75 @@ class AdminController extends ModuleController {
         } else {
             return "<h1>" . $user->getRealname() . "</h1>";
         }
+    }
+
+    public function renderUsers() {
+        $user = Auth::getCurrentUser();
+        $users = User::getUsers();
+
+        $view = $this->loadView('users');
+        $view->setData('users', $users);
+        return $view->render();
+    }
+
+
+    /**
+     * Edit user
+     */
+    public function renderUsersEditUser() {
+        $user = new User();
+        $userId = getGetOrPost('userId');
+
+        $view = $this->loadView('editUser');
+
+        // Load user, if id is known
+        if (strlen($userId) > 0 && $userId != 'new') {
+            if ($user->load($userId) == false) {
+                return '<h1>User not found</h1>';
+            }
+        }
+
+        if (getPost('save')) {
+            $user->setRealname(getPost('realname'));
+            $user->setUsername(getPost('username'));
+
+            $password = getPost('password');
+            if (strlen($password) > 0) {
+                $user->setPassword(getPost($password));
+            }
+
+            $user->save();
+            $view->setData('message', 'User saved');
+        }
+
+        $view->setData('user', $user);
+        return $view->render();
+    }
+
+    /**
+     * Delete user
+     */
+    public function renderUsersDeleteUser() {
+        $userId = getGetOrPost('userId');
+        if ($userId == false) {
+            return "<h1>No userId specified</h1>";
+        }
+
+        // Delete user
+        $user = new User();
+        $user->load($userId);
+        $user->delete();
+
+        redirect('admin/users');
+    }
+
+    public function renderNavi() {
+        $navi = Navi::getInstance();
+        $root = $navi->getNaviTree();
+
+        $view = $this->loadView('navi');
+        $view->setData('navi', $navi);
+        return $view->render();
     }
 }
 

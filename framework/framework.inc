@@ -95,11 +95,20 @@ function __autoload($class_name) {
  * Redirects
  */
 function redirect($location) {
-    $host  = $_SERVER['HTTP_HOST'];
-    $uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
-    header("Location: http://$host$uri/$location");
+    header("Location: " . baseUrl() . "/$location");
 }
 
+/**
+ * Gets getdata
+ * @return false if variable is not set
+ */
+function getGet($variableName) {
+    if (isset($_GET[$variableName])) {
+        return $_GET[$variableName];
+    } else {
+        return false;
+    }
+}
 
 /**
  * Gets postdata
@@ -113,12 +122,20 @@ function getPost($variableName) {
     }
 }
 
-/**
- * Gets getdata
- * @return false if variable is not set
- */
-function getGet($variableName) {
+function getGetOrPost($variableName) {
     if (isset($_GET[$variableName])) {
+        return $_GET[$variableName];
+    } else if (isset($_POST[$variableName])) {
+        return $_POST[$variableName];
+    } else {
+        return false;
+    }
+}
+
+function getPostOrGet($variableName) {
+    if (isset($_POST[$variableName])) {
+        return $_POST[$variableName];
+    } else if (isset($_GET[$variableName])) {
         return $_GET[$variableName];
     } else {
         return false;

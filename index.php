@@ -16,24 +16,24 @@ include 'modules/ilmo/IlmoController.php';
 $path = rtrim($_GET['q'], '/');
 $parts = explode('/', $path);
 
-// Admin (this has to work even if database is empty)
-if ($parts[0] == 'admin') {
-    showAdmin();
-    exit();
-}
-
-if ($parts[0] == 'logout') {
-    $auth = Auth::getInstance();
-    $auth->logout();
-    // FIXME: this causes 'page not found'
-    $path = '';
-    $parts = Array();
-}
-
-
 // Load navitree
 $navi = Navi::getInstance();
 $navi->resolve($parts);
+
+// Hard-coded paths
+if ($parts[0] == 'admin') {
+    showAdmin(array_slice($parts,1));
+    exit();
+} else if ($parts[0] == 'login') {
+    echo "<h1>Not implemented</h1>";
+    exit();
+} else if ($parts[0] == 'logout') {
+    $auth = Auth::getInstance();
+    $auth->logout();
+
+    $path = '';
+    $parts = Array();
+}
 
 // Load the correct module
 $node = $navi->getSelectedNode();
@@ -99,12 +99,12 @@ function showModule($node) {
     $skin->show();
 }
 
-function showAdmin() {
+function showAdmin($path) {
     $navi = Navi::getInstance();
     $skin = new Skin('aski');
 
     $module = new AdminController();
-    $module->setPath($navi->get);
+    $module->setPath($path);
     $content = $module->render();
     $topNavi = $module->renderTopNavi();
     $leftNavi = $navi->renderNaviTree();
@@ -115,6 +115,18 @@ function showAdmin() {
     $skin->show();
 }
 
+function showLogin() {
+    $navi = Navi::getInstance();
+    $skin = new Skin('aski');
 
+    $module = new AdminController();
+    $topNavi = $module->renderTopNavi();
+    //$leftNavi = $navi->renderNaviTree();
+
+    $skin->setContent('content', $content);
+    //$skin->setContent('left', $leftNavi);
+    $skin->setContent('topnavi', $topNavi);
+    $skin->show();
+}
 
 ?>

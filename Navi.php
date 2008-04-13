@@ -53,7 +53,7 @@ class Navi {
 
         // If we have reacheced a leaf node but the user request has
         // subfolders left, store the remaining path
-        if (count($result) < 1) {
+        if (count($result) < 1 && $parent != null && $parent->isOnPath()) {
             $this->remainingPath = $urlParts;
         }
 
@@ -81,10 +81,10 @@ class Navi {
                 // XXX: this may not be the best place for this
                 setLanguage($row['lang']);
                 $this->naviTree->setLang($row['lang']);
-
-                // Descend
-                $this->queryLevel(array_slice($urlParts,1), $node);
             }
+
+            // Descend
+            $this->queryLevel(array_slice($urlParts,1), $node);
         }
     }
 
@@ -146,6 +146,10 @@ class Navi {
 
     public function getSelectedNode() {
         return $this->selectedNode;
+    }
+
+    public function getNaviTree() {
+        return $this->naviTree;
     }
 }
 
@@ -213,6 +217,11 @@ class NaviNode {
     }
 
     public function getOnPath() {
+        // DEPRECATED
+        return $this->onPath;
+    }
+
+    public function isOnPath() {
         return $this->onPath;
     }
 

@@ -13,5 +13,17 @@ class User extends Model {
 
         parent::__construct();
     }
+
+    public function getUsers() {
+        $query = 'SELECT id,username,realname FROM users';
+
+        $result = queryTable($query);
+
+        return $result;
+    }
+
+    public function setPassword($plaintext) {
+        $this->password = md5($plaintext);
+    }
 }
 ?>
