@@ -94,7 +94,7 @@ class AdminController extends ModuleController {
 
             $password = getPost('password');
             if (strlen($password) > 0) {
-                $user->setPassword(getPost($password));
+                $user->setPassword($password);
             }
 
             $user->save();

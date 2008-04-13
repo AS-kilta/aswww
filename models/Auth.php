@@ -33,6 +33,7 @@ class Auth {
         $query = 'SELECT id FROM users '
                    . "WHERE username = '" . escapeSql($username) . "' "
                    . "AND password = '$passwordCipher'";
+
         $result = query($query);
 
         if ($result != false && pg_num_rows($result) > 0) {

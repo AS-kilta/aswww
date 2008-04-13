@@ -98,6 +98,7 @@ class Model {
                 }
 
                 $columnName = $this->columns[$i];
+
                 if ($this->$columnName === null) {
                     $query .= "$columnName=null";
                 } else if (!is_numeric($this->$columnName) || $this->$columnName === false) {
