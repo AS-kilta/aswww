@@ -1,0 +1,249 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*** BODY ***/
+
+* {
+	padding: 0px; 
+	margin: 0px;
+}
+
+body, html {
+    font-family: tahoma, verdana, arial, sans-serif;
+    background:#fff;
+    color: #303030;
+    background-image: url("bg.png");
+}
+
+#bg-gfx {
+    background-image: url("bg-gfx.png");
+    background-repeat: no-repeat;
+}
+
+#page-container {
+	margin-left:80px; /* pystyykö sivua tarvittaessa keskittämään täältä? */
+}
+
+#logo {
+	margin-left:30px;
+}
+
+
+
+/*** ULKOISET LINKIT ALKAA ***/
+
+#toplinks-container {
+	width:748px;
+	height:40px;
+}
+
+
+ul#toplinks {
+	list-style-type:none;
+}
+
+ul#toplinks li {
+	float:right;
+}
+
+ul#toplinks li a {
+	background:url(arrow.png) no-repeat center bottom;
+	display:block;
+	padding:15px 15px 13px;
+	font:10px "Tahoma";
+	text-decoration:none;
+	color:#FFFFFF;
+}
+
+ul#toplinks li a:hover {
+	color:#f3b341;
+	text-decoration:underline;
+}
+
+
+
+/*** NAVBAR ALKAA ***/
+
+#nav-container {
+	width:748px;
+	height:46px;
+	margin-bottom: 20px;
+}
+
+#nav-left {
+	float:left;
+	background:url(navbar-left.png);
+	width:13px;
+	height:46px;
+}
+
+#nav-right {
+	float:left;
+	background:url(navbar-right.png) right;
+	width:13px;
+	height:46px;
+}
+
+ul#navbar {
+	float:left;
+	background:url(navbar-bg.png) repeat-x left top;
+	list-style-type:none;
+	height:46px;
+	width:722px;
+}
+
+ul#navbar li {
+	float:left;
+}
+
+ul#navbar li a {
+	display:block;
+	padding:17px 15px 4px;
+	font: bold 11px "Tahoma";
+	text-decoration:none;
+	color:#FFFFFF;
+}
+
+ul#navbar li a:hover {
+	background:url(navbar-bg-hover.png) repeat-x left top;
+	height:46px;
+}
+
+ul#navbar li a.current {
+	background:url(navbar-current.png) no-repeat center top;
+	height:46px;
+	color:#FFFFFF;
+}
+
+
+
+/*** CONTENT ***/
+
+#content-top {
+	background-image: url("content-top.png");
+	width: 748px;
+	height: 15px;
+}
+
+#content-bottom {
+	background-image: url("content-bottom.png");
+	background-position: bottom;
+	width: 748px;
+	height: 15px;
+}
+
+#content {
+	background:#fff;
+	width: 724px;
+	padding-left:12px;
+	padding-right:12px;
+	min-height: 400px;
+}
+
+#content-left {
+	width:550px;
+	float:left;
+	padding-top:10px;
+	padding-right:25px;
+	margin-bottom:15px;
+}
+
+#title {
+	font-family: Trebuchet MS;
+	color:#4a0560;
+	padding-left: 10px;
+	text-align:left;
+	font-size:20px;
+}
+
+#content-text {
+	padding-top:5px;
+	padding-left:10px;
+	font-size:11px;
+	text-align:left;
+}
+
+
+/*** OIKEA MENU ALKAA ***/
+
+#menu-container {
+	float:left;
+}
+
+#menutitle {
+	font-family: Trebuchet MS;
+	color:#4a0560;
+	padding-top: 13px;
+	padding-left: 10px;
+	text-align:left;
+	font-size:17px;
+}
+
+ul#menu {
+	margin-top:2px;
+	margin-bottom:20px;
+	border-left:1px dotted #A5AEC5;
+	padding-left:30px;
+	height:inherit; /* miten saan tuosta border-leftistä koko sivun korkusen? */
+}
+
+ul#menu li{
+	list-style-image:url(menu-list.png);
+	line-height:18px;
+}
+
+ul#menu li a{
+	font: 12px "Tahoma";
+	color:#580b60;
+}
+
+ul#menu li:hover {
+	list-style-image:url(menu-list-active.png);
+	line-height:18px;
+}
+
+ul#menu li a:hover{
+	color:#a25da9;
+}
+
+ul#menu li.current {
+	list-style-image:url(menu-list-active.png);
+}
+
+ul#menu li a.current {
+	font-weight: bold;
+	text-decoration:none;
+}
+
+
+/*** FOOTER ***/
+
+#blank {
+	clear:both;  /* jotta footeri pysyis alhaalla */
+}
+
+#footer {
+	position: relative;
+	padding-left: 15px;
+	height: 39px;
+	background: url(footer_bg_repeat.png) repeat-x 0 0;
+}
+
+.footer-left, .footer-right {
+		top: 0;
+		position:absolute;
+		width: 7px;
+		height: 39px;
+}
+
+.footer-left {left: 0;background: url(footer_lr.png) no-repeat 0 0;}
+.footer-right {right: 0;background: url(footer_lr.png) no-repeat -7px 0;}
+
+.footer-text {
+		float: left;
+		display: block;
+		color: #828282;
+		font-size: 11px;
+		padding-top: 12px;
+}
+
