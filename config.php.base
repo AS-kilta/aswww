@@ -4,6 +4,8 @@ $db_name = 'aswww';
 $db_user = 'aswww';
 $db_passwd = 'aswww';
 
+$defaultSkin = 'aski-v2';
+
 $email_onError = false;
 $enableEmail = false;
 
