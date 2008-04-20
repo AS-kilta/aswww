@@ -2,8 +2,7 @@
 <html lang="fi">
 <head>
     <title><?= $heading ?></title>
-    <!--link rel='stylesheet' type='text/css' media="print" href='skins/ilmo/print.css' /-->
-    <link rel='stylesheet' type='text/css' media="screen" href='skins/ilmo/tyyli.css' />
+    <link rel="stylesheet" type="text/css" href=<?= baseUrl() . "/skins/ilmo/tyyli.css" ?> />
 </head>
 <body>
 

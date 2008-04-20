@@ -3,8 +3,11 @@
 include_once 'config.php';
 include_once 'framework/Model.php';
 include_once 'framework/ModuleController.php';
+include_once 'framework/MainController.php';
 include_once 'framework/View.php';
 include_once 'framework/Skin.php';
+include_once 'modules/navi/Navi.php';
+include_once 'models/Auth.php';
 
 
 $db_conn = false;
@@ -87,9 +90,11 @@ function open_db() {
 /**
  * Class autoloader
  */
+/*
 function __autoload($class_name) {
    require_once 'models/' . $class_name . '.php';
 }
+*/
 
 /**
  * Redirects

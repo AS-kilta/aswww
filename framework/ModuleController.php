@@ -2,10 +2,11 @@
 
 class ModuleController {
 
-    var $currentAction;
     var $moduleName;
-    var $contentNode;
-    var $path;
+
+    var $naviNode;
+    var $requestedController = false;
+    var $requestedContent;
 
     /**
      * Returns a new View object.
@@ -15,30 +16,19 @@ class ModuleController {
     }
 
     function render() {
-        $method = 'render';
-
-        // Path specifies the method to be called
-        if (count($this->path) > 0) {
-            $method .= ucfirst($this->path[0]);
-        }
+        // Controller specified in th url
+        $requestedController = $this->getRequestedController();
 
         // Check if action is specified in GET or POST
-        $action = '';
-        $getAction = getGet($this->moduleName . 'Action');
-        $postAction = getPost($this->moduleName . 'Action');
+        // (this overrides the url)
+        $action = getGetOrPost($this->moduleName . 'Action');
 
-        if ($postAction != false) {
-            $action = $postAction;
-        } else if ($getAction != false) {
-            $action = $getAction;
-        }
-
-        $this->currentAction = $action;
-        $method .= ucfirst($action);
-
-        // If no action or path is specified
-        if ($method == 'render') {
-            $method = 'renderDefault';
+        if ($action != false) {
+            $method .= 'render' . ucfirst($action);
+        } else if ($requestedController != false) {
+            $method .= 'render' . ucfirst($requestedController);
+        } else {
+            $method .= 'renderDefault';
         }
 
         // Call the requested method
@@ -50,43 +40,69 @@ class ModuleController {
         }
     }
 
-    function setContentNode($node) {
-        $this->contentNode = $node;
-    }
-
-    /**
-     * Returns the naviNode requested by the user.
-     */
-    function getContentNode() {
-        return $this->contentNode;
+    function setNaviNode($node) {
+        $this->naviNode = $node;
     }
 
     /**
      * Returns content id that can be used for fetching data from the database.
-     * @return mixed contentId or false if not set
+     * @return int contentId or false if not set
      */
     function getContentId() {
-        if ($this->contentNode != null) {
-            return $this->contentNode->getContentId();
+        if ($this->naviNode != null) {
+            return $this->naviNode->getContentId();
         } else {
             return false;
         }
     }
 
-    function setPath($pathArray) {
-        $this->path = $pathArray;
+    function getNaviNode() {
+        return $this->naviNode;
     }
 
-    function getPath() {
-        return $this->path;
+    function setRequestedController($controllerName) {
+        $this->requestedController = $controllerName;
+    }
+
+    function getRequestedController() {
+        return $this->requestedController;
     }
 
     function getModuleName() {
         return $this->moduleName;
     }
 
+    /*
     function getCurrentAction() {
         return $this->currentAction;
+    }
+    */
+
+    /**
+     * Returns the name of the preferred skin or false if default is ok.
+     */
+    function getPreferredSkin() {
+        return false;
+    }
+
+    /**
+     * Returns a list of available modules as an array.
+     */
+    static function getAvailableModules() {
+        $list = Array();
+
+        if ($directory = opendir('modules/')) {
+            while (false !== ($file = readdir($directory))) {
+                if (is_dir('modules/' . $file) && $file{0} != ".") {
+                    $list[] = $file;
+                }
+
+            }
+
+            closedir($directory);
+        }
+
+        return $list;
     }
 }
 

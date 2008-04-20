@@ -11,6 +11,12 @@ class Skin {
         $this->content = array();
     }
 
+    function getContentMapping($moduleName) {
+        include('skins/' . $this->skinName . '/config.php');
+
+        return getContentMapping($moduleName);
+    }
+
     function setContent($region, $html) {
         $this->content[$region] = $html;
     }

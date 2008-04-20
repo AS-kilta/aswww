@@ -1,5 +1,7 @@
-DROP TABLE naviNodes CASCADE;
 CREATE SEQUENCE naviNodesSeq;
+CREATE SEQUENCE contentSeq;
+
+DROP TABLE naviNodes CASCADE;
 CREATE TABLE naviNodes (
     id INT PRIMARY KEY,
     parent INT REFERENCES naviNodes(id) ON DELETE SET NULL,
@@ -18,7 +20,6 @@ CREATE TABLE naviTitles (
 
 
 DROP TABLE pages;
-CREATE SEQUENCE pagesSeq;
 CREATE TABLE pages (
     id INT,
     lang VARCHAR(2),

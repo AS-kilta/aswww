@@ -85,7 +85,7 @@ class Model {
                 return false;
             } else {
                 $this->id = $newId;
-                return $nextval;
+                return $newId;
             }
 
         } else {
@@ -137,14 +137,19 @@ class Model {
 
     /**
      * Returns the next value from a sequence.
-     * @return false on error
+     * @return int new id, or false on error
      */
     function nextVal() {
-        $query = "SELECT nextval('{$this->tableName}Seq')";
+        if (strlen($this->sequenceName) < 1) {
+            addLogEntry('ERROR', "No sequence defined ({$this->tableName}).");
+            return false;
+        }
+
+        $query = "SELECT nextval('{$this->sequenceName}Seq')";
         $result = queryTable($query);
 
         if (count($result) < 1) {
-            addLogEntry('ERROR', "Error getting next value from sequence {$this->tableName}Seq");
+            addLogEntry('ERROR', "Error getting next value from sequence {$this->sequenceName}Seq");
             return false;
         } else {
             return $result[0]['nextval'];
@@ -153,7 +158,7 @@ class Model {
 
     function delete() {
         if ($this->id == 'new') {
-            addLogEntry('WARN', 'Attempting to delete an object that has not been saved');
+            addLogEntry('WARN', 'Attempting to delete an object that has not been saved.');
             return false;
         }
 

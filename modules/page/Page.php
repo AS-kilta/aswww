@@ -9,6 +9,7 @@ class Page extends Model {
         $this->columns = array('lang','content');
         $this->key = array('id','lang');
         $this->tableName = 'pages';
+        $this->sequenceName = 'content';
 
         parent::__construct();
     }

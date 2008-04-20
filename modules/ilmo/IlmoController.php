@@ -1,18 +1,20 @@
 <?php
 include_once 'modules/ilmo/Ilmo.php';
 
-class IlmoController {
+class IlmoController extends ModuleController {
 
     public function __construct() {
+        $this->moduleName = 'ilmo';
     }
 
-    public function render($node) {
-        $navi = Navi::getInstance();
+    public function renderDefault() {
+        $ilmo = new Ilmo();
+        $ilmo->load($this->getContentId(), getLanguage());
 
-        $page = new Ilmo();
-        $page->load($node->getContentId(), getLanguage());
+        $view = $this->loadView('frontpage');
+        $view->setData('ilmo', $ilmo);
 
-        return $page->getDescription();
+        return $view->render();
     }
 
     public function renderEvents() {
@@ -25,7 +27,7 @@ class IlmoController {
         return $html;
     }
 
-    private function renderTopMenu() {
+    public function renderTopMenu() {
         $html = '<a href="#">Etusivu</a>';
         $html .= ' | <a href="#">Ilmoittaudu</a>';
         $html .= ' | <a href="#">N&auml;yt&auml; ilmoittautuneet</a>';
@@ -33,7 +35,9 @@ class IlmoController {
         return $html;
     }
 
-
+    public function getPreferredSkin() {
+        return 'ilmo';
+    }
 }
 
 
