@@ -1,6 +1,10 @@
-<html>
+<?xml version="1.0" encoding="ISO-8859-15"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
     <title>Demodokkari</title>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-15" />
+	<meta http-equiv="Content-Language" content="fi" />
 <style>
 
 /* ajankäyttö */
@@ -56,10 +60,64 @@ table.ajankaytto tfoot td {
 
 <p>Projektin toteutus on demovaiheessa 21.4.2008 siinä vaiheessa, että navigointi, dynaaminen sivuhierarkia ja sivujen editointi toimivat. Arkkitehtuurikin alkaa vakiintua. Apumoduulit, kuten tapahtumakalenteri, ilmoittautuminen ja etusivun uutiset ovat vielä stattista mallisisältöä.</p>
 
+<h2>Kohderyhmäanalyysi</h2>
+
+<p>Olemme kartoittaneet käyttäjäryhmiä ja käyttötapoja henkilökohtaisen käyttökokemuksen ja epämuodollisten kyselyjen perusteella, ja päätyneet seuraaviin merkittäviin käyttäjäryhmiin: kiltalaiset, phuksit, abit, sponsorit ja ulkopuoliset. Seuraavassa pohditaan näiden ryhmien erityispiirteitä ja käyttötapoja.</p>
+
+<h3>Kiltalaiset</h3>
+<p>Sivuston suurin käyttäjäryhmä ovat aktiiviset kiltalaiset. Tyypillisiä käyttötapauksia ovat:</p>
+<ul>
+<li>Webbikameran katsominen</li>
+<li>Tapahtumiin ilmoittautuminen (suora linkki on mainospostissa)</li>
+<li>Tapahtumien ajakohdan katsominen tapahtumakalenterista</li>
+<li>Läpikulku valokuvagalleriaan tai wikiin, jotka ovat erillisiä sivustoja</li>
+<li>Hyödyllisen tiedon etsiminen, esimerkiksi tilinumerot, yhteystiedot tai pöytäkirjat</li>
+</ul>
+
+<p>Sivustoa katsotaan tyypillisesti laadukkaalla tietokoneella (ei kännykällä) kotoa tai työpaikalta. Käyttäjillä on tiedossa päämäärä, eivätkä he surffaile sivustolla sattumanvaraisesti. Tiedon täytyy siis olla helposti löydettävissä, eikä viihteellistä sisältöä tarvitse tyrkyttää samalla tavalla kuin sivustoilla, joiden tavoitteena on kerätä rahaa koukuttamalla käyttäjät.</p>
+
+<p>Aktiivikiltalaisten käyttöön liittyvät seuraavat erityispiirteet:</p>
+<ul>
+<li>Webbikamera saatetaan jättää taustalle auki. Sivusto ei siis saa kuormittaa selainta ja sitä kautta tietokonetta turhaan.</li>
+<li>Linkkejä saatetaan lähettää sähköpostitse, eli niiden on näytettävä järkeviltä.</li>
+<li>Sivuja saatetaan bookmarkata (esim. webcam). Urlit eivät saa vaihdella.</li>
+</ul>
+
+
+<h3>Phuksit</h3>
+<p>Phuksit käyttävät sivustoa paljolti samalla tavalla kuin aktiivikiltalaiset, mutta heillä on omia erityistarpeita:</p>
+<ul>
+<li>Opiskelua tukevan tiedon etsiminen opiskelun alkuvaiheessa (kartat, ohjeet, linkit)</li>
+<li>Kiltatoimintaa koskevan tiedon etsiminen (phukseille suunnatut tapahtumat, phuksipisteiden kerääminen)</li>
+</ul>
+
+<p>Käyttäjäryhmässä on myös se erityispiirre, että osa phukseista on vasta potentiaalisia aktiivikiltalaisia, ja siksi nettisivujen on annettava kiltatoiminnasta houkutteleva kuva. Esimerkiksi kuvavalinnoilla voidaan luoda positiivista mielikuvaa iloisesta yhdessätekemisestä, ja vastaavasti välttää kielteisiä stereotypioita.</p>
+
+<h3>Ulkomaalaisopiskelijat</h3>
+<p>Ulkomaalaisopiskelijat käyttäytyvät samoin kuin aktiivikiltalaiset tai phuksit, mutta tarvitsevat sisällön englanniksi. Lähtökohtaisesti kaikki sisältö käännetään ainakin lyhyesti.</p>
+
+<h3>Abit</h3>
+<p>Abit saattavat päätyä killan sivuille etsiessään opiskelupaikkaa. Käyttäjäryhmä on tärkeä, koska oikeantyyppisen opiskelija-aineksen haaliminen laitokselle on myös killan etu. Killan nettisivuilla on myös jonkinlainen vastuu siitä, minkälaisen kuvan abit saavat TKK:sta kokonaisuudessaan. Kuten phuksien tapauksessa, nettisivujen tulee luoda positiivista mielikuvaa ja hälventää teekkariutta koskeavia stereotypioita. Abit voivat hyvin todennäköisesti printata sivuja kerätessään materiaalia opiskelupaikoista, joten printtien ulkoasuun on oltava kelvollinen.</p>
+
+<h3>Sponsorit</h3>
+<p>Sponsoreilla tarkoitetaan tahoja, joilta kilta anoo rahaa, jotka tulevat killan sivuille tarkistamaan, millaisesta ryhmästä on kysymys. Tämä käyttäjäryhmä on hyvin pieni, mutta erittäin tärkeä, koska kyse on rahasta. Koko sivuston on näytettävä ammattimaiselta ja uskottavalta. Tämä asettaa merkittäviä rajoituksia sivuston ulkoasuun, kun käyttäjäryhmä vieläpä kuuluu vanhempaan ikäluokkaan kuin aiemmin mainitut ryhmät. Ulkoasun on siis oltava riittävän konservatiivinen. Sponsorit ovat myös todennäköisiä printtaajia, ja siisteillä printeilla voidaan luoda ammattimainen vaikutelma.</p>
+
+<h3>Ulkopuoliset</h3>
+<p>Sivustolle voi eksyä esimerkiksi kiltalaisten vanhempia tai työnantajia, joille on annettava riittävän vakava kuva kiltatoiminnasta. Erityisesti on huolehdittava, että jokainen yksittäinen tunnistettava kiltalainen esiintyy positiivisessa valossa. Tämä vaikuttaa esimerkiksi valokuvien valintaan.</p>
+
+<h3>Ylläpitäjät</h3>
+<p>Sivustoa ylläpitää lähtökohtaisesti killan tiedottaja. Erityisesti ajankohtaisia uutisia päivitetään usein, joten käytön on oltava riittävän vaivatonta. Lisäksi sekalaiset hallituslaiset ja toimihenkilöt voivat päivittää oman vastuualueensa sivuja, joten ylläpitokäyttöliittymän on oltava melko helposti omaksuttavissa.</p>
 
 <h2>Sivuston sisältö</h2>
+
+<p>Vanhan sivuston sisältö olisi sellaisenaan melko kelvollista, mutta sitä kirjoitettaan uusiksi siinä määrin, että kurssin vaatimustaso täyttyy.Seuraavassa esitetään sivukohtainen erittely sivuston sisällöstä.</p>
+
+<img src="kaavio.jpg" alt="kaavio sivuston rakenteesta" />
+
+<p>Sivuston rakenne tälläisenään toimii hyvin kohderyhmälle, koska siinä jokaiselle kohderyhmälle muodostuu pääsivu ja siihen liittyvät alasivut. Jokaisesta sivusta on tarkemmin alla.</p>
+
 <p><strong>Etusivu</strong></p>
-<ol>
+<ul>
   <li>Sis&auml;lt&ouml;: Uutiset, tapahtumakalenteri,  gallup (dynaamisia ja ajankohtaisia)</li>
   <li>Kohderyhm&auml;t: aktiivikillistit (t&auml;rke&auml;)</li>
   <li>Tavoitteet: Sis&auml;lt&auml;&auml; aktiivikillistien  useimmiten etsim&auml;n tiedon. Ohjaa vierailijat eteenp&auml;in.</li>
@@ -68,9 +126,9 @@ table.ajankaytto tfoot td {
   <li>Dynaamisuus: Sis&auml;lt&ouml; kootaan  dynaamisesti useasta moduulista. Sis&auml;lt&ouml; on ajankohtaista.</li>
   <li>Julkaisukielet: fi/en</li>
   <li>Moduuli: Tavallinen sivu.</li>
-</ol>
+</ul>
 <p><strong>Kuvapalkin valokuvat</strong></p>
-<ol>
+<ul>
   <li>Sis&auml;lt&ouml;: Valokuvia, jotka el&auml;v&ouml;itt&auml;v&auml;t  sivuja (vaihtelee sivuittain) (otamme uusia kuvia)</li>
   <li>Kohderyhm&auml;t: Kuuluu kiinte&auml;sti ulkoasuun</li>
   <li>Tavoitteet: El&auml;v&ouml;itt&auml;&auml; ulkoasua. Luoda  positiivisia mielikuvia.</li>
@@ -78,9 +136,9 @@ table.ajankaytto tfoot td {
   <li>Muokkaus: Uusia kuvia voi sy&ouml;tt&auml;&auml;  admin-k&auml;ytt&ouml;liittym&auml;n kautta.</li>
   <li>Dynaamisuus: Arvotaan sivulatauksella  tai sivuittain.</li>
   <li>Moduuli: Satunnaiskuva</li>
-</ol>
+</ul>
 <p><strong>Tapahtumakalenteri</strong></p>
-<ol>
+<ul>
   <li>Sis&auml;lt&ouml;: Etusivua tarkempi kuvaus  tapahtumista (dynaamista ja ajankohtaista)</li>
   <li>Kohderyhm&auml;t: aktiivikillistit (t&auml;rke&auml;)</li>
   <li>Tavoitteet: Tajota tapahtumien tarkat  tiedot.</li>
@@ -89,9 +147,9 @@ table.ajankaytto tfoot td {
   <li>Dynaamisuus: Dynaaminen. Vanha sis&auml;lt&ouml;  poistuu automaattisesti.</li>
   <li>Julkaisukielet: fi/en</li>
   <li>Moduuli: Tapahtumakalenteri.</li>
-</ol>
+</ul>
 <p><strong>Tietoa killasta</strong></p>
-<ol>
+<ul>
   <li>Sis&auml;lt&ouml;: Yleiskuvaus killasta  (kirjoitetaan uusiksi)</li>
   <li>Kohderyhm&auml;t: Kiltaan kuulumattomat  k&auml;vij&auml;t (kriittinen)</li>
   <li>Tavoitteet: Sis&auml;lt&auml;&auml; peruskuvauksen  killasta ja sen toimminnasta.</li>
@@ -100,9 +158,9 @@ table.ajankaytto tfoot td {
   <li>Dynaamisuus: Ei dynaamista sis&auml;lt&ouml;&auml;.</li>
   <li>Julkaisukielet: fi/en</li>
   <li>Moduuli: Tavallinen sivu.</li>
-</ol>
+</ul>
 <p><strong>Hallitus</strong></p>
-<ol>
+<ul>
   <li>Sis&auml;lt&ouml;: Tietoa hallituksesta ja sen  j&auml;senist&auml; (muotoillaan uusiksi)</li>
   <li>Kohderyhm&auml;t: Kiltaan yhteydess&auml; olevat  ulkopuoliset (kriittinen), kiltalaiset (t&auml;rke&auml;)</li>
   <li>Tavoitteet: Sis&auml;lt&auml;&auml; hallituksen j&auml;senet  ja yhteystiedot.</li>
@@ -111,9 +169,9 @@ table.ajankaytto tfoot td {
   <li>Dynaamisuus: Ei dynaamista sis&auml;lt&ouml;&auml;.</li>
   <li>Julkaisukielet: fi/en</li>
   <li>Moduuli: Tavallinen sivu.</li>
-</ol>
+</ul>
 <p><strong>Toimihenkil&ouml;t</strong></p>
-<ol>
+<ul>
   <li>Sis&auml;lt&ouml;: Tietoa killan toimihenkil&ouml;ist&auml;  (muotoillaan uusiksi)</li>
   <li>Kohderyhm&auml;t: Kiltalaiset (t&auml;rke&auml;),  muiden kiltojen toimihenkil&ouml;t</li>
   <li>Tavoitteet: Sis&auml;lt&auml;&auml; listan killan  toimihenkil&ouml;ist&ouml;, sek&auml; heid&auml;n yhteystietonsa.</li>
@@ -122,9 +180,9 @@ table.ajankaytto tfoot td {
   <li>Dynaamisuus: Ei dynaamista sis&auml;lt&ouml;&auml;.</li>
   <li>Julkaisukielet: fi/en</li>
   <li>Moduuli: Tavallinen sivu.</li>
-</ol>
+</ul>
 <p><strong>Arkisto</strong></p>
-<ol>
+<ul>
   <li>Sis&auml;lt&ouml;: Kokousten p&ouml;yt&auml;kirjat,  yhteystiedot, tilinumerot, laskupohjat, virallisuudet, s&auml;&auml;nn&ouml;t, muuta  sekalaista materiaalia, joka liittyy kiltaan. (k&auml;ytet&auml;&auml;n vanhaa sis&auml;lt&ouml;&auml;)</li>
   <li>Kohderyhm&auml;t: Aktiivikiltalaiset  (kriittinen), muut kiltalaiset</li>
   <li>Tavoitteet: Tarjota arkistoitua  sekalaista tietoa t&auml;rkeist&auml; killan asioista.</li>
@@ -133,9 +191,9 @@ table.ajankaytto tfoot td {
   <li>Dynaamisuus: Pelk&auml;st&auml;&auml;n dynaamista  tietoa tallessa olevista tiedostoista.</li>
   <li>Julkaisukielet: fi/en</li>
   <li>Moduuli: Arkisto</li>
-</ol>
+</ul>
 <p><strong>Phuksit</strong></p>
-<ol>
+<ul>
   <li>Sis&auml;lt&ouml;: Tietoa phukseille (kirjoitetaan  uusiksi)</li>
   <li>Kohderyhm&auml;t: Juuri aloittaneet tai  aloittamassa olevat opiskelijat (kriittinen)</li>
   <li>Tavoitteet: Tarjota opiskelua tukevaa  sek&auml; kiltatoimintaan liittyv&auml;&auml; tietoa phukseille.</li>
@@ -144,9 +202,9 @@ table.ajankaytto tfoot td {
   <li>Dynaamisuus: Ei dynaamista sis&auml;lt&ouml;&auml;.</li>
   <li>Julkaisukielet: fi/en</li>
   <li>Moduuli: Tavallinen sivu.</li>
-</ol>
+</ul>
 <p><strong>Abit (ja alasivut)</strong></p>
-<ol>
+<ul>
   <li>Sis&auml;lt&ouml;: Tietoa abeille opiskelusta  laitoksella ja TKK:lla (kirjoitetaan uusiksi)</li>
   <li>Kohderyhm&auml;t: Abit (kriittinen)</li>
   <li>Tavoitteet: Tarjota tietoa opiskelupaikan  valinnan tueksi.</li>
@@ -155,9 +213,9 @@ table.ajankaytto tfoot td {
   <li>Dynaamisuus: Ei dynaamista sis&auml;lt&ouml;&auml;.</li>
   <li>Julkaisukielet: fi/en</li>
   <li>Moduuli: Tavallinen sivu.</li>
-</ol>
+</ul>
 <p><strong>Opiskelun tuki, Phuksiopas, Isot, Pisteet (Phuksit-sivun alasivuja)</strong></p>
-<ol>
+<ul>
   <li>Sis&auml;lt&ouml;: Informaatiota phukseille  kullakin Phuksit -alasivulla nimen esitt&auml;m&auml;st&auml; aiheesta. (k&auml;ytet&auml;&auml;n vanhaa  sis&auml;lt&ouml;&auml;)</li>
   <li>Kohderyhm&auml;t: Phuksit (t&auml;rke&auml;)</li>
   <li>Tavoitteet: Tarjota kattava tietoa  kaikesta tarpeellisesta mit&auml; phuksin olisi hyv&auml; tiet&auml;&auml;.</li>
@@ -166,9 +224,9 @@ table.ajankaytto tfoot td {
   <li>Dynaamisuus: Ei dynaamista sis&auml;lt&ouml;&auml;.</li>
   <li>Julkaisukielet: fi/(en)</li>
   <li>Moduuli: Tavallinen sivu.</li>
-</ol>
+</ul>
 <p><strong>Opiskelu, alasivut</strong></p>
-<ol>
+<ul>
   <li>Sis&auml;lt&ouml;: Opiskeluun liittyvi&auml; linkkej&auml;  ja yhteystietoja. (k&auml;ytet&auml;&auml;n vanhaa sis&auml;lt&ouml;&auml;)</li>
   <li>Kohderyhm&auml;t: Killan j&auml;senet (t&auml;rke&auml;)</li>
   <li>Tavoitteet: Tarjota opintomestarin ja  -neuvojan yhteystiedot, sek&auml; linkkej&auml; esimerkiksi labrojen sivuille.</li>
@@ -177,9 +235,9 @@ table.ajankaytto tfoot td {
   <li>Dynaamisuus: Ei dynaamista sis&auml;lt&ouml;&auml;.</li>
   <li>Julkaisukielet: fi/en</li>
   <li>Moduuli: Tavallinen sivu.</li>
-</ol>
+</ul>
 <p><strong>Webcam</strong></p>
-<ol>
+<ul>
   <li>Sis&auml;lt&ouml;: Webcamin kuvaa kiltahuoneelta  (dynaaminen)</li>
   <li>Kohderyhm&auml;t: Kiltalaiset (kriittinen),  muut (mielenkiintoinen)</li>
   <li>Tavoitteet: N&auml;ytt&auml;&auml; reaaliajassa kuvaa  kiltahuoneelta.</li>
@@ -188,9 +246,8 @@ table.ajankaytto tfoot td {
   <li>Dynaamisuus: Reaaliaikainen</li>
   <li>Julkaisukielet: fi/en</li>
   <li>Moduuli: Webcam</li>
-</ol>
+</ul>
 <p><strong>Tapahtumailmoittautumiset</strong></p>
-<ol>
 <ul>
   <li>Sis&auml;lt&ouml;: Tapahtumien ilmoittautumislomakkeet  (dynaaminen ja ajankohtainen)</li>
   <li>Kohderyhm&auml;t: Kiltalaiset (kriittinen)</li>
@@ -201,25 +258,6 @@ table.ajankaytto tfoot td {
   <li>Julkaisukielet: fi/en</li>
   <li>Moduuli: ilmottautumisj&auml;rjestelm&auml;</li>
 </ul>
-Sivuston rakenne
-
-    Esittäkää puu tai vuokaavioesitys koko sivustosta sekä perustelut valitulle rakenteelle ja tiedostojen nimeämiskäytännölle. Merkitkää kaavioon myös ovatko sivut staattisia tai dynaamisesti generoituja, missä on aktiivinen elementti ja missä on käytetty tyylisivuja.
-    Sisältö
-    Kertokaa tehdyistä sivuista harjoitustyön sisältösuunnitelmaan ja tuotantoprosessiin perustuen
-
-        * sivun otsikko ja tiedostonimi
-        * kuvaus sivun sisällöstä
-        * sisällön esitysmuoto
-        * yleiset ulkonäköä koskevat säännöt
-        * toteutunut tuotantoprosessi sekä materiaalin oikeudet
-        * maininta, jos sivulla on CSS tai aktiivinen elementti
-        * tiedon ajallinen kesto
-        * päivitystarve ja -toimenpiteet
-        * julkaisujärjestys koko sivustoon nähden
-        * kohderyhmät ja tiedon kriittisyys ryhmille
-        * julkaisukielet 
-
-    Arvioikaa toteuttamanne sisältökokonaisuus sivuston kohderyhmien kannalta. 
 
 <h2>Ajankäyttö ja aikataulu</h2>
 <p>Ajankäyttösuunnitelma on esitetty alla olevassa taulukossa. Tarkoituksena on aloittaa korkean tason arkkitehtuurista ja kriittisistä toiminnoista, ja edetä hiljalleen perustoimintoihin ja viimeistelyyn.</p>
