@@ -14,13 +14,18 @@
 <body>
 <div id="bg-gfx">
 
-	<div id="logo"><img src="<?= baseUrl() . "/skins/aski-v2/logo.png" ?>" /></div>
+    <div id="logo"><img src="<?= baseUrl() . "/skins/aski-v2/logo.png" ?>" /></div>
 
+    <div id="toplinks">
+        <?php print $external ?>
+        <ul>
+            <li><a href="#">AskiCam</a></li>
+            <li><a href="#">Wiki</a></li>
+            <li><a href="#">Tenttiarkisto</a></li>
+        </ul>
+    </div>
+    <div id="blank"></div>
     <div id="page-container">
-		<div id="toplinks-container">
-			<?php print $external ?>
-		</div>
-
         <!-- TopVavi -->
         <div id="nav-container">
 			<?php print $topnavi ?>

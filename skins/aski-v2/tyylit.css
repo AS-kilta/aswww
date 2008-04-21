@@ -69,18 +69,25 @@ hr {
     margin-right:auto;
 }
 
+#logo img {
+    display: block;
+    margin: 0px;
+}
+
 
 
 /*** ULKOISET LINKIT ALKAA ***/
 
-#toplinks-container {
-    width: 100%;
+#toplinks {
+    width: 750px;
     height: 40px;
+    margin: 0px auto;
 }
 
 
 #toplinks ul {
 	list-style-type:none;
+    margin: 0px;
 }
 
 #toplinks li {
