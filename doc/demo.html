@@ -1,122 +1,55 @@
 <?xml version="1.0" encoding="ISO-8859-15"?>
+
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-    <title>Demodokkari</title>
-
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-15" />
-	<meta http-equiv="Content-Language" content="fi" />
-<style>
-
-/* ajankäyttö */
-
-table.ajankaytto,table.ajankaytto tr, table.ajankaytto th, table.ajankaytto td, table.ajankaytto tr {
-	border: 0px;
-	border-spacing: 0px;
-	padding: 1px 3px 1px 3px;
-	margin: 0px;
-	font-weight: normal;
-	text-align: left;
-}
-
-table.ajankaytto thead th {
-	font-weight: bold;
-	text-align: center;
-}
-
-table.ajankaytto thead td {
-	font-weight: normal;
-	text-align: center;
-}
-
-table.ajankaytto tbody th {
-	font-weight: normal;
-	text-align: left;
-	border-top: 1px solid #000000;
-}
-
-table.ajankaytto tbody td {
-	font-weight: normal;
-	text-align: right;
-	border-top: 1px solid #000000;
-	border-left: 1px solid #000000;
-}
-
-table.ajankaytto tfoot td {
-	border-top: 1px solid #000000;
-}
-
-</style>
+    <title>Demodokumentti</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="dokkariScreen.css" />
+    <link rel="stylesheet" type="text/css" media="print" href="dokkariPrint.css" />
 </head>
 <body>
 
-<h1>Demo</h1>
+<div class="sivu">
+
+<h1>Demodokumentti</h1>
 
 
 <h2>Projektin arviointi</h2>
 
-<p>Harjoitustyössä toteutuetaan Automaatio- ja Systeemitekniikan killalle uusi sisällönhallintajärjestelmä ja nettisivusto. Sivuston nykyinen versio on osoitteessa http://as.tky.fi/. Uuden sivuston kehitysversiota pyöritetään osoitteessa http://aski.hut.fi/uusi/.</p>
+<p>Harjoitustyössä toteutuetaan Automaatio- ja Systeemitekniikan killalle uusi sisällönhallintajärjestelmä ja nettisivusto. Sivuston nykyinen versio on osoitteessa http://as.tky.fi/. Uuden sivuston kehitysversio on osoitteessa http://aski.hut.fi/uusi/.</p>
 
-<p>Sivusto sisältää muun muassa aktiivikillisteille ajankohtaisia uutisia, tapahtumakalenterin, ilmoittautumistoiminnon ja gallupin, sekä ulkopuolisille tietoa killasta. Projektin aluperäinen lähtökohta oli, että sivujen päivittämisen täytyy helpottua nykyisestä, joten sivustoon täytyy toteuttaa myös tehokkaat web-pohjaiset ylläpitotyökalut.</p>
+<p>Sivusto sisältää aktiivikillisteille muun muassa ajankohtaisia uutisia, tapahtumakalenterin, ilmoittautumistoiminnon ja gallupin, sekä ulkopuolisille tietoa killasta. Projektin aluperäinen lähtökohta oli, että sivujen päivittämisen täytyy helpottua nykyisestä, joten sivustoon toteutetaan myös tehokkaat web-pohjaiset ylläpitotyökalut.</p>
 
-<p>Projektin toteutus on demovaiheessa 21.4.2008 siinä vaiheessa, että navigointi, dynaaminen sivuhierarkia ja sivujen editointi toimivat. Arkkitehtuurikin alkaa vakiintua. Apumoduulit, kuten tapahtumakalenteri, ilmoittautuminen ja etusivun uutiset ovat vielä stattista mallisisältöä.</p>
+<p>Projektin toteutus on demovaiheessa 21.4.2008 siinä pisteessä, että navigointi, dynaaminen sivuhierarkia ja sivujen editointi toimivat. Arkkitehtuurikin alkaa vakiintua. Apumoduulit, kuten tapahtumakalenteri, ilmoittautuminen ja etusivun uutiset tulostavat vielä stattista mallisisältöä.</p>
 
-<h2>Kohderyhmäanalyysi</h2>
-
-<p>Olemme kartoittaneet käyttäjäryhmiä ja käyttötapoja henkilökohtaisen käyttökokemuksen ja epämuodollisten kyselyjen perusteella, ja päätyneet seuraaviin merkittäviin käyttäjäryhmiin: kiltalaiset, phuksit, abit, sponsorit ja ulkopuoliset. Seuraavassa pohditaan näiden ryhmien erityispiirteitä ja käyttötapoja.</p>
-
-<h3>Kiltalaiset</h3>
-<p>Sivuston suurin käyttäjäryhmä ovat aktiiviset kiltalaiset. Tyypillisiä käyttötapauksia ovat:</p>
-<ul>
-<li>Webbikameran katsominen</li>
-<li>Tapahtumiin ilmoittautuminen (suora linkki on mainospostissa)</li>
-<li>Tapahtumien ajakohdan katsominen tapahtumakalenterista</li>
-<li>Läpikulku valokuvagalleriaan tai wikiin, jotka ovat erillisiä sivustoja</li>
-<li>Hyödyllisen tiedon etsiminen, esimerkiksi tilinumerot, yhteystiedot tai pöytäkirjat</li>
-</ul>
-
-<p>Sivustoa katsotaan tyypillisesti laadukkaalla tietokoneella (ei kännykällä) kotoa tai työpaikalta. Käyttäjillä on tiedossa päämäärä, eivätkä he surffaile sivustolla sattumanvaraisesti. Tiedon täytyy siis olla helposti löydettävissä, eikä viihteellistä sisältöä tarvitse tyrkyttää samalla tavalla kuin sivustoilla, joiden tavoitteena on kerätä rahaa koukuttamalla käyttäjät.</p>
-
-<p>Aktiivikiltalaisten käyttöön liittyvät seuraavat erityispiirteet:</p>
-<ul>
-<li>Webbikamera saatetaan jättää taustalle auki. Sivusto ei siis saa kuormittaa selainta ja sitä kautta tietokonetta turhaan.</li>
-<li>Linkkejä saatetaan lähettää sähköpostitse, eli niiden on näytettävä järkeviltä.</li>
-<li>Sivuja saatetaan bookmarkata (esim. webcam). Urlit eivät saa vaihdella.</li>
-</ul>
-
-
-<h3>Phuksit</h3>
-<p>Phuksit käyttävät sivustoa paljolti samalla tavalla kuin aktiivikiltalaiset, mutta heillä on omia erityistarpeita:</p>
-<ul>
-<li>Opiskelua tukevan tiedon etsiminen opiskelun alkuvaiheessa (kartat, ohjeet, linkit)</li>
-<li>Kiltatoimintaa koskevan tiedon etsiminen (phukseille suunnatut tapahtumat, phuksipisteiden kerääminen)</li>
-</ul>
-
-<p>Käyttäjäryhmässä on myös se erityispiirre, että osa phukseista on vasta potentiaalisia aktiivikiltalaisia, ja siksi nettisivujen on annettava kiltatoiminnasta houkutteleva kuva. Esimerkiksi kuvavalinnoilla voidaan luoda positiivista mielikuvaa iloisesta yhdessätekemisestä, ja vastaavasti välttää kielteisiä stereotypioita.</p>
-
-<h3>Ulkomaalaisopiskelijat</h3>
-<p>Ulkomaalaisopiskelijat käyttäytyvät samoin kuin aktiivikiltalaiset tai phuksit, mutta tarvitsevat sisällön englanniksi. Lähtökohtaisesti kaikki sisältö käännetään ainakin lyhyesti.</p>
-
-<h3>Abit</h3>
-<p>Abit saattavat päätyä killan sivuille etsiessään opiskelupaikkaa. Käyttäjäryhmä on tärkeä, koska oikeantyyppisen opiskelija-aineksen haaliminen laitokselle on myös killan etu. Killan nettisivuilla on myös jonkinlainen vastuu siitä, minkälaisen kuvan abit saavat TKK:sta kokonaisuudessaan. Kuten phuksien tapauksessa, nettisivujen tulee luoda positiivista mielikuvaa ja hälventää teekkariutta koskeavia stereotypioita. Abit voivat hyvin todennäköisesti printata sivuja kerätessään materiaalia opiskelupaikoista, joten printtien ulkoasuun on oltava kelvollinen.</p>
-
-<h3>Sponsorit</h3>
-<p>Sponsoreilla tarkoitetaan tahoja, joilta kilta anoo rahaa, jotka tulevat killan sivuille tarkistamaan, millaisesta ryhmästä on kysymys. Tämä käyttäjäryhmä on hyvin pieni, mutta erittäin tärkeä, koska kyse on rahasta. Koko sivuston on näytettävä ammattimaiselta ja uskottavalta. Tämä asettaa merkittäviä rajoituksia sivuston ulkoasuun, kun käyttäjäryhmä vieläpä kuuluu vanhempaan ikäluokkaan kuin aiemmin mainitut ryhmät. Ulkoasun on siis oltava riittävän konservatiivinen. Sponsorit ovat myös todennäköisiä printtaajia, ja siisteillä printeilla voidaan luoda ammattimainen vaikutelma.</p>
-
-<h3>Ulkopuoliset</h3>
-<p>Sivustolle voi eksyä esimerkiksi kiltalaisten vanhempia tai työnantajia, joille on annettava riittävän vakava kuva kiltatoiminnasta. Erityisesti on huolehdittava, että jokainen yksittäinen tunnistettava kiltalainen esiintyy positiivisessa valossa. Tämä vaikuttaa esimerkiksi valokuvien valintaan.</p>
-
-<h3>Ylläpitäjät</h3>
-<p>Sivustoa ylläpitää lähtökohtaisesti killan tiedottaja. Erityisesti ajankohtaisia uutisia päivitetään usein, joten käytön on oltava riittävän vaivatonta. Lisäksi sekalaiset hallituslaiset ja toimihenkilöt voivat päivittää oman vastuualueensa sivuja, joten ylläpitokäyttöliittymän on oltava melko helposti omaksuttavissa.</p>
-
+<!--
+***************************************************************************
+************************** Sisältö ****************************************
+***************************************************************************
+-->
 <h2>Sivuston sisältö</h2>
 
-<p>Vanhan sivuston sisältö olisi sellaisenaan melko kelvollista, mutta sitä kirjoitettaan uusiksi siinä määrin, että kurssin vaatimustaso täyttyy.Seuraavassa esitetään sivukohtainen erittely sivuston sisällöstä.</p>
+<p class="ohje">Esittäkää puu tai vuokaavioesitys koko sivustosta sekä perustelut valitulle rakenteelle ja tiedostojen nimeämiskäytännölle. Merkitkää kaavioon myös ovatko sivut staattisia tai dynaamisesti generoituja, missä on aktiivinen elementti ja missä on käytetty tyylisivuja.</p>
+
+<p>Vanhan sivuston sisältö olisi sellaisenaan melko kelvollista, mutta sitä kirjoitettaan uusiksi siinä määrin, että kurssin vaatimustaso täyttyy. Seuraavassa esitetään sivukohtainen erittely sivuston sisällöstä.</p>
 
 <img src="kaavio.jpg" alt="kaavio sivuston rakenteesta" />
 
-<p>Sivuston rakenne tälläisenään toimii hyvin kohderyhmälle, koska siinä jokaiselle kohderyhmälle muodostuu pääsivu ja siihen liittyvät alasivut. Jokaisesta sivusta on tarkemmin alla.</p>
+<!--
+Kertokaa tehdyistä sivuista harjoitustyön sisältösuunnitelmaan ja tuotantoprosessiin perustuen
+        * sivun otsikko ja tiedostonimi
+        * kuvaus sivun sisällöstä
+        * sisällön esitysmuoto
+        * yleiset ulkonäköä koskevat säännöt
+        * toteutunut tuotantoprosessi sekä materiaalin oikeudet
+        * maininta, jos sivulla on CSS tai aktiivinen elementti
+        * tiedon ajallinen kesto
+        * päivitystarve ja -toimenpiteet
+        * julkaisujärjestys koko sivustoon nähden
+        * kohderyhmät ja tiedon kriittisyys ryhmille
+        * julkaisukielet 
+-->
 
-<p><strong>Etusivu</strong></p>
+<h4>Etusivu</h4>
 <ul>
   <li>Sis&auml;lt&ouml;: Uutiset, tapahtumakalenteri,  gallup (dynaamisia ja ajankohtaisia)</li>
   <li>Kohderyhm&auml;t: aktiivikillistit (t&auml;rke&auml;)</li>
@@ -127,7 +60,8 @@ table.ajankaytto tfoot td {
   <li>Julkaisukielet: fi/en</li>
   <li>Moduuli: Tavallinen sivu.</li>
 </ul>
-<p><strong>Kuvapalkin valokuvat</strong></p>
+
+<h4>Kuvapalkin valokuvat</h4>
 <ul>
   <li>Sis&auml;lt&ouml;: Valokuvia, jotka el&auml;v&ouml;itt&auml;v&auml;t  sivuja (vaihtelee sivuittain) (otamme uusia kuvia)</li>
   <li>Kohderyhm&auml;t: Kuuluu kiinte&auml;sti ulkoasuun</li>
@@ -137,7 +71,8 @@ table.ajankaytto tfoot td {
   <li>Dynaamisuus: Arvotaan sivulatauksella  tai sivuittain.</li>
   <li>Moduuli: Satunnaiskuva</li>
 </ul>
-<p><strong>Tapahtumakalenteri</strong></p>
+
+<h4>Tapahtumakalenteri</h4>
 <ul>
   <li>Sis&auml;lt&ouml;: Etusivua tarkempi kuvaus  tapahtumista (dynaamista ja ajankohtaista)</li>
   <li>Kohderyhm&auml;t: aktiivikillistit (t&auml;rke&auml;)</li>
@@ -148,7 +83,8 @@ table.ajankaytto tfoot td {
   <li>Julkaisukielet: fi/en</li>
   <li>Moduuli: Tapahtumakalenteri.</li>
 </ul>
-<p><strong>Tietoa killasta</strong></p>
+
+<h4>Tietoa killasta</h4>
 <ul>
   <li>Sis&auml;lt&ouml;: Yleiskuvaus killasta  (kirjoitetaan uusiksi)</li>
   <li>Kohderyhm&auml;t: Kiltaan kuulumattomat  k&auml;vij&auml;t (kriittinen)</li>
@@ -159,7 +95,8 @@ table.ajankaytto tfoot td {
   <li>Julkaisukielet: fi/en</li>
   <li>Moduuli: Tavallinen sivu.</li>
 </ul>
-<p><strong>Hallitus</strong></p>
+
+<h4>Hallitus</h4>
 <ul>
   <li>Sis&auml;lt&ouml;: Tietoa hallituksesta ja sen  j&auml;senist&auml; (muotoillaan uusiksi)</li>
   <li>Kohderyhm&auml;t: Kiltaan yhteydess&auml; olevat  ulkopuoliset (kriittinen), kiltalaiset (t&auml;rke&auml;)</li>
@@ -170,7 +107,8 @@ table.ajankaytto tfoot td {
   <li>Julkaisukielet: fi/en</li>
   <li>Moduuli: Tavallinen sivu.</li>
 </ul>
-<p><strong>Toimihenkil&ouml;t</strong></p>
+
+<h4>Toimihenkil&ouml;t</h4>
 <ul>
   <li>Sis&auml;lt&ouml;: Tietoa killan toimihenkil&ouml;ist&auml;  (muotoillaan uusiksi)</li>
   <li>Kohderyhm&auml;t: Kiltalaiset (t&auml;rke&auml;),  muiden kiltojen toimihenkil&ouml;t</li>
@@ -181,7 +119,8 @@ table.ajankaytto tfoot td {
   <li>Julkaisukielet: fi/en</li>
   <li>Moduuli: Tavallinen sivu.</li>
 </ul>
-<p><strong>Arkisto</strong></p>
+
+<h4>Arkisto</h4>
 <ul>
   <li>Sis&auml;lt&ouml;: Kokousten p&ouml;yt&auml;kirjat,  yhteystiedot, tilinumerot, laskupohjat, virallisuudet, s&auml;&auml;nn&ouml;t, muuta  sekalaista materiaalia, joka liittyy kiltaan. (k&auml;ytet&auml;&auml;n vanhaa sis&auml;lt&ouml;&auml;)</li>
   <li>Kohderyhm&auml;t: Aktiivikiltalaiset  (kriittinen), muut kiltalaiset</li>
@@ -192,7 +131,8 @@ table.ajankaytto tfoot td {
   <li>Julkaisukielet: fi/en</li>
   <li>Moduuli: Arkisto</li>
 </ul>
-<p><strong>Phuksit</strong></p>
+
+<h4>Phuksit</h4>
 <ul>
   <li>Sis&auml;lt&ouml;: Tietoa phukseille (kirjoitetaan  uusiksi)</li>
   <li>Kohderyhm&auml;t: Juuri aloittaneet tai  aloittamassa olevat opiskelijat (kriittinen)</li>
@@ -203,7 +143,8 @@ table.ajankaytto tfoot td {
   <li>Julkaisukielet: fi/en</li>
   <li>Moduuli: Tavallinen sivu.</li>
 </ul>
-<p><strong>Abit (ja alasivut)</strong></p>
+
+<h4>Abit (ja alasivut)</h4>
 <ul>
   <li>Sis&auml;lt&ouml;: Tietoa abeille opiskelusta  laitoksella ja TKK:lla (kirjoitetaan uusiksi)</li>
   <li>Kohderyhm&auml;t: Abit (kriittinen)</li>
@@ -214,7 +155,8 @@ table.ajankaytto tfoot td {
   <li>Julkaisukielet: fi/en</li>
   <li>Moduuli: Tavallinen sivu.</li>
 </ul>
-<p><strong>Opiskelun tuki, Phuksiopas, Isot, Pisteet (Phuksit-sivun alasivuja)</strong></p>
+
+<h4>Opiskelun tuki, Phuksiopas, Isot, Pisteet (Phuksit-sivun alasivuja)</h4>
 <ul>
   <li>Sis&auml;lt&ouml;: Informaatiota phukseille  kullakin Phuksit -alasivulla nimen esitt&auml;m&auml;st&auml; aiheesta. (k&auml;ytet&auml;&auml;n vanhaa  sis&auml;lt&ouml;&auml;)</li>
   <li>Kohderyhm&auml;t: Phuksit (t&auml;rke&auml;)</li>
@@ -225,7 +167,8 @@ table.ajankaytto tfoot td {
   <li>Julkaisukielet: fi/(en)</li>
   <li>Moduuli: Tavallinen sivu.</li>
 </ul>
-<p><strong>Opiskelu, alasivut</strong></p>
+
+<h4>Opiskelu, alasivut</h4>
 <ul>
   <li>Sis&auml;lt&ouml;: Opiskeluun liittyvi&auml; linkkej&auml;  ja yhteystietoja. (k&auml;ytet&auml;&auml;n vanhaa sis&auml;lt&ouml;&auml;)</li>
   <li>Kohderyhm&auml;t: Killan j&auml;senet (t&auml;rke&auml;)</li>
@@ -236,7 +179,8 @@ table.ajankaytto tfoot td {
   <li>Julkaisukielet: fi/en</li>
   <li>Moduuli: Tavallinen sivu.</li>
 </ul>
-<p><strong>Webcam</strong></p>
+
+<h4>Webcam</h4>
 <ul>
   <li>Sis&auml;lt&ouml;: Webcamin kuvaa kiltahuoneelta  (dynaaminen)</li>
   <li>Kohderyhm&auml;t: Kiltalaiset (kriittinen),  muut (mielenkiintoinen)</li>
@@ -247,7 +191,8 @@ table.ajankaytto tfoot td {
   <li>Julkaisukielet: fi/en</li>
   <li>Moduuli: Webcam</li>
 </ul>
-<p><strong>Tapahtumailmoittautumiset</strong></p>
+
+<h4>Tapahtumailmoittautumiset</h4>
 <ul>
   <li>Sis&auml;lt&ouml;: Tapahtumien ilmoittautumislomakkeet  (dynaaminen ja ajankohtainen)</li>
   <li>Kohderyhm&auml;t: Kiltalaiset (kriittinen)</li>
@@ -259,68 +204,61 @@ table.ajankaytto tfoot td {
   <li>Moduuli: ilmottautumisj&auml;rjestelm&auml;</li>
 </ul>
 
-<h2>Ajankäyttö ja aikataulu</h2>
-<p>Ajankäyttösuunnitelma on esitetty alla olevassa taulukossa. Tarkoituksena on aloittaa korkean tason arkkitehtuurista ja kriittisistä toiminnoista, ja edetä hiljalleen perustoimintoihin ja viimeistelyyn.</p>
-<table class="ajankaytto">
-<thead>
-	<tr>
-		<td colspan="2"></td>
-		<th colspan="3">suunnitelma (h)</th>
-		<th colspan="3">toteuma (h)</th>
-	</tr>
-	<tr>
-		<td colspan="2" style="text-align:right;">Valmiina viikolla</td>
-		<td>T</td>
-		<td>J</td>
-		<td>A</td>
-		<td>T</td>
-		<td>J</td>
-		<td>A</td>
-	</tr>
-</thead>
-<tbody>
-<tr><th>Projektin pystytys (serveri, svn...)</th>		<td>6</td> <td>6</td> <td>4</td> <td>4</td> <td>5</td> <td>2</td><td>4</td></tr>
-<tr><th>Arkkitehtuurin suunnittelu</th>				<td>7</td> <td>5</td> <td>5</td> <td>3</td> <td>3</td> <td>3</td><td>2</td></tr>
-<tr><th>Yleinen suunnittelu</th>				<td>8</td> <td>3</td> <td>3</td> <td>3</td> <td>4</td> <td>2</td><td>3</td></tr>
-<tr><th>Korkean tason arkkitehtuurin protoilu</th>		<td>9</td> <td>16</td><td>4</td> <td>0</td> <td>11</td><td>0</td><td>0</td></tr>
-<tr><th>Navigoinnin toteuttaminen</th>				<td>10</td><td>8</td> <td>0</td> <td>0</td> <td>3</td> <td>0</td><td>0</td></tr>
-<tr><th>Suunnitelmadokumentin kirjoittaminen</th>		<td>11</td><td>6</td> <td>6</td> <td>6</td> <td>10</td><td>3</td><td>6</td></tr>
-<tr><th>Alustava graafinen suunnittelu</th>			<td>12</td><td>0</td> <td>0</td> <td>10</td><td>0</td> <td>0</td><td>10</td></tr>
-<tr><th>Moduulien toiminta</th>					<td>12</td><td>6</td> <td>6</td> <td>0</td> <td>_</td> <td>2</td><td>_</td></tr>
-<tr><th>Autentikointi ja alustavia admin-toimintoja</th>	<td>13</td><td>8</td> <td>8</td> <td>0</td> <td>_</td> <td>0</td><td>_</td></tr>
-<tr><th>Staattiset sivut toimimaan</th>				<td>13</td><td>2</td> <td>2</td> <td>5</td> <td>_</td> <td>0</td><td>_</td></tr>
-<tr><th>Cache</th>						<td>14</td><td>0</td> <td>6</td> <td>0</td> <td>_</td> <td>0</td><td>_</td></tr>
-<tr><th>Ilmoittautuminen</th>					<td>15</td><td>0</td> <td>12</td><td>0</td> <td>_</td> <td>0</td><td>_</td></tr>
-<tr><th>Demon valmistelu</th>					<td>16</td><td>6</td> <td>0</td> <td>0</td> <td>_</td> <td>2</td><td>_</td></tr>
-<tr><th>Gallup</th>						<td>17</td><td>2</td> <td>2</td> <td>2</td> <td>&nbsp;</td> <td>&nbsp;</td><td>&nbsp;</td></tr>
-<tr><th>Uutiset</th>						<td>17</td><td>0</td> <td>0</td> <td>10</td><td>&nbsp;</td> <td>&nbsp;</td><td>&nbsp;</td></tr>
-<tr><th>Demon valmistelu</th>					<td>18</td><td>0</td> <td>4</td> <td>0</td> <td>&nbsp;</td> <td>&nbsp;</td><td>&nbsp;</td></tr>
-<tr><th>Edistyneet admin-toiminnot</th>				<td>19</td><td>16</td><td>16</td><td>0</td> <td>&nbsp;</td> <td>&nbsp;</td><td>&nbsp;</td></tr>
-<tr><th>Ulkoasun ja käyttöliittymän hiominen</th>		<td>20</td><td>2</td> <td>2</td> <td>10</td><td>&nbsp;</td> <td>&nbsp;</td><td>&nbsp;</td></tr>
-<tr><th>Sisällön kirjoittaminen</th>				<td>20</td><td>4</td> <td>4</td> <td>4</td> <td>&nbsp;</td> <td>&nbsp;</td><td>&nbsp;</td></tr>
-<tr><th>Toteutusdokumentin kirjoittaminen</th>			<td>21</td><td>6</td> <td>6</td> <td>6</td> <td>&nbsp;</td> <td>&nbsp;</td><td>&nbsp;</td></tr>
-</tbody>
-<tfoot><td colspan="8">&nbsp;</td></tfood>
-</table>
+
+<h3>Kohderyhmäanalyysi</h3>
+
+<p>Suunnitteluvaiheessa kartoitetut käyttäjäryhmät olivat: kiltalaiset, phuksit, abit, sponsorit ja ulkopuoliset. Seuraavassa pohditaan näiden ryhmien erityispiirteitä ja käyttötapoja.</p>
+
+<h4>Kiltalaiset</h4>
+
+<p>Kiltalaiset saavat useimmin etsimänsä tiedot suoraan etusivulta. Näitä tietoja ovat ajankohtaiset uutiset, ja tapahtumakalenteri. Etusivulta pääsee myös nopeasti usein käytettyihin erillispalveluihin (wiki, webcam, kuvagalleria) ylhäältä pikalinkeistä.</p>
+
+<p>Tyypillinen tilanne aktiivikiltalaiselle on tapahtumaan ilmoittautuminen, kun linkki on saatu sähköpostitse mainosviestissä. Viestissä oleva URL on yksinkertainen (esimerkiksi aski.hut.fi/wappusitsit) ja aukeava sivu näyttää suoraan tapahtuman perustiedot. Itse ilmoittautumislomakkeeseen pääsee yhdellä klikkauksella.</p>
+
+<p>TODO: - Hyödyllisen tiedon etsiminen, esimerkiksi tilinumerot, yhteystiedot tai pöytäkirjat</p>
 
 
-<p><strong>Seuraavassa avataan työvaiheiden sisältöä monisanaisemmin:</strong></p>
-<p><b>Arkkitehtuurin suunnittelu:</b> sisältää yhteisiä palavereja</p>
-<p><b>Korkean tason arkkitehtuurin protoilu:</b> Arkkitehtuuri on tärkeää saada hyväksi heti alussa, koska sen muuttaminen on myöhemmin vaikeaa. Tässä vaiheessa täytyy saada yleiskuva MainControllerin ja moduulien vuorovaikutuksesta, skinien toiminnasta, ja MVC-pohjasta.</p>
-<p><b>Navigoinnin toteuttaminen:</b> Navigointi on sisällönhallintajärjestelmän ydin, joten se täytyy saada toimimaan alussa. Sivustoa on mahdotonta testata, jos sillä ei pysty liikkumaan.</p>
-<p><b>Moduulien toiminta:</b> Tässä vaiheessa täytyy lyödä lukkoon moduulien sisäinen arkkitehtuuri, jotta lopullisia käyttööntulevia moduuleja pästään toteuttamaan.</p>
-<p><b>Autentikointi ja alustavia admin-toimintoja:</b> Tässä vaiheessa täytyy muodostaa selkeä kuva siitä, miten sivusto toimii ylläpitäjän näkökulmasta ja miten esimerkiksi moduulien ylläpitotoiminnot integroidaan kokonaisuuteen.</p>
-<p><b>Staattiset sivut toimimaan:</b> Sivut kuvataan mahdollisesti wiki-tyyppisellä syntaksilla, joten parseri täytyy toteuttaa. Moduuli on itsenäinen, mutta se on niin tärkeä, että kannattaa toteuttaa aikaisessa vaiheessa.</p>
-<p><b>Cache (välimuisti):</b> Välimuisi olisi erittäin hyvä ominaisuus sivuston tehokkuuden kannalta. Se on mahdollisesti erittäin hankala toteuttaa ja vaikuttaa arkkitehtuuriin, joten toteuttamista täytyy yrittää ennemmin alkupuolella kuin viimeistelyvaiheessa. Toiminto voidaan jättää pois, jos se osoittautuu liian hankalaksi.</p>
-<p><b>Ilmoittautuminen, Gallup, Uutiset:</b> Varsinaisten moduulien toteuttaminen.</p>
-<p><b>Edistyneet admin-toiminnot:</b> Admin-puolen toiminnallisuus on toimintalogiikaltaan monimutkaista perusmoduuleihin verrattuna. Näihin toimintoihin kuuluvat muun muassa sivuhierarkian manipuloiminen ja käyttäjäoikeuksien hallinta. Tämä työvaihe jakautuu lähes koko projektin ajalle, ja on monimutkaisuutensa takia luultavasti viimeisenä välmis.</p>
-<p><b>Ulkoasun ja käyttöliittymän hiominen</b> jakautuu koko projektin ajalle, koska se etenee sitä mukaa kun uusia toimintoja implementoidaan.</p>
-<p><b>Sisällön kirjoittaminen:</b> Oman sisällön tuottaminen on itsemme kannalta vähiten mielenkiintoinen osuus, ja sitä tehdään projektin loppupuolella siinä määrin, että kurssin vaatimustaso täyttyy.</p>
+Sivustoa katsotaan tyypillisesti laadukkaalla tietokoneella (ei kännykällä) kotoa tai työpaikalta. Käyttäjillä on tiedossa päämäärä, eivätkä he surffaile sivustolla sattumanvaraisesti. Tiedon täytyy siis olla helposti löydettävissä, eikä viihteellistä sisältöä tarvitse tyrkyttää samalla tavalla kuin sivustoilla, joiden tavoitteena on kerätä rahaa koukuttamalla käyttäjät.
+
+Aktiivikiltalaisten käyttöön liittyvät seuraavat erityispiirteet:
+- Webbikamera saatetaan jättää taustalle auki. Sivusto ei siis saa kuormittaa selainta ja sitä kautta tietokonetta turhaan.
+- Linkkejä saatetaan lähettää sähköpostitse, eli niiden on näytettävä järkeviltä.
+- Sivuja saatetaan bookmarkata (esim. webcam). Urlit eivät saa vaihdella.
 
 
-<hr />
-<h1>Demo</h1>
-<p><strong>Ulkoasu ja käyttöliittymä</strong></p>
+<h4>Phuksit</h4>
+Phuksit käyttävät sivustoa paljolti samalla tavalla kuin aktiivikiltalaiset, mutta heillä on omia erityistarpeita:
+- Opiskelua tukevan tiedon etsiminen opiskelun alkuvaiheessa (kartat, ohjeet, linkit)
+- Kiltatoimintaa koskevan tiedon etsiminen (phukseille suunnatut tapahtumat, phuksipisteiden kerääminen)
+
+Käyttäjäryhmässä on myös se erityispiirre, että osa phukseista on vasta potentiaalisia aktiivikiltalaisia, ja siksi nettisivujen on annettava kiltatoiminnasta houkutteleva kuva. Esimerkiksi kuvavalinnoilla voidaan luoda positiivista mielikuvaa iloisesta yhdessätekemisestä, ja vastaavasti välttää kielteisiä stereotypioita.
+
+
+<h4>Ulkomaalaisopiskelijat</h4>
+
+Ulkomaalaisopiskelijat käyttäytyvät samoin kuin aktiivikiltalaiset tai phuksit, mutta tarvitsevat sisällön englanniksi. Lähtökohtaisesti kaikki sisältö käännetään ainakin lyhyesti.
+
+
+<h4>Abit</h4>
+Abit saattavat päätyä killan sivuille etsiessään opiskelupaikkaa. Käyttäjäryhmä on tärkeä, koska oikeantyyppisen opiskelija-aineksen haaliminen laitokselle on myös killan etu. Killan nettisivuilla on myös jonkinlainen vastuu siitä, minkälaisen kuvan abit saavat TKK:sta kokonaisuudessaan. Kuten phuksien tapauksessa, nettisivujen tulee luoda positiivista mielikuvaa ja hälventää teekkariutta koskeavia stereotypioita. Abit voivat hyvin todennäköisesti printata sivuja kerätessään materiaalia opiskelupaikoista, joten printtien ulkoasuun on oltava kelvollinen.
+
+
+<h4>Sponsorit</h4>
+Sponsoreilla tarkoitetaan tahoja, joilta kilta anoo rahaa, jotka tulevat killan sivuille tarkistamaan, millaisesta ryhmästä on kysymys. Tämä käyttäjäryhmä on hyvin pieni, mutta erittäin tärkeä, koska kyse on rahasta. Koko sivuston on näytettävä ammattimaiselta ja uskottavalta. Tämä asettaa merkittäviä rajoituksia sivuston ulkoasuun, kun käyttäjäryhmä vieläpä kuuluu vanhempaan ikäluokkaan kuin aiemmin mainitut ryhmät. Ulkoasun on siis oltava riittävän konservatiivinen. Sponsorit ovat myös todennäköisiä printtaajia, ja siisteillä printeilla voidaan luoda ammattimainen vaikutelma.
+
+
+<h4>Ulkopuoliset</h4>
+Sivustolle voi eksyä esimerkiksi kiltalaisten vanhempia tai työnantajia, joille on annettava riittävän vakava kuva kiltatoiminnasta. Erityisesti on huolehdittava, että jokainen yksittäinen tunnistettava kiltalainen esiintyy positiivisessa valossa. Tämä vaikuttaa esimerkiksi valokuvien valintaan.
+
+
+<h4>Ylläpitäjät</h4>
+Sivustoa ylläpitää lähtökohtaisesti killan tiedottaja. Erityisesti ajankohtaisia uutisia päivitetään usein, joten käytön on oltava riittävän vaivatonta. Lisäksi sekalaiset hallituslaiset ja toimihenkilöt voivat päivittää oman vastuualueensa sivuja, joten ylläpitokäyttöliittymän on oltava melko helposti omaksuttavissa.
+
+
+
+
+<h2>Ulkoasu ja käyttöliittymä</h2>
+
 <p>Ulkoasu oli jo pitk&auml;lle kehitelty suunnitteluvaiheen dokumentissa ja muutoksia lopulliseen versioon tulee v&auml;h&auml;n. Leiskan alustava leikkely onnistui helposti ja sivun ulkoasun elementtien yhteiskoko saadaan n. 130-160 kilotavuun. Ulkoasusta tuli dynaaminen ja tyylitiedostosta saatiin melko yksinkertainen.</p>
 <p>Sivuston k&auml;ytt&ouml;liittym&auml; vaikuttaa t&auml;ss&auml; vaiheessa toimivalta, ja tulemme laittamaan lopulliseen dokumenttiin yksityiskohtaisempia k&auml;ytt&ouml;kokemuksia.</p>
 
@@ -345,21 +283,176 @@ table.ajankaytto tfoot td {
 
     Esittäkää toteutetut navigointiratkaisut ja muu käyttöliittymä. Esittäkää myös (esimerkiksi yllä olevien esimerkkikuvien perusteella) toteutunut graafinen ulkoasu. 
 
-Aktiivinen elementti ja sivuston tekniikka (6 pistettä)
 
-    Aktiivinen elementti
-    Selostakaa aktiivisen elementin toteutus ja toiminta. Elementin lähdekoodi tulee sijoittaa hype-palvelimelle ja sijainti, joko URL tai hakemisto, tulee ilmoittaa dokumentissa. Lähdekoodin tulee olla kommentoitua ja assistenttien luettavissa. Arvioikaa myös valitsemanne toteutustavan sopivuutta tähän tarkoitukseen.
-    Sivuston asennus ja tietoturva
+<!--
+***************************************************************************
+************************** Aktiivinen elementti ***************************
+***************************************************************************
+-->
 
-    Kertokaa, mitä sivuston asennus uudelle palvelimelle vaatii ja kuinka se tehdään. Kertokaa myös, minkälaisia tietoturvakysymyksiä sivustossa ja erityisesti aktiivisessa elementissä on ilmennyt ja miten niihin on vastattu. 
+<h2>Sivuston tekniikka</h2>
 
-WWW-tekniikka (4 pistettä)
+<p class="ohje">Selostakaa aktiivisen elementin toteutus ja toiminta. Elementin lähdekoodi tulee sijoittaa hype-palvelimelle ja sijainti, joko URL tai hakemisto, tulee ilmoittaa dokumentissa. Lähdekoodin tulee olla kommentoitua ja assistenttien luettavissa. Arvioikaa myös valitsemanne toteutustavan sopivuutta tähän tarkoitukseen.</p>
 
-    HTML
+<p>Määrittelimme työlle seuraavat vaatimukset:</p>
+<ul>
+    <li>Urlien täytyy olla järkeviä.</li>
+    <li>Sivuja täytyy voida lisätä, poistaa ja päivittää web-käyttöliittymän kautta.</li>
+    <li>Sivuhierarkiaa täytyy voida muokata dynaamisesti, jotta ylläpitäminen ei vaadi tulevaisuudessa koskemista koodiin.</li>
+    <li>Sivuston ulkoasu tulee voida valita vähintään moduulikohtaisesti, ja uusien ulkoasujen käyttöönoton täytyy olla helppoa. Ainakin ilmoittautumistoiminnossa on tarkoitus välittömästi käyttää eri ulkoasua, ja ulkoasut saattavat vaihdella tapahtumakohtaisesti.</li>
+    <li>Rakenteen täytyy olla modulaarinen, jotta uusien toimintojen toteuttaminen on helppoa.</li>
+    <li>Järjestelmän täytyy tukea monikielisyyttä.</li>
+    <li>Järjestelmän täytyy tukea käyttöoikeustasoja.</li>
+</ul>
+
+<p>Kaikkien yllämainittujen ominaisuuksien toteutus on aloitettu ja useimmat toimivat jo hyvin, joten alkuperäiset vaatimukset pystytään näillä näkymin täyttämään.</p>
+
+
+<h3>Terminologiaa</h3>
+
+<h4>Skin ja alueet (regions)</h4>
+
+<p>Käytämme sivun kokonaisilmeestä nimitystä skin, joka korostaa ulkoasun vaihdeltavuutta. Skin on teknisesti html-pohja, jossa on dynaamisia kenttiä sisällölle. Skin sisältää alueita (regions), kuten ylänavipalkki, vasen navipalkki tai sisältöalue. Se ei ota kantaa alueiden sisältöön, vaan sisältö vai vaihdella sivukohatisesti.</p>
+
+<h4>Moduulit</h4>
+
+<p>Moduuli on itsenäinen palikka, joka tarjoaa sisältöä laitettavaksi skinin alueisiin. Esimerkiksi moduuli <i>page</i> tuottaa normaalin staattisen sivun sisällön, mutta on ulkopuolisen tahon asia syöttää tämän moduulin sisältö oikeaan alueeseen. Moduulit ovat ikäänkuin pieniä itsenäisiä web-sovelluksia, joiden tuottama sisältö voidaan sijoittaa skinin alueisiin.</p>
+
+
+
+<h3>Arkkitehtuuri</h3>
+
+<p>Korkean tason arkkitehtuurikuvaus on pysynyt suunnitteluvaiheen jälkeen lähes muuttumattomana, mutta siitä esitetään tässä tarkistettu versio. Yksityiskohdat esitetään vasta toteutusdokumentissa, koska ne muuttuvat edelleen usein.</p>
+
+<p>Sovellus noudataa Model-View-Controller -arkkitehtuuria (MVC), jossa datan esitymuoto (View) erotetaan toimintalogiikasta (Model). Model-taso toimii abstraktilla tasolla, eli voi vaikkapa tuottaa listan johonkin tapahtumaan ilmoittautuneista käyttäjistä, mutta ei ota kantaa esitysmuotoon. View-taso puolestaan voisi muuttaa käyttäjälistan html-taulukoksi, mutta ei sisällä enää monimutkaista toimintalogiikkaa. Controller koordinoi tiedonvälitystä Model- ja View- tasojen välillä, eli pyytää Model-kerrosta suorittamaan tietyt operaatiot, ja antaa tulokset View-kerrokselle visualisoitavaksi. Vastaavasti Controller hakee käyttäjän syötteen View-kerroksesta ja syöttää sen Model-kerrokseen.</p>
+
+<p>Modulaarisuuden takia MVC-idea toteutetaan kahdessa kerroksessa. Sivuston toimintaa kokonaisuudessaan koordinoi MainController, jonka kautta jokainen kysely ohjataan. MainController valitsee skinin, lataa tarvittavat moduulit, pyytää moduuleita tuotamaan sisältöä, ja syöttää sisällön skinin alueisiin. Jokainen moduuli itsessään noudattaa MVC-arkkitehtuuria, eli toimii kuin itsenäinen pieni web-sovellus. MainController esittää pyynnöt moduulin ModuleControllerille, joka pyytää omaa Model-kerrostaan toimimaan, syöttää tulokset haluamalleen näkymälle (View), ja palauttaa valmiin html-sisällön MainControllerille.
+
+<div class="kuva">
+    <img src="mvc.png" />
+    <p>Korkean tason arkkitehtuuri</p>
+</div>
+
+
+<h3>MainControllerin toiminta</h3>
+
+<p>MainControllerin vastuulla on selvittää, mitä sivua ollaan näyttämässä, mitä skiniä kuuluu käyttää milläkin sivulla, ja minkä moduulin sisältöä kuuluu syöttää mihinkin alueeseen. Suoritus etenee seuraavasti:</p>
+<ul>
+    <li>Käyttäjän pyytämä URL annetaan MainControllerille.</li>
+    <li>MainController pilkkoo urlin ja antaa sen navigointimoduulille ratkaistavaksi.</li>
+    <li>Navigointimoduuli lukee tietokannasta sivuhierarkian ja etsii urlia vastaavaan solmun. Solmuun on tallennettu tieto siitä, mikä moduuli tuottaa kyseisen sivun pääsisällön, sekä millä id-numerolla kyseinen moduuli löytää sisällön.</li>
+    <li>MainController selvittää, mitä skiniä kyseisen moduulin kanssa käytetään, ja mitä muita moduuleja tarvitaan täyttämään muut alueet.</li>
+    <li>MainController lataa tarvittavat moduulit, ja pyytää niitä tuottamaan html-sisällön, jonka se syöttää skinin alueisiin.</li>
+    <li>MainController pyytää skiniä tulostumaan ruudulle.</li>
+</ul>
+
+<h4>Esimerkki:</h4>
+<ul>
+    <li>Käyttäjä pyytää sivua kilta/hallitus.</li>
+    <li>Navigointimoduuli löytää navigointihierarkiasta kyseisen solmun ja toteaa, että sisällön tuottaa <i>page</i>-moduuli, ja sisältö löytyy id:llä 70.</li>
+    <li>Main Controller toteaa, että page-moduulin kanssa käytetään oletusskiniä, pääsisältö tulee alueeseen nimeltä <i>content</i>, alueeseen <i>topnavi</i> on pyydettävä navigointimoduulilta sisältöä nimeltä <i>topnavi</i>, ja aluesseen <i>leftnavi</i> on pyydettävä navigointimoduulilta sisältöä nimeltä <i>navitree</i>.</li>
+    <li>MainController pyytää <i>page</i>-moduulilta sisältöä id-numerolla 70, ja navigointimoduulilta <i>topnavi</i> ja <i>navitree</i> -sisällöt, sekä syöttää ne skiniin.</li>
+    <li>MainController pyytää skiniä tulostumaan ruudulle.</li>
+</ul>
+
+
+<h3>Skinin valitseminen</h3>
+
+<p>Sisällön tuottavalta moduulilta kysytään, onko sillä toiveita käytettävän skinin suhteen. Jos ei ole, käytettän oletusskiniä. Moduuli voi tarjota käyttäjälle käyttöliittymän skinin valitseminseen, jolloin esimerkiksi ilmoittautumismoduuli voi mahdollistaa eri ulkoasun käyttämisen eri tapahtumille.</p>
+
+<p>Kun skin on valittu, tarvitaan tieto siitä, mihin skinin alueisiin ladataan minkäkin moduulin sisältö. Tämän kuvauksen toteuttaa skinin toteuttaja, koska vain hänellä on tieto siitä, mitä alueita skin tarjoaa. [Tämä kohta on pohdinnan alainen. Web-käyttöliittymä sisältöjen sijoitteluun saattaisi olla hyödyllinen. Lisäksi admin-toiminnot voivat vaatia oletussisältöjen korvaamisen toimintonappuloilla.]</p>
+
+
+<h4>Esimerkki:</h4>
+
+<p>Skinin toteuttaja päätää, että oikeassa navipalkissa näytetään staattisille sivuille aina navigointipuu ja yläpalkissa päätason navilinkit. WebCam-moduulille navigointipuun tilalla näytetään kuitenkin kameroiden esikatselukuvat. </p>
+
+
+<div class="taulukko">
+    <table>
+    <tr><td>               </td><td>topnavi         </td><td>leftnavi         </td><td>content             </td></tr>
+    <tr><td>page           </td><td>navi->getTopnavi</td><td>navi->getLeftnavi</td><td>page->getContent(id)</td></tr>
+    <tr><td>webcam         </td><td>navi->getTopnavi</td><td>navi->getLeftnavi</td><td>cam->getContent     </td></tr>
+    </table>
+
+<p>Skin - sisältö -kuvaus</p>
+</div>
+
+
+<h3>Moduulien toiminta</h3>
+
+<p>Moduulit ovat itsenäisiä, eli ne eivät tiedä mihin alueeseen niiden tuottama sisältö päätyy, tai mitkä muut moduulit tuottavat samaan aikaan sisältöä. Tämä mahdollistaa sen, että koko sivun ulkoasu voidaan vaihtaa, mutta jokainen moduuli toimii omassa lokerossaan kuten ennenkin. Vastaavasti moduulien tuottama sisältö voidaan syöttää skinin eri alueisiin, ilman että moduulin itse tarvitsisi tietää siitä mitään.</p>
+
+<p>Suoritus etenee seuraavasti:</p>
+<ul>
+    <li>MainControllerin lähetää pyynnön moduulin Controllerille.</li>
+    <li>Controller pyytää moduulin Model-kerroksen toimintalogiikkaa tuottamaan sisältöä, lataa sopivan näkymän (View) ja syöttää sisällön näkymälle.</li>
+    <li>Controller palauttaa näkymän tuottaman HTML-sisällön takaisin MainControllerille.</li>
+</ul>
+
+<p>Moduulien tilan säilöminen on edelleen pohdinnan alaisena. Sisällön tuottavan moduulin tila voidaan riittävällä tarkkuudella säilöa URL:ään.</p>
+
+
+<h3>Tietokanta</h3>
+
+* Navigointihierarkia *
+
+Sivustolla on yksi abstrakti, kielestä riippumaton navigointipuu. Sivujen otsikot ja polut ladataan toisesta taulusta, joka sisältää eri kieliversiot. 
+
+Koska myös sivujen polut ovat kielikohtaisia, käyttäjän haluama kieliversio pystytään päättelemään suoraan urlista sen sijaan, että urlin alussa toi lopussa tarvitsisi erikseen mainita kielikoodia. ER-kaavio on esitetty navigoinnin osalta kuvassa X.
+
+[ER-kaavio]
+Kuva X: Navigointipuun ER-kaavio.
+
+Jokaisella sisältöä tuottavalla moduulilla on oma taulunsa, josta sisältöä haetaan id:n ja kielen perusteella. Kuvassa on yksinkertaisuuden vuoksi esitetty vain staattiset sivut tuottavan page-moduulin taulu.
+
+
+* Käyttöoikeudet *
+
+Jokaisella ylläpitäjillä on henkilökohtainen käyttäjätunnus, ja jokainen käyttäjä voi kuulua mielivaltaiseen määrään ryhmiä. Käyttöoikeudet ovat aina ryhmäkohtaisia, mikä yksinkertaistaa arkkitehtuuria. Tarvittaessa käyttäjälle voidaan luoda henkilökohtainen ryhmä. Käyttöoikeustaulu kytkee yksinkertaisesti moduulien toiminnot ryhmiin. Taulussa voi eimserkiksi olla rivi, joka kertoo, että page-moduulin createPage-toimintoon on oikeus hallitus-nimisellä ryhmällä. ER-kaavio on esitetty käyttäjähallinnan osalta kuvassa X.
+
+[ER-kaavio]
+Kuva X: Käyttäjähallinnan ER-kaavio.
+
+
+* Object-relational -kuvaus *
+
+Model-tasolla on automatiikkaa (O/R mapping), joka lataa tietokannan taulusta id:n perusteella tietyn rivin olioksi, eli moduulin ohjelmoijan ei tarvitse kirjoittan triviaaleja tietokantakyselyjä itse. Olion kenttiä voi muuttaa vapaasti, jonka jälkeen oliota voi pyytää kirjoittamaan sisältönsä takaisin kantaan. Toiminnallisuus toteutetaan Model-yliluokkaan, jonka kaikki model-kerroksen luokat perivät. Ohjelmoija saa edelleen kirjoittaa myös omia kyselyitä esimerkiksi hakiessaan listoja monimutkaisemmilla hakuehdoilla.
+
+lähdekoodi
+
+<p>PHP sopii sivuston toteutustekniikaksi useista syistä:
+<ul>
+    <li>Itse osaamme PHP:tä, mutta emme esimerkiksi Rubya tai Pythonia. Opetteluun ei kulu aikaa.</li>
+    <li>PHP on toimavaksi osoitettu tekniikka. Sitä käytetään esimerkiksi Wikipediassa, Facebookissa, Verkkokauppa.com:ssa ja lukemattomissa muissa suurissa sivustoissa.</li>
+    <li>Tulevat ylläpitäjät todennäköisesti osaavat PHP:ta, koska se on vakiintunut kieli, joka on helppo oppia.</li>
+</ul>
+
+</p>
+
+
+<h3>Sivuston asennus ja tietoturva</h3>
+
+<p class="ohje">Kertokaa, mitä sivuston asennus uudelle palvelimelle vaatii ja kuinka se tehdään. Kertokaa myös, minkälaisia tietoturvakysymyksiä sivustossa ja erityisesti aktiivisessa elementissä on ilmennyt ja miten niihin on vastattu. </p>
+
+<p>Sivusto asennetaan kopioimalla lähdekoodi Apache-palevelimen näkemään paikkaan, editoimalla config.php:hen tietokanta-asetukset, luomalla tietokanta, ja ajamalla tietokantamäärittely kantaan.</p>
+
+
+
+<!--
+***************************************************************************
+************************** WWW-tekniikka **********************************
+***************************************************************************
+-->
+<h2>WWW-tekniikka</h2>
+
+HTML
 
     Sivuston HTML-koodin (myös mahdollisen aktiivisen elementin tuottaman koodin) tulee olla kunnollista. Peruskoodin tulee olla joko HTML- tai XHTML-spesifikaation mukaista. Käytä soveltuvinta spesifikaatioiden versiota. Sivujen tulee pääsääntöisesti validoitua ilman virheitä. Jos virhettä ei jossain tilanteessa voi välttää, täytyy se voida perustella. Arvostelussa huomioidaan myös sivujen toimivuus eri selainohjelmilla.
 
     Liittäkää dokumenttiin pätkä HTML-listausta jostain näytetystä esimerkkisivusta. (Älkää kuitenkaan käyttääkö kahta dokumentin sivua enempää HTML-koodille!) Sisällyttäkää dokumenttiin lisäksi esimerkivalidointitulos W3C:n validaattoriohjelmalta tai -palvelulta.
+    
+    
     CSS-sivujen listaukset
 
     Antakaa esimerkki sivustossa käytetyn tyylisivun lähdekoodista. Kertokaa myös perustelut sille, missä olette tyylisivuja käyttäneet, ja mitä niillä on haluttu tehdä.
@@ -367,21 +460,62 @@ WWW-tekniikka (4 pistettä)
 
     Esittäkää selvitys ja perustelut siitä, onko joku osa sivustosta selainriippuvaa. Kertokaa myös miten asia on ilmoitettu käytäjille ja miten muiden selainohjelmien käyttäjät on huomioitu (esimerkiksi vaihtoehtoisilla sivulla tms.) 
 
-Projektin aikataulu (4 pistettä)
 
-    Ajankäyttö ja aikataulu
 
-    Esittäkää koko harjoitustyössä toteutunut ajankäyttö. Arvioikaa lyhyesti myös mahdollisia poikkeamia alkuperäisestä suunnitelmasta. 
+<!--
+***************************************************************************
+************************** Aikataulu **************************************
+***************************************************************************
+-->
+<h2>Ajankäyttö ja aikataulu</h2>
 
-Muuta arvosteltavaa
+<p>Ajankäyttösuunnitelma on esitetty alla olevassa taulukossa. Aikataulusta ollaan monta viikkoa jäljessä, tärkeimmät ominaisuudet toimivat jo melko hyvin. Projektin tila ei siis vaikuta huolestuttavalta.</p>
 
-    Painotus (4 pistettä)
+<table class="ajankaytto">
+<thead>
+	<tr>
+		<td colspan="2"></td>
+		<th colspan="3">suunnitelma (h)</th>
+		<th colspan="3">toteuma (h)</th>
+	</tr>
+	<tr>
+		<td colspan="2" style="text-align:right;">Valmiina viikolla</td>
+		<td>T</td>
+		<td>J</td>
+		<td>A</td>
+		<td>T</td>
+		<td>J</td>
+		<td>A</td>
+	</tr>
+</thead>
+<tbody>
+<tr><th>Projektin pystytys (serveri, svn...)</th>           <td> 6</td><td> 6</td><td> 4</td><td> 4</td><td> 5</td><td> 2</td><td> 4</td></tr>
+<tr><th>Arkkitehtuurin suunnittelu</th>                     <td> 7</td><td> 5</td><td> 5</td><td> 3</td><td> 3</td><td> 3</td><td> 2</td></tr>
+<tr><th>Yleinen suunnittelu</th>                            <td> 8</td><td> 3</td><td> 3</td><td> 3</td><td> 4</td><td> 2</td><td> 3</td></tr>
+<tr><th>Korkean tason arkkitehtuurin protoilu</th>          <td> 9</td><td>16</td><td> 4</td><td> 0</td><td>11</td><td> 0</td><td> 0</td></tr>
+<tr><th>Navigoinnin toteuttaminen</th>                      <td>10</td><td> 8</td><td> 0</td><td> 0</td><td> 3</td><td> 0</td><td> 0</td></tr>
+<tr><th>Suunnitelmadokumentin kirjoittaminen</th>           <td>11</td><td> 6</td><td> 6</td><td> 6</td><td>10</td><td> 3</td><td> 6</td></tr>
+<tr><th>Alustava graafinen suunnittelu</th>                 <td>12</td><td> 0</td><td> 0</td><td>10</td><td> 0</td><td> 0</td><td>10</td></tr>
+<tr><th>Moduulien toiminta</th>                             <td>12</td><td> 6</td><td> 6</td><td> 0</td><td> _</td><td> 2</td><td> _</td></tr>
+<tr><th>Autentikointi ja alustavia admin-toimintoja</th>    <td>13</td><td> 8</td><td> 8</td><td> 0</td><td> _</td><td> 0</td><td> _</td></tr>
+<tr><th>Staattiset sivut toimimaan</th>                     <td>13</td><td> 2</td><td> 2</td><td> 5</td><td> _</td><td> 0</td><td> _</td></tr>
+<tr><th>Cache</th>                                          <td>14</td><td> 0</td><td> 6</td><td> 0</td><td> _</td><td> 0</td><td> _</td></tr>
+<tr><th>Ilmoittautuminen</th>                               <td>15</td><td> 0</td><td>12</td><td> 0</td><td> _</td><td> 0</td><td> _</td></tr>
+<tr><th>Demon valmistelu</th>                               <td>16</td><td> 6</td><td> 0</td><td> 0</td><td> _</td><td> 2</td><td> _</td></tr>
+<tr><th>Gallup</th>                                         <td>17</td><td> 2</td><td> 2</td><td> 2</td><td>  </td><td>  </td><td>  </td></tr>
+<tr><th>Uutiset</th>                                        <td>17</td><td> 0</td><td> 0</td><td>10</td><td>  </td><td>  </td><td>  </td></tr>
+<tr><th>Demon valmistelu</th>                               <td>18</td><td> 0</td><td> 4</td><td> 0</td><td>  </td><td>  </td><td>  </td></tr>
+<tr><th>Edistyneet admin-toiminnot</th>                     <td>19</td><td>16</td><td>16</td><td> 0</td><td>  </td><td>  </td><td>  </td></tr>
+<tr><th>Ulkoasun ja käyttöliittymän hiominen</th>           <td>20</td><td> 2</td><td> 2</td><td>10</td><td>  </td><td>  </td><td>  </td></tr>
+<tr><th>Sisällön kirjoittaminen</th>                        <td>20</td><td> 4</td><td> 4</td><td> 4</td><td>  </td><td>  </td><td>  </td></tr>
+<tr><th>Toteutusdokumentin kirjoittaminen</th>              <td>21</td><td> 6</td><td> 6</td><td> 6</td><td>  </td><td>  </td><td>  </td></tr>
+</tbody>
+<tfoot><td colspan="8">&nbsp;</td></tfood>
+</table>
 
-    Harjoitustyön painoitusvaihtoehtoja on kolme: sisällöntuotanto, sivuston ulkoasu+käyttöliittymä ja aktiivinen elementti. Ryhmän valitsema painotus nostaa toteutusvaiheessa vastaavan dokumentin kohdan arvostelun maksimipistemäärää 4:llä pisteellä.
-    Yleisvaikutelma (6 pistettä)
 
-    Yleisvaikutelmapisteillä arvioidaan kaikki sellainen työssä oleva, joka ei mahdu muihin kategorioihin. Esimerkiksi jos joku osa työstä on toteutettu erittäin ansioituneesti, jos toteutettava sivusto on erittäin toimiva, tai jos toteutusta on viety normaalia pidemmälle (testaus, käytettävyystestit jne.), nostaa tämä yleisvaikutelmaa. 
-    
+</div>
 
 </body>
 </html>
+
