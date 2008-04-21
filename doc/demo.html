@@ -1,7 +1,47 @@
-<<<<<<< .mine
 <html>
 <head>
     <title>Demodokkari</title>
+<style>
+
+/* ajankäyttö */
+
+table.ajankaytto,table.ajankaytto tr, table.ajankaytto th, table.ajankaytto td, table.ajankaytto tr {
+	border: 0px;
+	border-spacing: 0px;
+	padding: 1px 3px 1px 3px;
+	margin: 0px;
+	font-weight: normal;
+	text-align: left;
+}
+
+table.ajankaytto thead th {
+	font-weight: bold;
+	text-align: center;
+}
+
+table.ajankaytto thead td {
+	font-weight: normal;
+	text-align: center;
+}
+
+table.ajankaytto tbody th {
+	font-weight: normal;
+	text-align: left;
+	border-top: 1px solid #000000;
+}
+
+table.ajankaytto tbody td {
+	font-weight: normal;
+	text-align: right;
+	border-top: 1px solid #000000;
+	border-left: 1px solid #000000;
+}
+
+table.ajankaytto tfoot td {
+	border-top: 1px solid #000000;
+}
+
+</style>
 </head>
 <body>
 
@@ -180,6 +220,50 @@ Sivuston rakenne
         * julkaisukielet 
 
     Arvioikaa toteuttamanne sisältökokonaisuus sivuston kohderyhmien kannalta. 
+
+<h2>Ajankäyttö ja aikataulu</h2>
+<p>Ajankäyttösuunnitelma on esitetty alla olevassa taulukossa. Tarkoituksena on aloittaa korkean tason arkkitehtuurista ja kriittisistä toiminnoista, ja edetä hiljalleen perustoimintoihin ja viimeistelyyn.</p>
+<table class="ajankaytto">
+<thead>
+	<tr>
+		<td colspan="2"></td>
+		<th colspan="3">suunnitelma (h)</th>
+		<th colspan="3">toteuma (h)</th>
+	</tr>
+	<tr>
+		<td colspan="2" style="text-align:right;">Valmiina viikolla</td>
+		<td>T</td>
+		<td>J</td>
+		<td>A</td>
+		<td>T</td>
+		<td>J</td>
+		<td>A</td>
+	</tr>
+</thead>
+<tbody>
+<tr><th>Projektin pystytys (serveri, svn...)</th>		<td>6</td> <td>6</td> <td>4</td> <td>4</td> <td>5</td> <td>2</td><td>4</td></tr>
+<tr><th>Arkkitehtuurin suunnittelu</th>				<td>7</td> <td>5</td> <td>5</td> <td>3</td> <td>3</td> <td>3</td><td>2</td></tr>
+<tr><th>Yleinen suunnittelu</th>				<td>8</td> <td>3</td> <td>3</td> <td>3</td> <td>4</td> <td>2</td><td>3</td></tr>
+<tr><th>Korkean tason arkkitehtuurin protoilu</th>		<td>9</td> <td>16</td><td>4</td> <td>0</td> <td>11</td><td>0</td><td>0</td></tr>
+<tr><th>Navigoinnin toteuttaminen</th>				<td>10</td><td>8</td> <td>0</td> <td>0</td> <td>3</td> <td>0</td><td>0</td></tr>
+<tr><th>Suunnitelmadokumentin kirjoittaminen</th>		<td>11</td><td>6</td> <td>6</td> <td>6</td> <td>10</td><td>3</td><td>6</td></tr>
+<tr><th>Alustava graafinen suunnittelu</th>			<td>12</td><td>0</td> <td>0</td> <td>10</td><td>0</td> <td>0</td><td>10</td></tr>
+<tr><th>Moduulien toiminta</th>					<td>12</td><td>6</td> <td>6</td> <td>0</td> <td>_</td> <td>2</td><td>_</td></tr>
+<tr><th>Autentikointi ja alustavia admin-toimintoja</th>	<td>13</td><td>8</td> <td>8</td> <td>0</td> <td>_</td> <td>0</td><td>_</td></tr>
+<tr><th>Staattiset sivut toimimaan</th>				<td>13</td><td>2</td> <td>2</td> <td>5</td> <td>_</td> <td>0</td><td>_</td></tr>
+<tr><th>Cache</th>						<td>14</td><td>0</td> <td>6</td> <td>0</td> <td>_</td> <td>0</td><td>_</td></tr>
+<tr><th>Ilmoittautuminen</th>					<td>15</td><td>0</td> <td>12</td><td>0</td> <td>_</td> <td>0</td><td>_</td></tr>
+<tr><th>Demon valmistelu</th>					<td>16</td><td>6</td> <td>0</td> <td>0</td> <td>_</td> <td>2</td><td>_</td></tr>
+<tr><th>Gallup</th>						<td>17</td><td>2</td> <td>2</td> <td>2</td> <td>&nbsp;</td> <td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><th>Uutiset</th>						<td>17</td><td>0</td> <td>0</td> <td>10</td><td>&nbsp;</td> <td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><th>Demon valmistelu</th>					<td>18</td><td>0</td> <td>4</td> <td>0</td> <td>&nbsp;</td> <td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><th>Edistyneet admin-toiminnot</th>				<td>19</td><td>16</td><td>16</td><td>0</td> <td>&nbsp;</td> <td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><th>Ulkoasun ja käyttöliittymän hiominen</th>		<td>20</td><td>2</td> <td>2</td> <td>10</td><td>&nbsp;</td> <td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><th>Sisällön kirjoittaminen</th>				<td>20</td><td>4</td> <td>4</td> <td>4</td> <td>&nbsp;</td> <td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><th>Toteutusdokumentin kirjoittaminen</th>			<td>21</td><td>6</td> <td>6</td> <td>6</td> <td>&nbsp;</td> <td>&nbsp;</td><td>&nbsp;</td></tr>
+</tbody>
+<tfoot><td colspan="8">&nbsp;</td></tfood>
+</table>
 
 <h1>Demo</h1>
 <p><strong>Ulkoasu ja käyttöliittymä</strong></p>
