@@ -211,7 +211,7 @@ h2 {
 
 #menu-container ul {
 	margin-top:2px;
-	margin-bottom:20px;
+	margin-bottom:0px;
 	
 	padding-left:30px;
 	height:inherit; /* miten saan tuosta border-leftistä koko sivun korkusen? */

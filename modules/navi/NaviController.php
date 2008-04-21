@@ -32,11 +32,15 @@ class NaviController extends ModuleController {
 
         if ($branch != null) {
             $html = '<h1>' . $branch->getTitle() . "</h1>\n";
+            $html .= "<ul>\n";
+            $html .= $branch->renderTree(1);
+            $html .= "</ul>\n";
+        } else {
+            $html .= "<ul>\n";
+            $html .= $naviTree->renderTree(1);
+            $html .= "</ul>\n";
         }
 
-        $html .= "<ul>\n";
-        $html .= $naviTree->renderTree($startDepth);
-        $html .= "</ul>\n";
 
         // Admin
         // TODO: check privileges properly

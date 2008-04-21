@@ -119,8 +119,8 @@ class NaviNode extends Model {
         $query = 'INSERT INTO navititles(id, lang, url, title) VALUES ('
             . $newId . ', \''
             . escapeSql($this->lang) . '\', \''
-            . escapeSql($this->title) . '\', \''
-            . escapeSql($this->url)
+            . escapeSql($this->url) . '\', \''
+            . escapeSql($this->title)
             . '\')';
 
         if (query($query) === false) {

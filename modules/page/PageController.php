@@ -52,9 +52,7 @@ class PageController extends ModuleController {
                 if ($page->save() == false) {
                     return "<h1>Query failed</h1>";
                 }
-                
-                echo $page->getId();
-                
+
                 $naviNode->createNode(getPost('parent'), $this->moduleName, $page->getId());
             } else {
                 if ($page->save() == false) {
@@ -79,7 +77,6 @@ class PageController extends ModuleController {
 
         return $view->render();
     }
-
 
 }
 
