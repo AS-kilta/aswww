@@ -11,6 +11,7 @@
 */
 
 body, html {
+    font-size: 12px;
     font-family: tahoma, verdana, arial, sans-serif;
     background: #fff;
     color: #303030;
@@ -90,7 +91,7 @@ hr {
 	background:url('arrow.png') no-repeat center bottom;
 	display:block;
 	padding:15px 15px 13px;
-	font:10px "Tahoma";
+	font: 10px "Tahoma";
 	text-decoration:none;
 	color:#FFFFFF;
 }
@@ -167,11 +168,9 @@ hr {
 }
 
 #content-left {
-	width:550px;
+	width:450px;
 	float:left;
-	padding-top:10px;
-	padding-right:25px;
-	margin-bottom:15px;
+    margin: 10px;
 }
 
 h1 {
@@ -187,37 +186,32 @@ h2 {
     color: #4a0560;
     /*padding-left: 10px; */
     text-align:left;
-    font-size:20px;
-}
-
-#content-text {
-	padding-top:5px;
-	padding-left:10px;
-	font-size:11px;
-	text-align:left;
+    font-size:15px;
 }
 
 
 /*** OIKEA MENU ALKAA ***/
 
 #menu-container {
-    float:left;
+    float:right;
+    border-left:1px dotted #A5AEC5; 
     min-height: 350px;
+    width: 200px;
+    margin: 10px 0px 20px 0px;
+    padding: 0px 10px;
 }
 
 #menu-container h1 {
-	font-family: Trebuchet MS;
-	color:#4a0560;
-	padding-top: 13px;
-	padding-left: 10px;
-	text-align:left;
-	font-size:17px;
+    font-family: Trebuchet MS;
+    color:#4a0560;
+    text-align:left;
+    font-size:17px;
 }
 
 #menu-container ul {
 	margin-top:2px;
 	margin-bottom:20px;
-	border-left:1px dotted #A5AEC5;
+	
 	padding-left:30px;
 	height:inherit; /* miten saan tuosta border-leftist√§ koko sivun korkusen? */
 }
@@ -282,3 +276,48 @@ h2 {
 		padding-top: 12px;
 }
 
+
+/*** Front page module ***/
+
+.news h2:first-child {
+    margin-top: 0px;
+}
+
+.news h2 {
+    margin-bottom: .2em;
+}
+
+.news p {
+    margin-top: 0em;
+    margin-bottom: 2em;
+}
+
+
+/*** Poll module ***/
+.events h1 {
+    font-size: 120%;
+}
+
+.poll h2 {
+    font-size: 110%;
+}
+
+/*** Events module ***/
+
+.events {
+    margin-top: 2em; /* V‰liaikainen */
+}
+
+.events h1 {
+    font-size: 120%;
+}
+
+.events h2 {
+    font-size: 110%;
+    margin-bottom: .2em;
+}
+
+.events p {
+    font-size: 110%;
+    margin-top: .2em;
+}

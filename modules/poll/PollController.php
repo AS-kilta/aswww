@@ -1,15 +1,15 @@
 <?php
 //include_once 'modules/frontpage/Frontpage.php';
 
-class FrontpageController extends ModuleController {
+class PollController extends ModuleController {
     function __construct() {
-        $this->moduleName = 'frontpage';
+        $this->moduleName = 'poll';
     }
 
     function renderDefault() {
         $auth = Auth::getInstance();
 
-        $view = $this->loadView('news');
+        $view = $this->loadView('poll');
         return $view->render();
     }
 

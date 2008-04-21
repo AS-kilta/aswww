@@ -50,18 +50,13 @@ class View {
         if ($this->controller == null) {
             // Controller not known. Just make the url stay the same.
             return '<form method="post" action="' . getCurrentUrl() . "\">\n";
-        } else if ($action === false) {
-            // No action specified. Make it the same as currently.
-            return '<form method="post" action="' . getCurrentUrl()
-                    . '?' . $this->controller->getModuleName() . 'Action='
-                    . $this->controller->getCurrentAction()
-                    .  "\">\n";
-        } else {
-            // Action specified
+        } else if ($action != false) {
             return '<form method="post" action="' . getCurrentUrl()
                     . '?' . $this->controller->getModuleName() . 'Action='
                     . $action
                     .  "\">\n";
+        } else {
+            return '<form method="post" action="' . getCurrentUrl() . "\">\n";
         }
     }
 

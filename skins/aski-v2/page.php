@@ -31,14 +31,10 @@
 		<div id="content-top"></div>
 		<div id="content">
 			<div><img src="<?= baseUrl() . "/skins/aski-v2/photo.png" ?>"/></div>
-			<div id="content-left">
-				<div id="title">
-					<?php if ($title) print $title ?>
-                </div>
-				<div id="content-text">
-					<?php print $content ?>
-				</div>
-			</div>
+            <div id="content-left">
+                <?php if ($title) print $title ?>
+                <?php print $content ?>
+            </div>
 
             <!-- Menu -->
             <div id="menu-container">
