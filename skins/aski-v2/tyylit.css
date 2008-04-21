@@ -183,7 +183,8 @@ h1 {
 
 h2 {
     font-family: Trebuchet MS;
-    color: #4a0560;
+    /*color: #4a0560;*/
+    color: black;
     /*padding-left: 10px; */
     text-align:left;
     font-size:15px;
