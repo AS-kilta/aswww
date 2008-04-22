@@ -63,3 +63,44 @@ td {
     border: 1px solid black;
     padding: .2em .4em;
 }
+
+
+p + ul {
+    margin-top: -.5em;
+}
+
+table.ajankaytto,table.ajankaytto tr, table.ajankaytto th, table.ajankaytto td, table.ajankaytto tr {
+    border: 0px;
+    border-spacing: 0px;
+    padding: 1px 3px 1px 3px;
+    margin: 0px;
+    font-weight: normal;
+    text-align: left;
+}
+
+table.ajankaytto thead th {
+    font-weight: bold;
+    text-align: center;
+}
+
+table.ajankaytto thead td {
+    font-weight: normal;
+    text-align: center;
+}
+
+table.ajankaytto tbody th {
+    font-weight: normal;
+    text-align: left;
+    border-top: 1px solid #000000;
+}
+
+table.ajankaytto tbody td {
+    font-weight: normal;
+    text-align: right;
+    border-top: 1px solid #000000;
+    border-left: 1px solid #000000;
+}
+
+table.ajankaytto tfoot td {
+    border-top: 1px solid #000000;
+}
