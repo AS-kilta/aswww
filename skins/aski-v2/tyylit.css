@@ -15,7 +15,9 @@ body, html {
     font-family: tahoma, verdana, arial, sans-serif;
     background: #fff;
     color: #303030;
+    background-color: #36053f;
     background-image: url("bg.png");
+    background-repeat: repeat-x;
     padding: 0px;
     margin: 0px;
 }
@@ -59,6 +61,7 @@ hr {
 #page-container {
     width: 750px;
     margin: 0px auto 20px auto;
+    position: relative;
 }
 
 #logo {
@@ -87,7 +90,7 @@ hr {
 
 #toplinks ul {
 	list-style-type:none;
-    margin: 0px;
+    	margin: 0px;
 }
 
 #toplinks li {
@@ -97,7 +100,7 @@ hr {
 #toplinks li a {
 	background:url('arrow.png') no-repeat center bottom;
 	display:block;
-	padding:15px 15px 13px;
+	padding:15px 15px 13px 15px;
 	font: 10px "Tahoma";
 	text-decoration:none;
 	color:#FFFFFF;
@@ -117,23 +120,42 @@ hr {
     height: 46px;
     background: url('navbar.png') no-repeat;
     margin-bottom: 10px;
+    position: relative;
 }
 
 #nav-container ul {
     list-style-type: none;
-    height: 46px;
-    margin-top: 0px;
+    list-style-position: outside;
+    position: relative;
+    height: 32px;
+    margin: 0;
+	margin-top: 16px;
+    padding: 0;
+    padding-left: 20px;
+    text-indent: 0;
+    float: left;
 }
 
 #nav-container li {
-    float: left;
-    line-height: 46px;
+    display: inline;
+    float: none;
+    position: relative;
+    /*line-height: 46px;*/
+    margin:0;
+    padding: 0;
+    left: 0;
+
+    vertical-align: middle;
+    padding: 0px 0px 0px 0px;
 }
 
 #nav-container li a {
-    display: block;
-    padding: 16px 15px 0px 15px;
-    height: 30px;
+    display: inline;
+    top: 0;
+    padding: 16px 15px 16px 15px;
+    /*line-height: 46px;*/
+    margin: 0;
+    height: 32px;
     font: bold 11px "Tahoma";
     text-decoration: none;
     color:#FFFFFF;
@@ -153,6 +175,17 @@ hr {
 
 /*** CONTENT ***/
 
+#table-container, #table-container tr, #table-container tr td {
+	border: 0;
+	padding: 10px 0px 10px 0px;
+	border-spacing: 0;
+	vertical-align: top;
+}
+#table-container #td_right {
+	border-left:1px dotted #A5AEC5;
+}
+
+
 #content-top {
     background-image: url("content-top.png");
     width: 748px;
@@ -171,13 +204,18 @@ hr {
 	width: 724px;
 	padding-left:12px;
 	padding-right:12px;
-	/*min-height: 400px;*/
+	top: 0px;
+	bottom: 0px;
+	position: relative;
+	height: auto;
+	min-height: 400px;
 }
 
 #content-left {
 	width:450px;
 	float:left;
-    margin: 10px;
+	margin: 0px 10px 0px 10px;
+	position: relative;
 }
 
 h1 {
@@ -202,11 +240,15 @@ h2 {
 
 #menu-container {
     float:right;
-    border-left:1px dotted #A5AEC5; 
+    position: relative;
+    /*border-left:1px dotted #A5AEC5;*/
+    height: auto;
     min-height: 350px;
     width: 200px;
-    margin: 10px 0px 20px 0px;
+    margin: 0;
     padding: 0px 10px;
+    top: 0px;
+    bottom: 0px;
 }
 
 #menu-container h1 {
@@ -217,14 +259,30 @@ h2 {
 }
 
 #menu-container ul {
-	margin-top:2px;
-	margin-bottom:0px;
+	margin: 0;
+	margin-top: 2px;
+	margin-bottom: 0px;
+
+	text-indent: 0;
+	padding: 0;
+	padding-left: 14px;
 	
-	padding-left:30px;
-	height:inherit; /* miten saan tuosta border-leftistä koko sivun korkusen? */
+	list-style-position: outside;
+	/*list-style-type: none;*/
+	list-style-image: url(menu-list.png);
+	/*height:inherit; *//* miten saan tuosta border-leftistä koko sivun korkusen? */
+}
+
+#menu-container > ul {
+	padding-left: 28px;
 }
 
 #menu-container li{
+	margin: 0;
+	padding: 0;
+	text-indent: 0;
+	list-style-position: outside;
+	/*list-style-type: none;*/
 	list-style-image:url(menu-list.png);
 	line-height:18px;
 }
@@ -262,6 +320,7 @@ h2 {
 #footer {
     height: 39px;
     width: 724px;
+    position: relative;
     
     background: url('footer.png') no-repeat;
 }
@@ -313,7 +372,7 @@ h2 {
 /*** Events module ***/
 
 .events {
-    margin-top: 2em; /* V�liaikainen */
+    margin-top: 2em; /* V�liaikainen */
 }
 
 .events h1 {

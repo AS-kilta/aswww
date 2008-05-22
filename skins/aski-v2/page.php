@@ -33,25 +33,27 @@
 
         <div id="blank"></div>
 
-		<div id="content-top"></div>
-		<div id="content">
-			<div><img src="<?= baseUrl() . "/skins/aski-v2/photo.png" ?>"/></div>
-            <div id="content-left">
-                <?php if ($title) print $title ?>
-                <?php print $content ?>
-            </div>
+	<div id="content-top"></div>
+	<div id="content">
+		<div><img src="<?= baseUrl() . "/skins/aski-v2/photo.png" ?>"/></div>
+		<table id="table-container"><tr><td id="td_left">
+            		<div id="content-left">
+                		<?php if ($title) print $title ?>
+                		<?php print $content ?>
+            		</div>
+		</td><td id="td_right">
+            		<!-- Menu -->
+            		<div id="menu-container">
+		                <?php print $left ?>
+            		</div>
+		</td></tr></table>
 
-            <!-- Menu -->
-            <div id="menu-container">
-                <?php print $left ?>
-            </div>
+		<div id="blank"></div>
 
-            <div id="blank"></div>
-
-            <!-- Footer -->
-            <div id="footer">
-                <span class="footer-text"><?php print $footer_message ?></span>
-            </div>
+		<!-- Footer -->
+		<div id="footer">
+			<span class="footer-text"><?php print $footer_message ?></span>
+            	</div>
         </div>
 
         <div id="content-bottom"></div>
