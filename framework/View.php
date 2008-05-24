@@ -1,5 +1,4 @@
 <?php
-include 'config.php';
 
 class View {
 
@@ -27,7 +26,9 @@ class View {
      * @return A string containing HTML.
      */
     function render() {
-        // Convert array into separate variables for easier referencing.
+        global $_;  // Translation strings
+
+        // Convert the array into separate variables for easier referencing.
         // This can cause variable name conflicts, that's why the stupid
         // variable names.
         foreach ($this->data as $k => $d) {
@@ -67,6 +68,7 @@ class View {
     /**
      * Renders a submit button. The action specified here overrides the one
      * specified in startForm().
+     * @param $parameters Example: 'param1=qwerty&param2=asdfgh'
      */
     function submitButton($action, $text, $parameters = false) {
         $html = '<button name="'
@@ -80,6 +82,10 @@ class View {
         $html .= '" type="submit" />' . $text . "</button>\n";
 
         return $html;
+    }
+
+    function link($path, $text) {
+        return '<a href=\'' . baseUrl() . "/$path'>$text</a>\n";
     }
 
     /**

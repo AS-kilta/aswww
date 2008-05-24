@@ -44,12 +44,18 @@ class AdminController extends ModuleController {
 
             if ($auth->login($username, $password) !== false) {
                 // Successful login
-                redirect('');
+                redirect('admin');
             } else {
                 $view->setData('invalidLogin', true);
                 return $view->render();
             }
         }
+    }
+
+    public function renderLogout() {
+        $auth = Auth::getInstance();
+        $auth->logout();
+        redirect('');
     }
 
     public function renderUser() {

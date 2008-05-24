@@ -12,9 +12,15 @@ class Skin {
     }
 
     function getContentMapping($moduleName) {
-        include('skins/' . $this->skinName . '/config.php');
+        include_once('skins/' . $this->skinName . '/config.php');
 
         return getContentMapping($moduleName);
+    }
+
+    function getMainNaviRegion() {
+        include_once('skins/' . $this->skinName . '/config.php');
+
+        return getMainNaviRegion();
     }
 
     function setContent($region, $html) {

@@ -9,7 +9,10 @@ class NaviController extends ModuleController {
         $this->moduleName = 'navi';
     }
 
-
+    public function renderAdmin() {
+        return $this->renderDefault();
+    }
+    
     public function renderDefault() {
         $navi = Navi::getInstance();
         $naviTree = $navi->getNaviTree();
@@ -60,13 +63,18 @@ class NaviController extends ModuleController {
     public function renderTopNavi() {
         $navi = Navi::getInstance();
         $naviTree = $navi->getNaviTree();
-        
-        
+
         $html = "<ul>";
 
         foreach ($naviTree->getChildren() as $child) {
             if ($child->getLang() == getLanguage()) {
-                $html .= "<li><a href='" . baseUrl() . $child->cumulativeUrl . "'>{$child->title}</a></li>";
+                if ($child->onPath) {
+                    $class = 'class="current"';
+                } else {
+                    $class = '';
+                }
+
+                $html .= "<li $class><a href='" . baseUrl() . $child->cumulativeUrl . "'>{$child->title}</a></li>";
             }
         }
 
@@ -77,7 +85,7 @@ class NaviController extends ModuleController {
 
         if ($user != null) {
             $html .= "<li><a href='" . baseUrl() . "/admin'>Admin</a></li>";
-            $html .= "<li><a href='" . baseUrl() . "/logout'>Logout</a></li>";
+            $html .= "<li><a href='" . baseUrl() . "/admin/logout'>Logout</a></li>";
         }
 
         $html .= "</ul>";

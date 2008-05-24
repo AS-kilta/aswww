@@ -87,6 +87,7 @@ class ModuleController {
 
     /**
      * Returns a list of available modules as an array.
+     * @return array of strings
      */
     static function getAvailableModules() {
         $list = Array();

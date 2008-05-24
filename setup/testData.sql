@@ -39,3 +39,4 @@ INSERT INTO signup(id,lang,title,description) VALUES (1,'fi','Taskumatti','Tilaa
 -- SET UP SEQUENCES
 SELECT setval('naviNodesSeq', 100);
 SELECT setval('contentSeq', 100);
+SELECT setval('newsSeq', 100);

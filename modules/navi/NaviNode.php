@@ -17,12 +17,12 @@ class NaviNode extends Model {
 
     var $children;      // array of child nodes
     var $onPath;        // true if node is on the path requested by the user
+    var $selected;      // true if node is the node requested by the user
 
     public function __construct($row = null) {
         // Columns that are automatically saved
         $this->tableName = 'navinodes';
         $this->sequenceName = 'navinodes';
-
 
         $this->children = array();
         $this->onPath = false;
@@ -139,12 +139,12 @@ class NaviNode extends Model {
             return;
         }
 
-        if ($this->onPath) {
-            $class = ' style="font-weight: bold"';
+        if ($this->selected) {
+            $class = ' class="current"';
         }
 
         if ($startDepth < 1) {
-            $html = "<li$class><a href='" . baseUrl() . $this->cumulativeUrl . "'>{$this->title}</a>\n";
+            $html = "<li$class><a$class href='" . baseUrl() . $this->cumulativeUrl . "'>{$this->title}</a>\n";
         }
 
         foreach($this->children as $child) {

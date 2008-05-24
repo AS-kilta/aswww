@@ -15,19 +15,6 @@ class MainController {
         // Get installed modules
         $modules = ModuleController::getAvailableModules();
 
-
-        // Hard-coded paths
-        /*
-        if ($path[0] == 'login') {
-            echo "<h1>Login not implemented</h1>";
-            return;
-        } else if ($path[0] == 'logout') {
-            $auth = Auth::getInstance();
-            $auth->logout();
-            $path = Array();
-        }
-        */
-
         if (count($path) > 0 && in_array($path[0], $modules)) {
             $this->showModule(null, $path[0], $path[1]);
         } else if ($node != null) {
@@ -36,21 +23,11 @@ class MainController {
             $this->show404();
         }
     }
-    
+
     function show404() {
-        $navi = Navi::getInstance();
-        echo "<h1>Page not found</h1>";
-        // Load skin
-        /*
-        $skin = new Skin('aski');
-        $skin->setContent('topnavi', $navi->renderTopNavi());
-        $skin->setContent('left', $navi->renderNaviTree());
-        $skin->setContent('content', "<h1>Page not found</h1>");
-        $skin->show();
-        */
+        $this->showModule(null, 'page', '404');
     }
-    
-    
+
     function showModule($node, $moduleName, $controllerName) {
         global $defaultSkin;
 
@@ -87,6 +64,12 @@ class MainController {
             $skin->setContent($region, $auxModule->render());
         }
 
+        // Render admin menu
+        if ($node == null) {
+            $mainNaviRegion = $skin->getMainNaviRegion();
+            $skin->setContent($mainNaviRegion, $this->renderAdminMenu());
+        }
+
         // Show
         $skin->show();
     }
@@ -96,26 +79,30 @@ class MainController {
      * Loads a module by name. Returns a ModuleController object.
      */
     function loadModule($moduleName) {
+        global $_;  // Translation strings
+
+        // Include class definition
         $className = ucfirst($moduleName) . 'Controller';
-        include_once('modules/' . $moduleName . '/' . $className . '.php');
+        include_once("modules/$moduleName/$className.php");
+
+        // Include translation strings
+        include_once("modules/$moduleName/strings-" . getLanguage() . '.php');
+
         return new $className();
     }
 
+    private function renderAdminMenu() {
+        $modules = ModuleController::getAvailableModules();
 
-    function showLogin() {
-        $navi = Navi::getInstance();
-        $skin = new Skin('aski');
-    
-        $module = new AdminController();
-        $topNavi = $module->renderTopNavi();
-        //$leftNavi = $navi->renderNaviTree();
-    
-        $skin->setContent('content', $content);
-        //$skin->setContent('left', $leftNavi);
-        $skin->setContent('topnavi', $topNavi);
-        $skin->show();
+        $html = "<h1>Admin</h1>\n";
+        $html .= "<ul>\n";
+        foreach ($modules as $module) {
+            $html .= "<li><a href='" . baseUrl() . "/$module/admin'>" . ucfirst($module) . "</a></li>\n";
+        }
+        $html .= "</ul>\n";
+
+        return $html;
     }
-    
 
 }
 

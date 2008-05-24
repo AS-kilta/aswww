@@ -72,6 +72,7 @@ class Navi {
                 // Is this the node that the user requested?
                 if (count($urlParts) == 1) {
                     $this->selectedNode = $newChild;
+                    $newChild->setSelected(true);
                 }
 
                 // Set language

@@ -1,4 +1,4 @@
-<h1>Ajankohtaista</h1>
+<h1><?= $_['news-heading'] ?></h1>
 
 <?php foreach ($news as $item) { ?>
     <div class="news">
@@ -6,16 +6,16 @@
     <p>
     <?= $item['content'] ?><br />
     <?php if ($editable) {
-        echo $this->link('frontpage/edit?id=' . $item['id'], 'Edit');
+        echo $this->link('news/edit?id=' . $item['id'], 'Edit');
     } ?>
     </p>
 
     </div>
 <?php } ?>
 
-<?php 
+<?php
 if ($editable) {
-    echo $this->link('frontpage/edit', 'New');
-    echo $this->link('frontpage/list', 'List all');
+    echo $this->link('news/edit', 'New');
+    echo $this->link('news/list', 'List all');
 }
 ?>

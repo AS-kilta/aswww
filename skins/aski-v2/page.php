@@ -14,14 +14,16 @@
 <body>
 <div id="bg-gfx">
 
-    <div id="logo"><img src="<?= baseUrl() . "/skins/aski-v2/logo.png" ?>" /></div>
+    <div id="logo">
+        <a href="<?= baseUrl() ?>"><img alt="Logo" src="<?= baseUrl() . "/skins/aski-v2/logo.png" ?>" /></a>
+    </div>
 
     <div id="toplinks">
         <?php print $external ?>
         <ul>
-            <li><a href="#">AskiCam</a></li>
-            <li><a href="#">Wiki</a></li>
-            <li><a href="#">Tenttiarkisto</a></li>
+            <li><a href="http://aski.hut.fi/askicam">AskiCam</a></li>
+            <li><a href="http://aski.hut.fi/AskiWiki">Wiki</a></li>
+            <li><a href="http://www.tenttiarkisto.fi/">Tenttiarkisto</a></li>
         </ul>
     </div>
     <div id="blank"></div>

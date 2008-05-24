@@ -2,7 +2,7 @@
 
 function getContentMapping($moduleName) {
     switch ($moduleName) {
-        case 'frontpage':
+        case 'news':
             return Array(
                 'topnavi' => Array('navi', 'topNavi'),
                 'left' => Array('poll', 'default')
@@ -22,6 +22,10 @@ function getContentMapping($moduleName) {
                 "left" => Array('navi', 'naviTree')
             );
     }
+}
+
+function getMainNaviRegion() {
+    return 'left';
 }
 
 ?>

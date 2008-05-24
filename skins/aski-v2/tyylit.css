@@ -35,11 +35,17 @@ a.admin {
 }
 
 .warning {
-    color: red;
+    border: 1px solid red;
+    background: #FFD0D0;
+    padding: 4px 4px;
+    color: #000000;
 }
 
 .success {
-    color: #008000;
+    border: 1px solid #008000;
+    background: #D0FFD0;
+    padding: 4px 5px;
+    color: black;
 }
 
 hr {
@@ -77,7 +83,9 @@ hr {
     margin: 0px;
 }
 
-
+img {
+    border: 0px;
+}
 
 /*** ULKOISET LINKIT ALKAA ***/
 
@@ -128,11 +136,11 @@ hr {
     list-style-position: outside;
     position: relative;
     height: 32px;
-    margin: 0;
+    margin: 0px;
 	margin-top: 16px;
-    padding: 0;
+    padding: 0px;
     padding-left: 20px;
-    text-indent: 0;
+    text-indent: 0px;
     float: left;
 }
 
@@ -141,9 +149,9 @@ hr {
     float: none;
     position: relative;
     /*line-height: 46px;*/
-    margin:0;
-    padding: 0;
-    left: 0;
+    margin:0px;
+    padding: 0px;
+    left: 0px;
 
     vertical-align: middle;
     padding: 0px 0px 0px 0px;
@@ -151,10 +159,10 @@ hr {
 
 #nav-container li a {
     display: inline;
-    top: 0;
+    top: 0px;
     padding: 16px 15px 16px 15px;
     /*line-height: 46px;*/
-    margin: 0;
+    margin: 0px;
     height: 32px;
     font: bold 11px "Tahoma";
     text-decoration: none;
@@ -162,23 +170,23 @@ hr {
 }
 
 #nav-container li a:hover {
-	background:url(navbar-bg-hover.png) repeat-x left top;
+	background:url('navbar-bg-hover.png') repeat-x left top;
 }
 
-#nav-container li a.current {
-	background:url(navbar-current.png) no-repeat center top;
-	height:46px;
-	color:#FFFFFF;
+#nav-container li.current a {
+    background:url('navbar-current.png') no-repeat center top;
+    height:46px;
+    color:#FFFFFF;
+    font-weight: bold;
 }
-
-
 
 /*** CONTENT ***/
 
-#table-container, #table-container tr, #table-container tr td {
-	border: 0;
+/*#table-container, #table-container>tr, */
+#table-container > tbody > tr > td {
+	border: none;
 	padding: 10px 0px 10px 0px;
-	border-spacing: 0;
+	border-spacing: none;
 	vertical-align: top;
 }
 #table-container #td_right {
@@ -245,7 +253,7 @@ h2 {
     height: auto;
     min-height: 350px;
     width: 200px;
-    margin: 0;
+    margin: 0px;
     padding: 0px 10px;
     top: 0px;
     bottom: 0px;
@@ -259,12 +267,12 @@ h2 {
 }
 
 #menu-container ul {
-	margin: 0;
+	margin: 0px;
 	margin-top: 2px;
 	margin-bottom: 0px;
 
-	text-indent: 0;
-	padding: 0;
+	text-indent: 0px;
+	padding: 0px;
 	padding-left: 14px;
 	
 	list-style-position: outside;
@@ -278,9 +286,9 @@ h2 {
 }
 
 #menu-container li{
-	margin: 0;
-	padding: 0;
-	text-indent: 0;
+	margin: 0px;
+	padding: 0px;
+	text-indent: 0px;
 	list-style-position: outside;
 	/*list-style-type: none;*/
 	list-style-image:url(menu-list.png);
@@ -289,7 +297,7 @@ h2 {
 
 #menu-container li a {
 	font: 12px "Tahoma";
-	color:#580b60;
+	color: #580b60;
 }
 
 #menu-container li:hover {
@@ -306,8 +314,8 @@ h2 {
 }
 
 #menu-container li a.current {
-	font-weight: bold;
-	text-decoration:none;
+    font-weight: bold;
+/*    text-decoration: none;*/
 }
 
 
@@ -326,14 +334,14 @@ h2 {
 }
 
 .footer-left, .footer-right {
-	top: 0;
+	top: 0px;
 	position:absolute;
 	width: 7px;
 	height: 39px;
 }
 
-.footer-left {left: 0;background: url(footer_lr.png) no-repeat 0 0;}
-.footer-right {right: 0;background: url(footer_lr.png) no-repeat -7px 0;}
+.footer-left {left: 0px;background: url(footer_lr.png) no-repeat 0px 0px;}
+.footer-right {right: 0px;background: url(footer_lr.png) no-repeat -7px 0px;}
 
 .footer-text {
 		float: left;

@@ -14,6 +14,23 @@ class Page extends Model {
         parent::__construct();
     }
 
+    /**
+     * Retruns a list of all pages.
+     */
+    public static function getPages($lang = false) {
+        $query = 'SELECT id, lang FROM news';
+
+        if ($lang != false) {
+            $query .= ' WHERE lang=\'' . escapeSql($lang) . '\'';
+        }
+
+        $query .= ' ORDER BY timestamp DESC';
+
+        $result = queryTable($query);
+
+        return $result;
+    }
+
 }
 
 ?>

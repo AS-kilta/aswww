@@ -1,4 +1,6 @@
 <?php
+include_once 'models/User.php';
+
 /**
  * Authentication service (singleton)
  */
@@ -72,6 +74,23 @@ class Auth {
         }
     }
 
+    /**
+     * Tells whether the user is privileged to perform an action.
+     * @param $user User object. Null means unauthenticated user.
+     * @param $module string Name of the module
+     * @param $node Node object. Can be null.
+     * @param $action string
+     *
+     * @return boolean
+     */
+    public function hasPrivilege($user, $module, $node, $action) {
+        // TODO
+        if ($user != null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
 
 ?>

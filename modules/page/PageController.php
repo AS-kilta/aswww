@@ -18,6 +18,20 @@ class PageController extends ModuleController {
         return $view->render();
     }
 
+    function renderAdmin() {
+        $auth = Auth::getInstance();
+        $user = $auth->getCurrentUser();
+
+        // Check privileges
+        if (!$auth->hasPrivilege($user, 'page', false, 'edit')) {
+            redirect('admin/login');
+            return;
+        }
+
+        
+
+    }
+
     function renderEdit() {
         // TODO: check privileges
         $navi = Navi::getInstance();
@@ -76,6 +90,10 @@ class PageController extends ModuleController {
         $view->setData('naviNode', $naviNode);
 
         return $view->render();
+    }
+
+    public function render404() {
+        return "<h1>Page not found</h1>\n";
     }
 
 }

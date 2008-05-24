@@ -1,6 +1,9 @@
 DROP SEQUENCE naviNodesSeq;
 DROP SEQUENCE contentSeq;
 DROP SEQUENCE usersSeq;
+DROP SEQUENCE pollSeq;
+DROP SEQUENCE pollOptionSeq;
+DROP SEQUENCE newsSeq;
 
 DROP TABLE naviNodes CASCADE;
 DROP TABLE naviTitles;
@@ -12,6 +15,9 @@ DROP TABLE groups;
 CREATE SEQUENCE naviNodesSeq;
 CREATE SEQUENCE contentSeq;
 CREATE SEQUENCE usersSeq;
+CREATE SEQUENCE pollSeq;
+CREATE SEQUENCE pollOptionSeq;
+CREATE SEQUENCE newsSeq;
 
 CREATE TABLE naviNodes (
     id INT PRIMARY KEY,
@@ -60,3 +66,27 @@ CREATE TABLE groups (
     UNIQUE (userid, groupname)
 );
 
+
+CREATE TABLE poll (
+    id INT,
+    lang VARCHAR(2),
+    question TEXT,
+    PRIMARY KEY (id, lang)
+);
+
+CREATE TABLE pollOption (
+    lang VARCHAR(2),
+    poll INT,
+    content TEXT,
+    weight INT,
+    FOREIGN KEY (poll, lang) REFERENCES poll (id, lang)
+);
+
+CREATE TABLE news (
+    id INT,
+    lang VARCHAR(2),
+    timestamp TIMESTAMP DEFAULT now(),
+    heading TEXT,
+    content TEXT,
+    PRIMARY KEY (id, lang)
+);
