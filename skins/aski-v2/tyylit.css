@@ -57,6 +57,11 @@ a > img {
 	text-decoration: none;
 }
 
+.footer-text {
+    font-size: 11px;
+    text-align: center;
+}
+
 }
 /*** end of print only css ***/
 
@@ -260,6 +265,67 @@ img {
 		z-index: 90;
 }
 
+#content {
+	background:#fff;
+	padding-left:12px;
+	padding-right:12px;
+	width: auto; /* from page-container */
+	width: 724px;
+		position: relative;
+		top: 0px;
+		bottom: 0px;
+		right: 0px;
+		left: 0px;
+		z-index: 50;
+	height: auto; /* variabling */
+}
+
+#content-center {
+	/* this makes wrapper for text and menu area */
+	/* like tbody ot tr */
+	float: left;
+	width: auto; /* from content */
+	height: auto; /* from data in this */
+	min-height: 400px; /* mininum */
+	margin: 10px 0px 10px 0px;
+		position: relative;
+		top: 0px;
+		bottom: 0px;
+		right: 0px;
+		left: 0px;
+		z-index: 50;
+}
+
+#text-container {
+	width:450px;
+	height: auto;
+	float:left;
+	margin: 0px 10px 0px 10px;
+		position: relative;
+		top: 0px;
+		bottom: 0px;
+		right: auto;
+		left: 0px;
+		z-index: 70;
+}
+
+h1 {
+    font-family: "Trebuchet MS", sans;
+    color: #4a0560;
+    /*padding-left: 10px; */
+    text-align:left;
+    font-size:20px;
+}
+
+h2 {
+    font-family: "Trebuchet MS", sans;
+    /*color: #4a0560;*/
+    color: black;
+    /*padding-left: 10px; */
+    text-align:left;
+    font-size:15px;
+}
+
 /*** OIKEA MENU ALKAA ***/
 #border {
 	position: absolute;
@@ -384,6 +450,18 @@ div.blank {
 .footer-left {left: 0px;background: url(footer_lr.png) no-repeat 0px 0px;}
 .footer-right {right: 0px;background: url(footer_lr.png) no-repeat -7px 0px;}
 
+.footer-text {
+    float: left;
+    width: 100%;
+    display: block;
+    color: #828282;
+    font-size: 11px;
+    padding-top: 12px;
+    text-align: center;
+    /*border: 1px solid red;*/
+}
+
+
 /*** Front page module ***/
 
 .news h2:first-child {
@@ -431,77 +509,3 @@ div.blank {
 /*** end of screen css ***/
 }
 
-/*** content ***/
-#content {
-	background:#fff;
-	padding-left:12px;
-	padding-right:12px;
-	width: auto; /* from page-container */
-	width: 724px;
-		position: relative;
-		top: 0px;
-		bottom: 0px;
-		right: 0px;
-		left: 0px;
-		z-index: 50;
-	height: auto; /* variabling */
-}
-
-#content-center {
-	/* this makes wrapper for text and menu area */
-	/* like tbody ot tr */
-	float: left;
-	width: auto; /* from content */
-	height: auto; /* from data in this */
-	min-height: 400px; /* mininum */
-	margin: 10px 0px 10px 0px;
-		position: relative;
-		top: 0px;
-		bottom: 0px;
-		right: 0px;
-		left: 0px;
-		z-index: 50;
-}
-
-#text-container {
-	width:450px;
-	height: auto;
-	float:left;
-	margin: 0px 10px 0px 10px;
-		position: relative;
-		top: 0px;
-		bottom: 0px;
-		right: auto;
-		left: 0px;
-		z-index: 70;
-}
-
-h1 {
-    font-family: "Trebuchet MS", sans;
-    color: #4a0560;
-    /*padding-left: 10px; */
-    text-align:left;
-    font-size:20px;
-}
-
-h2 {
-    font-family: "Trebuchet MS", sans;
-    /*color: #4a0560;*/
-    color: black;
-    /*padding-left: 10px; */
-    text-align:left;
-    font-size:15px;
-}
-
-/*** FOOTER ***/
-
-.footer-text {
-    float: left;
-    width: 100%;
-    display: block;
-    color: #828282;
-    font-size: 11px;
-    padding-top: 12px;
-    text-align: center;
-    /*border: 1px solid red;*/
-}
