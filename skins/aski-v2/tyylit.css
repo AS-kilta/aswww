@@ -335,22 +335,35 @@ h2 {
 	line-height:18px;
 }
 
+#menu-container  li li{
+	list-style-image:url(menu-sub.gif);
+}
+
 #menu-container li a {
-	font: 12px "Tahoma";
+	font: 12px "Tahoma", sans-serif;
 	color: #580b60;
+	text-decoration: none;
 }
 
 #menu-container li:hover {
 	list-style-image:url(menu-list-active.png);
-	line-height:18px;
+}
+
+#menu-container  li li:hover {
+	list-style-image:url(menu-sub-active.gif);
 }
 
 #menu-container li a:hover{
 	color:#a25da9;
+	text-decoration: none;
 }
 
 #menu-container li.current {
 	list-style-image:url(menu-list-active.png);
+}
+
+#menu-container li li.current {
+	list-style-image:url(menu-sub-active.gif);
 }
 
 #menu-container li a.current {
@@ -361,7 +374,7 @@ h2 {
 
 /*** FOOTER ***/
 
-#blank {
+div.blank {
 	clear:both;  /* jotta footeri pysyis alhaalla */
 }
 

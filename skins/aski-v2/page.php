@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-15" />
 
     <?php print $head ?>
     <title><?php print $head_title ?></title>
@@ -26,18 +27,18 @@
             <li><a href="http://www.tenttiarkisto.fi/">Tenttiarkisto</a></li>
         </ul>
     </div>
-    <div id="blank"></div>
+    <div class="blank"></div>
     <div id="page-container">
         <!-- TopVavi -->
         <div id="nav-container">
 		<?php print $topnavi ?>
 	</div>
 
-        <div id="blank"></div>
+        <div class="blank"></div>
 
 	<div id="content-top"></div>
 	<div id="content">
-		<div><img src="<?= baseUrl() . "/skins/aski-v2/photo.png" ?>"/></div>
+		<div><img alt="Just a nice image" src="<?= baseUrl() . "/skins/aski-v2/photo.png" ?>"/></div>
 		<div id="content-center">
 			<div id="border"></div>
             		<div id="text-container">
@@ -49,7 +50,7 @@
 		                <?php print $left ?>
 			</div>
 		</div>
-		<div id="blank"></div>
+		<div class="blank"></div>
 
 		<!-- Footer -->
 		<div id="footer">
