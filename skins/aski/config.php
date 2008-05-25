@@ -2,10 +2,10 @@
 
 function getContentMapping($moduleName) {
     switch ($moduleName) {
-        case 'askicam':
+        case 'news':
             return Array(
                 'topnavi' => Array('navi', 'topNavi'),
-                'left' => Array('ascicam', 'menu')
+                'left' => Array('poll', 'default')
             );
             break;
 
@@ -15,6 +15,10 @@ function getContentMapping($moduleName) {
                 "left" => Array('navi', 'naviTree')
             );
     }
+}
+
+function getMainNaviRegion() {
+    return 'left';
 }
 
 ?>
