@@ -132,7 +132,7 @@ class NaviNode extends Model {
         // Update titles
         $query = 'DELETE FROM naviTitles WHERE id=' . escapeSql($this->id);
         query($query);
-        echo $query . '<br />';
+        //echo $query . '<br />';
 
         foreach (array_keys($this->url) as $lang) {
             if (strlen($this->url[$lang]) < 1) {
@@ -147,7 +147,7 @@ class NaviNode extends Model {
                 . ')';
 
             query($query);
-            echo $query . '<br />';
+            //echo $query . '<br />';
         }
 
     }
