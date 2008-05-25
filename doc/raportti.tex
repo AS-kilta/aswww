@@ -377,7 +377,7 @@ Suunnitteluvaiheessa työlle määriteltiin seuraavat vaatimukset:
 
 Ylläolevasta listasta ainoastaan käyttöoikeustasot jätettiin toteuttamatta. Jokaisella autentikoidulla käyttäjällä on siis täydet admni-oikeudet. Tämäkin ratkaisu olisi käyttötarkoitukseen hyväksyttävissä, koska käyttäjätunnuksia jaetaan vain luotetuille käyttäjille. Käyttöoikeustasot on kuitenkin syytä toteuttaa jatkokehitysvaiheessa, jotta käyttöoikeuksia voidaan jakaa huolettomammin.
 
-Ilmoittautumistoiminto, gallup ja tapahtumakalenteri rajattiin pois työläyden vuoksi. Etusivun uutismoduuli riittää demonstroimaan moduuliarkkitehtuurin toimivuutta.
+Ilmoittautumistoiminto, gallup ja tapahtumakalenteri rajattiin pois työläyden vuoksi. Etusivun uutismoduuli riittää demonstroimaan moduuliarkkitehtuurin toimivuutta. Käyttäjien lisäämiseen ei ole käyttöliittymää, vaan ne täytyy lisätä suoraan tietokantaan. Välimuistia ei ehditty toteuttaa, mutta se tuskin vaikuttaa sivusto toimintaan pienillä käyttäjämäärillämme.
 
 
 \subsection{Terminologiaa}
@@ -425,15 +425,21 @@ MainControllerin vastuulla on selvittää, mitä sivua ollaan näyttämässä, mitä ski
 
 
 \subsection{Skinin valitseminen}
+Sisällön tuottavalta moduulilta kysytään, onko sillä toiveita käytettävän skinin suhteen. Jos ei ole, käytetään oletusskiniä. Moduuli voisi tarjota käyttäjälle käyttöliittymän skinin valitseminseen, jolloin esimerkiksi ilmoittautumismoduuli voi mahdollistaa eri ulkoasun käyttämisen eri tapahtumille.
 
-Sisällön tuottavalta moduulilta kysytään, onko sillä toiveita käytettävän skinin suhteen. Jos ei ole, käytettän oletusskiniä. Moduuli voi tarjota käyttäjälle käyttöliittymän skinin valitseminseen, jolloin esimerkiksi ilmoittautumismoduuli voi mahdollistaa eri ulkoasun käyttämisen eri tapahtumille.
-
-Kun skin on valittu, tarvitaan tieto siitä, mihin skinin alueisiin ladataan minkäkin moduulin sisältö. Tämän kuvauksen toteuttaa skinin toteuttaja, koska vain hänellä on tieto siitä, mitä alueita skin tarjoaa. [Tämä kohta on pohdinnan alainen. Web-käyttöliittymä sisältöjen sijoitteluun saattaisi olla hyödyllinen. Lisäksi admin-toiminnot voivat vaatia oletussisältöjen korvaamisen toimintonappuloilla.]
-
+Kun skin on valittu, tarvitaan tieto siitä, mihin skinin alueisiin ladataan minkäkin moduulin sisältö. Tämän kuvauksen toteuttaa skinin toteuttaja, koska vain hänellä on tieto siitä, mitä alueita skin tarjoaa. 
 
 \subsubsection{Esimerkki:}
+Skinin toteuttaja päätää, että oikeassa navipalkissa näytetään staattisille sivuille aina navigointipuu ja yläpalkissa päätason navilinkit. News-moduulille navigointipuun tilalla näytetään kuitenkin gallup ja tapahtumakalenteri. Tämä johtaa seuraavanlaiseen alue-sisältö -kuvaukseen:\\
 
-Skinin toteuttaja päätää, että oikeassa navipalkissa näytetään staattisille sivuille aina navigointipuu ja yläpalkissa päätason navilinkit. WebCam-moduulille navigointipuun tilalla näytetään kuitenkin kameroiden esikatselukuvat. Tämä johtaa seuraavanlaiseen alue-sisältö -kuvaukseen:
+\begin{tabular}{ | l || l | l | l | }
+    \hline
+    moduuli & topnavi       & leftnavi                        & content \\ \hline
+    page    & navi->topnavi & navi->leftnavi                  & page->content \\ \hline
+    news    & navi->topnavi & gallup->content, event->content & news->content \\
+    \hline
+\end{tabular}
+
 
 % <div class="taulukko">
 %     <table>
@@ -452,56 +458,58 @@ Moduulit ovat itsenäisiä, eli ne eivät tiedä, mihin alueeseen niiden tuottama si
 
 Suoritus etenee seuraavasti:
 \begin{itemize}
-    \item MainControllerin lähetää pyynnön moduulin Controllerille.
-    \item Controller pyytää moduulin Model-kerroksen toimintalogiikkaa tuottamaan sisältöä, lataa sopivan näkymän (View) ja syöttää sisällön näkymälle.
-    \item Controller palauttaa näkymän tuottaman HTML-sisällön takaisin MainControllerille.
+    \item MainControllerin lähetää pyynnön ModuleControllerille.
+    \item ModuleController pyytää moduulin Model-kerroksen toimintalogiikkaa tuottamaan sisältöä, lataa sopivan näkymän (View) ja syöttää sisällön näkymälle.
+    \item ModuleController palauttaa näkymän tuottaman HTML-sisällön takaisin MainControllerille.
 \end{itemize}
-
-Moduulien tilan säilöminen on edelleen pohdinnan alaisena. Sisällön tuottavan moduulin tila voidaan riittävällä tarkkuudella säilöa URL:ään. Apumodduulien tilan ei välttämättä tarvitse säilyä enempää kuin yhden sivulatauksen ajan, jolloin niiden tilaa ei edes tarvitse tallentaa.
 
 
 \subsection{Tietokanta}
 
 \subsubsection{Navigointihierarkia}
+Sivustolla on yksi abstrakti, kielestä riippumaton navigointipuu. Sivujen otsikot ja polut ladataan toisesta taulusta, joka sisältää eri kieliversiot. Koska myös sivujen polut ovat kielikohtaisia, käyttäjän haluama kieliversio pystytään päättelemään suoraan urlista sen sijaan, että urlin alussa toi lopussa tarvitsisi erikseen mainita kielikoodia. ER-kaavio on esitetty navigoinnin osalta alla kuvassa \ref{navigointipuu}
 
-Sivustolla on yksi abstrakti, kielestä riippumaton navigointipuu. Sivujen otsikot ja polut ladataan toisesta taulusta, joka sisältää eri kieliversiot. Koska myös sivujen polut ovat kielikohtaisia, käyttäjän haluama kieliversio pystytään päättelemään suoraan urlista sen sijaan, että urlin alussa toi lopussa tarvitsisi erikseen mainita kielikoodia. ER-kaavio on esitetty navigoinnin osalta alla:
-
-<div class="kuva">
-    <img src="er1.png" />
-    Navigointipuun ER-kaavio.
-</div>
+\begin{figure}[ht]
+\centering
+\includegraphics[width=14cm]{er1.png}
+\caption{Kaavio sivuston rakenteesta}
+\label{navigointipuu}
+\end{figure}
 
 Jokaisella sisältöä tuottavalla moduulilla on oma taulunsa, josta sisältöä haetaan id:n ja kielen perusteella. Kuvassa on yksinkertaisuuden vuoksi esitetty vain staattiset sivut tuottavan \emph{page}-moduulin taulu.
 
 
-\subsubsection{Käyttöoikeudet}
-
-Käyttöoikeustasot osoittautuivat suunnitetua hankalammaksi ongelmaksi, ja niiden suunnittelu on kesken. Perusideana on, että käyttäjä voi kuulua mielivaltaiseen määrään ryhmiä, ja jokaiseen toimintoon liittyy yksi tai useampia ryhmiä, joille toiminto on sallittu.
-
-
 \subsubsection{Object-relational -kuvaus}
-
-Model-tasolla on automatiikkaa (O/R mapping), joka lataa tietokannan taulusta id:n perusteella tietyn rivin olioksi, eli moduulin ohjelmoijan ei tarvitse kirjoittan triviaaleja tietokantakyselyjä itse. Olion kenttiä voi muuttaa vapaasti, jonka jälkeen oliota voi pyytää kirjoittamaan sisältönsä takaisin kantaan. Toiminnallisuus toteutetaan Model-yliluokkaan, jonka kaikki model-kerroksen luokat perivät. Ohjelmoija saa edelleen kirjoittaa myös omia kyselyitä esimerkiksi hakiessaan listoja monimutkaisemmilla hakuehdoilla.
+Model-tasolla on automatiikkaa (O/R mapping), joka lataa tietokannan taulusta id:n perusteella tietyn rivin olioksi, eli moduulin ohjelmoijan ei tarvitse kirjoittaa triviaaleja tietokantakyselyjä itse. Olion kenttiä voi muuttaa vapaasti, jonka jälkeen oliota voi pyytää kirjoittamaan sisältönsä takaisin kantaan. Toiminnallisuus on toteutettu Model-yliluokkaan, jonka jokainen model-kerroksen luokka perii. Ohjelmoija saa edelleen kirjoittaa myös omia kyselyitä esimerkiksi hakiessaan listoja monimutkaisemmilla hakuehdoilla.
 
 
 \subsection{Toteutustekniikan valinta}
-
 Toteutustekniikaksi valittu PHP sopii tarkoitukseen seuraavista syistä:
 \begin{itemize}
-    \item Itse osaamme PHP:tä, mutta emme esimerkiksi Rubya tai Pythonia. Opetteluun ei kulu aikaa.
+    \item Itse osaamme PHP:tä, mutta emme esimerkiksi Rubya tai Pythonia. Tekniikan opiskeluun ei kulu aikaa.
     \item PHP on toimavaksi osoitettu tekniikka. Sitä käytetään esimerkiksi Wikipediassa, Facebookissa, Verkkokauppa.com:ssa ja lukemattomissa muissa suurissa sivustoissa.
     \item Tulevat ylläpitäjät todennäköisesti osaavat PHP:ta, koska se on vakiintunut kieli, joka on helppo oppia.
 \end{itemize}
 
 
-\subsection{Sivuston asennus ja tietoturva}
+\subsection{Sivuston asennus}
 
 %Kertokaa, mitä sivuston asennus uudelle palvelimelle vaatii ja kuinka se tehdään. Kertokaa myös, minkälaisia tietoturvakysymyksiä sivustossa ja erityisesti aktiivisessa elementissä on ilmennyt ja miten niihin on vastattu. }
 
-Sivusto asennetaan kopioimalla lähdekoodi Apache-palevelimen näkemään paikkaan, editoimalla config.php:hen tietokanta-asetukset, luomalla tietokanta, ja ajamalla tietokantamäärittely kantaan.
+Sivusto asennetaan seuraavasti:
+\begin{itemize}
+    \item Kopioi koodi hakemistoon, johon Apachella on pääsy.
+    \item Kopioi \emph{htaccess.base} tiedostoksi \emph{.htaccess} ja editoi sitä tiedostosta löytyvien ohjeiden mukaisesti.
+    \item Luo tietokanta ja aja tiedostot \emph{setup/definition.sql} ja \emph{setup/testData.sql} kantaan.
+    \item Kopioi \emph{config.php.base} tiedostoksi \emph{config.php}, ja käy asetukset läpi.
+\end{itemize}
 
-Niissä koodin osissa, jotka jäävät pysyvästi käyttöön, käyttäjältä tuleva syöte on suodatatettu, jotta järjestelmään ei jäisi vahingossa triviaaleja aukkoja. Sen kummemmin tietoturvaan ei ole demovaiheessa kiinnitetty huomiota. Sivuja pystyy esimerkiksi editoimaan kirjautumatta sisään. Myöskään käyttöoikeustasoja ei ole vielä toteutettu, koska ongelma osoittautui tietokantarakenteen puolesta hyvin monimutkaiseksi.
 
+\subsection{Tietoturva}
+
+Tietokantakyselyt on kirjoitettu niin, että vaaralliset erikoismerkit suodatetaan aina pois. Sql-injection-hyökkäyksen ei siis pitäisi olla mahdollinen. Cross site scripting -haavoittuvuuksia ei ole testattu, eli tämä jää jatkokehitysvaiheen huoleksi. Nykyinen versio tosin ei ota autentikoimattomalta käyttäjältä sötettä muualla kuin login-ruudussa, joten hyökkäyksille ei pitäisi olla sijaa.
+
+Käyttöoikeuden tarkastus tapahtuu controller-kerroksessa kunkin toiminnon alussa. Autentikoimaton käyttäjä ei siis pääse toimintoihin käsiksi, vaikka tietäisi toimintojen urlit. Erillisiä käyttöoikeustasoja ei ehditty toteuttaa, vaan tämä jää jatkokehitysideaksi.
 
 %***************************************************************************
 %************************** WWW-tekniikka **********************************
@@ -527,7 +535,7 @@ HTML-ja CSS-koodin validoituvuuteen ei ole demovaiheessa kiinnitetty huomiota, k
 
 \section{Ajankäyttö ja aikataulu}
 
-Ajankäyttösuunnitelma on esitetty alla olevassa taulukossa. Aikataulusta ollaan muutama viikko jäljessä, mutta tärkeimmät ominaisuudet toimivat jo melko hyvin. Projektin tila ei siis vaikuta huolestuttavalta. Toteutuneilla tunneilla on melko hyvä korrelaatio suunnitelmaan, mutta suunnitelma on ollut liian optimistinen. Tilanteeseen reagoidaan pyrkimällä toteuttamaan loput toiminnot mahdollisimman aikaisin ennen määräaikaa.
+Ajankäyttö keskittyi liiaksi määräajan läheisyyteen, ja tästä syystä osa suunnitelluista toiminnoista jäi toteuttamatta. Iteratiivisen prosessin ansiosta tärkeimmät toiminnot tulivat kuitenkin valmiiksi. Tulevissa projekteissa projektinhallintaan tulisikin kiinnittää enemmän huomiota.
 
 \begin{table}[h!]
 \begin{tabular}{|r|c|c|c|c|c|c|c|}
@@ -535,7 +543,7 @@ Ajankäyttösuunnitelma on esitetty alla olevassa taulukossa. Aikataulusta ollaan 
 \multicolumn{2}{l}{}&\multicolumn{3}{c}{suunnitelma(h)}&\multicolumn{3}{c}{toteuma(h)}\\
 % \cline{2-5}
 \multicolumn{2}{r}{Valmiina viikolla} & \multicolumn{1}{c}{T} & \multicolumn{1}{c}{J} & \multicolumn{1}{c}{A} & \multicolumn{1}{c}{T} & \multicolumn{1}{c}{J} & \multicolumn{1}{c}{A}\\ \hline
-%  nimi                                    viikko   T      J      A      R     J      A
+%  nimi                                    viikko   T      J      A      T     J      A
 Projektin pystytys (serveri, svn...)        & 6    & 6    & 4    & 4    & 5   & 2   & 4   \\ \hline
 Arkkitehtuurin suunnittelu                  & 7    & 5    & 5    & 3    & 6   & 3   & 2   \\ \hline
 Yleinen suunnittelu                         & 8    & 3    & 3    & 3    & 4   & 2   & 3   \\ \hline
@@ -544,17 +552,17 @@ Navigoinnin toteuttaminen                   & 10   & 8    & 0    & 0    & 8   & 
 Suunnitelmadokumentin kirjoittaminen        & 11   & 6    & 6    & 6    & 10  & 3   & 6   \\ \hline
 Alustava graafinen suunnittelu              & 12   & 0    & 0    & 10   & 0   & 0   & 10  \\ \hline
 Moduulien toiminta                          & 12   & 6    & 6    & 0    & 8   & 2   &     \\ \hline
-Autentikointi ja alustavia admin-toimintoja & 13   & 8    & 8    & 0    &     & 0   &     \\ \hline
+Autentikointi ja alustavia admin-toimintoja & 13   & 8    & 8    & 0    & 2   & 0   &     \\ \hline
 Staattiset sivut toimimaan                  & 13   & 2    & 2    & 5    & 4   & 0   &     \\ \hline
 Cache                                       & 14   & 0    & 6    & 0    &     & 0   &     \\ \hline
 Ilmoittautuminen                            & 15   & 0    & 12   & 0    &     & 0   &     \\ \hline
-Demon valmistelu                            & 16   & 6    & 0    & 0    &     & 2   &     \\ \hline
+Demon valmistelu                            & 16   & 6    & 0    & 0    & 8   & 2   &     \\ \hline
 Gallup                                      & 17   & 2    & 2    & 2    &     & 0   &     \\ \hline
-Uutiset                                     & 18   & 0    & 0    & 10   &     & 0   &     \\ \hline
-Edistyneet admin-toiminnot                  & 19   & 16   & 16   & 0    &     & 0   &     \\ \hline
-Ulkoasun ja käyttöliittymän hiominen        & 20   & 2    & 2    & 10   &     & 8   &     \\ \hline
-Sisällön kirjoittaminen                     & 20   & 4    & 4    & 4    &     & 1   &     \\ \hline
-Toteutusdokumentin kirjoittaminen           & 21   & 6    & 6    & 6    &     & 2   &     \\ \hline
+Uutiset                                     & 18   & 0    & 0    & 10   & 6   & 0   &     \\ \hline
+Edistyneet admin-toiminnot                  & 19   & 16   & 16   & 0    & 3   & 0   &     \\ \hline
+Ulkoasun ja käyttöliittymän hiominen        & 20   & 2    & 2    & 10   & 2   & 8   &     \\ \hline
+Sisällön kirjoittaminen                     & 20   & 4    & 4    & 4    & 0   & 1   &     \\ \hline
+Toteutusdokumentin kirjoittaminen           & 21   & 6    & 6    & 6    & 4   & 2   &     \\ \hline
 \end{tabular}
 \caption{Tuntikirjanpito}
 \end{table}
