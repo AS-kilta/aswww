@@ -54,18 +54,17 @@ Annti Nieminen, 67079L, ajniemin@cc.hut.fi
 
 %Kertokaa lyhyt kuvaus projektityöstä, sen onnistumisesta ja saavutetusta lopputuloksesta verrattuna suunniteltuun. Kertokaa myös siitä, mitä ja miten olette tällä kurssilla oppineet.
 
-Tässä harjoitustyössä toteutuettiin Automaatio- ja Systeemitekniikan killalle uusi sisällönhallintajärjestelmä ja nettisivusto. Sivuston vanha versio on osoitteessa http://as.tky.fi/. Uuden sivuston esittelyversio on osoitteessa http://aski.hut.fi/uusi/. Admin-puolelle kirajudutaan osoitteessa http://aski.hut.fi/uusi/admin käyttäjätunnuksella Assari/Demo.
+Tässä harjoitustyössä toteutuettiin Automaatio- ja Systeemitekniikan killalle uusi sisällönhallintajärjestelmä ja nettisivusto. Sivusto sisältää aktiivikillisteille muun muassa ajankohtaisia uutisia, tapahtumakalenterin ja gallupin, sekä ulkopuolisille tietoa killasta.
 
-Sivusto sisältää aktiivikillisteille muun muassa ajankohtaisia uutisia, tapahtumakalenterin ja gallupin, sekä ulkopuolisille tietoa killasta.
+Sivuston vanha versio on osoitteessa http://as.tky.fi/. Uuden sivuston esittelyversio on osoitteessa http://aski.hut.fi/uusi/. Admin-puolelle kirajudutaan osoitteessa http://aski.hut.fi/uusi/admin käyttäjätunnuksella Assari/Demo.
 
-Projektin loppuvaiheessa tuli kiire, joten gallupin ja tapahtumakalenterin toiminnallisuudet jätettiin toteuttamatta. Etusivun uutismoduuli toimii esimerkkinä tällaisten moduulien toiminnasta. Viimeistelykin jäi puolitiehen, mutta tärkein moduuli, eli normaalit sisältösivut toimivat hyvin.
-
-
+Projektin loppuvaiheessa tuli kiire, joten gallupin ja tapahtumakalenterin toiminnallisuudet jätettiin toteuttamatta. Etusivun uutismoduuli on kuitenkin toimiva esimerkki tämäntyyppisten moduulien toiminnasta. Ilmoittautumistoiminto rajattiin kokonaan pois. Viimeistelykin jäi puolitiehen, mutta tärkein moduuli, eli normaalit sisältösivut toimivat hyvin. Korkean tason tavoite, eli sisällönhallintajärjestelmän luominen, siis onnistui, mutta sivusto vaatii jatkokehitystä ennen kuin se on valmis tuotantokäyttöön.
 
 \subsection{Mitä opittiin?}
 
 \subsubsection{Tapio Auvinen}
 
+Olen tehnyt php:lla monimutkaisia sivustoja ennenkin, joten mitään aivan uutta en oppinut. Arkkitehtuurin suunnitteluun tämä oli kuitenkin erittäin hyvää harjoitusta. Yksi projektin tavoite oli, että tässä kehitettyä alustaa voisi jatkossa käyttää muiden projektien pohjana, ja tämä tavoite toteutui hyvin. Sitä, kuinka projektitöiden tekemisen voisi aloittaa ajoissa, en oppinut vieläkään.
 
 \subsubsection{Antti Nieminen}
 
@@ -81,7 +80,13 @@ Projektin loppuvaiheessa tuli kiire, joten gallupin ja tapahtumakalenterin toimi
 
 Vanhan sivuston sisältö olisi sellaisenaan melko kelvollista, mutta sitä kirjoitettaan uusiksi siinä määrin, että kurssin vaatimustaso täyttyy. Seuraavassa esitetään sivukohtainen erittely sivuston sisällöstä.
 
-<img src="kaavio.jpg" alt="kaavio sivuston rakenteesta" />
+\begin{figure}[ht]
+\centering
+\includegraphics[width=14cm]{kaavio.jpg}
+\caption{Kaavio sivuston rakenteesta}
+\label{mvc}
+\end{figure}
+
 
 % Kertokaa tehdyistä sivuista harjoitustyön sisältösuunnitelmaan ja tuotantoprosessiin perustuen
 %        * sivun otsikko ja tiedostonimi
@@ -165,18 +170,18 @@ Vanhan sivuston sisältö olisi sellaisenaan melko kelvollista, mutta sitä kirjoit
   \item Moduuli: Tavallinen sivu.
 \end{itemize}
 
-\subsubsection{Arkisto}
-\begin{itemize}
-  \item Sisältö: Kokousten pöytäkirjat,  yhteystiedot, tilinumerot, laskupohjat, virallisuudet, säännöt, muuta  sekalaista materiaalia, joka liittyy kiltaan. (käytetään vanhaa sisältöä)
-  \item URL: /kilta/arkisto
-  \item Kohderyhmät: Aktiivikiltalaiset  (kriittinen), muut kiltalaiset
-  \item Tavoitteet: Tarjota arkistoitua  sekalaista tietoa tärkeistä killan asioista.
-  \item Lähdemateriaali: Kyseisestä  lähdemateriaalista tai lähdemateriaali ryhmästä vastuussa olevat.
-  \item Muokkaus:  Arkistonhallinointijärjestelmä.
-  \item Dynaamisuus: Pelkästään dynaamista  tietoa tallessa olevista tiedostoista.
-  \item Julkaisukielet: fi
-  \item Moduuli: Arkisto
-\end{itemize}
+% \subsubsection{Arkisto}
+% \begin{itemize}
+%   \item Sisältö: Kokousten pöytäkirjat,  yhteystiedot, tilinumerot, laskupohjat, virallisuudet, säännöt, muuta  sekalaista materiaalia, joka liittyy kiltaan. (käytetään vanhaa sisältöä)
+%   \item URL: /kilta/arkisto
+%   \item Kohderyhmät: Aktiivikiltalaiset  (kriittinen), muut kiltalaiset
+%   \item Tavoitteet: Tarjota arkistoitua  sekalaista tietoa tärkeistä killan asioista.
+%   \item Lähdemateriaali: Kyseisestä  lähdemateriaalista tai lähdemateriaali ryhmästä vastuussa olevat.
+%   \item Muokkaus:  Arkistonhallinointijärjestelmä.
+%   \item Dynaamisuus: Pelkästään dynaamista  tietoa tallessa olevista tiedostoista.
+%   \item Julkaisukielet: fi
+%   \item Moduuli: Arkisto
+% \end{itemize}
 
 \subsubsection{Phuksit}
 \begin{itemize}
@@ -233,31 +238,31 @@ Vanhan sivuston sisältö olisi sellaisenaan melko kelvollista, mutta sitä kirjoit
   \item Moduuli: Tavallinen sivu.
 \end{itemize}
 
-\subsubsection{Webcam}
-\begin{itemize}
-  \item Sisältö: Webcamin kuvaa kiltahuoneelta  (dynaaminen)
-  \item URL: /askicam
-  \item Kohderyhmät: Kiltalaiset (kriittinen),  muut (mielenkiintoinen)
-  \item Tavoitteet: Näyttää reaaliajassa kuvaa  kiltahuoneelta.
-  \item Lähdemateriaali: Lähes reaaliaikaisesti  kiltahuoneelta.
-  \item Muokkaus: Tarvittaessa atk-toimihenkilöt
-  \item Dynaamisuus: Reaaliaikainen
-  \item Julkaisukielet: fi/en
-  \item Moduuli: Webcam
-\end{itemize}
+% \subsubsection{Webcam}
+% \begin{itemize}
+%   \item Sisältö: Webcamin kuvaa kiltahuoneelta  (dynaaminen)
+%   \item URL: /askicam
+%   \item Kohderyhmät: Kiltalaiset (kriittinen),  muut (mielenkiintoinen)
+%   \item Tavoitteet: Näyttää reaaliajassa kuvaa  kiltahuoneelta.
+%   \item Lähdemateriaali: Lähes reaaliaikaisesti  kiltahuoneelta.
+%   \item Muokkaus: Tarvittaessa atk-toimihenkilöt
+%   \item Dynaamisuus: Reaaliaikainen
+%   \item Julkaisukielet: fi/en
+%   \item Moduuli: Webcam
+% \end{itemize}
 
-\subsubsection{Tapahtumailmoittautumiset}
-\begin{itemize}
-  \item Sisältö: Tapahtumien ilmoittautumislomakkeet  (dynaaminen ja ajankohtainen)
-  \item URL: /[tapahtumanNimi]
-  \item Kohderyhmät: Kiltalaiset (kriittinen)
-  \item Tavoitteet: Tarjota helppo työkalu  ilmoittautumislistojen luomiseen sekä itse ilmoittautumiseen.
-  \item Lähdemateriaali: Tapahtuman järjestäjä.
-  \item Muokkaus: Moduulin ylläpitokäyttöliittymä.
-  \item Dynaamisuus: Dynaamista  tapahtumakohtaista sisältöä. Vanhat ilmoittautumiset sulkeutuvat ja katoavat  näkyvistä itsestään.
-  \item Julkaisukielet: fi/en
-  \item Moduuli: ilmottautumisjärjestelmä
-\end{itemize}
+% \subsubsection{Tapahtumailmoittautumiset}
+% \begin{itemize}
+%   \item Sisältö: Tapahtumien ilmoittautumislomakkeet  (dynaaminen ja ajankohtainen)
+%   \item URL: /[tapahtumanNimi]
+%   \item Kohderyhmät: Kiltalaiset (kriittinen)
+%   \item Tavoitteet: Tarjota helppo työkalu  ilmoittautumislistojen luomiseen sekä itse ilmoittautumiseen.
+%   \item Lähdemateriaali: Tapahtuman järjestäjä.
+%   \item Muokkaus: Moduulin ylläpitokäyttöliittymä.
+%   \item Dynaamisuus: Dynaamista  tapahtumakohtaista sisältöä. Vanhat ilmoittautumiset sulkeutuvat ja katoavat  näkyvistä itsestään.
+%   \item Julkaisukielet: fi/en
+%   \item Moduuli: ilmottautumisjärjestelmä
+% \end{itemize}
 
 Sivujen URLit eivät vastaa palvelimen tiedostojärjestelmää, vaan sisällönhallintajärjestelmä sallii niiden valitsemisen täysin mielivaltaisesti. URLit ja navigointihierarkia on sidottu toisiinsa selkeyden vuoksi. Suomen- ja englanninkielinen navigontihierarkia on sidottu toisiinsa, mutta eri kieliversioista saa puuttua sivuja, joita toisessa versiossa on.
 
@@ -266,7 +271,7 @@ Kaikki sivut käyttävät samoja HTML-pohjia ja CSS-tiedostoja.
 
 \subsection{Kohderyhmäanalyysi}
 
-Suunnitteluvaiheessa kartoitetut käyttäjäryhmät olivat kiltalaiset, phuksit, abit, sponsorit ja ulkopuoliset. Seuraavassa pohditaan sivuston sivuston toimivuutta näiden ryhmien näkökulmasta.
+Suunnitteluvaiheessa kartoitetut käyttäjäryhmät olivat: kiltalaiset, phuksit, abit, sponsorit ja ulkopuoliset. Seuraavassa pohditaan sivuston sivuston toimivuutta näiden ryhmien näkökulmasta.
 
 \subsubsection{Kiltalaiset}
 
@@ -331,32 +336,40 @@ Sivustoa ylläpitää lähtökohtaisesti killan tiedottaja. Erityisesti ajankohtaisia
 % 
 % Esittäkää toteutetut navigointiratkaisut ja muu käyttöliittymä. Esittäkää myös (esimerkiksi yllä olevien esimerkkikuvien perusteella) toteutunut graafinen ulkoasu. 
 
-Käyttöliittymä
-Tavoitteemme on että kaikkeen sivun sisältöön pääsisi käsiksi enintään kolmella klikkauksella, sivuston sisällön hierarkia ja sijainti on siis mietittävä tarkkaan. Käytämme kaksitasoista menua; meillä on siis 4-5 pääsivua, joiden alle kaikki sisältö sijoitetaan alasivuille. Esimerkiksi toimihenkilöt -sivulle pääsisi klikkaamalla navigointipalkista kilta-linkkiä ja sitten sivun oikeaan reunaan avautuvasta sivumenusta toimihenkilöt-linkkiä. Yritämme sijoitella sisällön mahdolisimman järkevästi aina loogisimman pääsivun alle, jotta haettu tieto löytyy nopeasti.
-Linkit
-Linkkien väri yleisesti sivustolla on violetti ja ne erottuvat hyvin mustan tekstin joukosta. Linkit muuttuvat vaaleammiksi kun hiiren vie niiden päälle.
-Navigointipalkki
+\subsection{Käyttöliittymä}
+
+Tavoitteenamme on, että kaikkeen sivun sisältöön pääsisi käsiksi enintään kolmella klikkauksella, joten sivuston sisällön hierarkia ja sijainti on mietittävä tarkkaan. Käytämme kaksitasoista menua; meillä on siis 4-5 pääsivua, joiden alle kaikki sisältö sijoitetaan alasivuille. Esimerkiksi toimihenkilöt -sivulle pääsisi klikkaamalla navigointipalkista kilta-linkkiä ja sitten sivun oikeaan reunaan avautuvasta sivumenusta toimihenkilöt-linkkiä. Yritämme sijoitella sisällön mahdollisimman järkevästi aina loogisimman pääsivun alle, jotta haettu tieto löytyy nopeasti.
+
+Linkkien väri yleisesti sivustolla on violetti, ja ne erottuvat hyvin mustan tekstin joukosta. Linkit muuttuvat vaaleammiksi kun hiiren vie niiden päälle.
+
 Navigointipalkkien linkeillä navigoidaan pääsivujen välillä. Aktiivinen pääsivu näytetään vaaleammalla pienellä nuolella.
-Sivumenu
+
 Oikeassa reunassa sivumenussa navigointilinkit ovat sivun vierityspalkin vieressä, mikä helpottaa linkkien käyttämistä. Sivumenuun voi sisällyttää myös alasivujen alasivuja (esim. Phuksit > Suurphuksi > Suurphuksin perintö). Etusivulla sivumenun paikalla näytetään kilta-aktiiveille tulevia killan tapahtumia ja galluppeja.
-Alatunniste
-Alatunnisteessa näytetään sivun tekijänoikeudet
-Leveys
-Sisältöosa ei ole skaalautuva ja sen leveys on noin 750 pikseliä. Sivu on keskitetty.
-Ulkoiset linkit
-Halusimme sijoittaa linkit killan muille ulkoisille sivustoille näkyvälle paikalle navigointipalkin yläpuolelle, koska sivustoille navigoidaan hyvin usein juuri killan kotisivun kautta.
-Graafinen ulkoasu
-Ulkoasun suunnittelu alkoi jo viime syksynä ja saimmekin valmiiksi version, jonka päälle kokeilimme drupal-sisällönhallintajärjestelmää,  mutta kurssin alkaessa halusimme kuitenkin tehdä uuden ulkoasun. Ulkoasun ideoinnin aloitimme käymällä läpi netistä löytyviä muiden tekemiä layoutteja. Yritimme poimia mielestämme onnistuneita graafisia elementtejä ja rakenteita ja käyttää samantapaisia ratkaisuja omassa layoutissamme.
-Erilaisia graafisia elementtejä ei saa olla liikaa, jotta sivu näyttäisi selkeältä ja kevyeltä. Sen sijaan panostimme elementtien yksityiskohtiin, jotta ulkoasu silti näyttäisi laadukkaalta.
-Ulkoasu muotoutui pääpiirteittään valmiiksi jo suunnitteluvaiheessa, koska halusimme alkaa kehittämään sivuston teknillistä puolta mahdollisimman valmiin rakenteen päälle. Lopulliseen versioon teimme ulkoasusta vielä vähän dynaamisemman. Alkuperäisessä suunnitelmassa oli muun muassa ylämenussa käytetty pelkästään staattisia tekstikuvia linkkeinä, mutta päätimme tehdä kuitenkin dynaamiset tekstilinkit, jotta sivuston päivittäminen onnistuisi jatkossa sujuvasti pelkkää koodia editoimalla.
-Värit
-Oikeastaan ainoa lähtökohta ulkoasulle oli että killan tunnusväri violetti pitää olla selvästi näkyvillä. Käytämme myös vähän keltaista, koska muuten ulkoasusta olisi melko tylsä  ja keltainen on yksi harvoista väreistä, joka sopii violetin rinnalle (violetin vastaväri). Taustalla käytämme tummaa violettia gradienttia, jonka päällä on viivakuvio tuomassa yksityiskohtia.
-Logoksi teimme kultaisen AS-rattaan 3d-ohjelmalla, koska virallinen AS-logo näytti tylsältä nettisivulla.
-Typografia
-Valitsimme Tahoma -fontin sisältötekstiä varten, koska se näyttää selkeältä  fonttikoosta huolimatta ja löytyy jokaiselta käyttäjältä. Musta kirjasin valkoisella tausta on myös helpoin lukea. Otsikoissa ja navigointipalkissa käytämme Trebuchet MS  -fonttia, joka näyttää hienolta etenkin jos selain tukee fonttien antialisointia.
-Valokuvat
-Haluamme tuoda myös heti etusivusta lähtien killan rentohenkistä ilmapiiriä ja toimintaa esille. Tähän paras vaihtoehto on näyttää valokuvia muun muassa killan tapahtumista joka sivulla. Valokuvat vaihtelevat sattumanvaraisesti ja niitä on helppo lisätä tietokantaan.  Laadukkaita valokuvia käyttämällä on helppo tuoda näyttävyyttä ja monipuolisuutta ulkoasuun. Kävimme itse ottamassa valokuvia ympäri Otaniemeä.
-}
+
+Alatunnisteessa näytetään sivun tekijänoikeudet.
+
+Sisältöosa ei ole skaalautuva ja sen leveys on noin 750 pikseliä. Tekstiä on helpompi lukea melko kapeasta kolumnista, joten leveyssuuntaisesta skaalautuvuudesta ei olisi hyötä. Sivu on keskitetty, jotta oikeaan laitaan ei jäisi nykyisillä laajakuvanäytöillä ylettömästi tyhjää tilaa.
+
+Halusimme sijoittaa linkit killan muille ulkoisille sivustoille näkyvälle paikalle navigointipalkin yläpuolelle, koska kyseisille sivuille navigoidaan hyvin usein juuri killan kotisivun kautta.
+
+\subsection{Graafinen ulkoasu}
+
+Ulkoasun suunnittelu alkoi jo viime syksynä ja saimmekin valmiiksi version, jonka päälle kokeilimme drupal-sisällönhallintajärjestelmää. Kurssin alkaessa halusimme kuitenkin tehdä uuden ulkoasun, koska vanha ei ollut kaikilta osin tyydyttävä. Ulkoasun ideoinnin aloitimme käymällä läpi netistä löytyviä muiden tekemiä esimerkki layoutteja. Yritimme poimia mielestämme onnistuneita graafisia elementtejä ja rakenteita ja käyttää samantyyppisiä ratkaisuja omassa layoutissamme.
+
+Erilaisia graafisia elementtejä ei tule olla liikaa, jotta sivu näyttää selkeältä ja kevyeltä. Määrän sijaan panostimme elementtien yksityiskohtiin, jotta ulkoasu näyttäisi laadukkaalta.
+
+Ulkoasu muotoutui pääpiirteittään valmiiksi jo suunnitteluvaiheessa, koska halusimme ryhtyä kehittämään sivuston teknistä puolta mahdollisimman valmiin rakenteen päälle. Lopulliseen versioon teimme ulkoasusta hieman dynaamisemman. Alkuperäisessä suunnitelmassa oli muun muassa ylämenussa käytetty pelkästään staattisia tekstikuvia linkkeinä, mutta päätimme tehdä dynaamiset tekstilinkit, jotta sivuston päivittäminen onnistuisi jatkossa sujuvasti pelkkää koodia editoimalla.
+
+\subsection{Värit}
+Ainoa lähtökohta ulkoasulle oli, että killan tunnusvärin violetin täytyy olla selvästi näkyvillä. Käytämme myös hieman keltaista, koska muuten ulkoasusta olisi melko tylsä, ja keltainen on yksi harvoista väreistä, jotka sopivat violetin rinnalle (keltainen violetin vastaväri). Taustalla käytämme tummaa violettia gradienttia, jonka päällä on viivakuvio  tuomassa yksityiskohtia. Vaaleampaa violettia kokeiltiin, mutta sitä on vaikea saada esteettisesti miellyttäväksi. Logoksi teimme kultaisen AS-rattaan 3d-ohjelmalla, koska virallinen AS-logo näytti liian tylsältä nettisivulla.
+
+\subsection{Typografia}
+Valitsimme Tahoma -fontin sisältötekstiä varten, koska se näyttää selkeältä fonttikoosta riippumatta, ja löytyy lähes jokaiselta käyttäjältä. Tekstin väri on musta, koska musta kirjasin valkoisella taustalla on helpoin lukea. Otsikoissa ja navigointipalkissa käytämme Trebuchet MS  -fonttia, joka näyttää hienolta etenkin, jos selain tukee fonttien antialisointia.
+
+
+\subsection{Valokuvat}
+Haluamme tuoda heti etusivusta lähtien killan rentohenkistä ilmapiiriä ja toimintaa esille. Tähän paras vaihtoehto on näyttää valokuvia muun muassa killan tapahtumista joka sivulla. Valokuvat vaihtelevat sattumanvaraisesti ja niitä on helppo lisätä tietokantaan. Laadukkaita valokuvia käyttämällä on helppo tuoda näyttävyyttä ja monipuolisuutta ulkoasuun. Kävimme itse ottamassa valokuvia ympäri Otaniemeä.
+
 
 
 %***************************************************************************
