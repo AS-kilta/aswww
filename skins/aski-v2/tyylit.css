@@ -109,7 +109,7 @@ img {
 	background:url('arrow.png') no-repeat center bottom;
 	display:block;
 	padding:15px 15px 13px 15px;
-	font: 10px "Tahoma";
+	font: 10px "Tahoma",sans-serif;
 	text-decoration:none;
 	color:#FFFFFF;
 }
@@ -164,7 +164,7 @@ img {
     /*line-height: 46px;*/
     margin: 0px;
     height: 32px;
-    font: bold 11px "Tahoma";
+    font: bold 11px "Tahoma",sans-seirf;
     text-decoration: none;
     color:#FFFFFF;
 }
@@ -182,22 +182,16 @@ img {
 
 /*** CONTENT ***/
 
-/*#table-container, #table-container>tr, */
-#table-container > tbody > tr > td {
-	border: none;
-	padding: 10px 0px 10px 0px;
-	border-spacing: none;
-	vertical-align: top;
-}
-#table-container #td_right {
-	border-left:1px dotted #A5AEC5;
-}
-
-
 #content-top {
     background-image: url("content-top.png");
     width: 748px;
     height: 15px;
+	position: relative;
+	top: 0px;
+	bottom: auto;
+	left: auto;
+	right: auto;
+	z-index: 100;
 }
 
 #content-bottom {
@@ -205,29 +199,60 @@ img {
 	background-position: bottom;
 	width: 748px;
 	height: 15px;
+		position: relative;
+		top: auto;
+		bottom: 0px;
+		right: auto;
+		left: auto;
+		z-index: 90;
 }
 
 #content {
 	background:#fff;
-	width: 724px;
 	padding-left:12px;
 	padding-right:12px;
-	top: 0px;
-	bottom: 0px;
-	position: relative;
-	height: auto;
-	min-height: 400px;
+	width: auto; /* from page-container */
+	width: 724px;
+		position: relative;
+		top: 0px;
+		bottom: 0px;
+		right: 0px;
+		left: 0px;
+		z-index: 50;
+	height: auto; /* variabling */
 }
 
-#content-left {
+#content-center {
+	/* this makes wrapper for text and menu area */
+	/* like tbody ot tr */
+	float: left;
+	width: auto; /* from content */
+	height: auto; /* from data in this */
+	min-height: 400px; /* mininum */
+	margin: 10px 0px 10px 0px;
+		position: relative;
+		top: 0px;
+		bottom: 0px;
+		right: 0px;
+		left: 0px;
+		z-index: 50;
+}
+
+#text-container {
 	width:450px;
+	height: auto;
 	float:left;
 	margin: 0px 10px 0px 10px;
-	position: relative;
+		position: relative; /* absolute to content-center */
+		top: 0px;
+		bottom: 0px;
+		right: auto;
+		left: 0px;
+		z-index: 70;
 }
 
 h1 {
-    font-family: Trebuchet MS;
+    font-family: "Trebuchet MS", sans;
     color: #4a0560;
     /*padding-left: 10px; */
     text-align:left;
@@ -235,7 +260,7 @@ h1 {
 }
 
 h2 {
-    font-family: Trebuchet MS;
+    font-family: "Trebuchet MS", sans;
     /*color: #4a0560;*/
     color: black;
     /*padding-left: 10px; */
@@ -245,22 +270,37 @@ h2 {
 
 
 /*** OIKEA MENU ALKAA ***/
+#border {
+	/*background-color: #000;*/
+	position: absolute;
+	right: 220px;
+	width: 0px;
+	height: auto;
+	left: auto;
+	top: 5px;
+	bottom: 5px;
+	z-index: 1000;
+	border-left:1px dotted #A5AEC5;
+}
 
 #menu-container {
     float:right;
-    position: relative;
     /*border-left:1px dotted #A5AEC5;*/
-    height: auto;
-    min-height: 350px;
+    height: auto; /* from content-center */
+    /*min-height: 350px; */ /* is in content */
     width: 200px;
     margin: 0px;
-    padding: 0px 10px;
-    top: 0px;
-    bottom: 0px;
+    padding: 0px 10px 0px 10px;
+	position: relative; /* to content-center */
+	top: 0px;
+	bottom: 0px;
+	right: 0px;
+	left: auto; /* from width */
+	z-index: 60;
 }
 
 #menu-container h1 {
-    font-family: Trebuchet MS;
+    font-family: "Trebuchet MS", sans;
     color:#4a0560;
     text-align:left;
     font-size:17px;

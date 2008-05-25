@@ -30,26 +30,25 @@
     <div id="page-container">
         <!-- TopVavi -->
         <div id="nav-container">
-			<?php print $topnavi ?>
-		</div>
+		<?php print $topnavi ?>
+	</div>
 
         <div id="blank"></div>
 
 	<div id="content-top"></div>
 	<div id="content">
 		<div><img src="<?= baseUrl() . "/skins/aski-v2/photo.png" ?>"/></div>
-		<table id="table-container"><tr><td id="td_left">
-            		<div id="content-left">
+		<div id="content-center">
+			<div id="border"></div>
+            		<div id="text-container">
                 		<?php if ($title) print $title ?>
                 		<?php print $content ?>
             		</div>
-		</td><td id="td_right">
             		<!-- Menu -->
             		<div id="menu-container">
 		                <?php print $left ?>
-            		</div>
-		</td></tr></table>
-
+			</div>
+		</div>
 		<div id="blank"></div>
 
 		<!-- Footer -->
