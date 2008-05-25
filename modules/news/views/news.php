@@ -1,6 +1,12 @@
 <h1><?= $_['news-heading'] ?></h1>
 
-<?php foreach ($news as $item) { ?>
+<?php
+$i = 0;
+foreach ($news as $item) {
+    if ($i >= $numNews) {
+        break;
+    }
+?>
     <div class="news">
     <h2><?= $item['heading'] ?></h2>
     <p>
@@ -11,11 +17,14 @@
     </p>
 
     </div>
-<?php } ?>
+<?php
+    $i++;
+}
+?>
 
 <?php
 if ($editable) {
-    echo $this->link('news/edit', 'New');
+    echo $this->link('news/edit', 'Create new') . "<br />\n";
     echo $this->link('news/list', 'List all');
 }
 ?>

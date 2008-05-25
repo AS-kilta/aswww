@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-15" />
 
     <?php print $head ?>
-    <title><?php print $head_title ?></title>
+    <title><?= $_['title'] ?></title>
 
     <?php print $styles ?>
     <?php print $scripts ?>
@@ -16,7 +16,7 @@
 <div id="bg-gfx">
 
     <div id="logo">
-        <a href="<?= baseUrl() ?>"><img alt="Logo" src="<?= baseUrl() . "/skins/aski-v2/logo.png" ?>" /></a>
+        <a href="<?= baseUrl() ?>"><img alt="Automaatio- ja systeemitekniikan kilta" src="<?= baseUrl() . $_['logoUrl'] ?>" /></a>
     </div>
 
     <div id="toplinks">
@@ -24,7 +24,7 @@
         <ul>
             <li><a href="http://aski.hut.fi/askicam">AskiCam</a></li>
             <li><a href="http://aski.hut.fi/AskiWiki">Wiki</a></li>
-            <li><a href="http://www.tenttiarkisto.fi/">Tenttiarkisto</a></li>
+            <li><a href="http://www.tenttiarkisto.fi/"><?= $_['Exam_archive'] ?></a></li>
         </ul>
     </div>
     <div class="blank"></div>
@@ -54,8 +54,8 @@
 
 		<!-- Footer -->
 		<div id="footer">
-			<span class="footer-text"><?php print $footer_message ?></span>
-            	</div>
+			<span class="footer-text"><?= $_['footerText'] ?></span>
+        </div>
         </div>
 
         <div id="content-bottom"></div>

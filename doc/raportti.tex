@@ -351,7 +351,7 @@ Sivuston käyttöliittymä vaikuttaa tässä vaiheessa toimivalta, ja tulemme laittam
 
 %Selostakaa aktiivisen elementin toteutus ja toiminta. Elementin lähdekoodi tulee sijoittaa hype-palvelimelle ja sijainti, joko URL tai hakemisto, tulee ilmoittaa dokumentissa. Lähdekoodin tulee olla kommentoitua ja assistenttien luettavissa. Arvioikaa myös valitsemanne toteutustavan sopivuutta tähän tarkoitukseen.}
 
-Suunnitteluvaiheessa työlle määriteltiin seuraavat vaatimukset:}
+Suunnitteluvaiheessa työlle määriteltiin seuraavat vaatimukset:
 \begin{itemize}
     \item Urlien täytyy olla järkeviä.
     \item Sivuja täytyy voida lisätä, poistaa ja päivittää web-käyttöliittymän kautta.
@@ -362,23 +362,23 @@ Suunnitteluvaiheessa työlle määriteltiin seuraavat vaatimukset:}
     \item Järjestelmän täytyy tukea käyttöoikeustasoja.
 \end{itemize}
 
-Kaikkien yllämainittujen ominaisuuksien toteutus on aloitettu ja useimmat toimivat jo hyvin, joten alkuperäiset vaatimukset pystytään näillä näkymin täyttämään.}
+Ylläolevasta listasta ainoastaan käyttöoikeustasot jätettiin toteuttamatta. Jokaisella autentikoidulla käyttäjällä on siis täydet admni-oikeudet. Tämäkin ratkaisu olisi käyttötarkoitukseen hyväksyttävissä, koska käyttäjätunnuksia jaetaan vain luotetuille käyttäjille. Käyttöoikeustasot on kuitenkin syytä toteuttaa jatkossa.
+
+Ilmoittautumistoiminto rajattiin pois...
 
 
 \subsection{Terminologiaa}
 
 \subsubsection{Skin ja alueet (regions)}
 
-Käytämme sivun kokonaisilmeestä nimitystä skin, joka korostaa ulkoasun vaihdeltavuutta. Skin on teknisesti html-pohja, jossa on dynaamisia kenttiä sisällölle. Skin sisältää alueita (regions), kuten ylänavipalkki, vasen navipalkki tai sisältöalue. Se ei ota kantaa alueiden sisältöön, vaan sisältö voi vaihdella sivukohatisesti.}
+Käytämme sivun kokonaisilmeestä nimitystä skin, joka korostaa ulkoasun vaihdeltavuutta. Skin on teknisesti html-pohja, jossa on dynaamisia kenttiä sisällölle. Skin sisältää alueita (regions), kuten ylänavipalkki, vasen navipalkki tai sisältöalue. Skin ei ota kantaa alueiden sisältöön, vaan sisältö vaihtelee sivukohatisesti.
 
 \subsubsection{Moduulit}
 
-Moduuli on itsenäinen palikka, joka tarjoaa sisältöä laitettavaksi skinin alueisiin. Esimerkiksi moduuli <i>page</i> tuottaa normaalin staattisen sivun sisällön, mutta on ulkopuolisen MainControllerin asia syöttää tämän moduulin sisältö oikeaan alueeseen. Moduulit ovat ikäänkuin pieniä itsenäisiä web-sovelluksia, joiden tuottama sisältö voidaan sijoittaa skinin alueisiin.}
+Moduuli on itsenäinen palikka, joka tarjoaa sisältöä laitettavaksi skinin alueisiin. Esimerkiksi moduuli <i>page</i> tuottaa normaalin staattisen sivun sisällön, mutta on ulkopuolisen MainControllerin asia syöttää tämän moduulin sisältö oikeaan alueeseen. Moduulit ovat ikäänkuin pieniä itsenäisiä web-sovelluksia, joiden tuottama sisältö voidaan sijoittaa skinin alueisiin.
 
 
 \subsection{Arkkitehtuuri}
-
-Korkean tason arkkitehtuurikuvaus on pysynyt suunnitteluvaiheen jälkeen lähes muuttumattomana. Yksityiskohdat esitetään vasta toteutusdokumentissa, koska ne muuttuvat edelleen usein.}
 
 Sovellus noudataa Model-View-Controller -arkkitehtuuria (MVC), jossa datan esitymuoto (View) erotetaan toimintalogiikasta (Model). Model-taso toimii abstraktilla tasolla, eli voi vaikkapa tuottaa listan johonkin tapahtumaan ilmoittautuneista käyttäjistä, mutta ei ota kantaa esitysmuotoon. View-taso puolestaan voisi muuttaa käyttäjälistan html-taulukoksi, mutta ei sisällä enää monimutkaista toimintalogiikkaa. Controller koordinoi tiedonvälitystä Model- ja View- tasojen välillä, eli pyytää Model-kerrosta suorittamaan tietyt operaatiot, ja antaa tulokset View-kerrokselle visualisoitavaksi. Vastaavasti Controller hakee käyttäjän syötteen View-kerroksesta ja syöttää sen Model-kerrokseen.}
 

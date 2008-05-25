@@ -2,54 +2,66 @@
 
 <h1>Edit page</h1>
 
-<textarea name="content" rows="20" style="width:100%">
-<?= $editableContent ?>
-</textarea>
+<?php if ($warning) { ?>
+    <p class="warning"><?= $warning ?></p>
+<?php } ?>
 
+<?php if ($success) { ?>
+    <p class="success"><?= $success ?></p>
+<?php } ?>
+
+<?php
+// Language versions
+foreach ($pageVersions as $version) { ?>
+    <h1><?= strtoupper($version->getLang()) ?></h1>
+
+    <textarea name="<?= $version->getLang() . '-content' ?>" rows="20" style="width:100%"><?= $version->getContent() ?></textarea>
+<?php } ?>
+
+<h1>Location</h1>
 <table>
     <tr>
         <td>Language</td>
         <td>Title</td>
-    </tr>
-    <tr>
-        <td>
-            <select name="language">
-                <option value="fi" <?= $naviNode->getLang() == 'fi' ? 'selected="true"' : ''; ?>>Suomi</option>
-                <option value="en" <?= $naviNode->getLang() == 'en' ? 'selected="true"' : ''; ?>>English</option>
-            </select>
-        </td>
-        <td>
-            <input type="text" name="title" value="<?= $naviNode->getTitle(); ?>" />
-        </td>
-    </tr>
-</table>
-
-<table>
-    <tr>
-        <td>Parent</td>
         <td>Url</td>
     </tr>
-    <tr>
-        <td>
-            <select name="parent">
-                <?= $naviTree ?>
-            </select>
-            /
-        </td>
-        <td>
-            <input type="text" name="url" value="<?= $naviNode->getUrl(); ?>"/>
-        </td>
-    </tr>
+
+    <?php
+    $languages = getConfiguredLanguages();
+    foreach ($languages as $lang) {
+    ?>
+        <tr>
+            <td><?= $lang ?></td>
+            <td><input type="text" name="<?= $lang . '-title' ; ?>" value="<?= $naviNode->getTitle($lang); ?>" /></td>
+            <td><input type="text" name="<?= $lang . '-url' ; ?>" value="<?= $naviNode->getUrl($lang); ?>" /></td>
+        </tr>
+    <?php } ?>
 </table>
 
+<p>Parent:
+    <select name="parent">
+        <?= $naviTree ?>
+    </select>
+</p>
+
 <p>
-    <input type='submit' name='save' value='Save' />
+    <input onclick="return confirm('Are you sure you want to delete this page?')" type='submit' name='delete' value='Delete' />
     <input type='submit' name='preview' value='Preview' />
+    <input type='submit' name='save' value='Save' />
 </p>
 
 
 
 <?= $this->formEnd() ?>
 
+
+<!-- Preview -->
 <hr />
-<?= $htmlContent ?>
+
+<?php
+// Language versions
+foreach ($pageVersions as $version) { ?>
+    <h1>Preview: <?= strtoupper($version->getLang()) ?></h1>
+
+    <?= $version->getContent() ?>
+<?php } ?>

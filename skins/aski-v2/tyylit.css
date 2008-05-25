@@ -383,6 +383,7 @@ div.blank {
     width: 724px;
     position: relative;
     
+    
     background: url('footer.png') no-repeat;
 }
 
@@ -397,11 +398,14 @@ div.blank {
 .footer-right {right: 0px;background: url(footer_lr.png) no-repeat -7px 0px;}
 
 .footer-text {
-		float: left;
-		display: block;
-		color: #828282;
-		font-size: 11px;
-		padding-top: 12px;
+    float: left;
+    width: 100%;
+    display: block;
+    color: #828282;
+    font-size: 11px;
+    padding-top: 12px;
+    text-align: center;
+    /*border: 1px solid red;*/
 }
 
 

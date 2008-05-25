@@ -1,5 +1,4 @@
-DROP SEQUENCE naviNodesSeq;
-DROP SEQUENCE contentSeq;
+DROP SEQUENCE naviSeq;
 DROP SEQUENCE usersSeq;
 DROP SEQUENCE pollSeq;
 DROP SEQUENCE pollOptionSeq;
@@ -12,8 +11,7 @@ DROP TABLE signup;
 DROP TABLE users CASCADE;
 DROP TABLE groups;
 
-CREATE SEQUENCE naviNodesSeq;
-CREATE SEQUENCE contentSeq;
+CREATE SEQUENCE naviSeq;
 CREATE SEQUENCE usersSeq;
 CREATE SEQUENCE pollSeq;
 CREATE SEQUENCE pollOptionSeq;
@@ -23,7 +21,8 @@ CREATE TABLE naviNodes (
     id INT PRIMARY KEY,
     parent INT REFERENCES naviNodes(id) ON DELETE SET NULL,
     module VARCHAR(64),
-    nodeId INT
+    weight SMALLINT DEFAULT 0,
+    hidden BOOLEAN DEFAULT false
 );
 
 CREATE TABLE naviTitles (

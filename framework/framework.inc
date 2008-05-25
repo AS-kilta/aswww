@@ -214,13 +214,23 @@ function setLanguage($language) {
 }
 
 function getLanguage() {
-    global $lang;
+    global $lang, $configuredLanguages;
 
     if (isset($lang)) {
         return $lang;
     } else {
-        return 'fi';
+        return $configuredLanguages[0];
     }
+}
+
+/**
+ * Returns a list of configured (ie. available) languages.
+ * @return Array of strings (language codes)
+ */
+function getConfiguredLanguages() {
+    global $configuredLanguages;
+
+    return $configuredLanguages;
 }
 
 function baseUrl() {

@@ -28,7 +28,10 @@ class Skin {
     }
 
     function show() {
-        global $skin;
+        global $skin, $_;  // Translation strings
+
+        // Include translation strings
+        include('skins/' . $this->skinName . '/strings-' . getLanguage() . '.php');
 
         // Load data array into variables
         foreach ($this->content as $r => $c) {

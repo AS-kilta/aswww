@@ -12,70 +12,74 @@ class NaviController extends ModuleController {
     public function renderAdmin() {
         return $this->renderDefault();
     }
-    
+
     public function renderDefault() {
         $navi = Navi::getInstance();
         $naviTree = $navi->getNaviTree();
 
         $html .= "<ul>\n";
-        $html .= $naviTree->renderFullTree(1);
+        $html .= $naviTree->renderFullTree(getLanguage(), 1);
         $html .= "</ul>\n";
-        
+
         return $html;
     }
 
     /**
      * @return HTML representation of the navitree
      */
-    public function renderNaviTree($startDepth = 2) {
+    public function renderNaviTree() {
         $navi = Navi::getInstance();
         $naviTree = $navi->getNaviTree();
+        $lang = getLanguage();
 
         $branch = $naviTree->getSelectedBranch();
 
         if ($branch != null) {
-            $html = '<h1>' . $branch->getTitle() . "</h1>\n";
+            $html = '<h1>' . $branch->getTitle($lang) . "</h1>\n";
             $html .= "<ul>\n";
-            $html .= $branch->renderTree(1);
+            $html .= $branch->renderTree($lang, 1);
             $html .= "</ul>\n";
         } else {
             $html .= "<ul>\n";
-            $html .= $naviTree->renderTree(1);
+            $html .= $naviTree->renderTree($lang, 1);
             $html .= "</ul>\n";
         }
-
-
-        // Admin
-        // TODO: check privileges properly
-        /*
-        $auth = Auth::getInstance();
-        $user = $auth->getCurrentUser();
-
-        if ($user != null) {
-            $html .= "<p><a href='" . baseUrl() . "/admin/newpage'>New page</a></p>";
-        }
-        */
 
         return $html;
     }
 
 
     public function renderTopNavi() {
+        global $_;  // Translation strings
         $navi = Navi::getInstance();
         $naviTree = $navi->getNaviTree();
+        
+        $lang = getLanguage();
 
         $html = "<ul>";
 
         foreach ($naviTree->getChildren() as $child) {
-            if ($child->getLang() == getLanguage()) {
-                if ($child->onPath) {
-                    $class = 'class="current"';
-                } else {
-                    $class = '';
-                }
-
-                $html .= "<li $class><a href='" . baseUrl() . $child->cumulativeUrl . "'>{$child->title}</a></li>";
+            if ($child->onPath) {
+                $class = 'class="current"';
+            } else {
+                $class = '';
             }
+
+            if (isset($child->title[$lang])) {
+                $html .= "<li $class><a href='" . baseUrl() . $child->getCumulativeUrl($lang) . "'>{$child->title[$lang]}</a></li>";
+            }
+        }
+
+        // Language selector
+        $node = $navi->getSelectedNode();
+        if ($node != null) {
+            $translatedNode = $navi->getSelectedNode()->getTranslation($_['otherLangCode-' . $lang]);
+        }
+
+        if ($translatedNode != null) {
+            $html .= '<li><a href="' . baseUrl() . $translatedNode->getCumulativeUrl($_['otherLangCode-' . $lang]) . '/">'
+                . $_['otherLangText-' . $lang]
+                . '</a></li>';
         }
 
         // Admin

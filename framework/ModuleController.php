@@ -50,7 +50,7 @@ class ModuleController {
      */
     function getContentId() {
         if ($this->naviNode != null) {
-            return $this->naviNode->getContentId();
+            return $this->naviNode->getId();
         } else {
             return false;
         }

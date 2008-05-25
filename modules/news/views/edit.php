@@ -18,9 +18,9 @@
 <?php } ?>
 
 <p>
-    <input type='submit' name='save' value='Save' />
+    <?= $this->link('news/list', 'Cancel') ?>
     <input type='submit' name='delete' value='Delete' />
+    <input type='submit' name='save' value='Save' />
 </p>
-<p><input type='submit' name='preview' value='Preview' /></p>
 
 <?= $this->formEnd() ?>

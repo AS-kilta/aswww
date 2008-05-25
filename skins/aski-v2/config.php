@@ -9,13 +9,6 @@ function getContentMapping($moduleName) {
             );
             break;
 
-        case 'askicam':
-            return Array(
-                'topnavi' => Array('navi', 'topNavi'),
-                'left' => Array('askicam', 'menu')
-            );
-            break;
-
         default:
             return Array(
                 "topnavi" => Array('navi', 'topNavi'),

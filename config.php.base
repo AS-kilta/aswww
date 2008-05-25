@@ -12,4 +12,6 @@ $enableEmail = false;
 $logfilename = 'log.txt';
 $mailfilename = 'mail.txt';
 
+$configuredLanguages = Array('fi', 'en');
+
 ?>

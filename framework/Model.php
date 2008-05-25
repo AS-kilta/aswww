@@ -10,6 +10,15 @@ class Model {
     }
 
     /**
+     * Loads an associative array (a row from database) into member variables.
+     */
+    protected function loadRow($row) {
+        foreach ($row as $key => $value) {
+            $this->$key = $value;
+        }
+    }
+
+    /**
      * Loads an object from the database.
      * @return id of the object or false on error
      */
@@ -109,21 +118,7 @@ class Model {
             }
 
             // Where
-            $query .= " WHERE ";
-            $i = 0;
-            foreach ($this->key as $columnName) {
-                if ($i > 0) {
-                    $query .= ' AND ';
-                }
-
-                if (!is_numeric($this->$columnName) || $this->$columnName === false) {
-                    $query .= $columnName . "='" . pg_escape_string($this->$columnName) . "'";
-                } else {
-                    $query .= $columnName . '=' . pg_escape_string($this->$columnName);
-                }
-
-                $i++;
-            }
+            $query .= ' WHERE ' . $this->sqlKey();
 
             //echo "<p>$query</p>\n";
             if (query($query) == false) {
@@ -162,12 +157,38 @@ class Model {
             return false;
         }
 
-        $result = query("DELETE FROM {$this->tableName} WHERE id={$this->id}");
+        $query = "DELETE FROM {$this->tableName} WHERE " . $this->sqlKey();
+
+        $result = query($query);
         if ($result == false) {
             return false;
         }
 
         return true;
+    }
+
+    /**
+     * Retruns the key string to be used in the query.
+     * Example: "id=10 AND lang='fi'"
+     */
+    private function sqlKey() {
+        $sql = '';
+        $i = 0;
+        foreach ($this->key as $columnName) {
+            if ($i > 0) {
+                $sql .= ' AND ';
+            }
+
+            if (!is_numeric($this->$columnName) || $this->$columnName === false) {
+                $sql .= $columnName . "='" . escapeSql($this->$columnName) . "'";
+            } else {
+                $sql .= $columnName . '=' . escapeSql($this->$columnName);
+            }
+
+            $i++;
+        }
+
+        return $sql;
     }
 
     /**

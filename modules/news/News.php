@@ -14,9 +14,7 @@ class News extends Model {
         $this->key = array('id','lang');
 
         if ($row != false) {
-            foreach ($row as $key => $value) {
-                $this->$key = $value;
-            }
+            $this->loadRow($row);
         }
     }
 

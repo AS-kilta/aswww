@@ -48,7 +48,7 @@ class Navi {
             $query .= ' AND parent IS NULL';
         } else {
             $query .= ' AND parent=' . $parent->getId();
-            $query .= ' AND lang=\'' . $parent->lang . '\'';
+            //$query .= ' AND lang=\'' . $parent->lang . '\'';
         }
 
         $result = queryTable($query);
@@ -62,17 +62,22 @@ class Navi {
         // Add children to the navi tree
         foreach ($result as $row) {
             // Add the node to the tree
-            $newChild = new NaviNode($row);
-            $parent->addChild($newChild);
+            if (!array_key_exists($row['id'], $parent->children)) {
+                $parent->children[$row['id']] = new NaviNode($row);
+                $parent->children[$row['id']]->setParentNode($parent);
+            }
+            $parent->children[$row['id']]->setTitle($row['lang'], $row['title']);
+            $parent->children[$row['id']]->setUrl($row['lang'], $row['url']);
+
 
             // Is this node on the path requested by the user?
             if (count($urlParts) > 0 && $row['url'] == $urlParts[0]) {
-                $newChild->setOnPath(true);
+                $parent->children[$row['id']]->setOnPath(true);
 
                 // Is this the node that the user requested?
                 if (count($urlParts) == 1) {
-                    $this->selectedNode = $newChild;
-                    $newChild->setSelected(true);
+                    $this->selectedNode = $parent->children[$row['id']];
+                    $parent->children[$row['id']]->setSelected(true);
                 }
 
                 // Set language
@@ -80,9 +85,11 @@ class Navi {
                 setLanguage($row['lang']);
                 $this->naviTree->setLang($row['lang']);
             }
+        }
 
-            // Descend
-            $this->queryLevel(array_slice($urlParts,1), $newChild);
+        // Descend
+        foreach ($parent->children as $child) {
+            $this->queryLevel(array_slice($urlParts,1), $child);
         }
     }
 

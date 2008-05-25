@@ -7,14 +7,14 @@
 
 class NaviNode extends Model {
     var $id;            // id in database
-    var $lang;          // language
-    var $url;           // url name of the node (folder)
-    var $cumulativeUrl;
-    var $title;         // human-readable title
+    var $url;           // url name of the node (folder) (array containing language versions)
+    var $cumulativeUrl; // cumulative url (array containing language versions)
+    var $title;         // human-readable title (array containing language versions)
 
     var $module;        // module that must be used for rendering
-    var $contentId;     // id of the content node
 
+    var $parentId;
+    var $parentNode;
     var $children;      // array of child nodes
     var $onPath;        // true if node is on the path requested by the user
     var $selected;      // true if node is the node requested by the user
@@ -22,31 +22,30 @@ class NaviNode extends Model {
     public function __construct($row = null) {
         // Columns that are automatically saved
         $this->tableName = 'navinodes';
-        $this->sequenceName = 'navinodes';
+        $this->sequenceName = 'navi';
 
         $this->children = array();
         $this->onPath = false;
 
+        $this->weight = 0;
+
         if (is_array($row)) {
             $this->id = $row['id'];
-            $this->lang = $row['lang'];
-            $this->url = $row['url'];
-            $this->title = $row['title'];
+            $this->parentId = $row['parent'];
+            $this->url[$row['lang']] = $row['url'];
+            $this->title[$row['lang']] = $row['title'];
             $this->module = $row['module'];
-            $this->contentId = $row['nodeid']; // TODO: rename to contentId
         } else {
             $this->id = 0;
         }
     }
 
-    public function addChild($child) {
-        $this->children[] = $child;
-
-        $child->cumulativeUrl = $this->cumulativeUrl . '/' . $child->url;
-    }
-
     public function getChildren() {
         return $this->children;
+    }
+
+    public function getCumulativeUrl($lang) {
+        return $this->cumulativeUrl[$lang];
     }
 
     public function setOnPath($boolean) {
@@ -55,6 +54,26 @@ class NaviNode extends Model {
 
     public function isOnPath() {
         return $this->onPath;
+    }
+
+    public function setTitle($lang, $title) {
+        $this->title[$lang] = $title;
+    }
+
+    public function getTitle($lang) {
+        return $this->title[$lang];
+    }
+
+    public function setUrl($lang, $url) {
+        $this->url[$lang] = $url;
+
+        if ($this->parentNode != null) {
+            $this->cumulativeUrl[$lang] = $this->parentNode->getCumulativeUrl($lang) . '/' . $url;
+        }
+    }
+
+    public function getUrl($lang) {
+        return $this->url[$lang];
     }
 
     /**
@@ -69,6 +88,68 @@ class NaviNode extends Model {
         }
 
         return null;
+    }
+
+    public function save($newId = false, $module = false) {
+
+        if ($this->id == 'new') {
+            $this->id = $newId;
+
+            $query = "INSERT INTO naviNodes(id, parent, module, weight) VALUES ("
+                . escapeSql($this->id) . ', ';
+                
+                if ($this->parentId == 0) {
+                    $query .= 'null, ';
+                } else {
+                    $query .= escapeSql($this->parentId) . ', ';
+                }
+                
+                $query .= '\'' . escapeSql($this->module) . '\', '
+                    . escapeSql($this->weight)
+                    . ')';
+            
+            if (query($query) === false) {
+                return false;
+            }
+        } else {
+            // Update an existing
+            $query = 'UPDATE naviNodes SET';
+
+            if ($this->parentId == 0) {
+                $query .= ' parent=null, ';
+            } else {
+                $query .= ' parent=' . escapeSql($this->parentId) . ', ';
+            }
+
+            $query .= ' weight=' . escapeSql($this->weight)
+                . ' WHERE id=' . escapeSql($this->id);
+
+            if (query($query) === false) {
+                return false;
+            }
+        }
+
+        // Update titles
+        $query = 'DELETE FROM naviTitles WHERE id=' . escapeSql($this->id);
+        query($query);
+        echo $query . '<br />';
+
+        foreach (array_keys($this->url) as $lang) {
+            if (strlen($this->url[$lang]) < 1) {
+                continue;
+            }
+
+            $query = "INSERT INTO naviTitles(id, lang, url, title) VALUES ("
+                . escapeSql($this->id) . ', '
+                . '\'' . escapeSql($lang) . '\', '
+                . '\'' . escapeSql($this->url[$lang]) . '\', '
+                . '\'' . escapeSql($this->title[$lang]) . '\''
+                . ')';
+
+            query($query);
+            echo $query . '<br />';
+        }
+
     }
 
     /**
@@ -104,11 +185,10 @@ class NaviNode extends Model {
         $newId = $this->nextVal();
 
         // Create a new navinode
-        $query = 'INSERT INTO navinodes(id, parent, module, nodeId) VALUES ('
+        $query = 'INSERT INTO navinodes(id, parent, module) VALUES ('
             . $newId . ', '
             . (int)$parentId . ', \''
-            . $module . '\', '
-            . (int)$contentId
+            . $module
             . ')';
 
         if (query($query) === false) {
@@ -130,26 +210,45 @@ class NaviNode extends Model {
         return true;
     }
 
+
+    /**
+     * Returns the nearest node available in the specified language.
+     * Travels up the tree if this node has no translation.
+     */
+    public function getTranslation($lang) {
+        if (isset($this->url[$lang])) {
+            return $this;
+        } else if ($this->parentNode != null) {
+            return $this->parentNode->getTranslation($lang);
+        } else {
+            return null;
+        }
+    }
+
     /**
      * Recursive method that renders the tree.
      * @return HTML representation of the tree
      */
-    function renderTree($startDepth) {
-        if (getLanguage() != $this->lang) {
-            return;
-        }
+    function renderTree($lang, $startDepth) {
+        //if ($this->cumulativeUrl[$lang])
 
         if ($this->selected) {
             $class = ' class="current"';
         }
 
         if ($startDepth < 1) {
-            $html = "<li$class><a$class href='" . baseUrl() . $this->cumulativeUrl . "'>{$this->title}</a>\n";
+            if (isset($this->url[$lang])) {
+                $html = "<li$class><a$class href='" . baseUrl() . $this->getCumulativeUrl($lang) . "'>{$this->title[$lang]}</a>\n";
+            }
         }
 
         foreach($this->children as $child) {
             $html .= $startDepth < 1 ? "<ul>\n" : '';
-            $html .= $child->renderTree($startDepth - 1);
+
+            if (isset($this->url[$lang])) {
+                $html .= $child->renderTree($lang, $startDepth - 1);
+            }
+
             $html .= $startDepth < 1 ? "</ul>\n" : '';
         }
 
@@ -162,14 +261,16 @@ class NaviNode extends Model {
      * Recursive method that renders the tree.
      * @return HTML representation of the tree
      */
-    function renderFullTree($startDepth) {
+    function renderFullTree($lang, $startDepth) {
         if ($startDepth < 1) {
-            $html = "<li><a href='" . baseUrl() . $this->cumulativeUrl . "'>{$this->title}</a>\n";
+            $html = "<li><a href='" . baseUrl() . $this->getCumulativeUrl($lang) . "'>{$this->title[$lang]}" 
+                //. ' (' . getCumulativeUrl($lang) . ')'
+                . "</a>\n";
         }
 
         foreach($this->children as $child) {
             $html .= $startDepth < 1 ? "<ul>\n" : '';
-            $html .= $child->renderFullTree($startDepth - 1);
+            $html .= $child->renderFullTree($lang, $startDepth - 1);
             $html .= $startDepth < 1 ? "</ul>\n" : '';
         }
 
@@ -181,13 +282,27 @@ class NaviNode extends Model {
     /**
      * @return HTML containing option tags
      */
-    function renderParentSelector($recursionDepth = 0) {
-        $html = "<option value='{$this->id}'>";
-        $html .= " {$this->cumulativeUrl}</option>\n";
+    function renderParentSelector($currentId, $currentParentId, $recursionDepth = 0) {
+        // Do not allow a node to be a descendant of itself
+        if ($this->id == $currentId && $this->id != 'new') {
+            return;
+        }
+
+        // Mark current parent
+        if ($this->id == $currentParentId) {
+            $selected = 'selected="true"';
+        }
+
+        if ($this->id == 0) {
+            $html = "<option $selected value='0'>root</option>\n";
+        } else {
+            $html = "<option $selected value='{$this->id}'>";
+            $html .= $this->getCumulativeUrl(getLanguage()) . "</option>\n";
+        }
 
         // Print children
         foreach($this->children as $child) {
-            $html .= $child->renderParentSelector($recursionDepth + 1);
+            $html .= $child->renderParentSelector($currentId, $currentParentId, $recursionDepth + 1);
         }
 
         return $html;

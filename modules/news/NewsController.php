@@ -19,6 +19,9 @@ class NewsController extends ModuleController {
         if ($auth->hasPrivilege($user, 'news', null, 'edit')) {
             $view->setData('editable', true);
         }
+        
+        // Limit the number of news
+        $view->setData('numNews', 4);
 
         return $view->render();
     }
@@ -37,14 +40,19 @@ class NewsController extends ModuleController {
         // Load the news to be edited
         $id = getGetOrPost('id');
         if ($id != false && $id != 'new') {
+            // Edit an existing entry. Load all language versions.
             $versions = News::loadAll($id);
             $view->setData('id', $id);
         } else {
-            $fi = new News();
-            $fi->setLang('fi');
-            $en = new News();
-            $en->setLang('en');
-            $versions = Array('fi'=>$fi, 'en'=>$en);
+            // Create a new entry. Create language versions.
+            $languages = getConfiguredLanguages();
+            $versions = Array();
+            foreach ($languages as $language) {
+                $news = new News();
+                $news->setLang($language);
+                $versions[$language] = $news;
+            }
+
             $view->setData('id', 'new');
         }
         $view->setData('versions', $versions);
@@ -79,6 +87,18 @@ class NewsController extends ModuleController {
             } else {
                 $view->setData('success', 'Page saved');
             }
+        }
+
+        // If delete is requested
+        if (getPost('delete')) {
+            foreach($versions as $version) {
+                if ($version->getId() != 'new') {
+                    $version->delete();
+                }
+            }
+
+            redirect('news/list');
+            return;
         }
 
         return $view->render();

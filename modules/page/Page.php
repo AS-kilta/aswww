@@ -4,31 +4,35 @@ class Page extends Model {
     /**
      * Constructor
      */
-    public function __construct() {
+    public function __construct($row = false) {
+        parent::__construct();
+
         // Columns that are automatically saved
         $this->columns = array('lang','content');
         $this->key = array('id','lang');
         $this->tableName = 'pages';
-        $this->sequenceName = 'content';
+        $this->sequenceName = 'navi';
 
-        parent::__construct();
+        if ($row != false) {
+            $this->loadRow($row);
+        }
     }
 
     /**
-     * Retruns a list of all pages.
+     * Loads all language versions.
+     * @returns Array of objects. Array indexes are language codes.
      */
-    public static function getPages($lang = false) {
-        $query = 'SELECT id, lang FROM news';
-
-        if ($lang != false) {
-            $query .= ' WHERE lang=\'' . escapeSql($lang) . '\'';
-        }
-
-        $query .= ' ORDER BY timestamp DESC';
+    public function loadAll($id) {
+        $query = 'SELECT * FROM pages WHERE id=' . escapeSql($id);
 
         $result = queryTable($query);
+        $versions = Array();
 
-        return $result;
+        foreach ($result as $row) {
+            $versions[$row['lang']] = new Page($row);
+        }
+
+        return $versions;
     }
 
 }
