@@ -54,9 +54,9 @@ Annti Nieminen, 67079L, ajniemin@cc.hut.fi
 
 %Kertokaa lyhyt kuvaus projektityöstä, sen onnistumisesta ja saavutetusta lopputuloksesta verrattuna suunniteltuun. Kertokaa myös siitä, mitä ja miten olette tällä kurssilla oppineet.
 
-Tässä harjoitustyössä toteutuettiin Automaatio- ja Systeemitekniikan killalle uusi sisällönhallintajärjestelmä ja nettisivusto. Sivusto sisältää aktiivikillisteille muun muassa ajankohtaisia uutisia, tapahtumakalenterin ja gallupin, sekä ulkopuolisille tietoa killasta.
+Tässä harjoitustyössä toteutuettiin Automaatio- ja Systeemitekniikan killalle uusi sisällönhallintajärjestelmä ja yksinkertainen nettisivuston runko. Sivusto sisältää aktiivikillisteille muun muassa ajankohtaisia uutisia, tapahtumakalenterin ja gallupin, sekä ulkopuolisille tietoa killasta.
 
-Sivuston vanha versio on osoitteessa http://as.tky.fi/. Uuden sivuston esittelyversio on osoitteessa http://aski.hut.fi/uusi/. Admin-puolelle kirajudutaan osoitteessa http://aski.hut.fi/uusi/admin käyttäjätunnuksella Assari/Demo.
+Sivuston vanha versio on osoitteessa http://as.tky.fi/. Uuden sivuston esittelyversio on osoitteessa http://aski.hut.fi/uusi/. Admin-puolelle voi kirjautua osoitteessa http://aski.hut.fi/uusi/admin käyttäjätunnuksella Assari/Demo.
 
 Projektin loppuvaiheessa tuli kiire, joten gallupin ja tapahtumakalenterin toiminnallisuudet jätettiin toteuttamatta. Etusivun uutismoduuli on kuitenkin toimiva esimerkki tämäntyyppisten moduulien toiminnasta. Ilmoittautumistoiminto rajattiin kokonaan pois. Viimeistelykin jäi puolitiehen, mutta tärkein moduuli, eli normaalit sisältösivut toimivat hyvin. Korkean tason tavoite, eli sisällönhallintajärjestelmän luominen, siis onnistui, mutta sivusto vaatii jatkokehitystä ennen kuin se on valmis tuotantokäyttöön.
 
@@ -80,13 +80,13 @@ Tämä oli ensimmäinen kerta minulle, kun rakensin täysin css-tyylitiedostoa käytt
 
 %Esittäkää puu tai vuokaavioesitys koko sivustosta sekä perustelut valitulle rakenteelle ja tiedostojen nimeämiskäytännölle. Merkitkää kaavioon myös ovatko sivut staattisia tai dynaamisesti generoituja, missä on aktiivinen elementti ja missä on käytetty tyylisivuja.}
 
-Vanhan sivuston sisältö olisi sellaisenaan melko kelvollista, mutta sitä kirjoitettaan uusiksi siinä määrin, että kurssin vaatimustaso täyttyy. Seuraavassa esitetään sivukohtainen erittely sivuston sisällöstä.
+Vanhan sivuston sisältö olisi sellaisenaan melko kelvollista, mutta sitä kirjoitettaan uusiksi siinä määrin, että kurssin vaatimustaso täyttyy. Seuraavassa esitetään sivukohtainen erittely sivuston sisällöstä (kuva \ref{sivuhierarkia}).
 
 \begin{figure}[ht]
 \centering
 \includegraphics[width=14cm]{kaavio.jpg}
 \caption{Kaavio sivuston rakenteesta}
-\label{mvc}
+\label{sivuhierarkia}
 \end{figure}
 
 
@@ -234,7 +234,7 @@ Vanhan sivuston sisältö olisi sellaisenaan melko kelvollista, mutta sitä kirjoit
   \item Kohderyhmät: Killan jäsenet (tärkeä)
   \item Tavoitteet: Tarjota opintomestarin ja  -neuvojan yhteystiedot, sekä linkkejä esimerkiksi labrojen sivuille.
   \item Lähdemateriaali: Hallitus,  opintomestari, opintoneuvoja.
-  \item Muokkaus: Moduulin  ylläpitokäyttöliittymä.
+  \item Muokkaus: Moduulin ylläpitokäyttöliittymä.
   \item Dynaamisuus: Ei dynaamista sisältöä.
   \item Julkaisukielet: fi/en
   \item Moduuli: Tavallinen sivu.
@@ -268,7 +268,7 @@ Vanhan sivuston sisältö olisi sellaisenaan melko kelvollista, mutta sitä kirjoit
 
 Sivujen URLit eivät vastaa palvelimen tiedostojärjestelmää, vaan sisällönhallintajärjestelmä sallii niiden valitsemisen täysin mielivaltaisesti. URLit ja navigointihierarkia on sidottu toisiinsa selkeyden vuoksi. Suomen- ja englanninkielinen navigontihierarkia on sidottu toisiinsa, mutta eri kieliversioista saa puuttua sivuja, joita toisessa versiossa on.
 
-Kaikki sivut käyttävät samoja HTML-pohjia ja CSS-tiedostoja.
+Kaikki sisältö kuvia lukuunottamatta luetaan tietokannasta, ja kaikki sivut käyttävät samoja HTML-pohjia ja CSS-tiedostoja.
 
 
 \subsection{Kohderyhmäanalyysi}
@@ -277,42 +277,31 @@ Suunnitteluvaiheessa kartoitetut käyttäjäryhmät olivat: kiltalaiset, phuksit, ab
 
 \subsubsection{Kiltalaiset}
 
-Kiltalaiset saavat useimmin etsimänsä tiedot suoraan etusivulta. Näitä tietoja ovat ajankohtaiset uutiset, ja tapahtumakalenteri. Ylhäältä pikalinkeistä pääsee myös nopeasti usein käytettyihin erillispalveluihin (wiki, tenttiarkisto, kuvagalleria).
+Kiltalaiset saavat useimmin etsimänsä tiedot suoraan etusivulta. Näitä tietoja ovat ajankohtaiset uutiset, ja tapahtumakalenteri. Ylhäältä pikalinkeistä pääsee myös nopeasti usein käytettyihin erillispalveluihin (wiki, tenttiarkisto, webbikamera).
 
-Tyypillinen tilanne aktiivikiltalaiselle on tapahtumaan ilmoittautuminen, kun linkki on saatu sähköpostitse mainosviestissä. Viestissä oleva URL on yksinkertainen (esimerkiksi aski.hut.fi/wappusitsit), ja aukeava sivu näyttää suoraan tapahtuman perustiedot. Itse ilmoittautumislomakkeeseen pääsee yhdellä klikkauksella.
+% Tyypillinen tilanne aktiivikiltalaiselle on tapahtumaan ilmoittautuminen, kun linkki on saatu sähköpostitse mainosviestissä. Viestissä oleva URL on yksinkertainen (esimerkiksi aski.hut.fi/wappusitsit), ja aukeava sivu näyttää suoraan tapahtuman perustiedot. Itse ilmoittautumislomakkeeseen pääsee yhdellä klikkauksella.
 
-Harvemmin tarvittavat tiedot, kuten tilinumerot tai pöytäkirjat, löytyvät Kilta-linkin takaa.
+Harvemmin tarvittavat tiedot, kuten tilinumerot, löytyvät Kilta-linkin takaa.
 
 
 \subsubsection{Phuksit}
-
 Phuksit käyttävät samoja toimintoja kuin aktiivikiltalaiset, mutta tarvitsevat tietoja, joita vanhemmat tieteenharjoittajat eivät tarvitse (esimerkiksi phuksiryhmät, phuksiopas, kartat, ym.). Nämä läytyvät päänavigointipalkista Phuksit-nappulan alta ja sen jälkeen navigointipuusta alasivuilta.
 
 
 \subsubsection{Ulkomaalaisopiskelijat}
-
-Ulkomaalaisopiskelijat käyttäytyvät samoin kuin aktiivikiltalaiset tai phuksit, mutta tarvitsevat sisällön englanniksi. Engalnninkielisen navigoinnin toimivuutta on demovaiheessa kokeiltu, mutta sisältöä ei ole ryhdytty syöttämään.
-
+Ulkomaalaisopiskelijat käyttäytyvät samoin kuin aktiivikiltalaiset tai phuksit, mutta tarvitsevat sisällön englanniksi. 
 
 \subsubsection{Abit}
-
-Abit saattavat päätyä killan sivuille etsiessään opiskelupaikkaa. Mainospuheet ja linkit abeille hyödyllisiin tietoihin löytyvät päänavigointipalkista Abit-nappulan alta. Abit saattavat tulostaa sivuja, mutta tähän ei demovaiheessa ole kiinnitetty huomiota.
-
+Abit saattavat päätyä killan sivuille etsiessään opiskelupaikkaa. Mainospuheet ja linkit abeille hyödyllisiin tietoihin löytyvät päänavigointipalkista Abit-nappulan alta. Abit saattavat tulostaa sivuja, joten sivuston tulosteiden css-tyyliin on kiinnitetty huomiota.
 
 \subsubsection{Sponsorit}
-
-Sponsoreilla tarkoitetaan tahoja, joilta kilta anoo rahaa, jotka tulevat killan sivuille tarkistamaan, millaisesta ryhmästä on kysymys. Sponsori oletettavasti klikkaa päänavigointipalkista Kilta-linkkiä, ja heti näkyviin lyhyen selityksen killan toiminnasta ja tarkoituksesta. Sivuston ilme on saatu ammattimaiseksi ja uskottavaksi, mikä toivottavasti lisää spronsoreiden luottamusta.
-
+Sponsoreilla tarkoitetaan tahoja, joilta kilta anoo rahaa, jotka tulevat killan sivuille tarkistamaan, millaisesta ryhmästä on kysymys. Sponsori oletettavasti klikkaa päänavigointipalkista Kilta-linkkiä, ja saa heti näkyviin lyhyen selityksen killan toiminnasta ja tarkoituksesta. Sivuston ilme on saatu ammattimaiseksi ja uskottavaksi, mikä toivottavasti lisää spronsoreiden luottamusta.
 
 \subsubsection{Ulkopuoliset}
-
-Sivustolle voi eksyä esimerkiksi kiltalaisten vanhempia tai työnantajia, joille on annettava riittävän vakava kuva kiltatoiminnasta. Käytännössä tämä tarkoittaa sisällön sensurointia, eikä siihen ole demovaiheessa keskitytty.
-
+Sivustolle voi eksyä esimerkiksi kiltalaisten vanhempia tai työnantajia, joille on annettava riittävän vakava kuva kiltatoiminnasta. Esimerkiksi yläpalkin kuvat on avlittu riittävän konservatiivisesti.
 
 \subsubsection{Ylläpitäjät}
-
-Sivustoa ylläpitää lähtökohtaisesti killan tiedottaja. Erityisesti ajankohtaisia uutisia päivitetään usein, joten käytön on oltava riittävän vaivatonta. Admin-toimintoja ei ole demovaiheessa toteutettu montaa, mutta arkkitehtuuri vaikuttaa sallivan hyvin intuitiivisen käyttöliittymän rakentamisen.
-
+Sivustoa ylläpitää lähtökohtaisesti killan tiedottaja. Erityisesti ajankohtaisia uutisia päivitetään usein, joten käytön on oltava riittävän vaivatonta. Erityistä admin-puolta ei ole toteutettu, vaan admin pääsee editoimaan sisältöä suoraan sivustolta painamalla edit-nappulaa.
 
 
 
@@ -339,40 +328,33 @@ Sivustoa ylläpitää lähtökohtaisesti killan tiedottaja. Erityisesti ajankohtaisia
 % Esittäkää toteutetut navigointiratkaisut ja muu käyttöliittymä. Esittäkää myös (esimerkiksi yllä olevien esimerkkikuvien perusteella) toteutunut graafinen ulkoasu. 
 
 \subsection{Käyttöliittymä}
+Tavoitteenamme on, että kaikkeen sivun sisältöön pääsisi käsiksi enintään kolmella klikkauksella, joten sivuston sisällön hierarkia ja sijainti on mietitty tarkkaan. Käytämme kaksitasoista menua; käytössä on viisi pääsivua, joiden alle kaikki sisältö on sijoitettu. Esimerkiksi toimihenkilöt -sivulle pääsisi klikkaamalla navigointipalkista kilta-linkkiä ja sitten sivun oikeaan reunaan avautuvasta sivumenusta toimihenkilöt-linkkiä. Yritämme sijoitella sisällön mahdollisimman järkevästi aina loogisimman pääsivun alle, jotta haettu tieto löytyy nopeasti.
 
-Tavoitteenamme on, että kaikkeen sivun sisältöön pääsisi käsiksi enintään kolmella klikkauksella, joten sivuston sisällön hierarkia ja sijainti on mietittävä tarkkaan. Käytämme kaksitasoista menua; meillä on siis 4-5 pääsivua, joiden alle kaikki sisältö sijoitetaan alasivuille. Esimerkiksi toimihenkilöt -sivulle pääsisi klikkaamalla navigointipalkista kilta-linkkiä ja sitten sivun oikeaan reunaan avautuvasta sivumenusta toimihenkilöt-linkkiä. Yritämme sijoitella sisällön mahdollisimman järkevästi aina loogisimman pääsivun alle, jotta haettu tieto löytyy nopeasti.
+Linkkien väri yleisesti sivustolla on violetti, ja ne erottuvat hyvin mustan tekstin joukosta. Linkit muuttuvat vaaleammiksi kun hiiren vie niiden päälle, jolloin käyttäjä ymmärtää, että kyseessä on klikattava toiminto. Navigointipalkkien linkeillä navigoidaan pääsivujen välillä. Aktiivinen pääsivu näytetään vaaleammalla pienellä nuolella.
 
-Linkkien väri yleisesti sivustolla on violetti, ja ne erottuvat hyvin mustan tekstin joukosta. Linkit muuttuvat vaaleammiksi kun hiiren vie niiden päälle.
+Oikeassa reunassa sivumenussa navigointilinkit ovat sivun vierityspalkin vieressä, mikä helpottaa linkkien käyttämistä. Sivumenuun voi sisällyttää myös alasivujen alasivuja (esim. Phuksit > Suurphuksi > Suurphuksin perintö). Etusivulla sivumenun paikalla näytetään kilta-aktiiveille tulevia killan tapahtumia ja galluppeja. Alatunnisteessa näytetään sivun tekijänoikeudet.
 
-Navigointipalkkien linkeillä navigoidaan pääsivujen välillä. Aktiivinen pääsivu näytetään vaaleammalla pienellä nuolella.
+Sisältöosa ei ole skaalautuva, vaan sen leveys on lukittu 750 pikseliin. Tekstiä on helpompi lukea melko kapeasta kolumnista, joten leveyssuuntaisesta skaalautuvuudesta ei olisi hyötä. Sivu on keskitetty, jotta oikeaan laitaan ei jäisi nykyisillä laajakuvanäytöillä ylettömästi tyhjää tilaa.
 
-Oikeassa reunassa sivumenussa navigointilinkit ovat sivun vierityspalkin vieressä, mikä helpottaa linkkien käyttämistä. Sivumenuun voi sisällyttää myös alasivujen alasivuja (esim. Phuksit > Suurphuksi > Suurphuksin perintö). Etusivulla sivumenun paikalla näytetään kilta-aktiiveille tulevia killan tapahtumia ja galluppeja.
-
-Alatunnisteessa näytetään sivun tekijänoikeudet.
-
-Sisältöosa ei ole skaalautuva ja sen leveys on noin 750 pikseliä. Tekstiä on helpompi lukea melko kapeasta kolumnista, joten leveyssuuntaisesta skaalautuvuudesta ei olisi hyötä. Sivu on keskitetty, jotta oikeaan laitaan ei jäisi nykyisillä laajakuvanäytöillä ylettömästi tyhjää tilaa.
-
-Halusimme sijoittaa linkit killan muille ulkoisille sivustoille näkyvälle paikalle navigointipalkin yläpuolelle, koska kyseisille sivuille navigoidaan hyvin usein juuri killan kotisivun kautta.
+Halusimme sijoittaa linkit yleisimmin käytetyille ulkoisille sivustoille näkyvälle paikalle navigointipalkin yläpuolelle. Killan kotisivu toimii näin portaalina, jonka kautta on helppo kulkea aiheeseen liittyville sivustoille.
 
 \subsection{Graafinen ulkoasu}
+Ulkoasun suunnittelu alkoi jo viime syksynä ja saimmekin valmiiksi version, jonka päälle kokeilimme Drupal-sisällönhallintajärjestelmää. Kurssin alkaessa halusimme kuitenkin tehdä uuden ulkoasun, koska vanha ei ollut kaikilta osin tyydyttävä. Ulkoasun ideoinnin aloitimme käymällä läpi netistä löytyviä muiden tekemiä esimerkkilayoutteja. Yritimme poimia mielestämme onnistuneita graafisia elementtejä ja rakenteita, ja käyttää samantyyppisiä ratkaisuja omassa layoutissamme.
 
-Ulkoasun suunnittelu alkoi jo viime syksynä ja saimmekin valmiiksi version, jonka päälle kokeilimme drupal-sisällönhallintajärjestelmää. Kurssin alkaessa halusimme kuitenkin tehdä uuden ulkoasun, koska vanha ei ollut kaikilta osin tyydyttävä. Ulkoasun ideoinnin aloitimme käymällä läpi netistä löytyviä muiden tekemiä esimerkki layoutteja. Yritimme poimia mielestämme onnistuneita graafisia elementtejä ja rakenteita ja käyttää samantyyppisiä ratkaisuja omassa layoutissamme.
-
-Erilaisia graafisia elementtejä ei tule olla liikaa, jotta sivu näyttää selkeältä ja kevyeltä. Määrän sijaan panostimme elementtien yksityiskohtiin, jotta ulkoasu näyttäisi laadukkaalta.
-
-Ulkoasu muotoutui pääpiirteittään valmiiksi jo suunnitteluvaiheessa, koska halusimme ryhtyä kehittämään sivuston teknistä puolta mahdollisimman valmiin rakenteen päälle. Lopulliseen versioon teimme ulkoasusta hieman dynaamisemman. Alkuperäisessä suunnitelmassa oli muun muassa ylämenussa käytetty pelkästään staattisia tekstikuvia linkkeinä, mutta päätimme tehdä dynaamiset tekstilinkit, jotta sivuston päivittäminen onnistuisi jatkossa sujuvasti pelkkää koodia editoimalla.
+Erilaisia graafisia elementtejä ei tule olla liikaa, jotta sivu näyttää selkeältä ja kevyeltä. Määrän sijaan panostimme elementtien yksityiskohtiin, jotta ulkoasu näyttäisi laadukkaalta. Ulkoasu muotoutui pääpiirteittään valmiiksi jo suunnitteluvaiheessa, koska halusimme ryhtyä kehittämään sivuston teknistä puolta mahdollisimman valmiin rakenteen päälle. Lopulliseen versioon teimme ulkoasusta hieman dynaamisemman. Alkuperäisessä suunnitelmassa oli muun muassa ylämenussa käytetty pelkästään staattisia kuvia linkkeinä, mutta päädyimme toteuttamaan muokattavat tekstilinkit, jotta sivuston päivittäminen onnistuisi jatkossa sujuvasti pelkkää koodia editoimalla.
 
 \subsection{Värit}
-Ainoa lähtökohta ulkoasulle oli, että killan tunnusvärin violetin täytyy olla selvästi näkyvillä. Käytämme myös hieman keltaista, koska muuten ulkoasusta olisi melko tylsä, ja keltainen on yksi harvoista väreistä, jotka sopivat violetin rinnalle (keltainen violetin vastaväri). Taustalla käytämme tummaa violettia gradienttia, jonka päällä on viivakuvio  tuomassa yksityiskohtia. Vaaleampaa violettia kokeiltiin, mutta sitä on vaikea saada esteettisesti miellyttäväksi. Logoksi teimme kultaisen AS-rattaan 3d-ohjelmalla, koska virallinen AS-logo näytti liian tylsältä nettisivulla.
+Ainoa lähtökohta ulkoasulle oli, että killan tunnusvärin violetin täytyy olla selvästi näkyvillä. Käytämme myös hieman keltaista, koska muuten ulkoasusta olisi tullut melko tylsä. Keltainen on yksi harvoista väreistä, jotka sopivat violetin rinnalle (se on violetin vastaväri). Taustalla käytämme tummaa violettia gradienttia, jonka päällä on himmeä viivakuvio tuomassa yksityiskohtia. Vaaleampaa violettia kokeiltiin, mutta sitä on vaikea saada esteettisesti miellyttäväksi. Logoksi teimme kultaisen AS-rattaan 3d-ohjelmalla, koska virallinen AS-logo näytti liian tylsältä nettisivulla.
 
 \subsection{Typografia}
-Valitsimme Tahoma -fontin sisältötekstiä varten, koska se näyttää selkeältä fonttikoosta riippumatta, ja löytyy lähes jokaiselta käyttäjältä. Tekstin väri on musta, koska musta kirjasin valkoisella taustalla on helpoin lukea. Otsikoissa ja navigointipalkissa käytämme Trebuchet MS  -fonttia, joka näyttää hienolta etenkin, jos selain tukee fonttien antialisointia.
-
+Valitsimme Tahoma -fontin sisältötekstiä varten, koska se näyttää selkeältä fonttikoosta riippumatta, ja löytyy lähes jokaiselta käyttäjältä. Tekstin väri on musta, koska musta kirjasin valkoisella taustalla on helpoin lukea. Otsikoissa ja navigointipalkissa käytämme Trebuchet MS -fonttia, joka näyttää hienolta etenkin, jos selain tukee fonttien antialisointia.
 
 \subsection{Valokuvat}
 Haluamme tuoda heti etusivusta lähtien killan rentohenkistä ilmapiiriä ja toimintaa esille. Tähän paras vaihtoehto on näyttää valokuvia muun muassa killan tapahtumista joka sivulla. Valokuvat vaihtelevat sattumanvaraisesti ja niitä on helppo lisätä tietokantaan. Laadukkaita valokuvia käyttämällä on helppo tuoda näyttävyyttä ja monipuolisuutta ulkoasuun. Kävimme itse ottamassa valokuvia ympäri Otaniemeä.
 
+\subsection{Ruudunkaappaukset}
 
+Ruudunkaappauskuvia on liitteessä 1. Internet Explorer 6 ei näytä läpinäkyviä png-kuvia oikein. Pidimme kuitenkin tarpeettomana siirtyä gif-kuviiin, koska niiden rajallinen värimäärä häiritsisi kunnollisten selainten käyttäjiä. Internet Explorer 4 näyttää sivun rakenteen aivan väärin, mutta sisältö on luettavissa. Emme pidä sivuston näkymistä väärin ikivanhalla selaimella relevanttina ongelmana.
 
 %***************************************************************************
 %************************** Aktiivinen elementti ***************************
@@ -393,27 +375,23 @@ Suunnitteluvaiheessa työlle määriteltiin seuraavat vaatimukset:
     \item Järjestelmän täytyy tukea käyttöoikeustasoja.
 \end{itemize}
 
-Ylläolevasta listasta ainoastaan käyttöoikeustasot jätettiin toteuttamatta. Jokaisella autentikoidulla käyttäjällä on siis täydet admni-oikeudet. Tämäkin ratkaisu olisi käyttötarkoitukseen hyväksyttävissä, koska käyttäjätunnuksia jaetaan vain luotetuille käyttäjille. Käyttöoikeustasot on kuitenkin syytä toteuttaa jatkossa.
+Ylläolevasta listasta ainoastaan käyttöoikeustasot jätettiin toteuttamatta. Jokaisella autentikoidulla käyttäjällä on siis täydet admni-oikeudet. Tämäkin ratkaisu olisi käyttötarkoitukseen hyväksyttävissä, koska käyttäjätunnuksia jaetaan vain luotetuille käyttäjille. Käyttöoikeustasot on kuitenkin syytä toteuttaa jatkokehitysvaiheessa, jotta käyttöoikeuksia voidaan jakaa huolettomammin.
 
-Ilmoittautumistoiminto rajattiin pois...
+Ilmoittautumistoiminto, gallup ja tapahtumakalenteri rajattiin pois työläyden vuoksi. Etusivun uutismoduuli riittää demonstroimaan moduuliarkkitehtuurin toimivuutta.
 
 
 \subsection{Terminologiaa}
 
 \subsubsection{Skin ja alueet (regions)}
-
-Käytämme sivun kokonaisilmeestä nimitystä skin, joka korostaa ulkoasun vaihdeltavuutta. Skin on teknisesti html-pohja, jossa on dynaamisia kenttiä sisällölle. Skin sisältää alueita (regions), kuten ylänavipalkki, vasen navipalkki tai sisältöalue. Skin ei ota kantaa alueiden sisältöön, vaan sisältö vaihtelee sivukohatisesti.
+Käytämme sivun kokonaisilmeestä nimitystä skin, joka korostaa ulkoasun vaihdeltavuutta. Skin on teknisesti html-pohja, jossa on dynaamisia kenttiä sisällölle. Skin sisältää alueita (regions), kuten ylänavipalkki, vasen navipalkki tai sisältöalue. Skin ei ota kantaa alueiden sisältöön, vaan sisältö vaihtelee sivukohtaisesti.
 
 \subsubsection{Moduulit}
-
-Moduuli on itsenäinen palikka, joka tarjoaa sisältöä laitettavaksi skinin alueisiin. Esimerkiksi moduuli <i>page</i> tuottaa normaalin staattisen sivun sisällön, mutta on ulkopuolisen MainControllerin asia syöttää tämän moduulin sisältö oikeaan alueeseen. Moduulit ovat ikäänkuin pieniä itsenäisiä web-sovelluksia, joiden tuottama sisältö voidaan sijoittaa skinin alueisiin.
-
+Moduuli on itsenäinen palikka, joka tarjoaa sisältöä laitettavaksi skinin alueisiin. Esimerkiksi moduuli \emph{page} tuottaa normaalin staattisen sivun sisällön, mutta on ulkopuolisen MainControllerin asia syöttää tämän moduulin sisältö oikeaan alueeseen. Moduulit ovat ikäänkuin pieniä itsenäisiä web-sovelluksia, joiden tuottama sisältö voidaan sijoittaa skinin alueisiin.
 
 \subsection{Arkkitehtuuri}
+Sovellus noudataa Model-View-Controller -arkkitehtuuria (MVC) (kuva \ref{mvc}), jossa datan esitymuoto (View) erotetaan toimintalogiikasta (Model). Model-taso toimii abstraktilla tasolla, eli voi vaikkapa tuottaa listan johonkin tapahtumaan ilmoittautuneista käyttäjistä, mutta ei ota kantaa esitysmuotoon. View-taso puolestaan voisi muuttaa käyttäjälistan html-taulukoksi, mutta ei sisällä enää monimutkaista toimintalogiikkaa. Controller koordinoi tiedonvälitystä Model- ja View- tasojen välillä, eli pyytää Model-kerrosta suorittamaan tietyt operaatiot, ja antaa tulokset View-kerrokselle visualisoitavaksi. Vastaavasti Controller hakee käyttäjän syötteen View-kerroksesta ja syöttää sen Model-kerrokseen.
 
-Sovellus noudataa Model-View-Controller -arkkitehtuuria (MVC), jossa datan esitymuoto (View) erotetaan toimintalogiikasta (Model). Model-taso toimii abstraktilla tasolla, eli voi vaikkapa tuottaa listan johonkin tapahtumaan ilmoittautuneista käyttäjistä, mutta ei ota kantaa esitysmuotoon. View-taso puolestaan voisi muuttaa käyttäjälistan html-taulukoksi, mutta ei sisällä enää monimutkaista toimintalogiikkaa. Controller koordinoi tiedonvälitystä Model- ja View- tasojen välillä, eli pyytää Model-kerrosta suorittamaan tietyt operaatiot, ja antaa tulokset View-kerrokselle visualisoitavaksi. Vastaavasti Controller hakee käyttäjän syötteen View-kerroksesta ja syöttää sen Model-kerrokseen.
-
-Modulaarisuuden takia MVC-idea toteutetaan kahdessa kerroksessa. Sivuston toimintaa kokonaisuudessaan koordinoi MainController, jonka kautta jokainen kysely ohjataan. MainController valitsee skinin, lataa tarvittavat moduulit, pyytää moduuleita tuotamaan sisältöä, ja syöttää sisällön skinin alueisiin. Jokainen moduuli itsessään noudattaa MVC-arkkitehtuuria, eli toimii kuin itsenäinen pieni web-sovellus. MainController esittää pyynnöt moduulin ModuleControllerille, joka pyytää omaa Model-kerrostaan toimimaan, syöttää tulokset haluamalleen näkymälle (View), ja palauttaa valmiin html-sisällön MainControllerille.
+Modulaarisuuden takia MVC-idea toteutetaan kahdessa kerroksessa. Sivuston toimintaa kokonaisuudessaan koordinoi MainController, jonka kautta jokainen sivukysely ohjataan. MainController valitsee skinin, lataa tarvittavat moduulit, pyytää moduuleita tuotamaan sisältöä, ja syöttää sisällön skinin alueisiin. Jokainen moduuli itsessään noudattaa MVC-arkkitehtuuria, eli toimii kuin itsenäinen pieni web-sovellus. MainController esittää pyynnöt moduulin ModuleControllerille, joka pyytää omaa Model-kerrostaan toimimaan, syöttää tulokset haluamalleen näkymälle (View), ja palauttaa valmiin html-sisällön MainControllerille.
 
 \begin{figure}[ht]
 \centering
@@ -439,9 +417,9 @@ MainControllerin vastuulla on selvittää, mitä sivua ollaan näyttämässä, mitä ski
 \subsubsection{Esimerkki:}
 \begin{itemize}
     \item Käyttäjä pyytää sivua kilta/hallitus.
-    \item Navigointimoduuli löytää navigointihierarkiasta kyseisen solmun ja toteaa, että sisällön tuottaa <i>page</i>-moduuli, ja sisältö löytyy id:llä 70.
-    \item Main Controller toteaa, että page-moduulin kanssa käytetään oletusskiniä, pääsisältö tulee alueeseen nimeltä <i>content</i>, alueeseen <i>topnavi</i> on pyydettävä navigointimoduulilta sisältöä nimeltä <i>topnavi</i>, ja aluesseen <i>leftnavi</i> on pyydettävä navigointimoduulilta sisältöä nimeltä <i>navitree</i>.
-    \item MainController pyytää <i>page</i>-moduulilta sisältöä id-numerolla 70, ja navigointimoduulilta <i>topnavi</i> ja <i>navitree</i> -sisällöt, sekä syöttää ne skiniin.
+    \item Navigointimoduuli löytää navigointihierarkiasta kyseisen solmun ja toteaa, että sisällön tuottaa \emph{page}-moduuli, ja sisältö löytyy id:llä 70.
+    \item Main Controller toteaa, että page-moduulin kanssa käytetään oletusskiniä, pääsisältö tulee alueeseen nimeltä \emph{content}, alueeseen \emph{topnavi} on pyydettävä navigointimoduulilta sisältöä nimeltä \emph{topnavi}, ja aluesseen \emph{leftnavi} on pyydettävä navigointimoduulilta sisältöä nimeltä \emph{navitree}.
+    \item MainController pyytää \emph{page}-moduulilta sisältöä id-numerolla 70, ja navigointimoduulilta \emph{topnavi} ja \emph{navitree} -sisällöt, sekä syöttää ne skiniin.
     \item MainController pyytää skiniä tulostumaan ruudulle.
 \end{itemize}
 
@@ -493,7 +471,7 @@ Sivustolla on yksi abstrakti, kielestä riippumaton navigointipuu. Sivujen otsiko
     Navigointipuun ER-kaavio.
 </div>
 
-Jokaisella sisältöä tuottavalla moduulilla on oma taulunsa, josta sisältöä haetaan id:n ja kielen perusteella. Kuvassa on yksinkertaisuuden vuoksi esitetty vain staattiset sivut tuottavan <i>page</i>-moduulin taulu.
+Jokaisella sisältöä tuottavalla moduulilla on oma taulunsa, josta sisältöä haetaan id:n ja kielen perusteella. Kuvassa on yksinkertaisuuden vuoksi esitetty vain staattiset sivut tuottavan \emph{page}-moduulin taulu.
 
 
 \subsubsection{Käyttöoikeudet}
@@ -557,28 +535,83 @@ Ajankäyttösuunnitelma on esitetty alla olevassa taulukossa. Aikataulusta ollaan 
 \multicolumn{2}{l}{}&\multicolumn{3}{c}{suunnitelma(h)}&\multicolumn{3}{c}{toteuma(h)}\\
 % \cline{2-5}
 \multicolumn{2}{r}{Valmiina viikolla} & \multicolumn{1}{c}{T} & \multicolumn{1}{c}{J} & \multicolumn{1}{c}{A} & \multicolumn{1}{c}{T} & \multicolumn{1}{c}{J} & \multicolumn{1}{c}{A}\\ \hline
-%  nimi						viikko	  T	  J	  A	  R	  J	  A	
-Projektin pystytys (serveri, svn...)		& 6	& 6	& 4	& 4	& 5	& 2	& 4	\\ \hline
-Arkkitehtuurin suunnittelu			& 7	& 5	& 5	& 3	& 6	& 3	& 2	\\ \hline
-Yleinen suunnittelu				& 8	& 3	& 3	& 3	& 4	& 2	& 3	\\ \hline
-Korkean tason arkkitehtuurin protoilu		& 9	& 16	& 4	& 0	& 19	& 0	& 0	\\ \hline
-Navigoinnin toteuttaminen			& 10	& 8	& 0	& 0	& 8	& 0	& 0	\\ \hline
-Suunnitelmadokumentin kirjoittaminen		& 11	& 6	& 6	& 6	& 10	& 3	& 6	\\ \hline
-Alustava graafinen suunnittelu			& 12	& 0	& 0	& 10	& 0	& 0	& 10	\\ \hline
-Moduulien toiminta				& 12	& 6	& 6	& 0	& 8	& 2	& 	\\ \hline
-Autentikointi ja alustavia admin-toimintoja 	& 13	& 8	& 8	& 0	& 	& 0	& 	\\ \hline
-Staattiset sivut toimimaan 			& 13	& 2	& 2	& 5	& 4	& 0	& 	\\ \hline
-Cache						& 14	& 0	& 6	& 0	& 	& 0	& 	\\ \hline
-Ilmoittautuminen 				& 15	& 0	& 12	& 0	& 	& 0	& 	\\ \hline
-Demon valmistelu 				& 16	& 6	& 0	& 0	& 	& 2	& 	\\ \hline
-Gallup 						& 17	& 2	& 2	& 2	& 	& 0	& 	\\ \hline
-Uutiset 					& 18	& 0	& 0	& 10	& 	& 0	& 	\\ \hline
-Edistyneet admin-toiminnot 			& 19	& 16	& 16	& 0	& 	& 0	& 	\\ \hline
-Ulkoasun ja käyttöliittymän hiominen 		& 20	& 2	& 2	& 10	& 	& 8	& 	\\ \hline
-Sisällön kirjoittaminen 			& 20	& 4	& 4	& 4	& 	& 1	& 	\\ \hline
-Toteutusdokumentin kirjoittaminen 		& 21	& 6	& 6	& 6	& 	& 2	& 	\\ \hline
+%  nimi                                    viikko   T      J      A      R     J      A
+Projektin pystytys (serveri, svn...)        & 6    & 6    & 4    & 4    & 5   & 2   & 4   \\ \hline
+Arkkitehtuurin suunnittelu                  & 7    & 5    & 5    & 3    & 6   & 3   & 2   \\ \hline
+Yleinen suunnittelu                         & 8    & 3    & 3    & 3    & 4   & 2   & 3   \\ \hline
+Korkean tason arkkitehtuurin protoilu       & 9    & 16   & 4    & 0    & 19  & 0   & 0   \\ \hline
+Navigoinnin toteuttaminen                   & 10   & 8    & 0    & 0    & 8   & 0   & 0   \\ \hline
+Suunnitelmadokumentin kirjoittaminen        & 11   & 6    & 6    & 6    & 10  & 3   & 6   \\ \hline
+Alustava graafinen suunnittelu              & 12   & 0    & 0    & 10   & 0   & 0   & 10  \\ \hline
+Moduulien toiminta                          & 12   & 6    & 6    & 0    & 8   & 2   &     \\ \hline
+Autentikointi ja alustavia admin-toimintoja & 13   & 8    & 8    & 0    &     & 0   &     \\ \hline
+Staattiset sivut toimimaan                  & 13   & 2    & 2    & 5    & 4   & 0   &     \\ \hline
+Cache                                       & 14   & 0    & 6    & 0    &     & 0   &     \\ \hline
+Ilmoittautuminen                            & 15   & 0    & 12   & 0    &     & 0   &     \\ \hline
+Demon valmistelu                            & 16   & 6    & 0    & 0    &     & 2   &     \\ \hline
+Gallup                                      & 17   & 2    & 2    & 2    &     & 0   &     \\ \hline
+Uutiset                                     & 18   & 0    & 0    & 10   &     & 0   &     \\ \hline
+Edistyneet admin-toiminnot                  & 19   & 16   & 16   & 0    &     & 0   &     \\ \hline
+Ulkoasun ja käyttöliittymän hiominen        & 20   & 2    & 2    & 10   &     & 8   &     \\ \hline
+Sisällön kirjoittaminen                     & 20   & 4    & 4    & 4    &     & 1   &     \\ \hline
+Toteutusdokumentin kirjoittaminen           & 21   & 6    & 6    & 6    &     & 2   &     \\ \hline
 \end{tabular}
 \caption{Tuntikirjanpito}
 \end{table}
+
+
+
+\appendix
+
+\section{Ruudunkaappaukset}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=14cm]{shotKonqueror.png}
+\caption{Konqueror 3.5.8 / Debian}
+\label{sivuhierarkia}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=14cm]{shotFirefox.png}
+\caption{Firefox 2.0.0.14 / Ubuntu 7.10}
+\label{sivuhierarkia}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=14cm]{shotOpera.png}
+\caption{Opera 9.50 / Windows XP}
+\label{sivuhierarkia}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=14cm]{shotIe7.png}
+\caption{MSIE 7.0 / Windows 2003}
+\label{sivuhierarkia}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=14cm]{shotIe6.png}
+\caption{MSIE 6.0 / Windows 2000}
+\label{sivuhierarkia}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=14cm]{shotIe4.png}
+\caption{MSIE 4.01 / Windows XP}
+\label{sivuhierarkia}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=14cm]{shotLynx.png}
+\caption{Lynx 2.8.5rel.1}
+\label{sivuhierarkia}
+\end{figure}
 
 \end{document}
