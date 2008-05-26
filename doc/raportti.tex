@@ -541,7 +541,7 @@ Sivujen oletus skini on toteutettu nykyaikaisia standardeja XHML ja CSS2 noudatt
 
 WWW-tekniikoiden osalta on pysytty hyvin yksinkertaisissa toteutuksissa. Sivuilla ei ole käytössä ollenkaan javascriptejä, javaa, flashia tai mitään muutakaan dynaamista osaa, joten sivut toimivat varmemmin kaikilla alustoilla. Tämä helpottaa kävijöiden tuloa sivuille, koska sivuilla ei ole selainrajoituksia.
 
-CSS-tyyleissä on otettu huomioon sivun tulostaminen, jolloin sivuja tulostettaessa ei tulostu mitään turhia rakenteita, kuten valikoita.
+CSS-tyyleissä on otettu huomioon sivun tulostaminen, jolloin sivuja tulostettaessa ei tulostu mitään turhia rakenteita, kuten valikoita. CSS-tyylejä on käytetty koko sivun rakenteen asetteluun, joten se on hyvin tärkeässä asemassa.
 
 \subsection{Oletusskinin HTML-pohja}
 
@@ -627,7 +627,7 @@ CSS-tyyleissä on otettu huomioon sivun tulostaminen, jolloin sivuja tulostettaes
 </html>
  \end{lstlisting}
 
-\subsection{Oletusskinin CSS-tyyli}
+\subsection{Oletusskinin CSS-tyyliä}
 
  \lstset{language=HTML,frame=ltrb,framesep=5pt,
   basicstyle=\small,
@@ -637,15 +637,8 @@ CSS-tyyleissä on otettu huomioon sivun tulostaminen, jolloin sivuja tulostettaes
   stringstyle=\ttfamily,
   showstringspaces=ture}
  \begin{lstlisting}
-@charset "utf-8";
-/* CSS Document */
-
 /*** PINTER STYLES ***/
 @media print {
-* {
- background-image: none;
- width: auto;
-}
 
 body, html {
  font-size: 12px;
@@ -671,307 +664,8 @@ body, html {
  margin-right:auto;
 }
 
-#logo img {
- display: block;
- margin: 0px;
-}
-
-img {
- border: 0px;
-}
-
-#footer {
- margin-top: 1em;
-}
-
-a {
- color: #000;
- text-decoration: underline;
-}
-
-a > img {
- text-decoration: none;
-}
-
-.footer-text {
- font-size: 11px;
- text-align: center;
- margin-top: 1em;
-}
-
-}
-/*** end of print only css ***/
-
-/*** start of screen only css ***/
-@media screen {
-/*** BODY ***/
-body, html {
- font-size: 12px;
- font-family: tahoma, verdana, arial, sans-serif;
- background: #fff;
- color: #303030;
- background-color: #36053f;
- background-image: url("bg.png");
- background-repeat: repeat-x;
- padding: 0px;
- margin: 0px;
-}
-
-a {
- color:#580b60;
-}
-
-a:hover {
- color:#a25da9;
-}
-
-a.admin {
- color: red;
-}
-
-.warning {
- border: 1px solid red;
- background: #FFD0D0;
- padding: 4px 4px;
- color: #000000;
-}
-
-.success {
- border: 1px solid #008000;
- background: #D0FFD0;
- padding: 4px 5px;
- color: black;
-}
-
-hr {
- height: 1px;
- border-top: 1px solid #808080;
- border-left: none;
- border-right: none;
- border-bottom: none;
- margin: 30px 0px
-}
-
-
-#bg-gfx {
- background-image: url("bg-gfx.png");
- background-repeat: no-repeat;
- margin: 0px;
-}
-
-#page-container {
- width: 750px;
- margin: 0px auto 20px auto;
- position: relative;
-}
-
-#logo {
- margin: 0px;
- padding-top: 20px;
- width: 750px;
- margin-left:auto;
- margin-right:auto;#menu-container
-}
-
-#logo img {
- display: block;
- margin: 0px;
-}
-
-img {
- border: 0px;
-}
-
-/*** ULKOISET LINKIT ALKAA ***/
-
-#toplinks {
- width: 750px;
- height: 40px;
- margin: 0px auto;
-}
-
-
-#toplinks ul {
- list-style-type:none;
- margin: 0px;
-}
-
-#toplinks li {
- float:right;
-}
-
-#toplinks li a {
- background:url('arrow.png') no-repeat center bottom;
- display:block;
- padding:15px 15px 13px 15px;
- font: 10px "Tahoma",sans-serif;
- text-decoration:none;
- color:#FFFFFF;
-}
-
-#toplinks li a:hover {
- color:#f3b341;
- text-decoration:underline;
-}
-
-
-
-/*** NAVBAR ALKAA ***/
-
-#nav-container {
- width: 750px;
- height: 46px;
- background: url('navbar.png') no-repeat;
- margin-bottom: 10px;
- position: relative;
-}
-
-#nav-container ul {
- list-style-type: none;
- list-style-position: outside;
- position: relative;
- height: 32px;
- margin: 0px;
- margin-top: 16px;
- padding: 0px;
- padding-left: 20px;
- text-indent: 0px;
- float: left;
-}
-
-#nav-container li {
- display: inline;
- float: none;
- position: relative;
- margin:0px;
- padding: 0px;
- left: 0px;
- vertical-align: middle;
- padding: 0px 0px 0px 0px;
-}
-
-#nav-container li a {
- display: inline;
- top: 0px;
- padding: 16px 15px 16px 15px;
- margin: 0px;
- height: 32px;
- font: bold 11px "Tahoma",sans-seirf;
- text-decoration: none;
- color:#FFFFFF;
-}
-
-#nav-container li a:hover {
- background:url('navbar-bg-hover.png') repeat-x left top;
-}
-
-#nav-container li.current a {
- background:url('navbar-current.png') no-repeat center top;
- height:46px;
- color:#FFFFFF;
- font-weight: bold;
-}
-
-/*** CONTENT ***/
-
-#content-top {
- background-image: url("content-top.png");
- width: 748px;
- height: 15px;
- position: relative;
- top: 0px;
- bottom: auto;
- left: auto;
- right: auto;
- z-index: 100;
-}
-
-#content-bottom {
- background-image: url("content-bottom.png");
- background-position: bottom;
- width: 748px;
- height: 15px;
- position: relative;
- top: auto;
- bottom: 0px;
- right: auto;
- left: auto;
- z-index: 90;
-}
-
-#content {
- background:#fff;
- padding-left:12px;
- padding-right:12px;
- width: auto; /* from page-container */
- width: 724px;
- position: relative;
- top: 0px;
- bottom: 0px;
- right: 0px;
- left: 0px;
- z-index: 50;
- height: auto; /* variabling */
-}
-
-#content-center {
- /* this makes wrapper for text and menu area */
- /* like tbody ot tr */
- float: left;
- width: auto; /* from content */
- height: auto; /* from data in this */
- min-height: 400px; /* mininum */
- margin: 10px 0px 10px 0px;
- position: relative;
- top: 0px;
- bottom: 0px;
- right: 0px;
- left: 0px;
- z-index: 50;
-}
-
-#text-container {
- width:450px;
- height: auto;
- float:left;
- margin: 0px 10px 0px 10px;
- position: relative;
- top: 0px;
- bottom: 0px;
- right: auto;
- left: 0px;
- z-index: 70;
-}
-
-h1 {
- font-family: "Trebuchet MS", sans;
- color: #4a0560;
- /*padding-left: 10px; */
- text-align:left;
- font-size:20px;
-}
-
-h2 {
- font-family: "Trebuchet MS", sans;
- /*color: #4a0560;*/
- color: black;
- /*padding-left: 10px; */
- text-align:left;
- font-size:15px;
-}
-
-/*** OIKEA MENU ALKAA ***/
-#border {
- position: absolute;
- right: 220px;
- width: 0px;
- height: auto;
- left: auto;
- top: 5px;
- bottom: 5px;
- z-index: 1000;
- border-left:1px dotted #A5AEC5;
-}
+\end{lstlisting}
+\begin{lstlisting}
 
 #menu-container {
  float:right;
@@ -1020,131 +714,7 @@ h2 {
  line-height:18px;
 }
 
-#menu-container  li li{
- list-style-image:url(menu-sub.gif);
-}
-
-#menu-container li a {
- font: 12px "Tahoma", sans-serif;
- color: #580b60;
- text-decoration: none;
-}
-
-#menu-container li:hover {
- list-style-image:url(menu-list-active.png);
-}
-
-#menu-container  li li:hover {
- list-style-image:url(menu-sub-active.gif);
-}
-
-#menu-container li a:hover{
- color:#a25da9;
- text-decoration: none;
-}
-
-#menu-container li.current {
- list-style-image:url(menu-list-active.png);
-}
-
-#menu-container li li.current {
- list-style-image:url(menu-sub-active.gif);
-}
-
-#menu-container li a.current {
- font-weight: bold;
-}
-
-
-/*** FOOTER ***/
-div.blank {
- clear:both;  /* jotta footeri pysyis alhaalla */
-}
-
-#footer {
- height: 39px;
- width: 724px;
- position: relative;
- background: url('footer.png') no-repeat;
-}
-
-.footer-left, .footer-right {
- top: 0px;
- position:absolute;
- width: 7px;
- height: 39px;
-}
-
-.footer-left {
- left: 0px;background:
- url(footer_lr.png) no-repeat 0px 0px;}
-
-.footer-right {
- right: 0px;
- background: url(footer_lr.png) no-repeat -7px 0px;
-}
-
-.footer-text {
- float: left;
- width: 100%;
- display: block;
- color: #828282;
- font-size: 11px;
- padding-top: 12px;
- text-align: center;
- /*border: 1px solid red;*/
-}
-
-
-/*** Front page module ***/
-
-.news h2:first-child {
- margin-top: 0px;
-}
-
-.news h2 {
- margin-bottom: .2em;
-}
-
-.news p {
- margin-top: 0em;
- margin-bottom: 2em;
-}
-
-
-/*** Poll module ***/
-.events h1 {
- font-size: 120%;
-}
-
-.poll h2 {
- font-size: 110%;
-}
-
-/*** Events module ***/
-
-.events {
- margin-top: 2em;
-}
-
-.events h1 {
- font-size: 120%;
-}
-
-.events h2 {
- font-size: 110%;
- margin-bottom: .2em;
-}
-
-.events p {
- font-size: 110%;
- margin-top: .2em;
-}
-/*** end of screen css ***/
-}
-
-
- \end{lstlisting}
+\end{lstlisting}
 
 % ***************************************************************************
 % ************************** Aikataulu **************************************
@@ -1179,7 +749,7 @@ Uutiset                                     & 18   & 0    & 0    & 10   & 6   & 
 Edistyneet admin-toiminnot                  & 19   & 16   & 16   & 0    & 3   & 0   & 0   \\ \hline
 Ulkoasun ja käyttöliittymän hiominen        & 20   & 2    & 2    & 10   & 2   & 8   & 2   \\ \hline
 Sisällön kirjoittaminen/valokuvaus          & 20   & 4    & 4    & 4    & 0   & 1   & 3   \\ \hline
-Toteutusdokumentin kirjoittaminen           & 21   & 6    & 6    & 6    & 4   & 2   & 2   \\ \hline
+Toteutusdokumentin kirjoittaminen           & 21   & 6    & 6    & 6    & 4   & 4   & 2   \\ \hline
 \end{tabular}
 \caption{Tuntikirjanpito}
 \end{table}
