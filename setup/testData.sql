@@ -26,7 +26,7 @@ INSERT INTO pages(id,lang,content) VALUES (4,'fi','<h1>Toimarit</h1>');
 INSERT INTO users(id,username,password,realname) VALUES (1,'tapio',md5('tapio'),'Tapio Auvinen');
 INSERT INTO users(id,username,password,realname) VALUES (2,'antti',md5('antti'),'Antti Nieminen');
 INSERT INTO users(id,username,password,realname) VALUES (3,'jaakko',md5('jaakko'),'Jaakko Kantojärvi');
-INSERT INTO users(id,username,password,realname) VALUES (4,'Assari',md5('demo'),'Demo');
+INSERT INTO users(id,username,password,realname) VALUES (4,'assari',md5('demo'),'Assari');
 
 -- SIGNUP
 INSERT INTO naviNodes(id,parent,module,hidden) VALUES (6,null,'ilmo',1,true);

@@ -131,6 +131,18 @@ class PageController extends ModuleController {
             $view->setData('success', 'Page saved');
         }
 
+        // Delete if requested
+        if (getPost('delete') && $id != false) {
+            foreach($pageVersions as $version) {
+                $version->delete();
+            }
+
+            $naviNode->delete();
+
+            redirect('navi/');
+            return;
+        }
+
         // Load the navi tree
         $treeComponent = $naviTree->renderParentSelector($naviNode->getId(), $naviNode->getParentId());
 

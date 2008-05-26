@@ -1,5 +1,6 @@
 <?php
 
-//$_[''] = '';
+$_['heading'] = 'Gallup';
+$_['vote'] = 'Äänestä';
 
 ?>

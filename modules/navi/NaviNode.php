@@ -97,17 +97,17 @@ class NaviNode extends Model {
 
             $query = "INSERT INTO naviNodes(id, parent, module, weight) VALUES ("
                 . escapeSql($this->id) . ', ';
-                
+
                 if ($this->parentId == 0) {
                     $query .= 'null, ';
                 } else {
                     $query .= escapeSql($this->parentId) . ', ';
                 }
-                
+
                 $query .= '\'' . escapeSql($this->module) . '\', '
                     . escapeSql($this->weight)
                     . ')';
-            
+
             if (query($query) === false) {
                 return false;
             }
@@ -149,7 +149,18 @@ class NaviNode extends Model {
             query($query);
             //echo $query . '<br />';
         }
+    }
 
+    public function delete() {
+        if ($this->id == 'new') {
+            return;
+        }
+
+        $query = 'DELETE FROM naviTitles WHERE id=' . escapeSql($this->id);
+        query($query);
+
+        $query = 'DELETE FROM naviNodes WHERE id=' . escapeSql($this->id);
+        return query($query);
     }
 
     /**
@@ -261,16 +272,25 @@ class NaviNode extends Model {
      * Recursive method that renders the tree.
      * @return HTML representation of the tree
      */
-    function renderFullTree($lang, $startDepth) {
+    function renderFullTree($startDepth) {
         if ($startDepth < 1) {
-            $html = "<li><a href='" . baseUrl() . $this->getCumulativeUrl($lang) . "'>{$this->title[$lang]}" 
-                //. ' (' . getCumulativeUrl($lang) . ')'
-                . "</a>\n";
+            $html = '<li>';
+
+            $i = 0;
+            foreach (array_keys($this->url) as $language) {
+                if ($i > 0) {
+                    $html .= ' / ';
+                }
+                
+                $html .= "<a href='" . baseUrl() . $this->getCumulativeUrl($language) . "'>{$this->title[$language]}</a>";
+                
+                $i++;
+            }
         }
 
         foreach($this->children as $child) {
             $html .= $startDepth < 1 ? "<ul>\n" : '';
-            $html .= $child->renderFullTree($lang, $startDepth - 1);
+            $html .= $child->renderFullTree($startDepth - 1);
             $html .= $startDepth < 1 ? "</ul>\n" : '';
         }
 

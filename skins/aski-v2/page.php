@@ -38,7 +38,7 @@
 
 	<div id="content-top"></div>
 	<div id="content">
-		<div><img alt="Just a nice image" src="<?= baseUrl() . "/skins/aski-v2/photo.png" ?>"/></div>
+		<div><?php print $topbanner ?></div>
 		<div id="content-center">
 			<div id="border"></div>
             		<div id="text-container">

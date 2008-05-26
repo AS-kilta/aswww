@@ -85,21 +85,55 @@ class NewsController extends ModuleController {
             if ($failed) {
                 $view->setData('warning', 'Failed to save');
             } else {
-                $view->setData('success', 'Page saved');
+                $view->setData('success', 'News saved');
             }
         }
 
         // If delete is requested
         if (getPost('delete')) {
-            foreach($versions as $version) {
+            
+            /*foreach($versions as $version) {
                 if ($version->getId() != 'new') {
                     $version->delete();
                 }
-            }
+            }*/
 
-            redirect('news/list');
+            redirect('news/delete?id=' . $id);
             return;
         }
+
+        return $view->render();
+    }
+
+    public function renderDelete() {
+        $view = $this->loadView('list');
+
+        // Check editing privileges
+        $auth = Auth::getInstance();
+        $user = $auth->getCurrentUser();
+        if (!$auth->hasPrivilege($user, 'news', null, 'edit')) {
+            redirect('admin/login');
+            return;
+        }
+
+        // Load all language versions
+        $id = getGetOrPost('id');
+        if ($id != false && $id != 'new') {
+            $versions = News::loadAll($id);
+
+            if (count($versions) > 0) {
+                // Delete
+                foreach($versions as $version) {
+                    $version->delete();
+                }
+                $view->setData('success', 'Items deleted');
+            }
+        }
+
+        // Get news
+        $news = News::getNews();
+        $view->setData('news', $news);
+        $view->setData('editable', true);
 
         return $view->render();
     }

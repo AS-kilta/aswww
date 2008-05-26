@@ -5,13 +5,16 @@ function getContentMapping($moduleName) {
         case 'news':
             return Array(
                 'topnavi' => Array('navi', 'topNavi'),
-                'left' => Array('poll', 'default')
+                'topbanner' => Array('randomimage', 'default'),
+                'left|1' => Array('poll', 'default'),
+                'left|2' => Array('events', 'default')
             );
             break;
 
         default:
             return Array(
                 "topnavi" => Array('navi', 'topNavi'),
+                'topbanner' => Array('randomimage', 'default'),
                 "left" => Array('navi', 'naviTree')
             );
     }

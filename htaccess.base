@@ -1,6 +1,9 @@
 RewriteEngine on
 
-RewriteCond $1 !^(skins/|robots\.txt)
+# Luettele alihakemistot, jotka apache tarjoilee suoraan
+RewriteCond $1 !^(skins/|files/|robots\.txt)
+
 RewriteRule ^(.*)$ index.php?q=$0 [QSA]
 
-RewriteBase /~omatunnus/aswww/
+# Käytä seuraavaa riviä, jos järjestelmä on asennettu kotihakemistoon
+#RewriteBase /~omatunnus/aswww/

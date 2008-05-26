@@ -27,6 +27,10 @@ class Skin {
         $this->content[$region] = $html;
     }
 
+    function appendContent($region, $html) {
+        $this->content[$region] .= $html;
+    }
+
     function show() {
         global $skin, $_;  // Translation strings
 

@@ -61,7 +61,11 @@ class MainController {
         foreach ($contentMap as $region => $content) {
             $auxModule = $this->loadModule($content[0]);
             $auxModule->setRequestedController($content[1]);
-            $skin->setContent($region, $auxModule->render());
+
+            $regionName = explode('|', $region, 2);
+            $regionName = $regionName[0];
+
+            $skin->appendContent($regionName, $auxModule->render());
         }
 
         // Render admin menu
@@ -92,16 +96,19 @@ class MainController {
     }
 
     private function renderAdminMenu() {
-        $modules = ModuleController::getAvailableModules();
+        //$modules = ModuleController::getAvailableModules();
 
         $html = "<h1>Admin</h1>\n";
         $html .= "<ul>\n";
-        foreach ($modules as $module) {
-            $html .= "<li><a href='" . baseUrl() . "/$module/admin'>" . ucfirst($module) . "</a></li>\n";
-        }
+        //foreach ($modules as $module) {
+        //    $html .= "<li><a href='" . baseUrl() . "/$module/admin'>" . ucfirst($module) . "</a></li>\n";
+        //}
+        $html .= "<li><a href='" . baseUrl() . "/page/edit'>New page</a></li>\n";
+        $html .= "<li><a href='" . baseUrl() . "/navi'>Navigation hierarchy</a></li>\n";
         $html .= "</ul>\n";
 
         return $html;
+
     }
 
 }

@@ -17,8 +17,9 @@ class NaviController extends ModuleController {
         $navi = Navi::getInstance();
         $naviTree = $navi->getNaviTree();
 
+        $html .= "<h1>Navigation hierarchy</h1>";
         $html .= "<ul>\n";
-        $html .= $naviTree->renderFullTree(getLanguage(), 1);
+        $html .= $naviTree->renderFullTree(1);
         $html .= "</ul>\n";
 
         return $html;

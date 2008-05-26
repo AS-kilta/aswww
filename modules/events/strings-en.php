@@ -1,0 +1,5 @@
+<?php
+
+$_['heading'] = 'Events';
+
+?>
