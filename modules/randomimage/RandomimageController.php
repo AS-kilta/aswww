@@ -32,10 +32,8 @@ class RandomimageController extends ModuleController {
             $title = 'default';
         }
 
-        echo $title;
-
         // Select image
-        // Dirty hack
+        // (XXX: Dirty hack)
         switch ($title) {
             case 'Etusivu':
             case 'Frontpage':
