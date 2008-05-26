@@ -38,7 +38,7 @@ class RandomimageController extends ModuleController {
         // Dirty hack
         switch ($title) {
             case 'Etusivu':
-            case 'Kilta':
+            case 'Frontpage':
                 $fileName = 'wappu.jpg';
                 break;
 
