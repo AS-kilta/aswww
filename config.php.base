@@ -13,5 +13,6 @@ $logfilename = 'log.txt';
 $mailfilename = 'mail.txt';
 
 $configuredLanguages = Array('fi', 'en');
+$configuredSkins = Array('aski-v2', 'aski');
 
 ?>

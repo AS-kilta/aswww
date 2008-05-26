@@ -1,3 +1,4 @@
+INSERT INTO site(skin) VALUES ('aski-v2');
 
 -- PAGES
 INSERT INTO naviNodes(id,parent,module,weight) VALUES (1,null,'news',0);

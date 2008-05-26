@@ -1,5 +1,7 @@
 <?php
 
+include_once 'modules/admin/Admin.php';
+
 class AdminController extends ModuleController {
 
     function __construct() {
@@ -81,7 +83,15 @@ class AdminController extends ModuleController {
     /**
      * Edit user
      */
-    public function renderUsersEditUser() {
+    public function renderEditUser() {
+        // Check privileges
+        $auth = Auth::getInstance();
+
+        if (!$auth->hasPrivilege($auth->getCurrentUser(), 'user', false, 'edit')) {
+            redirect('admin/login');
+            return;
+        }
+
         $user = new User();
         $userId = getGetOrPost('userId');
 
@@ -115,6 +125,14 @@ class AdminController extends ModuleController {
      * Delete user
      */
     public function renderUsersDeleteUser() {
+        // Check privileges
+        $auth = Auth::getInstance();
+
+        if (!$auth->hasPrivilege($auth->getCurrentUser(), 'user', false, 'edit')) {
+            redirect('admin/login');
+            return;
+        }
+
         $userId = getGetOrPost('userId');
         if ($userId == false) {
             return "<h1>No userId specified</h1>";
@@ -126,6 +144,30 @@ class AdminController extends ModuleController {
         $user->delete();
 
         redirect('admin/users');
+    }
+
+    public function renderSkinSelector() {
+        global $configuredSkins;
+
+        // Check privileges
+        $auth = Auth::getInstance();
+
+        if (!$auth->hasPrivilege($auth->getCurrentUser(), 'admin', false, 'edit')) {
+            redirect('admin/login');
+            return;
+        }
+
+
+        $view = $this->loadView('skinSelector');
+
+        if (getPost('ok')) {
+            Admin::setSkin(getPost('skin'));
+            redirect('admin?adminAction=skinSelector');
+            return;
+        }
+
+        $view->setData('skins', $configuredSkins);
+        return $view->render();
     }
 
     public function renderNavi() {

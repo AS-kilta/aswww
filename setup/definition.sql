@@ -89,3 +89,7 @@ CREATE TABLE news (
     content TEXT,
     PRIMARY KEY (id, lang)
 );
+
+CREATE TABLE site (
+    skin TEXT
+);

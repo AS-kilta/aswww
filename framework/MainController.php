@@ -1,4 +1,5 @@
 <?php
+include_once 'modules/admin/Admin.php';
 
 class MainController {
 
@@ -48,7 +49,11 @@ class MainController {
         // Load the skin
         $skinName = $module->getPreferredSkin();
         if ($skinName == false) {
-            $skinName = $defaultSkin;
+            $skinName = Admin::getSkin();
+
+            if (strlen($skinName) < 1) {
+                $skinName = $defaultSkin;
+            }
         }
 
         $skin = new Skin($skinName);
@@ -105,6 +110,7 @@ class MainController {
         //}
         $html .= "<li><a href='" . baseUrl() . "/page/edit'>New page</a></li>\n";
         $html .= "<li><a href='" . baseUrl() . "/navi'>Navigation hierarchy</a></li>\n";
+        $html .= "<li><a href='" . baseUrl() . "/admin?adminAction=skinSelector'>Skin</a></li>\n";
         $html .= "</ul>\n";
 
         return $html;
