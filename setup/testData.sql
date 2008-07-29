@@ -30,7 +30,7 @@ INSERT INTO users(id,username,password,realname) VALUES (3,'jaakko',md5('jaakko'
 INSERT INTO users(id,username,password,realname) VALUES (4,'assari',md5('demo'),'Assari');
 
 -- SIGNUP
-INSERT INTO naviNodes(id,parent,module,hidden) VALUES (6,null,'ilmo',1,true);
+INSERT INTO naviNodes(id,parent,module,weight,hidden) VALUES (6,null,'ilmo',1,true);
 INSERT INTO naviTitles(id,lang,url,title) VALUES (6,'fi','taskumatti','Taskumatti');
 
 INSERT INTO signup(id,lang,title,description) VALUES (6,'fi','Taskumatti','Tilaa taskumatti');

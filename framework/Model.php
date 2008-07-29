@@ -23,9 +23,9 @@ class Model {
      * @return id of the object or false on error
      */
     public function load($id, $lang=false) {
-        $query = "SELECT * FROM {$this->tableName} WHERE id=" . pg_escape_string($id);
+        $query = "SELECT * FROM {$this->tableName} WHERE id=" . escapeSql($id);
         if ($lang !== false) {
-            $query .= ' AND lang=\'' . pg_escape_string($lang) . '\'';
+            $query .= ' AND lang=\'' . escapeSql($lang) . '\'';
         }
 
         $result = queryTable($query);
@@ -82,9 +82,9 @@ class Model {
                     $query .= ", null";
                 } else if (!is_numeric($this->$columnName) || $this->$columnName === false) {
                     // FIXME: phone numbers are interpreted as integers
-                    $query .= ", '" . pg_escape_string($this->$columnName) . "'";
+                    $query .= ", '" . escapeSql($this->$columnName) . "'";
                 } else {
-                    $query .= ', ' . pg_escape_string($this->$columnName) . ' ';
+                    $query .= ', ' . escapeSql($this->$columnName) . ' ';
                 }
             }
             $query .= ')';
@@ -111,9 +111,9 @@ class Model {
                 if ($this->$columnName === null) {
                     $query .= "$columnName=null";
                 } else if (!is_numeric($this->$columnName) || $this->$columnName === false) {
-                    $query .= "$columnName='" . pg_escape_string($this->$columnName) . "'";
+                    $query .= "$columnName='" . escapeSql($this->$columnName) . "'";
                 } else {
-                    $query .= "$columnName=" . pg_escape_string($this->$columnName);
+                    $query .= "$columnName=" . escapeSql($this->$columnName);
                 }
             }
 

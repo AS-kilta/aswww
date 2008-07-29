@@ -1,5 +1,6 @@
 <?php
 
+$db_adapter = 'pgsql'; // or 'mysql'
 $db_name = 'aswww';
 $db_user = 'aswww';
 $db_passwd = 'aswww';
