@@ -9,7 +9,12 @@ include_once 'framework/Skin.php';
 include_once 'modules/navi/Navi.php';
 include_once 'models/Auth.php';
 
-
+if ($db_adapter == 'pgsql') {
+  include 'framework/pgsql.php';
+} else if ($db_adapter == 'mysql') {
+  addLogEntry('WARN', 'MySQL support is experimental');
+  include 'framework/mysql.php';
+}
 
 $logfile = false;
 $mailfile = false;

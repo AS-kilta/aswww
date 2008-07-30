@@ -79,7 +79,7 @@ class ModuleController {
     */
 
     /**
-     * Returns the name of the preferred skin or false if default is ok.
+     * Returns the name of the preferred skin or false.
      */
     function getPreferredSkin() {
         return false;

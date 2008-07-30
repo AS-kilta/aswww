@@ -4,21 +4,25 @@ include_once 'modules/admin/Admin.php';
 class MainController {
 
     /**
-     * 
+     *
      * @param $path Path as an array.
      */
     function show($path) {
+        $parts = explode('/', $path);
+
         // Load navitree
         $navi = Navi::getInstance();
-        $navi->resolve($path);
+        $navi->resolve($parts);
         $node = $navi->getSelectedNode();
 
         // Get installed modules
         $modules = ModuleController::getAvailableModules();
 
-        if (count($path) > 0 && in_array($path[0], $modules)) {
-            $this->showModule(null, $path[0], $path[1]);
+        if (count($parts) > 0 && in_array($parts[0], $modules)) {
+            // modulename/action
+            $this->showModule(null, $parts[0], $parts[1]);
         } else if ($node != null) {
+            // path
             $this->showModule($node, false, false);
         } else {
             $this->show404();
