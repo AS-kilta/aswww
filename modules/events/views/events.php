@@ -1,16 +1,20 @@
 <div class="events">
-<h1><?= $_['heading'] ?></h1>
-<h2>Static placeholder content</h2>
-<p>OK20 iso + OK20 pieni</p>
+  <h1><?= $_['heading'] ?></h1>
 
-<h2>25.4. klo 16:00 Konttauskauden avajaiset</h2>
-<p>TUAS-talon parkkipaikka</p>
-
-<h2>26.4. klo 12:00 TYT-pesis</h2>
-<p>Kaisaniemi</p>
-
-<h2>10.5. ISOsauna</h2>
-<p>JMT 3A Kattosauna</p>
-
-<h2>18.5. Kaudenkaatajaiset</h2>
+  <?php foreach ($events as $item) { ?>
+    <h2><?= $item['heading'] ?></h2>
+    <p>
+    <?= $item['content'] ?><br />
+    <?php if ($editable) {
+        echo $this->link('news/edit?id=' . $item['id'], 'Edit');
+    } ?>
+    </p>
+  <?php } ?>
 </div>
+
+<?php
+if ($editable) {
+    echo $this->link('events/edit', 'Create new') . "<br />\n";
+    echo $this->link('events/list', 'List all');
+}
+?>

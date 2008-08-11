@@ -3,6 +3,7 @@ DROP SEQUENCE usersSeq;
 DROP SEQUENCE pollSeq;
 DROP SEQUENCE pollOptionSeq;
 DROP SEQUENCE newsSeq;
+DROP SEQUENCE eventsSeq;
 
 DROP TABLE naviNodes CASCADE;
 DROP TABLE naviTitles;
@@ -16,6 +17,7 @@ CREATE SEQUENCE usersSeq;
 CREATE SEQUENCE pollSeq;
 CREATE SEQUENCE pollOptionSeq;
 CREATE SEQUENCE newsSeq;
+CREATE SEQUENCE eventsSeq;
 
 CREATE TABLE naviNodes (
     id INT PRIMARY KEY,
@@ -87,6 +89,16 @@ CREATE TABLE news (
     timestamp TIMESTAMP DEFAULT now(),
     heading TEXT,
     content TEXT,
+    PRIMARY KEY (id, lang)
+);
+
+CREATE TABLE events (
+    id INT,
+    lang VARCHAR(2),
+    timestamp TIMESTAMP DEFAULT now(),
+    heading TEXT,
+    content TEXT,
+    time TIMESTAMP,
     PRIMARY KEY (id, lang)
 );
 
