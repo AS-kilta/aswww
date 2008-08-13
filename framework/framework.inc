@@ -22,12 +22,11 @@ $mailfile = false;
 // Initialize session
 session_start();
 
-
 /**
  * Remove special characters to prevent XSS.
  */
 function escapeHtml($string) {
-    addLogEntry('ERROR', "htmlEscape is not implemented");
+    addLogEntry('ERROR', "escapeHtml is not implemented");
     return $string;
 }
 
