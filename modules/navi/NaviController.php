@@ -46,6 +46,14 @@ class NaviController extends ModuleController {
             $html .= "</ul>\n";
         }
 
+        // Admin
+        $auth = Auth::getInstance();
+        $user = $auth->getCurrentUser();
+
+        if ($user != null) {
+            $html .= $this->renderAdminMenu();
+        }
+
         return $html;
     }
 
@@ -54,7 +62,7 @@ class NaviController extends ModuleController {
         global $_;  // Translation strings
         $navi = Navi::getInstance();
         $naviTree = $navi->getNaviTree();
-        
+
         $lang = getLanguage();
 
         $html = "<ul>";
@@ -84,7 +92,6 @@ class NaviController extends ModuleController {
         }
 
         // Admin
-        // TODO: check privileges properly
         $auth = Auth::getInstance();
         $user = $auth->getCurrentUser();
 
@@ -96,6 +103,22 @@ class NaviController extends ModuleController {
         $html .= "</ul>";
         return $html;
     }
+
+  private function renderAdminMenu() {
+    //$modules = ModuleController::getAvailableModules();
+
+    $html = "<h1>Admin</h1>\n";
+    $html .= "<ul>\n";
+    //foreach ($modules as $module) {
+    //    $html .= "<li><a href='" . baseUrl() . "/$module/admin'>" . ucfirst($module) . "</a></li>\n";
+    //}
+    $html .= "<li><a href='" . baseUrl() . "/page/edit'>New page</a></li>\n";
+    $html .= "<li><a href='" . baseUrl() . "/navi'>Navigation hierarchy</a></li>\n";
+    $html .= "<li><a href='" . baseUrl() . "/admin?adminAction=skinSelector'>Skin</a></li>\n";
+    $html .= "</ul>\n";
+
+    return $html;
+  }
 
 }
 

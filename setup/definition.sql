@@ -76,11 +76,17 @@ CREATE TABLE poll (
 );
 
 CREATE TABLE pollOption (
-    lang VARCHAR(2),
     poll INT,
+    lang VARCHAR(2),
+    position INT,
     content TEXT,
-    weight INT,
     FOREIGN KEY (poll, lang) REFERENCES poll (id, lang)
+);
+
+CREATE TABLE pollVote (
+    poll INT,
+    position INT,
+    ip VARCHAR(15)
 );
 
 CREATE TABLE news (

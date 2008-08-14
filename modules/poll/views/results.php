@@ -7,12 +7,12 @@
   <?= $poll->getQuestion() ?><br />
   <?php
   $i = 0;
-  foreach ($poll->getOptions() as $option) { ?>
-    <input type="radio" name="poll" value="<?= $i ?>" /><?= $option ?><br />
-  <?php
-  }
-  $i++;
-  ?>
+  $options = $poll->getOptions();
+  $percentages = $poll->getPercentages();
+  for ($i = 0; $i < count($options); $i++) { ?>
+    <?= $options[$i] ?>
+    <?= $percentages[$i] ?><br />
+  <?php } ?>
 </p>
 
 <input type='submit' name='vote' value='<?= $_['vote'] ?>' />

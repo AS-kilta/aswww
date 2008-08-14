@@ -1,12 +1,12 @@
 <?php
 
 /**
- * Represents a node in the navigation tree. Note: this does not map to any
- * single table in database, but is joined from NaviNodes and NaviTitles.
+ * Represents a node in the navigation tree. Note: this is joined from
+ * NaviNodes and NaviTitles.
  */
 
 class NaviNode extends Model {
-    var $id;            // id in database
+    var $id;            // id in the database
     var $url;           // url name of the node (folder) (array containing language versions)
     var $cumulativeUrl; // cumulative url (array containing language versions)
     var $title;         // human-readable title (array containing language versions)
@@ -224,7 +224,7 @@ class NaviNode extends Model {
 
     /**
      * Returns the nearest node available in the specified language.
-     * Travels up the tree if this node has no translation.
+     * Travels up the tree until a translated version is found.
      */
     public function getTranslation($lang) {
         if (isset($this->url[$lang])) {
@@ -241,8 +241,6 @@ class NaviNode extends Model {
      * @return HTML representation of the tree
      */
     function renderTree($lang, $startDepth) {
-        //if ($this->cumulativeUrl[$lang])
-
         if ($this->selected) {
             $class = ' class="current"';
         }
@@ -281,9 +279,9 @@ class NaviNode extends Model {
                 if ($i > 0) {
                     $html .= ' / ';
                 }
-                
+
                 $html .= "<a href='" . baseUrl() . $this->getCumulativeUrl($language) . "'>{$this->title[$language]}</a>";
-                
+
                 $i++;
             }
         }

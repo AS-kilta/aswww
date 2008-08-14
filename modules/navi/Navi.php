@@ -8,7 +8,7 @@ include_once 'modules/navi/NaviNode.php';
 class Navi {
     var $naviTree;
     var $selectedNode;         // The node reqested by the user
-    var $requestedController;  // The upmost node of the brach requested by the user
+    var $requestedAction;
 
     private static $instance;
 
@@ -33,7 +33,16 @@ class Navi {
      * called once at the beginning.
      */
     public function resolve($urlParts) {
-        $this->queryLevel($urlParts, $this->naviTree);
+      $this->queryLevel($urlParts, $this->naviTree);
+
+      // Add admin menu
+      /*
+      $auth = Auth::getInstance();
+      $user = $auth->getCurrentUser();
+      if ($user != null) {
+        $this->addAdminMenu();
+      }
+      */
     }
 
     /**
@@ -50,25 +59,26 @@ class Navi {
             $query .= ' AND parent=' . $parent->getId();
             //$query .= ' AND lang=\'' . $parent->lang . '\'';
         }
+        $query .= ' ORDER BY weight';
 
         $result = queryTable($query);
 
-        // If we have reacheced a leaf node ont he path, but the user request has
+        // If we have reacheced a leaf node on the path, but the user request has
         // subfolders left, store the remaining path
         if (count($result) < 1 && count($urlParts) > 0 && $parent != null && $parent->isOnPath()) {
-            $this->requestedController = $urlParts[0];
+            $this->requestedAction = $urlParts[0];
         }
 
         // Add children to the navi tree
         foreach ($result as $row) {
-            // Add the node to the tree
+            // Add the node to the tree.
             if (!array_key_exists($row['id'], $parent->children)) {
+                // Different language versions have the same id, and they are stored in the same node
                 $parent->children[$row['id']] = new NaviNode($row);
                 $parent->children[$row['id']]->setParentNode($parent);
             }
             $parent->children[$row['id']]->setTitle($row['lang'], $row['title']);
             $parent->children[$row['id']]->setUrl($row['lang'], $row['url']);
-
 
             // Is this node on the path requested by the user?
             if (count($urlParts) > 0 && $row['url'] == $urlParts[0]) {
@@ -98,11 +108,11 @@ class Navi {
     }
 
     /**
-     * Returns the controller rquested by the user.
+     * Returns the action rquested by the user.
      * @return string or false if nothing is requested
      */
-    public function getRequestedController() {
-        return $this->selectedNode;
+    public function getRequestedAction() {
+        return $this->requestedAction;
     }
 
     /**
