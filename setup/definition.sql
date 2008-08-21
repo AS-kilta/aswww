@@ -1,28 +1,19 @@
-DROP SEQUENCE naviSeq;
-DROP SEQUENCE usersSeq;
-DROP SEQUENCE pollSeq;
-DROP SEQUENCE pollOptionSeq;
-DROP SEQUENCE newsSeq;
-DROP SEQUENCE eventsSeq;
-
 DROP TABLE naviNodes CASCADE;
 DROP TABLE naviTitles;
 DROP TABLE pages;
 DROP TABLE signup;
 DROP TABLE users CASCADE;
 DROP TABLE groups;
-
-CREATE SEQUENCE naviSeq;
-CREATE SEQUENCE usersSeq;
-CREATE SEQUENCE pollSeq;
-CREATE SEQUENCE pollOptionSeq;
-CREATE SEQUENCE newsSeq;
-CREATE SEQUENCE eventsSeq;
+DROP TABLE news;
+DROP TABLE poll;
+DROP TABLE pollOption;
+DROP TABLE site;
 
 CREATE TABLE naviNodes (
-    id INT PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     parent INT REFERENCES naviNodes(id) ON DELETE SET NULL,
-    module VARCHAR(64),
+    contentModule VARCHAR(64),
+    contentId INT,
     weight SMALLINT DEFAULT 0,
     hidden BOOLEAN DEFAULT false
 );
@@ -36,14 +27,14 @@ CREATE TABLE naviTitles (
 );
 
 CREATE TABLE pages (
-    id INT,
+    id SERIAL,
     lang VARCHAR(2),
     content TEXT,
     PRIMARY KEY (id, lang)
 );
 
 CREATE TABLE signup (
-    id INT,
+    id SERIAL,
     lang VARCHAR(2),
     title TEXT,
     description TEXT,
@@ -54,43 +45,48 @@ CREATE TABLE signup (
 );
 
 CREATE TABLE users (
-    id INT,
+    id SERIAL,
     username VARCHAR(32),
     password VARCHAR(32),
     realname TEXT,
     PRIMARY KEY(id)
 );
 
+
 CREATE TABLE groups (
-    userid INT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
-    groupname VARCHAR(32),
-    UNIQUE (userid, groupname)
+    id SERIAL,
+    name VARCHAR(64)
 );
 
+CREATE TABLE groups_users (
+    group_id INT NOT NULL REFERENCES groups(id) ON DELETE CASCADE,
+    user_id INT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    UNIQUE (group_id, user_id)
+);
 
 CREATE TABLE poll (
-    id INT,
+    id SERIAL,
     lang VARCHAR(2),
     question TEXT,
     PRIMARY KEY (id, lang)
 );
 
 CREATE TABLE pollOption (
-    poll INT,
+    poll_id INT NOT NULL REFERENCES poll(id) ON DELETE CASCADE,
     lang VARCHAR(2),
     position INT,
     content TEXT,
-    FOREIGN KEY (poll, lang) REFERENCES poll (id, lang)
+    FOREIGN KEY (poll_id, lang) REFERENCES poll (id, lang)
 );
 
 CREATE TABLE pollVote (
-    poll INT,
+    poll_id INT REFERENCES poll(id) ON DELETE CASCADE,
     position INT,
     ip VARCHAR(15)
 );
 
 CREATE TABLE news (
-    id INT,
+    id SERIAL,
     lang VARCHAR(2),
     timestamp TIMESTAMP DEFAULT now(),
     heading TEXT,
@@ -99,12 +95,13 @@ CREATE TABLE news (
 );
 
 CREATE TABLE events (
-    id INT,
+    id SERIAL,
     lang VARCHAR(2),
     timestamp TIMESTAMP DEFAULT now(),
     heading TEXT,
-    content TEXT,
-    time TIMESTAMP,
+    time TEXT,
+    place TEXT,
+    description TEXT,
     PRIMARY KEY (id, lang)
 );
 
