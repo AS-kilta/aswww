@@ -1,28 +1,16 @@
 INSERT INTO site(skin) VALUES ('aski-v2');
 
 -- PAGES
+INSERT INTO naviNodes(parent,contentModule) VALUES (null,'news',);
+INSERT INTO naviTitles(id,lang,url,title) VALUES ((SELECT currval('navinodes_id_seq')),'fi','','Etusivu');
+INSERT INTO naviTitles(id,lang,url,title) VALUES ((SELECT currval('navinodes_id_seq')),'en','english','Front page');
+
 INSERT INTO pages(lang,content) VALUES ('fi','<h1>Kilta</h1>');
 INSERT INTO pages(lang,content) VALUES ('en','<h1>Guild</h1>');
 
-INSERT INTO naviNodes(id,parent,module,weight) VALUES (1,null,'news',0);
-INSERT INTO naviTitles(id,lang,url,title) VALUES (1,'fi','','Etusivu');
-INSERT INTO naviTitles(id,lang,url,title) VALUES (1,'en','english','Front page');
-
-INSERT INTO naviNodes(id,parent,module,weight) VALUES (2,null,'page',1);
-INSERT INTO naviTitles(id,lang,url,title) VALUES (2,'fi','kilta','Kilta');
-INSERT INTO naviTitles(id,lang,url,title) VALUES (2,'en','guild','Guild');
-
-INSERT INTO naviNodes(id,parent,module,weight) VALUES (3,2,'page',0);
-INSERT INTO naviTitles(id,lang,url,title) VALUES (3,'fi','hallitus','Hallitus');
-INSERT INTO naviTitles(id,lang,url,title) VALUES (3,'en','board','Board');
-
-INSERT INTO naviNodes(id,parent,module,weight) VALUES (4,2,'page',1);
-INSERT INTO naviTitles(id,lang,url,title) VALUES (4,'fi','toimarit','Toimarit');
-
-
-INSERT INTO pages(lang,content) VALUES ('fi','<h1>Hallitus</h1>');
-INSERT INTO pages(lang,content) VALUES ('en','<h1>Board</h1>');
-INSERT INTO pages(lang,content) VALUES ('fi','<h1>Toimarit</h1>');
+INSERT INTO naviNodes(parent,contentModule,contentId) VALUES (null,'page',(SELECT currval('pages_id_seq')));
+INSERT INTO naviTitles(id,lang,url,title) VALUES ((SELECT currval('navinodes_id_seq')),'fi','kilta','Kilta');
+INSERT INTO naviTitles(id,lang,url,title) VALUES ((SELECT currval('navinodes_id_seq')),'en','guild','Guild');
 
 
 -- Users
@@ -31,8 +19,6 @@ INSERT INTO users(id,username,password,realname) VALUES (2,'antti',md5('antti'),
 INSERT INTO users(id,username,password,realname) VALUES (3,'jaakko',md5('jaakko'),'Jaakko Kantojärvi');
 
 -- SIGNUP
-INSERT INTO naviNodes(id,parent,module,weight,hidden) VALUES (6,null,'ilmo',1,true);
-INSERT INTO naviTitles(id,lang,url,title) VALUES (6,'fi','taskumatti','Taskumatti');
-
-INSERT INTO signup(id,lang,title,description) VALUES (6,'fi','Taskumatti','Tilaa taskumatti');
-
+INSERT INTO signup(lang,title,description) VALUES ('fi','Taskumatti','Tilaa taskumatti');
+INSERT INTO naviNodes(parent,contentModule,contentId,hidden) VALUES (null,'ilmo',(SELECT currval('signup_id_seq')),true);
+INSERT INTO naviTitles(id,lang,url,title) VALUES ((SELECT currval('navinodes_id_seq')),'fi','taskumatti','Taskumatti');

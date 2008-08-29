@@ -7,14 +7,16 @@ DROP TABLE groups;
 DROP TABLE news;
 DROP TABLE poll;
 DROP TABLE pollOption;
+DROP TABLE pollVote;
 DROP TABLE site;
+DROP TABLE events;
 
 CREATE TABLE naviNodes (
     id SERIAL PRIMARY KEY,
     parent INT REFERENCES naviNodes(id) ON DELETE SET NULL,
     contentModule VARCHAR(64),
     contentId INT,
-    weight SMALLINT DEFAULT 0,
+    position SMALLINT DEFAULT 0,
     hidden BOOLEAN DEFAULT false
 );
 

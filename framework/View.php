@@ -1,7 +1,6 @@
 <?php
 
 class View {
-
     var $data;
     var $viewName;     // Name of the view (including path and .php)
     var $contoller;    // Controller that created this View

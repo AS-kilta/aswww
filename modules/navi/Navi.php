@@ -59,7 +59,7 @@ class Navi {
             $query .= ' AND parent=' . $parent->getId();
             //$query .= ' AND lang=\'' . $parent->lang . '\'';
         }
-        $query .= ' ORDER BY weight';
+        $query .= ' ORDER BY position';
 
         $result = queryTable($query);
 
