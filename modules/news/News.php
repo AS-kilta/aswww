@@ -10,7 +10,6 @@ class News extends Model {
         // Columns that are automatically saved
         $this->columns = array('heading','content','lang');
         $this->tableName = 'news';
-        $this->sequenceName = 'news';
         $this->key = array('id','lang');
 
         if ($row != false) {

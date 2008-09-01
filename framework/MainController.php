@@ -7,7 +7,7 @@ class MainController {
     *
     * @param $path Path as string.
     */
-  function show($path) {
+  public function show($path) {
     $parts = explode('/', $path);
 
     // Load navitree
@@ -15,12 +15,6 @@ class MainController {
     $navi->resolve($parts);
 
     $node = $navi->getSelectedNode();
-//     $module = $navi->getModule();
-//     $action = $navi->getAction();
-//     $id = $navi->getId();
-//     $lang = $navi->getLang();
-
-
 
     // Get installed modules
     $modules = ModuleController::getAvailableModules();
@@ -40,19 +34,19 @@ class MainController {
     }
   }
 
-  function show404() {
+  private function show404() {
       $this->showModule(null, 'page', '404');
   }
 
   /**
    * $moduleName has precedence if both $node and $moduleName are specified.
    */
-  function showModule($node, $moduleName, $action) {
+  private function showModule($node, $moduleName, $action) {
     global $defaultSkin;
 
     // Load the requested module
     if (strlen($moduleName) < 1 && $node != null) {
-        $moduleName = $node->getModule();
+        $moduleName = $node->getContentModule();
     }
     $module = $this->loadModule($moduleName);
 
@@ -99,7 +93,7 @@ class MainController {
   /**
     * Loads a module by name. Returns a ModuleController object.
     */
-  function loadModule($moduleName) {
+  private function loadModule($moduleName) {
     global $_;  // Translation strings
 
     // Include class definition

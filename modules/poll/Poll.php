@@ -13,7 +13,6 @@ class Poll extends Model {
         // Columns that are automatically saved
         $this->columns = array('question');
         $this->tableName = 'poll';
-        $this->sequenceName = 'poll';
         $this->key = array('id','lang');
 
         $this->options = array();

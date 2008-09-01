@@ -10,7 +10,6 @@ class Event extends Model {
       // Columns that are automatically saved
       $this->columns = array('heading','content','timestamp','lang');
       $this->tableName = 'events';
-      $this->sequenceName = 'events';
       $this->key = array('id','lang');
 
       if ($row != false) {

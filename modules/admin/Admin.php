@@ -12,7 +12,6 @@ class Admin extends Model {
         $this->columns = array('lang','content');
         $this->key = array('id','lang');
         $this->tableName = 'pages';
-        $this->sequenceName = 'navi';
         */
     }
 

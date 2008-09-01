@@ -5,17 +5,9 @@ class ModuleController {
 
   var $naviNode;
   var $requestedAction = false;
-  var $requestedContent;
 
-  /**
-    * Returns a new View object.
-    */
-  function loadView($viewName) {
-      return new View("modules/{$this->moduleName}/views/$viewName.php", $this);
-  }
-
-  function render() {
-      // Action specified in th url
+  public function render() {
+      // Action specified in the url
       $requestedAction = $this->getRequestedAction();
 
       // Check if action is specified in GET or POST
@@ -39,17 +31,24 @@ class ModuleController {
       }
   }
 
-  function setNaviNode($node) {
+  public function setNaviNode($node) {
       $this->naviNode = $node;
+  }
+
+  /**
+    * Returns a new View object.
+    */
+  protected function loadView($viewName) {
+      return new View("modules/{$this->moduleName}/views/$viewName.php", $this);
   }
 
   /**
     * Returns content id that can be used for fetching data from the database.
     * @return int contentId or false if not set
     */
-  function getContentId() {
+  protected function getContentId() {
       if ($this->naviNode != null) {
-          return $this->naviNode->getId();
+          return $this->naviNode->getContentId();
       } else {
           return false;
       }
@@ -67,7 +66,7 @@ class ModuleController {
       return $this->requestedAction;
   }
 
-  function getModuleName() {
+  public function getModuleName() {
       return $this->moduleName;
   }
 
@@ -78,9 +77,9 @@ class ModuleController {
   */
 
   /**
-    * Returns the name of the preferred skin or false.
-    */
-  function getPreferredSkin() {
+   * Returns the name of the preferred skin or false.
+   */
+  public function getPreferredSkin() {
       return false;
   }
 
@@ -88,7 +87,7 @@ class ModuleController {
     * Returns a list of available modules as an array.
     * @return array of strings
     */
-  static function getAvailableModules() {
+  public static function getAvailableModules() {
     // TODO: Any way to optimize this method?
     $list = Array();
 

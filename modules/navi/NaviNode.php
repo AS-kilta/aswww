@@ -2,17 +2,17 @@
 
 /**
  * Represents a node in the navigation tree. Note: this is joined from
- * NaviNodes and NaviTitles.
+ * tables NaviNodes and NaviTitles.
  */
 
 class NaviNode extends Model {
-  var $id;            // id in the database
+  var $id;
   var $url;           // url name of the node (folder) (array containing language versions)
   var $cumulativeUrl; // cumulative url (array containing language versions)
   var $title;         // human-readable title (array containing language versions)
 
-  var $contentModule; // FIXME
-  var $contentId;     // FIXME
+  var $contentModule; // Payload (example: 'page')
+  var $contentId;     // Payload
 
   var $parentId;
   var $parentNode;
@@ -23,7 +23,6 @@ class NaviNode extends Model {
   public function __construct($row = null) {
     // Columns that are automatically saved
     $this->tableName = 'navinodes';
-    $this->sequenceName = 'navi';
 
     $this->children = array();
     $this->onPath = false;
@@ -35,10 +34,19 @@ class NaviNode extends Model {
       $this->parentId = $row['parent'];
       $this->url[$row['lang']] = $row['url'];
       $this->title[$row['lang']] = $row['title'];
-      $this->module = $row['module'];
+      $this->contentModule = $row['contentmodule'];
+      $this->contentId = $row['contentid'];
     } else {
       $this->id = 0;
     }
+  }
+
+  public function getContentModule() {
+    return $this->contentModule;
+  }
+
+  public function getContentId() {
+    return $this->contentId;
   }
 
   public function getChildren() {
@@ -91,23 +99,20 @@ class NaviNode extends Model {
     return null;
   }
 
-  public function save($newId = false, $module = false) {
+  public function save() {
 
     if ($this->id == 'new') {
-      $this->id = $newId;
+      $query = "INSERT INTO naviNodes(parent, contentModule, contentId, position) VALUES (";
+      if ($this->parentId == 0) {
+        $query .= 'null, ';
+      } else {
+        $query .= escapeSql($this->parentId) . ', ';
+      }
 
-      $query = "INSERT INTO naviNodes(id, parent, module, position) VALUES ("
-        . escapeSql($this->id) . ', ';
-
-        if ($this->parentId == 0) {
-          $query .= 'null, ';
-        } else {
-          $query .= escapeSql($this->parentId) . ', ';
-        }
-
-        $query .= '\'' . escapeSql($this->module) . '\', '
-          . escapeSql($this->position)
-          . ')';
+      $query .= '\'' . escapeSql($this->contentModule) . '\', '
+        . escapeSql($this->contentId) . ', '
+        . escapeSql($this->position)
+        . ')';
 
       if (query($query) === false) {
         return false;
@@ -122,7 +127,10 @@ class NaviNode extends Model {
         $query .= ' parent=' . escapeSql($this->parentId) . ', ';
       }
 
-      $query .= ' position=' . escapeSql($this->position)
+      $query .=
+          ' contentModule=\'' . escapeSql($this->contentModule) . '\', '
+        . ' contentId=' . escapeSql($this->contentId) . ', '
+        . ' position=' . escapeSql($this->position)
         . ' WHERE id=' . escapeSql($this->id);
 
       if (query($query) === false) {
@@ -133,7 +141,6 @@ class NaviNode extends Model {
     // Update titles
     $query = 'DELETE FROM naviTitles WHERE id=' . escapeSql($this->id);
     query($query);
-    //echo $query . '<br />';
 
     foreach (array_keys($this->url) as $lang) {
       if (strlen($this->url[$lang]) < 1) {
@@ -148,7 +155,6 @@ class NaviNode extends Model {
         . ')';
 
       query($query);
-      //echo $query . '<br />';
     }
   }
 
@@ -164,72 +170,11 @@ class NaviNode extends Model {
     return query($query);
   }
 
-  /**
-   * Moves this node to a new position. The database is updated immediately.
-   *
-   * DEPRECATED
-   */
-  public function updateNode($parentId) {
-    // Update navinode
-    if ($parentId > 0) {
-      $query = 'UPDATE navinodes SET parent=';
-
-      if (is_numeric($parentId)) {
-        $query .= $parentId;
-      } else {
-        $query .= 'NULL';
-      }
-
-      $query .= ' WHERE id=' . $this->id;
-
-      query($query);
-    }
-
-    // Update navititle
-    $query = "UPDATE navititles SET url='{$this->url}', title='{$this->title}'"
-      . " WHERE id={$this->id} AND lang='{$this->lang}'";
-
-    query($query);
-  }
-
-  /**
-   * Creates a new navinode and a navititle. The insert is performed immediately.
-   *
-   * DEPRECATED
-   */
-  public function createNode($parentId, $module, $contentId) {
-    $newId = $this->nextVal();
-
-    // Create a new navinode
-    $query = 'INSERT INTO navinodes(id, parent, module) VALUES ('
-      . $newId . ', '
-      . (int)$parentId . ', \''
-      . $module
-      . ')';
-
-    if (query($query) === false) {
-      return false;
-    }
-
-    // Create a new navitile
-    $query = 'INSERT INTO navititles(id, lang, url, title) VALUES ('
-      . $newId . ', \''
-      . escapeSql($this->lang) . '\', \''
-      . escapeSql($this->url) . '\', \''
-      . escapeSql($this->title)
-      . '\')';
-
-    if (query($query) === false) {
-      return false;
-    }
-
-    return true;
-  }
-
 
   /**
    * Returns the nearest node available in the specified language.
    * Travels up the tree until a translated version is found.
+   * @return NaviNode or null
    */
   public function getTranslation($lang) {
     if (isset($this->url[$lang])) {

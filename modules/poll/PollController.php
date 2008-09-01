@@ -13,7 +13,12 @@ class PollController extends ModuleController {
 
       // Get news
       $poll = Poll::loadActive(getLanguage());
-      $view->setData('poll', $poll);
+
+      if (!$poll) {
+        return '';
+      } else {
+        $view->setData('poll', $poll);
+      }
 
       // Check editing privileges
       if ($auth->hasPrivilege($user, 'poll', null, 'edit')) {
@@ -40,8 +45,7 @@ class PollController extends ModuleController {
           $view->setData('editable', true);
       }
 
-
-      //return $view->render();
+      return $view->render();
     }
 
     function renderResults() {

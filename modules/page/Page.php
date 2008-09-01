@@ -11,7 +11,6 @@ class Page extends Model {
         $this->columns = array('lang','content');
         $this->key = array('id','lang');
         $this->tableName = 'pages';
-        $this->sequenceName = 'navi';
 
         if ($row != false) {
             $this->loadRow($row);

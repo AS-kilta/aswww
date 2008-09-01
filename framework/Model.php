@@ -68,33 +68,43 @@ class Model {
             // Create a new entry
 
             // Get id from sequence if it's not provided
-            if ($newId === false) {
-                $newId = $this->nextVal();
+            if ($newId !== false) {
+              $query = "INSERT INTO {$this->tableName} (id, " . implode(', ', $this->columns) . ') VALUES (' . $newId . ', ';
+            } else {
+              $query = "INSERT INTO {$this->tableName} (" . implode(', ', $this->columns) . ') VALUES (';
             }
-
-            $query = "INSERT INTO {$this->tableName} (id, " . implode(', ', $this->columns) . ') VALUES (' . $newId;
 
             // Column values
             for ($i = 0; $i < count($this->columns); $i++) {
                 $columnName = $this->columns[$i];
 
-                if ($this->$columnName === null) {
-                    $query .= ", null";
-                } else if (!is_numeric($this->$columnName) || $this->$columnName === false) {
-                    // FIXME: phone numbers are interpreted as integers
-                    $query .= ", '" . escapeSql($this->$columnName) . "'";
-                } else {
-                    $query .= ', ' . escapeSql($this->$columnName) . ' ';
+                if ($i > 0) {
+                  $query .= ', ';
                 }
+
+                if ($this->$columnName === null) {
+                    $query .= 'null';
+                } else { //if (!is_numeric($this->$columnName) || $this->$columnName === false) {
+                    // FIXME: phone numbers are interpreted as integers
+                    $query .= '\'' . escapeSql($this->$columnName) . '\'';
+                }// else {
+                //    $query .= ', ' . escapeSql($this->$columnName) . ' ';
+                //}
             }
+
             $query .= ')';
 
             $result = query($query);
             if ($result == false) {
                 return false;
             } else {
-                $this->id = $newId;
-                return $newId;
+                // Get the new id
+                $query = "SELECT currval('{$this->tableName}_id_seq')";
+                $result = queryTable($query);
+                $this->id = $result[0]['currval'];
+                echo "new id: " . $this->id;
+
+                return $this->id;
             }
 
         } else {
@@ -110,44 +120,21 @@ class Model {
 
                 if ($this->$columnName === null) {
                     $query .= "$columnName=null";
-                } else if (!is_numeric($this->$columnName) || $this->$columnName === false) {
+                } else {//if (!is_numeric($this->$columnName) || $this->$columnName === false) {
                     $query .= "$columnName='" . escapeSql($this->$columnName) . "'";
-                } else {
-                    $query .= "$columnName=" . escapeSql($this->$columnName);
-                }
+                } //else {
+                //    $query .= "$columnName=" . escapeSql($this->$columnName);
+                //}
             }
 
             // Where
             $query .= ' WHERE ' . $this->sqlKey();
 
-            //echo "<p>$query</p>\n";
             if (query($query) == false) {
                 return false;
             } else {
-                //echo "Update successful<br />\n";
                 return $this->id;
             }
-        }
-    }
-
-    /**
-     * Returns the next value from a sequence.
-     * @return int new id, or false on error
-     */
-    function nextVal() {
-        if (strlen($this->sequenceName) < 1) {
-            addLogEntry('ERROR', "No sequence defined ({$this->tableName}).");
-            return false;
-        }
-
-        $query = "SELECT nextval('{$this->sequenceName}Seq')";
-        $result = queryTable($query);
-
-        if (count($result) < 1) {
-            addLogEntry('ERROR', "Error getting next value from sequence {$this->sequenceName}Seq");
-            return false;
-        } else {
-            return $result[0]['nextval'];
         }
     }
 

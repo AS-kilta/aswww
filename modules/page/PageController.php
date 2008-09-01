@@ -24,17 +24,6 @@ class PageController extends ModuleController {
         return $view->render();
     }
 
-    function renderAdmin() {
-        $auth = Auth::getInstance();
-        $user = $auth->getCurrentUser();
-
-        // Check privileges
-        if (!$auth->hasPrivilege($user, 'page', false, 'edit')) {
-            redirect('admin/login');
-            return;
-        }
-    }
-
     function renderEdit() {
         $view = $this->loadView('edit');
 
@@ -56,7 +45,7 @@ class PageController extends ModuleController {
         if ($naviNode == null) {
             $naviNode = new NaviNode();
             $naviNode->setId('new');
-            $naviNode->setModule($this->moduleName);
+            $naviNode->setContentModule($this->moduleName);
         }
         $view->setData('naviNode', $naviNode);
 
@@ -114,14 +103,16 @@ class PageController extends ModuleController {
         if (getPost('save')) {
             foreach($pageVersions as $version) {
                 if ($id == false) {
-                    $id = $version->nextVal();
-                    $redirectNeeded = true;
+                  $version->save();
+                  $id = $version->getId();
+                  $redirectNeeded = true;
+                } else {
+                  $version->save($id);
                 }
-
-                $version->save($id);
             }
 
-            $naviNode->save($id);
+            $naviNode->setContentId($id);
+            $naviNode->save();
 
             if ($redirectNeeded) {
                 redirect($redirectDestination);

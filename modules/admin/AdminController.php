@@ -37,7 +37,7 @@ class AdminController extends ModuleController {
         $username = getPost('username');
         $password = getPost('password');
 
-        if ($username == false ) {
+        if ($username == false) {
             // No postdata, so just show the login form
             return $view->render();
         } else {
