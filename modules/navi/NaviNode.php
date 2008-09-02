@@ -10,6 +10,7 @@ class NaviNode extends Model {
   var $url;           // url name of the node (folder) (array containing language versions)
   var $cumulativeUrl; // cumulative url (array containing language versions)
   var $title;         // human-readable title (array containing language versions)
+  var $position;      //
 
   var $contentModule; // Payload (example: 'page')
   var $contentId;     // Payload
@@ -36,6 +37,7 @@ class NaviNode extends Model {
       $this->title[$row['lang']] = $row['title'];
       $this->contentModule = $row['contentmodule'];
       $this->contentId = $row['contentid'];
+      $this->position = $row['position'];
     } else {
       $this->id = 0;
     }
@@ -101,7 +103,7 @@ class NaviNode extends Model {
 
   public function save() {
 
-    if ($this->id == 'new') {
+    if (!is_numeric($this->id)) {
       $query = "INSERT INTO naviNodes(parent, contentModule, contentId, position) VALUES (";
       if ($this->parentId == 0) {
         $query .= 'null, ';
@@ -117,6 +119,11 @@ class NaviNode extends Model {
       if (query($query) === false) {
         return false;
       }
+
+      // Get the new id
+      $query = "SELECT currval('{$this->tableName}_id_seq')";
+      $result = queryTable($query);
+      $this->id = $result[0]['currval'];
     } else {
       // Update an existing
       $query = 'UPDATE naviNodes SET';

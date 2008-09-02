@@ -38,9 +38,23 @@ foreach ($pageVersions as $version) { ?>
     <?php } ?>
 </table>
 
-<p>Parent:
+<p>
+    Parent:
     <select name="parent">
         <?= $naviTree ?>
+    </select>
+    
+    Position:
+    <select name="position">
+        <?php
+            for ($i = -10; $i < 10; $i++) {
+                echo "<option value='$i'";
+                if ($position == $i) {
+                    echo " selected='true'";
+                }
+                echo ">$i</option>\n";
+            }
+        ?>
     </select>
 </p>
 

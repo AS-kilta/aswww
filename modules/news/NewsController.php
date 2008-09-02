@@ -19,7 +19,7 @@ class NewsController extends ModuleController {
         if ($auth->hasPrivilege($user, 'news', null, 'edit')) {
             $view->setData('editable', true);
         }
-        
+
         // Limit the number of news
         $view->setData('numNews', 4);
 
@@ -31,55 +31,46 @@ class NewsController extends ModuleController {
         $auth = Auth::getInstance();
         $user = $auth->getCurrentUser();
         if (!$auth->hasPrivilege($user, 'news', null, 'edit')) {
-            redirect('admin/login');
+            redirect('/admin/login');
             return;
         }
 
         $view = $this->loadView('edit');
 
-        // Load the news to be edited
         $id = getGetOrPost('id');
+        $view->setData('id', $id);
+
+        // Load the news to be edited (all language versions)
         if ($id != false && $id != 'new') {
-            // Edit an existing entry. Load all language versions.
             $versions = News::loadAll($id);
-            $view->setData('id', $id);
-        } else {
-            // Create a new entry. Create language versions.
-            $languages = getConfiguredLanguages();
-            $versions = Array();
-            foreach ($languages as $language) {
+        }
+
+        // Create those language versions that are missing.
+        // (all if this is a new entry)
+        $languages = getConfiguredLanguages();
+        foreach ($languages as $language) {
+            if (!isset($versions[$language])) {
                 $news = new News();
                 $news->setLang($language);
                 $versions[$language] = $news;
             }
-
-            $view->setData('id', 'new');
         }
+
         $view->setData('versions', $versions);
 
-        // Check that items were found
-        if (count($versions) < 1) {
-            $view = new View('views/error.php');
-            $view->setData('heading', "News $id not found");
-            $view->setData('back', 'news/list');
-            return $view->render();
-        }
-
-        // Read postdata
+        // Read postdata into $versions
         foreach($versions as $version) {
             $this->parsePost($version->getLang(), $version);
         }
 
         // Save edited content
         if (getPost('save')) {
-            if ($id == 'new') {
-                $id = $version->nextVal();
-            }
 
             foreach($versions as $version) {
                 if ($version->save($id) == false) {
                     $failed = true;
                 }
+                $id = $version->getId();
             }
 
             if ($failed) {
@@ -91,14 +82,13 @@ class NewsController extends ModuleController {
 
         // If delete is requested
         if (getPost('delete')) {
-            
             /*foreach($versions as $version) {
                 if ($version->getId() != 'new') {
                     $version->delete();
                 }
             }*/
 
-            redirect('news/delete?id=' . $id);
+            redirect('/news/delete?id=' . $id);
             return;
         }
 
@@ -112,7 +102,7 @@ class NewsController extends ModuleController {
         $auth = Auth::getInstance();
         $user = $auth->getCurrentUser();
         if (!$auth->hasPrivilege($user, 'news', null, 'edit')) {
-            redirect('admin/login');
+            redirect('/admin/login');
             return;
         }
 

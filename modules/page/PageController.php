@@ -32,7 +32,7 @@ class PageController extends ModuleController {
         $user = $auth->getCurrentUser();
 
         if (!$auth->hasPrivilege($user, 'page', false, 'edit')) {
-            redirect('admin/login');
+            redirect('/admin/login');
             return;
         }
 
@@ -49,11 +49,12 @@ class PageController extends ModuleController {
         }
         $view->setData('naviNode', $naviNode);
 
-        // Load the page to be edited
+        // Load the page to be edited (all language versions)
         $id = $this->getContentId();
-        if ($id !== false) {
-            // Load all language versions.
+        if ($id !== false && $id != 'new') {
             $pageVersions = Page::loadAll($id);
+        } else {
+            $redirectNeeded = true;
         }
 
         // If language versions are missing, create empty objects
@@ -76,6 +77,12 @@ class PageController extends ModuleController {
             }
         }
 
+        if (getPost('position') !== false) {
+            $naviNode->position = getPost('position');
+        }
+        $view->setData('position', $naviNode->position);
+
+
         // Read navisettings from postdata
         if (getPost('preview') || getPost('save')) {
             foreach ($languages as $language) {
@@ -92,6 +99,7 @@ class PageController extends ModuleController {
 
             $parent = getPost('parent');
             if ($parent != $naviNode->getParentId()) {
+                //addLogEntry('INFO', "new parent: $parent, old parent: " . $naviNode->getParentId());
                 $redirectNeeded = true;
             }
 
@@ -102,13 +110,8 @@ class PageController extends ModuleController {
         // Save edited content
         if (getPost('save')) {
             foreach($pageVersions as $version) {
-                if ($id == false) {
-                  $version->save();
-                  $id = $version->getId();
-                  $redirectNeeded = true;
-                } else {
-                  $version->save($id);
-                }
+                $version->save($id);
+                $id = $version->getId();
             }
 
             $naviNode->setContentId($id);
@@ -130,7 +133,7 @@ class PageController extends ModuleController {
 
             $naviNode->delete();
 
-            redirect('navi/');
+            redirect('/navi');
             return;
         }
 

@@ -2,12 +2,13 @@ DROP TABLE naviNodes CASCADE;
 DROP TABLE naviTitles;
 DROP TABLE pages;
 DROP TABLE signup;
+DROP TABLE groups_users;
 DROP TABLE users CASCADE;
-DROP TABLE groups;
+DROP TABLE groups CASCADE;
 DROP TABLE news;
-DROP TABLE poll;
-DROP TABLE pollOption;
 DROP TABLE pollVote;
+DROP TABLE pollOption;
+DROP TABLE poll;
 DROP TABLE site;
 DROP TABLE events;
 
@@ -57,7 +58,8 @@ CREATE TABLE users (
 
 CREATE TABLE groups (
     id SERIAL,
-    name VARCHAR(64)
+    name VARCHAR(64),
+    PRIMARY KEY(id)
 );
 
 CREATE TABLE groups_users (
@@ -74,16 +76,16 @@ CREATE TABLE poll (
 );
 
 CREATE TABLE pollOption (
-    poll_id INT NOT NULL REFERENCES poll(id) ON DELETE CASCADE,
+    id SERIAL PRIMARY KEY,
+    poll_id INT,
     lang VARCHAR(2),
     position INT,
     content TEXT,
-    FOREIGN KEY (poll_id, lang) REFERENCES poll (id, lang)
+    FOREIGN KEY (poll_id, lang) REFERENCES poll (id, lang) ON DELETE CASCADE
 );
 
 CREATE TABLE pollVote (
-    poll_id INT REFERENCES poll(id) ON DELETE CASCADE,
-    position INT,
+    polloption_id INT REFERENCES polloption(id) ON DELETE CASCADE,
     ip VARCHAR(15)
 );
 

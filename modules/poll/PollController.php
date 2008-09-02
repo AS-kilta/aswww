@@ -66,7 +66,7 @@ class PollController extends ModuleController {
         $auth = Auth::getInstance();
         $user = $auth->getCurrentUser();
         if (!$auth->hasPrivilege($user, 'news', null, 'edit')) {
-            redirect('admin/login');
+            redirect('/admin/login');
             return;
         }
 
@@ -133,7 +133,7 @@ class PollController extends ModuleController {
                 }
             }
 
-            redirect('news/delete?id=' . $id);
+            redirect('/news/delete?id=' . $id);
             return;
         }
 
@@ -147,7 +147,7 @@ class PollController extends ModuleController {
         $auth = Auth::getInstance();
         $user = $auth->getCurrentUser();
         if (!$auth->hasPrivilege($user, 'news', null, 'edit')) {
-            redirect('admin/login');
+            redirect('/admin/login');
             return;
         }
 

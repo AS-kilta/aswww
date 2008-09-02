@@ -28,7 +28,7 @@ class EventsController extends ModuleController {
         $auth = Auth::getInstance();
         $user = $auth->getCurrentUser();
         if (!$auth->hasPrivilege($user, 'events', null, 'new')) {
-            redirect('admin/login');
+            redirect('/admin/login');
             return;
         }
 
@@ -54,7 +54,7 @@ class EventsController extends ModuleController {
         $auth = Auth::getInstance();
         $user = $auth->getCurrentUser();
         if (!$auth->hasPrivilege($user, 'events', null, 'edit')) {
-            redirect('admin/login');
+            redirect('/admin/login');
             return;
         }
 
@@ -121,7 +121,7 @@ class EventsController extends ModuleController {
                 }
             }*/
 
-            redirect('news/delete?id=' . $id);
+            redirect('/news/delete?id=' . $id);
             return;
         }
 
@@ -135,7 +135,7 @@ class EventsController extends ModuleController {
         $auth = Auth::getInstance();
         $user = $auth->getCurrentUser();
         if (!$auth->hasPrivilege($user, 'events', null, 'edit')) {
-            redirect('admin/login');
+            redirect('/admin/login');
             return;
         }
 

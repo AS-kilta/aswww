@@ -19,7 +19,7 @@
 
 <p>
     <?= $this->link('news/list', 'Cancel') ?>
-    <input type='submit' name='delete' value='Delete' />
+    <input type='submit' name='delete' value='Delete' onClick="return confirm('Are you sure you want to delete?')" />
     <input type='submit' name='save' value='Save' />
 </p>
 

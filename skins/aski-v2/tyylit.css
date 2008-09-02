@@ -91,7 +91,9 @@ a.admin {
 }
 
 .warning {
-    border: 1px solid red;
+    border: 1px solid #A00000;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
     background: #FFD0D0;
     padding: 4px 4px;
     color: #000000;
@@ -99,6 +101,8 @@ a.admin {
 
 .success {
     border: 1px solid #008000;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
     background: #D0FFD0;
     padding: 4px 5px;
     color: black;

@@ -1,3 +1,5 @@
+AddCharset UTF-8 .html
+
 RewriteEngine on
 
 # Luettele alihakemistot, jotka apache tarjoilee suoraan

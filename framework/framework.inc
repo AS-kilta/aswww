@@ -41,10 +41,11 @@ function __autoload($class_name) {
 */
 
 /**
- * Redirects to baseUrl()/$location
+ * Redirects to baseUrl()$location
  */
 function redirect($location) {
-  header("Location: " . baseUrl() . "/$location");
+  addLogEntry('INFO', "Redirect to ($location)");
+  header("Location: " . baseUrl() . $location);
 }
 
 /**

@@ -86,9 +86,11 @@ class NaviController extends ModuleController {
         }
 
         if ($translatedNode != null) {
-            $html .= '<li><a href="' . baseUrl() . $translatedNode->getCumulativeUrl($_['otherLangCode-' . $lang]) . '/">'
+            $html .= '<li><a href="' . baseUrl() . $translatedNode->getCumulativeUrl($_['otherLangCode-' . $lang]) . '">'
                 . $_['otherLangText-' . $lang]
                 . '</a></li>';
+        } else {
+            $html .= '<li><a href="' . baseUrl() . '/">' . $_['otherLangText-' . $lang] . '</a></li>';
         }
 
         // Admin

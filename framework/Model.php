@@ -47,16 +47,14 @@ class Model {
      * The object must have an instance variable 'columns' containing an array of variable names.
      * Only variables listed in that array are put to the query.
      *
-     * If the instance variable id == 'new', an insert is performed and the new id is read from a
-     * sequence with postfix 'Seq'. Example: if the table is named 'pages', the sequence
-     * is expected to be named pagesSeq.
+     * If the instance variable $id == 'new', an insert is performed.
+     * The new id can be given as the $newId parameter. If it's not given,
+     * the database is assumed to set the id automatically (ie. it must be a SERIAL column).
      *
-     * If the instance variable id contains an id, an update is performed.
+     * If the instance variable $id contains a numric id, an update is performed.
+     * The $newId parameter is ignored in this case.
      *
-     * If there is no sequence, and an insert is to be performed, the id
-     * must be given in the $newId parameter.
-     *
-     * @param newId An id for the new entry. This must be given if there is no sequence and id=='new'.
+     * @param newId An id for the new entry.
      */
     function save($newId = false) {
         if (count($this->columns) < 1) {
@@ -64,11 +62,11 @@ class Model {
             return false;
         }
 
-        if ($this->id == 'new') {
+        if (!is_numeric($this->id)) {
             // Create a new entry
 
             // Get id from sequence if it's not provided
-            if ($newId !== false) {
+            if (is_numeric($newId)) {
               $query = "INSERT INTO {$this->tableName} (id, " . implode(', ', $this->columns) . ') VALUES (' . $newId . ', ';
             } else {
               $query = "INSERT INTO {$this->tableName} (" . implode(', ', $this->columns) . ') VALUES (';
@@ -98,11 +96,14 @@ class Model {
             if ($result == false) {
                 return false;
             } else {
-                // Get the new id
-                $query = "SELECT currval('{$this->tableName}_id_seq')";
-                $result = queryTable($query);
-                $this->id = $result[0]['currval'];
-                echo "new id: " . $this->id;
+                // Set the new id
+                if (is_numeric($newId)) {
+                    $this->id = $newId;
+                } else {
+                    $query = "SELECT currval('{$this->tableName}_id_seq')";
+                    $result = queryTable($query);
+                    $this->id = $result[0]['currval'];
+                }
 
                 return $this->id;
             }
@@ -139,7 +140,7 @@ class Model {
     }
 
     function delete() {
-        if ($this->id == 'new') {
+        if (!is_numeric($this->id)) {
             addLogEntry('WARN', 'Attempting to delete an object that has not been saved.');
             return false;
         }

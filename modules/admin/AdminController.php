@@ -46,7 +46,7 @@ class AdminController extends ModuleController {
 
             if ($auth->login($username, $password) !== false) {
                 // Successful login
-                redirect('admin');
+                redirect('/admin');
             } else {
                 $view->setData('invalidLogin', true);
                 return $view->render();
@@ -57,7 +57,7 @@ class AdminController extends ModuleController {
     public function renderLogout() {
         $auth = Auth::getInstance();
         $auth->logout();
-        redirect('');
+        redirect('/');
     }
 
     public function renderUser() {
@@ -88,7 +88,7 @@ class AdminController extends ModuleController {
         $auth = Auth::getInstance();
 
         if (!$auth->hasPrivilege($auth->getCurrentUser(), 'user', false, 'edit')) {
-            redirect('admin/login');
+            redirect('/admin/login');
             return;
         }
 
@@ -129,7 +129,7 @@ class AdminController extends ModuleController {
         $auth = Auth::getInstance();
 
         if (!$auth->hasPrivilege($auth->getCurrentUser(), 'user', false, 'edit')) {
-            redirect('admin/login');
+            redirect('/admin/login');
             return;
         }
 
@@ -143,7 +143,7 @@ class AdminController extends ModuleController {
         $user->load($userId);
         $user->delete();
 
-        redirect('admin/users');
+        redirect('/admin/users');
     }
 
     public function renderSkinSelector() {
@@ -153,7 +153,7 @@ class AdminController extends ModuleController {
         $auth = Auth::getInstance();
 
         if (!$auth->hasPrivilege($auth->getCurrentUser(), 'admin', false, 'edit')) {
-            redirect('admin/login');
+            redirect('/admin/login');
             return;
         }
 
@@ -162,7 +162,7 @@ class AdminController extends ModuleController {
 
         if (getPost('ok')) {
             Admin::setSkin(getPost('skin'));
-            redirect('admin?adminAction=skinSelector');
+            redirect('/admin?adminAction=skinSelector');
             return;
         }
 
