@@ -67,7 +67,7 @@ class PageController extends ModuleController {
             }
         }
         $view->setData('pageVersions', $pageVersions);
-
+        $view->setData('naviNode', $naviNode);
 
         // Read content from postdata
         foreach($pageVersions as $version) {
@@ -80,7 +80,10 @@ class PageController extends ModuleController {
         if (getPost('position') !== false) {
             $naviNode->position = getPost('position');
         }
-        $view->setData('position', $naviNode->position);
+
+        if (getPost('preview') !== false || getPost('save') !== false) {
+            $naviNode->hidden = getPost('hidden') == '1';
+        }
 
 
         // Read navisettings from postdata

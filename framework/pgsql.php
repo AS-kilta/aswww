@@ -20,8 +20,8 @@ function query($query) {
         }
     }
 
+    // addLogEntry('INFO', $query . "\n");
     //$level = error_reporting(8);
-    addLogEntry('INFO', $query . "\n");
     $result = pg_query($query);
     //error_reporting($level);
 

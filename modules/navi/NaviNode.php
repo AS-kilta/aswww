@@ -11,6 +11,7 @@ class NaviNode extends Model {
   var $cumulativeUrl; // cumulative url (array containing language versions)
   var $title;         // human-readable title (array containing language versions)
   var $position;      //
+  var $hidden;      //
 
   var $contentModule; // Payload (example: 'page')
   var $contentId;     // Payload
@@ -38,6 +39,7 @@ class NaviNode extends Model {
       $this->contentModule = $row['contentmodule'];
       $this->contentId = $row['contentid'];
       $this->position = $row['position'];
+      $this->hidden = $row['hidden'] == 't';
     } else {
       $this->id = 0;
     }
@@ -104,7 +106,7 @@ class NaviNode extends Model {
   public function save() {
 
     if (!is_numeric($this->id)) {
-      $query = "INSERT INTO naviNodes(parent, contentModule, contentId, position) VALUES (";
+      $query = "INSERT INTO naviNodes(parent, contentModule, contentId, position, hidden) VALUES (";
       if ($this->parentId == 0) {
         $query .= 'null, ';
       } else {
@@ -113,7 +115,8 @@ class NaviNode extends Model {
 
       $query .= '\'' . escapeSql($this->contentModule) . '\', '
         . escapeSql($this->contentId) . ', '
-        . escapeSql($this->position)
+        . escapeSql($this->position) . ', '
+        . ($this->hidden ? 'true' : 'false')
         . ')';
 
       if (query($query) === false) {
@@ -137,7 +140,8 @@ class NaviNode extends Model {
       $query .=
           ' contentModule=\'' . escapeSql($this->contentModule) . '\', '
         . ' contentId=' . escapeSql($this->contentId) . ', '
-        . ' position=' . escapeSql($this->position)
+        . ' position=' . escapeSql($this->position) . ', '
+        . ' hidden=' . ($this->hidden ? 'true' : 'false')
         . ' WHERE id=' . escapeSql($this->id);
 
       if (query($query) === false) {
@@ -209,6 +213,10 @@ class NaviNode extends Model {
     }
 
     foreach($this->children as $child) {
+      if ($child->hidden) {
+        continue;
+      }
+        
       $html .= $startDepth < 1 ? "<ul>\n" : '';
 
       if (isset($this->url[$lang])) {
@@ -240,6 +248,10 @@ class NaviNode extends Model {
         $html .= "<a href='" . baseUrl() . $this->getCumulativeUrl($language) . "'>{$this->title[$language]}</a>";
 
         $i++;
+      }
+      
+      if ($this->hidden) {
+        $html .= ' (hidden)';
       }
     }
 

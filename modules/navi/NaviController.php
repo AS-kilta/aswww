@@ -74,7 +74,7 @@ class NaviController extends ModuleController {
                 $class = '';
             }
 
-            if (isset($child->title[$lang])) {
+            if (isset($child->title[$lang]) && !$child->hidden) {
                 $html .= "<li $class><a href='" . baseUrl() . $child->getCumulativeUrl($lang) . "'>{$child->title[$lang]}</a></li>";
             }
         }

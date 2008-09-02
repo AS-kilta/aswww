@@ -49,13 +49,16 @@ foreach ($pageVersions as $version) { ?>
         <?php
             for ($i = -10; $i < 10; $i++) {
                 echo "<option value='$i'";
-                if ($position == $i) {
+                if ($naviNode->position == $i) {
                     echo " selected='true'";
                 }
                 echo ">$i</option>\n";
             }
         ?>
     </select>
+
+    Hidden:
+    <input type="checkbox" name="hidden" value="1" <?= $naviNode->hidden ? 'checked="true"' : '' ?> />
 </p>
 
 <p>

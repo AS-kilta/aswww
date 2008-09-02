@@ -2,6 +2,8 @@
 
 <?= $this->formStart('skinSelector') ?>
 
+<p class="warning">Varoitus: Koko sivuston ulkoasu muuttuu välittömästi.</p>
+
 <p>
 <select name="skin">
     <?php foreach ($skins as $skin) { ?>
