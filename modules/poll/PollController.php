@@ -11,14 +11,9 @@ class PollController extends ModuleController {
       $user = $auth->getCurrentUser();
       $view = $this->loadView('poll');
 
-      // Get news
+      // Get poll
       $poll = Poll::loadActive(getLanguage());
-
-      if (!$poll) {
-        return '';
-      } else {
-        $view->setData('poll', $poll);
-      }
+      $view->setData('poll', $poll);
 
       // Check editing privileges
       if ($auth->hasPrivilege($user, 'poll', null, 'edit')) {
@@ -26,6 +21,86 @@ class PollController extends ModuleController {
       }
 
       return $view->render();
+    }
+
+    function renderEdit() {
+        // Check editing privileges
+        $auth = Auth::getInstance();
+        $user = $auth->getCurrentUser();
+        if (!$auth->hasPrivilege($user, 'poll', null, 'edit')) {
+            redirect('/admin/login');
+            return;
+        }
+        
+        
+        $view = $this->loadView('edit');
+
+        // Load the poll to be edited
+        $id = getGetOrPost('id');
+        if ($id != false && $id != 'new') {
+            // Edit an existing entry. Load all language versions.
+            $versions = News::loadAll($id);
+            $view->setData('id', $id);
+        } else {
+            // Create a new entry. Create language versions.
+            $languages = getConfiguredLanguages();
+            $versions = Array();
+            foreach ($languages as $language) {
+                $news = new News();
+                $news->setLang($language);
+                $versions[$language] = $news;
+            }
+
+            $view->setData('id', 'new');
+        }
+        $view->setData('versions', $versions);
+
+        // Check that items were found
+        if (count($versions) < 1) {
+            $view = new View('views/error.php');
+            $view->setData('heading', "News $id not found");
+            $view->setData('back', 'news/list');
+            return $view->render();
+        }
+
+        // Read postdata
+        foreach($versions as $version) {
+            $this->parsePost($version->getLang(), $version);
+        }
+
+        // Save edited content
+        if (getPost('save')) {
+            if ($id == 'new') {
+                $id = $version->nextVal();
+            }
+
+            foreach($versions as $version) {
+                if ($version->save($id) == false) {
+                    $failed = true;
+                }
+            }
+
+            if ($failed) {
+                $view->setData('warning', 'Failed to save');
+            } else {
+                $view->setData('success', 'News saved');
+            }
+        }
+
+        // If delete is requested
+        if (getPost('delete')) {
+
+            foreach($versions as $version) {
+                if ($version->getId() != 'new') {
+                    $version->delete();
+                }
+            }
+
+            redirect('/news/delete?id=' . $id);
+            return;
+        }
+
+        return $view->render();
     }
 
     function renderVote() {

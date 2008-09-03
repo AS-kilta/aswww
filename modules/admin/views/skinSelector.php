@@ -2,7 +2,7 @@
 
 <?= $this->formStart('skinSelector') ?>
 
-<p class="warning">Varoitus: Koko sivuston ulkoasu muuttuu välittömästi.</p>
+<p class="warning">Warning: this takes place everywhere immediately.</p>
 
 <p>
 <select name="skin">

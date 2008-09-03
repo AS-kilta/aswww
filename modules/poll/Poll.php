@@ -23,6 +23,9 @@ class Poll extends Model {
         }
     }
 
+    /**
+     * Returns an array of strings.
+     */
     public function getOptions() {
       return $this->options;
     }
