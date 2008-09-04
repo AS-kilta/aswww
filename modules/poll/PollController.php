@@ -13,7 +13,7 @@ class PollController extends ModuleController {
         // Get poll
         $poll = Poll::load(getLanguage());
 
-        if ($poll->hasVoted(getUserIP())) {
+        if ($poll && $poll->hasVoted(getUserIP())) {
             $view = $this->loadView('results');
         } else {
             $view = $this->loadView('poll');
