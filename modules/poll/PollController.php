@@ -7,20 +7,26 @@ class PollController extends ModuleController {
     }
 
     function renderDefault() {
-      $auth = Auth::getInstance();
-      $user = $auth->getCurrentUser();
-      $view = $this->loadView('poll');
+        $auth = Auth::getInstance();
+        $user = $auth->getCurrentUser();
 
-      // Get poll
-      $poll = Poll::loadActive(getLanguage());
-      $view->setData('poll', $poll);
+        // Get poll
+        $poll = Poll::load(getLanguage());
 
-      // Check editing privileges
-      if ($auth->hasPrivilege($user, 'poll', null, 'edit')) {
-          $view->setData('editable', true);
-      }
+        if ($poll->hasVoted(getUserIP())) {
+            $view = $this->loadView('results');
+        } else {
+            $view = $this->loadView('poll');
+        }
 
-      return $view->render();
+        $view->setData('poll', $poll);
+
+        // Check editing privileges
+        if ($auth->hasPrivilege($user, 'poll', null, 'edit')) {
+            $view->setData('editable', true);
+        }
+
+        return $view->render();
     }
 
     function renderEdit() {
@@ -31,252 +37,109 @@ class PollController extends ModuleController {
             redirect('/admin/login');
             return;
         }
-        
-        
-        $view = $this->loadView('edit');
 
-        // Load the poll to be edited
-        $id = getGetOrPost('id');
-        if ($id != false && $id != 'new') {
-            // Edit an existing entry. Load all language versions.
-            $versions = News::loadAll($id);
-            $view->setData('id', $id);
-        } else {
-            // Create a new entry. Create language versions.
-            $languages = getConfiguredLanguages();
-            $versions = Array();
-            foreach ($languages as $language) {
-                $news = new News();
-                $news->setLang($language);
-                $versions[$language] = $news;
-            }
-
-            $view->setData('id', 'new');
-        }
-        $view->setData('versions', $versions);
-
-        // Check that items were found
-        if (count($versions) < 1) {
+        // Check that language is specified
+        $lang = getGetOrPost('lang');
+        if (strlen($lang) < 1) {
             $view = new View('views/error.php');
-            $view->setData('heading', "News $id not found");
-            $view->setData('back', 'news/list');
+            $view->setData('heading', 'Language not specified');
             return $view->render();
         }
 
-        // Read postdata
-        foreach($versions as $version) {
-            $this->parsePost($version->getLang(), $version);
+        // Load the poll to be edited
+        $id = getGetOrPost('id');
+        $view = $this->loadView('edit');
+
+        if ($id != false && $id != 'new') {
+            // Edit an existing entry
+            $poll = Poll::load($lang, $id);
+
+            if ($poll == null) {
+                $view = new View('views/error.php');
+                $view->setData('heading', "Poll $id not found");
+                return $view->render();
+            }
         }
+
+        if (!$poll) {
+            // Create a new entry
+            $poll = new Poll();
+            $poll->setLang($lang);
+        }
+
+        $view->setData('id', $poll->id);
+        $view->setData('poll', $poll);
+
+        // Read postdata
+        $this->parsePost($poll);
 
         // Save edited content
         if (getPost('save')) {
-            if ($id == 'new') {
-                $id = $version->nextVal();
-            }
-
-            foreach($versions as $version) {
-                if ($version->save($id) == false) {
-                    $failed = true;
-                }
-            }
-
-            if ($failed) {
+            if ($poll->save() == false) {
                 $view->setData('warning', 'Failed to save');
             } else {
-                $view->setData('success', 'News saved');
+                $view->setData('success', 'Poll saved');
             }
         }
 
         // If delete is requested
         if (getPost('delete')) {
-
-            foreach($versions as $version) {
-                if ($version->getId() != 'new') {
-                    $version->delete();
-                }
-            }
-
-            redirect('/news/delete?id=' . $id);
-            return;
+            $poll->delete();
+            redirect('/');
         }
 
         return $view->render();
     }
 
     function renderVote() {
-      $auth = Auth::getInstance();
-      $user = $auth->getCurrentUser();
-      $view = $this->loadView('results');
+        $auth = Auth::getInstance();
+        $user = $auth->getCurrentUser();
 
-      // Load poll
-      $poll = Poll::loadActive(getLanguage());
-      $view->setData('poll', $poll);
+        // Load poll
+        $poll = Poll::load(getLanguage());
 
-      // Vote
-      $poll->vote(getPost('poll'), getUserIP());
+        // Vote
+        $selection = getPost('poll');
+        if ($selection) {
+            $poll->vote($selection, getUserIP());
+            $view = $this->loadView('results');
+        } else {
+            $view = $this->loadView('poll');
+        }
 
-      // Check editing privileges
-      if ($auth->hasPrivilege($user, 'poll', null, 'edit')) {
-          $view->setData('editable', true);
-      }
+        $view->setData('poll', $poll);
 
-      return $view->render();
+        return $view->render();
     }
 
     function renderResults() {
-      $auth = Auth::getInstance();
-      $user = $auth->getCurrentUser();
-      $view = $this->loadView('results');
-
-      // Load poll
-      $poll = Poll::loadActive(getLanguage());
-      $view->setData('poll', $poll);
-
-      return $view->render();
-    }
-
-/*
-    function renderEdit() {
-        // Check editing privileges
-        $auth = Auth::getInstance();
-        $user = $auth->getCurrentUser();
-        if (!$auth->hasPrivilege($user, 'news', null, 'edit')) {
-            redirect('/admin/login');
-            return;
-        }
-
-        $view = $this->loadView('edit');
-
-        // Load the news to be edited
-        $id = getGetOrPost('id');
-        if ($id != false && $id != 'new') {
-            // Edit an existing entry. Load all language versions.
-            $versions = News::loadAll($id);
-            $view->setData('id', $id);
-        } else {
-            // Create a new entry. Create language versions.
-            $languages = getConfiguredLanguages();
-            $versions = Array();
-            foreach ($languages as $language) {
-                $news = new News();
-                $news->setLang($language);
-                $versions[$language] = $news;
-            }
-
-            $view->setData('id', 'new');
-        }
-        $view->setData('versions', $versions);
-
-        // Check that items were found
-        if (count($versions) < 1) {
-            $view = new View('views/error.php');
-            $view->setData('heading', "News $id not found");
-            $view->setData('back', 'news/list');
-            return $view->render();
-        }
-
-        // Read postdata
-        foreach($versions as $version) {
-            $this->parsePost($version->getLang(), $version);
-        }
-
-        // Save edited content
-        if (getPost('save')) {
-            if ($id == 'new') {
-                $id = $version->nextVal();
-            }
-
-            foreach($versions as $version) {
-                if ($version->save($id) == false) {
-                    $failed = true;
-                }
-            }
-
-            if ($failed) {
-                $view->setData('warning', 'Failed to save');
-            } else {
-                $view->setData('success', 'News saved');
-            }
-        }
-
-        // If delete is requested
-        if (getPost('delete')) {
-
-            foreach($versions as $version) {
-                if ($version->getId() != 'new') {
-                    $version->delete();
-                }
-            }
-
-            redirect('/news/delete?id=' . $id);
-            return;
-        }
+        $view = $this->loadView('results');
+        $poll = Poll::load(getLanguage());
+        $view->setData('poll', $poll);
 
         return $view->render();
     }
 
-    public function renderDelete() {
-        $view = $this->loadView('list');
 
-        // Check editing privileges
-        $auth = Auth::getInstance();
-        $user = $auth->getCurrentUser();
-        if (!$auth->hasPrivilege($user, 'news', null, 'edit')) {
-            redirect('/admin/login');
+    private function parsePost($poll) {
+        $question = getPost('question');
+        if ($question == false) {
             return;
         }
 
-        // Load all language versions
-        $id = getGetOrPost('id');
-        if ($id != false && $id != 'new') {
-            $versions = News::loadAll($id);
+        $poll->setQuestion($question);
 
-            if (count($versions) > 0) {
-                // Delete
-                foreach($versions as $version) {
-                    $version->delete();
-                }
-                $view->setData('success', 'Items deleted');
+        $poll->options = array();
+        for ($i = 0; ; $i++) {
+            $option = getPost("option-$i");
+            if ($option === false) {
+                break;
             }
-        }
 
-        // Get news
-        $news = News::getNews();
-        $view->setData('news', $news);
-        $view->setData('editable', true);
-
-        return $view->render();
-    }
-
-    public function renderList() {
-        $auth = Auth::getInstance();
-        $user = $auth->getCurrentUser();
-        $view = $this->loadView('list');
-
-        // Get news
-        $news = News::getNews();
-        $view->setData('news', $news);
-
-        // Check editing privileges
-        if ($auth->hasPrivilege($user, 'news', null, 'edit')) {
-            $view->setData('editable', true);
-        }
-
-        return $view->render();
-    }
-
-    private function parsePost($prefix, $news) {
-        $heading = getPost($prefix . '-heading');
-        if ($heading !== false) {
-            $news->setHeading($heading);
-        }
-
-        $content = getPost($prefix . '-content');
-        if ($content !== false) {
-            $news->setContent($content);
+            $poll->options[$i] = $option;
         }
     }
-*/
+
 }
 
 ?>

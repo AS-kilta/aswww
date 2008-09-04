@@ -1,21 +1,22 @@
 <div class="poll">
 <h1><?= $_['heading'] ?></h1>
 
-<?= $this->formStart('vote') ?>
+<p><?= $poll->getQuestion() ?></p>
+<div class="results">
+    <?php
+    $percentages = $poll->getPercentages();
+    $votes = $poll->getVotes();
+    foreach ($poll->getOptions() as $optionId => $option) {
+    ?>
+        <p><?= $option ?>: <?= $votes[$optionId] ?> (<?= $percentages[$optionId] ?>%)</p>
+        <div class="bar" style="width: <?= $percentages[$optionId] ?>%"></div>
+    <?php } ?>
 
-<p>
-  <?= $poll->getQuestion() ?><br />
-  <?php
-  $i = 0;
-  $options = $poll->getOptions();
-  $percentages = $poll->getPercentages();
-  for ($i = 0; $i < count($options); $i++) { ?>
-    <?= $options[$i] ?>
-    <?= $percentages[$i] ?><br />
-  <?php } ?>
-</p>
+    <p><?= $_['total_votes'] ?>: <?= $poll->getTotalVotes() ?></p>
+</div>
 
-<input type='submit' name='vote' value='<?= $_['vote'] ?>' />
+<?php if ($editable) {
+    echo '<p>' . $this->link('poll/edit?lang=' . getLanguage(), 'Create new poll') . "</p>\n";
+} ?>
 
-<?= $this->formEnd() ?>
 </div>

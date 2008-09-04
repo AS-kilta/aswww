@@ -1,6 +1,7 @@
 <?php
 
 $_['heading'] = 'Gallup';
-$_['vote'] = '��nest�';
+$_['vote'] = 'Äänestä';
+$_['total_votes'] = 'Ääniä';
 
 ?>

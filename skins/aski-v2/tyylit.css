@@ -11,7 +11,7 @@
 body, html {
     font-size: 12px;
     font-family: "Trebuchet MS", sans;
-    background: #fff;
+    background: #32043b;
     color: #000000;
     padding: 0px;
     margin: 1em;
@@ -430,15 +430,19 @@ h2 {
 /*** FOOTER ***/
 
 div.blank {
-	clear:both;  /* jotta footeri pysyis alhaalla */
+    clear:both;
 }
+
+div.clear {
+    clear:both;
+}
+
 
 #footer {
     height: 39px;
     width: 724px;
     position: relative;
-    
-    
+
     background: url('footer.png') no-repeat;
 }
 
@@ -481,12 +485,27 @@ div.blank {
 
 
 /*** Poll module ***/
-.events h1 {
+.poll h1 {
     font-size: 120%;
 }
 
 .poll h2 {
     font-size: 110%;
+}
+
+.poll .results {
+    width: 100%;
+}
+
+.poll .results p {
+    margin: 0px 0px 5px 0px;
+}
+
+.poll .bar {
+    background: #ac0faa;
+    border: 1px solid black;
+    height: 10px;
+    margin: 0px 0px 1em 0px;
 }
 
 /*** Events module ***/
@@ -509,5 +528,22 @@ div.blank {
     margin-top: .2em;
 }
 /*** end of screen css ***/
+
+
+/***************************
+ * Content styles
+ * (to be used by the user)
+ ***************************/
+
+.vasen {
+float: left;
+margin: 0em 1em 1em 0em;
 }
 
+.oikea {
+float: right;
+margin: 0em 0em 1em 1em;
+}
+
+
+}

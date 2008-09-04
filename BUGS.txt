@@ -1,1 +1,2 @@
 - "In English"-nappi toimii väärin, jos käännöstä ei löydy.
+- News: jos englanninkielinen title puuttuu, älä näytä entryä
