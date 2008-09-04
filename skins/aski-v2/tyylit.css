@@ -527,7 +527,18 @@ div.clear {
     font-size: 110%;
     margin-top: .2em;
 }
-/*** end of screen css ***/
+
+.events-long h2 {
+    margin: 2em 0em 0em 0em;
+}
+
+.events-long h1 + h2 {
+    margin-top: 0em;
+}
+
+.events-long .place {
+    margin: 0em;
+}
 
 
 /***************************

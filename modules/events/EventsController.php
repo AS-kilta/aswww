@@ -12,7 +12,7 @@ class EventsController extends ModuleController {
         $view = $this->loadView('events');
 
         // Get events
-        $events = Event::getCurrentEvents(getLanguage(), 4);
+        $events = Event::getEvents(getLanguage());
         $view->setData('events', $events);
 
         // Check editing privileges
@@ -20,31 +20,8 @@ class EventsController extends ModuleController {
             $view->setData('editable', true);
         }
 
-        return $view->render();
-    }
-
-    function renderNew() {
-        // Check editing privileges
-        $auth = Auth::getInstance();
-        $user = $auth->getCurrentUser();
-        if (!$auth->hasPrivilege($user, 'events', null, 'new')) {
-            redirect('/admin/login');
-            return;
-        }
-
-        $view = $this->loadView('edit');
-
-        // Create a new entry. Create language versions.
-        $languages = getConfiguredLanguages();
-        $versions = Array();
-        foreach ($languages as $language) {
-            $event = new Event();
-            $event->setLang($language);
-            $versions[$language] = $event;
-        }
-
-        $view->setData('id', 'new');
-        $view->setData('versions', $versions);
+        // Limit the number of events
+        $view->setData('numEvents', 4);
 
         return $view->render();
     }
@@ -60,49 +37,39 @@ class EventsController extends ModuleController {
 
         $view = $this->loadView('edit');
 
-        // Load the events to be edited
         $id = getGetOrPost('id');
+        $view->setData('id', $id);
+
+        // Load the events to be edited (all language versions)
         if ($id != false && $id != 'new') {
-            // Edit an existing entry. Load all language versions.
             $versions = Event::loadAll($id);
-            $view->setData('id', $id);
-        } else {
-            // Create a new entry. Create language versions.
-            $languages = getConfiguredLanguages();
-            $versions = Array();
-            foreach ($languages as $language) {
+        }
+
+        // Create those language versions that are missing.
+        // (all if this is a new entry)
+        $languages = getConfiguredLanguages();
+        foreach ($languages as $language) {
+            if (!isset($versions[$language])) {
                 $events = new Event();
                 $events->setLang($language);
                 $versions[$language] = $events;
             }
-
-            $view->setData('id', 'new');
         }
+
         $view->setData('versions', $versions);
 
-        // Check that items were found
-        if (count($versions) < 1) {
-            $view = new View('views/error.php');
-            $view->setData('heading', "Event $id not found");
-            $view->setData('back', 'events/list');
-            return $view->render();
-        }
-
-        // Read postdata
+        // Read postdata into $versions
         foreach($versions as $version) {
             $this->parsePost($version->getLang(), $version);
         }
 
         // Save edited content
         if (getPost('save')) {
-            if ($id == 'new') {
-                $id = $version->nextVal();
-            }
-
             foreach($versions as $version) {
                 if ($version->save($id) == false) {
                     $failed = true;
                 }
+                $id = $version->getId();
             }
 
             if ($failed) {
@@ -114,14 +81,7 @@ class EventsController extends ModuleController {
 
         // If delete is requested
         if (getPost('delete')) {
-
-            /*foreach($versions as $version) {
-                if ($version->getId() != 'new') {
-                    $version->delete();
-                }
-            }*/
-
-            redirect('/news/delete?id=' . $id);
+            redirect('/events/delete?id=' . $id);
             return;
         }
 
@@ -167,7 +127,7 @@ class EventsController extends ModuleController {
         $view = $this->loadView('list');
 
         // Get events
-        $events = Event::getEvents();
+        $events = Event::getEvents(getLanguage());
         $view->setData('events', $events);
 
         // Check editing privileges
@@ -178,17 +138,31 @@ class EventsController extends ModuleController {
         return $view->render();
     }
 
-    private function parsePost($prefix, $events) {
+    private function parsePost($prefix, $event) {
         $heading = getPost($prefix . '-heading');
         if ($heading !== false) {
-            $news->setHeading($heading);
+            $event->setHeading($heading);
         }
 
-        $content = getPost($prefix . '-content');
-        if ($content !== false) {
-            $news->setContent($content);
+        $time = getPost($prefix . '-time');
+        if ($time !== false) {
+            $event->setTime($time);
+        }
+
+        $timestamp = getPost($prefix . '-timestamp');
+        if ($timestamp !== false) {
+            $event->setTimestamp($timestamp);
+        }
+
+        $place = getPost($prefix . '-place');
+        if ($place !== false) {
+            $event->setPlace($place);
+        }
+
+        $description = getPost($prefix . '-description');
+        if ($description !== false) {
+            $event->setDescription($description);
         }
     }
 }
-
 ?>

@@ -58,7 +58,7 @@ class Poll extends Model {
         $versions = Array();
 
         foreach ($result as $row) {
-            $versions[$row['lang']] = new News($row);
+            $versions[$row['lang']] = new Poll($row);
         }
 
         return $versions;

@@ -4,53 +4,54 @@ class Event extends Model {
   /**
     * Constructor
     */
-  public function __construct($row = false) {
-      parent::__construct();
+    public function __construct($row = false) {
+        parent::__construct();
 
-      // Columns that are automatically saved
-      $this->columns = array('heading','content','timestamp','lang');
-      $this->tableName = 'events';
-      $this->key = array('id','lang');
+        // Columns that are automatically saved
+        $this->columns = array('lang','timestamp','heading','time','place','description');
+        $this->tableName = 'events';
+        $this->key = array('id','lang');
 
-      if ($row != false) {
-          $this->loadRow($row);
-      }
-  }
-
-  /**
-    * Loads all language versions.
-    * @returns Array of objects. Array indexes are language codes.
-    */
-  public function loadAll($id) {
-      $query = 'SELECT * FROM ' . escapeSql($this->tableName) .' WHERE id=' . escapeSql($id);
-
-      $result = queryTable($query);
-      $versions = Array();
-
-      foreach ($result as $row) {
-          $versions[$row['lang']] = new Event($row);
-      }
-
-      return $versions;
-  }
-
-  public static function getCurrentEvents($lang = false, $limit = 0) {
-    $query = 'SELECT * FROM news';
-
-    if ($lang != false) {
-      $query .= ' WHERE lang=\'' . escapeSql($lang) . '\'';
+        if ($row != false) {
+            $this->loadRow($row);
+        }
     }
 
-    $query .= ' ORDER BY timestamp DESC';
+    /**
+     * Loads all language versions.
+     * @returns Array of objects. Array indexes are language codes.
+     */
+    public function loadAll($id) {
+        $query = 'SELECT * FROM events WHERE id=' . escapeSql($id);
 
-    if ($limit > 0) {
-      $query .= ' LIMIT ' . $limit;
+        $result = queryTable($query);
+        $versions = Array();
+
+        foreach ($result as $row) {
+            $versions[$row['lang']] = new Event($row);
+        }
+
+        return $versions;
     }
 
-    $result = queryTable($query);
+    public static function getEvents($lang = false) {
+        $query = 'SELECT * FROM events';
 
-    return $result;
-  }
+        if ($lang != false) {
+            $query .= ' WHERE lang=\'' . escapeSql($lang) . '\'';
+        }
+
+        $query .= ' ORDER BY timestamp ASC';
+
+        $result = queryTable($query);
+        $events = array();
+
+        foreach ($result as $row) {
+            $events[] = new Event($row);
+        }
+
+        return $events;
+    }
 
 }
 
