@@ -23,6 +23,7 @@
         <?php print $external ?>
         <ul>
             <li><a href="http://aski.hut.fi/askicam">AskiCam</a></li>
+            <li><a href="http://aski.hut.fi/gt">Kultainen Tomaatti</a></li>
             <li><a href="http://aski.hut.fi/AskiWiki">Wiki</a></li>
             <li><a href="http://www.tenttiarkisto.fi/"><?= $_['Exam_archive'] ?></a></li>
         </ul>
