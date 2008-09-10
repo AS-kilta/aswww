@@ -6,6 +6,10 @@ foreach ($news as $item) {
     if ($i >= $numNews) {
         break;
     }
+
+    if (strlen($item['heading']) < 1) {
+        continue;
+    }
 ?>
     <div class="news">
     <h2><?= $item['heading'] ?></h2>

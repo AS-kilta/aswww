@@ -1,7 +1,7 @@
 <?php
 class Event extends Model {
 
-  /**
+   /**
     * Constructor
     */
     public function __construct($row = false) {
@@ -34,11 +34,19 @@ class Event extends Model {
         return $versions;
     }
 
-    public static function getEvents($lang = false) {
+    public static function getEvents($lang = false, $startDate = false, $endDate = false) {
         $query = 'SELECT * FROM events';
 
         if ($lang != false) {
             $query .= ' WHERE lang=\'' . escapeSql($lang) . '\'';
+        }
+
+        if ($startDate != false) {
+            $query .= ' AND timestamp > \'' . escapeSql($startDate) . '\'';
+        }
+
+        if ($endDate != false) {
+            $query .= ' AND timestamp < \'' . escapeSql($endDate) . '\'';
         }
 
         $query .= ' ORDER BY timestamp ASC';
@@ -51,6 +59,25 @@ class Event extends Model {
         }
 
         return $events;
+    }
+
+    public static function getFutureEvents($lang) {
+        return Event::getEvents($lang, date('Y-m-d'));
+    }
+
+    public function setTimestamp($time) {
+        $array = date_parse($time);
+
+        if (!$array) {
+            $this->timestamp = false;
+            return;
+        }
+
+        $this->timestamp = sprintf('%04d-%02d-%02d %02d:%02d', $array['year'], $array['month'], $array['day'], $array['hour'], $array['minute']);
+    }
+
+    public function isValid() {
+        return strlen($this->heading) > 0 && $this->timestamp !== false;
     }
 
 }

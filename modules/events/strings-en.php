@@ -11,5 +11,5 @@ $_['help_time'] = '(Free text to be displayed)';
 $_['help_timestamp'] = '(YYYY-MM-DD HH:MM, for ordering the list.)';
 
 $_['list_all'] = 'More...';
-
+$_['list_url'] = 'calendar';
 ?>

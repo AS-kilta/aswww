@@ -6,17 +6,17 @@
     <p>
         <?= $event->getPlace() ?>
         <?php if ($editable) {
-            echo "<br>\n";
+            echo "<br />\n";
             echo $this->link('events/edit?id=' . $event->getId(), 'Edit');
         } ?>
     </p>
   <?php } ?>
 
-    <?= $this->link('events/list', $_['list_all']); ?>
+    <?= $this->link($_['list_url'], $_['list_all']); ?>
 </div>
 
 <?php
 if ($editable) {
-    echo $this->link('events/edit', 'Create new') . "<br />\n";
+    echo $this->link('events/edit', 'Create new');
 }
 ?>

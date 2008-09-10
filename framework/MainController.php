@@ -14,6 +14,10 @@ class MainController {
     $navi = Navi::getInstance();
     $navi->resolve($parts);
 
+    if (getGet('lang')) {
+        setLanguage(getGet('lang'));
+    }
+
     $node = $navi->getSelectedNode();
 
     // Get installed modules
@@ -76,6 +80,10 @@ class MainController {
 
     // Render auxiliary content defined in the content map
     foreach ($contentMap as $region => $content) {
+        if ($content == false) {
+            continue;
+        }
+
         $auxModule = $this->loadModule($content[0]);
         $auxModule->setRequestedAction($content[1]);
 

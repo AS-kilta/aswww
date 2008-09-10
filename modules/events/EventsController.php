@@ -6,13 +6,13 @@ class EventsController extends ModuleController {
         $this->moduleName = 'events';
     }
 
-    function renderDefault() {
+    function renderShort() {
         $auth = Auth::getInstance();
         $user = $auth->getCurrentUser();
         $view = $this->loadView('events');
 
         // Get events
-        $events = Event::getEvents(getLanguage());
+        $events = Event::getFutureEvents(getLanguage());
         $view->setData('events', $events);
 
         // Check editing privileges
@@ -66,6 +66,10 @@ class EventsController extends ModuleController {
         // Save edited content
         if (getPost('save')) {
             foreach($versions as $version) {
+                if (!$version->isValid()) {
+                    continue;
+                }
+
                 if ($version->save($id) == false) {
                     $failed = true;
                 }
@@ -121,13 +125,13 @@ class EventsController extends ModuleController {
         return $view->render();
     }
 
-    public function renderList() {
+    public function renderDefault() {
         $auth = Auth::getInstance();
         $user = $auth->getCurrentUser();
         $view = $this->loadView('list');
 
         // Get events
-        $events = Event::getEvents(getLanguage());
+        $events = Event::getFutureEvents(getLanguage());
         $view->setData('events', $events);
 
         // Check editing privileges

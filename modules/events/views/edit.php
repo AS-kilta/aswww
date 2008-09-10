@@ -40,7 +40,7 @@
 <?php } ?>
 
 <p>
-    <?= $this->link('events/list', 'Cancel') ?>
+    <?= $this->link('events', 'Cancel') ?>
     <input type='submit' name='delete' value='Delete' onclick="return confirm('Are you sure you want to delete?')" />
     <input type='submit' name='save' value='Save' />
 </p>

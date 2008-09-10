@@ -90,7 +90,7 @@ class NaviController extends ModuleController {
                 . $_['otherLangText-' . $lang]
                 . '</a></li>';
         } else {
-            $html .= '<li><a href="' . baseUrl() . '/">' . $_['otherLangText-' . $lang] . '</a></li>';
+            $html .= '<li><a href="' . baseUrl() . '/' . $_['otherLangFrontpage-' . $lang] . '">' . $_['otherLangText-' . $lang] . '</a></li>';
         }
 
         // Admin
