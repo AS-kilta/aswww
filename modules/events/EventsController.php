@@ -12,16 +12,13 @@ class EventsController extends ModuleController {
         $view = $this->loadView('events');
 
         // Get events
-        $events = Event::getFutureEvents(getLanguage());
+        $events = Event::getFutureEvents(getLanguage(), 4);
         $view->setData('events', $events);
 
         // Check editing privileges
         if ($auth->hasPrivilege($user, 'events', null, 'edit')) {
             $view->setData('editable', true);
         }
-
-        // Limit the number of events
-        $view->setData('numEvents', 4);
 
         return $view->render();
     }

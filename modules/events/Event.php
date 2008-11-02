@@ -34,7 +34,7 @@ class Event extends Model {
         return $versions;
     }
 
-    public static function getEvents($lang = false, $startDate = false, $endDate = false) {
+    public static function getEvents($lang = false, $limit = false, $startDate = false, $endDate = false) {
         $query = 'SELECT * FROM events';
 
         if ($lang != false) {
@@ -51,6 +51,10 @@ class Event extends Model {
 
         $query .= ' ORDER BY timestamp ASC';
 
+        if ($lang != false) {
+            $query .= ' LIMIT ' . escapeSql($limit);
+        }
+
         $result = queryTable($query);
         $events = array();
 
@@ -61,8 +65,12 @@ class Event extends Model {
         return $events;
     }
 
-    public static function getFutureEvents($lang) {
-        return Event::getEvents($lang, date('Y-m-d'));
+    /**
+     * Returns the events that have not passed.
+     * @param $limit maximum number of events
+     */
+    public static function getFutureEvents($lang, $limit = false) {
+        return Event::getEvents($lang, $limit, date('Y-m-d'));
     }
 
     public function setTimestamp($time) {

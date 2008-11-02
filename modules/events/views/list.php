@@ -1,3 +1,4 @@
+<!-- Pitka lista -->
 <div class="events-long">
     <h1><?= $_['heading'] ?></h1>
 

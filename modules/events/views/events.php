@@ -1,3 +1,4 @@
+<!-- Lyhyt lista -->
 <div class="events">
   <h1><?= $_['heading'] ?></h1>
 
