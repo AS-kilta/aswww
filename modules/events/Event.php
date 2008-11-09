@@ -51,7 +51,7 @@ class Event extends Model {
 
         $query .= ' ORDER BY timestamp ASC';
 
-        if ($lang != false) {
+        if ($limit != false) {
             $query .= ' LIMIT ' . escapeSql($limit);
         }
 

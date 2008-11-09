@@ -23,6 +23,23 @@ class EventsController extends ModuleController {
         return $view->render();
     }
 
+    public function renderDefault() {
+        $auth = Auth::getInstance();
+        $user = $auth->getCurrentUser();
+        $view = $this->loadView('list');
+
+        // Get events
+        $events = Event::getFutureEvents(getLanguage());
+        $view->setData('events', $events);
+
+        // Check editing privileges
+        if ($auth->hasPrivilege($user, 'events', null, 'edit')) {
+            $view->setData('editable', true);
+        }
+
+        return $view->render();
+    }
+
     function renderEdit() {
         // Check editing privileges
         $auth = Auth::getInstance();
@@ -118,23 +135,6 @@ class EventsController extends ModuleController {
         $events = Event::getEvents();
         $view->setData('events', $events);
         $view->setData('editable', true);
-
-        return $view->render();
-    }
-
-    public function renderDefault() {
-        $auth = Auth::getInstance();
-        $user = $auth->getCurrentUser();
-        $view = $this->loadView('list');
-
-        // Get events
-        $events = Event::getFutureEvents(getLanguage());
-        $view->setData('events', $events);
-
-        // Check editing privileges
-        if ($auth->hasPrivilege($user, 'events', null, 'edit')) {
-            $view->setData('editable', true);
-        }
 
         return $view->render();
     }
