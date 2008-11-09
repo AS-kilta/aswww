@@ -13,12 +13,13 @@ foreach ($news as $item) {
 ?>
     <div class="news">
     <h2><?= $item['heading'] ?></h2>
-    <p>
-    <?= $item['content'] ?><br />
+    <div>
+    <?= $item['content'] ?>
     <?php if ($editable) {
+        echo "<br />\n";
         echo $this->link('news/edit?id=' . $item['id'], 'Edit');
     } ?>
-    </p>
+    </div>
 
     </div>
 <?php

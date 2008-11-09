@@ -468,7 +468,7 @@ div.clear {
 }
 
 
-/*** Front page module ***/
+/*** News module ***/
 
 .news h2:first-child {
     margin-top: 0px;
@@ -478,9 +478,18 @@ div.clear {
     margin-bottom: .2em;
 }
 
-.news p {
+.news div {
     margin-top: 0em;
     margin-bottom: 2em;
+}
+
+.news p {
+    margin-top: 1ex;
+    margin-bottom: 0em;
+}
+
+.news p:first-child {
+    margin-top: 0em;
 }
 
 
