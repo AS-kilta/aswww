@@ -14,4 +14,7 @@ $_['help_timestamp'] = '(YYYY-MM-DD HH:MM) Lista järjestetään aikaleimojen pe
 $_['list_all'] = 'Tapahtumakalenteri';
 $_['list_url'] = 'tapahtumat';
 
+$_['googlecal'] = 'Google-kalenteri';
+$_['googleurl'] = 'http://www.google.com/calendar/embed?src=tiedottaja%40aski.hut.fi&ctz=Europe/Helsinki';
+
 ?>

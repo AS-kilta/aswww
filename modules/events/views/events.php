@@ -13,7 +13,8 @@
     </p>
   <?php } ?>
 
-    <?= $this->link($_['list_url'], $_['list_all']); ?>
+    <?= $this->link($_['list_url'], $_['list_all']); ?><br />
+    <a href="<?= $_['googleurl'] ?>"><?= $_['googlecal'] ?></a>
 </div>
 
 <?php

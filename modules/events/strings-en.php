@@ -12,4 +12,6 @@ $_['help_timestamp'] = '(YYYY-MM-DD HH:MM, for ordering the list.)';
 
 $_['list_all'] = 'More...';
 $_['list_url'] = 'calendar';
+$_['googlecal'] = 'Google calendar';
+$_['googleurl'] = 'http://www.google.com/calendar/embed?src=tiedottaja%40aski.hut.fi&ctz=Europe/Helsinki';
 ?>
